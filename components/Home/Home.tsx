@@ -4,8 +4,7 @@ import Image from "../small-componnets/Image/Image";
 const Home = () => {
   return (
     <div>
-      <Image />
-      home
+        home
     </div>
   );
 };

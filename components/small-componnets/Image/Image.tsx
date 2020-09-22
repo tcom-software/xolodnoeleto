@@ -1,19 +1,18 @@
 import React from "react";
-import styled, { css } from "styled-components";
 
 interface ImageInterface {
-  variant: string;
+    jpg: string
+    jpgMobile: string
 }
 
-// const Image = styled.img``;
-
-const Image = () => {
-  return (
-    <picture>
-      {/*<source srcSet="/images/banners/one.webp" />*/}
-      <img src="/images/banners/two.jpg" />
-    </picture>
-  );
+const Image = (props: ImageInterface) => {
+    const { jpg, jpgMobile } = props;
+    return (
+        <picture>
+            <source media="(min-width:768px)" srcSet={jpg} />
+            <img src={jpgMobile}  />
+        </picture>
+    );
 };
 
 export default Image;
