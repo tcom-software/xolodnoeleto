@@ -29,10 +29,6 @@ const Nav = styled.nav`
 const UlsCon = styled.div`
   display: flex;
   justify-content: space-between;
-
-  & > ul {
-    width: 45%;
-  }
 `;
 const Section = styled.section`
   display: flex;
