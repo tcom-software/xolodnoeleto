@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import { fontfaces } from "../styles/fonts";
-import theme from 'styles/theme';
+import theme from "styles/theme";
 
 const GlobalStyles = createGlobalStyle`
   ${fontfaces()}
@@ -9,7 +9,8 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Open-Sans;
+    font-family: "Open Sans", sans-serif;
+    font-size: ${theme.body.fontSize};
   }
   *:focus {
     outline: none;
@@ -19,6 +20,10 @@ const GlobalStyles = createGlobalStyle`
   }
   picture {
     display: contents;
+  }
+  
+  h2 {
+    font-size: 14px;
   }
 `;
 

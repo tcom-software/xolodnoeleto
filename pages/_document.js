@@ -42,7 +42,11 @@ export default class MyDocument extends Document {
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <meta property="og:url" content="https://www.laitklimat.ru/" />
           {/*<meta name="theme-color" content={theme.colors.secondary} />*/}
-
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="//fonts.googleapis.com/css?family=Open+Sans"
+          />
           <meta
             property="og:title"
             content="Стандартная установка кондиционеров"
