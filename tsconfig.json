@@ -15,13 +15,9 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@atoms": ["components/atoms"],
-      "@molecules": ["components/molecules"],
-      "@organisms": ["components/organisms"],
-      "@pages/*": ["components/pages/*"],
-      "@styles/*": ["styles/*"]
+      "@atoms": ["components/atoms"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/api/graphql.ts", "components/atoms/Button/index.js", "pages/index.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/index.js"],
   "exclude": ["node_modules"]
 }

@@ -1,8 +1,13 @@
-// import styles from '../styles/Home.module.css'
-
 import React from "react";
 import HomeContent from "../components/Home";
+// import { connect } from "react-redux";
+// import { incrementCounter } from "../../redux/actions/counterActions";
 
-export default function Home() {
-  return <HomeContent />;
+const Home = () => {
+    // { counter, increment }
+  return (
+    <HomeContent />
+  );
 }
+
+export default Home;

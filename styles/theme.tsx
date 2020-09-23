@@ -1,4 +1,10 @@
 export default {
+  body: {
+    background: "#F6F6F6"
+  },
+  content: {
+    background: "#E5E5E5"
+  },
   buttons: {
     padding: "1.3em 5.3em",
     primary: {
@@ -18,5 +24,8 @@ export default {
   },
   close: {
     color: "#202020",
+  },
+  mobileMedia: {
+    size: "768px"
   }
 };

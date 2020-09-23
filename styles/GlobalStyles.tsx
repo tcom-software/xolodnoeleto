@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import { fontfaces } from "../styles/fonts";
+import theme from 'styles/theme';
 
 const GlobalStyles = createGlobalStyle`
   ${fontfaces()}
@@ -12,6 +13,12 @@ const GlobalStyles = createGlobalStyle`
   }
   *:focus {
     outline: none;
+  }
+  body {
+    background: ${theme.body.background};
+  }
+  picture {
+    display: contents;
   }
 `;
 

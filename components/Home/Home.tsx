@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "../small-componnets/Image/Image";
+import Image from "../atoms/Image/Image";
 
 const Home = () => {
   return (

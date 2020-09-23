@@ -1,10 +1,12 @@
 import React from "react";
+
 import styled, { css } from "styled-components";
+
 interface ButtonInterface {
   variant: string;
 }
 
-export const Button = styled.Button<ButtonInterface>`
+const Button = styled.button<ButtonInterface>`
   cursor: pointer;
   padding: ${({ theme }) => theme.buttons.padding};
 
@@ -33,3 +35,6 @@ export const Button = styled.Button<ButtonInterface>`
     }
   }}
 `;
+
+
+export default Button;

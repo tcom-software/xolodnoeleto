@@ -1,8 +1,7 @@
 import React from "react";
-import Image from "../../../small-componnets/Image";
 import { Container } from './styles';
-import SvgIcons from "../../../small-componnets/SvgIcon";
-import theme from '../../../../styles/theme';
+import { Image, SvgIcon } from "@atoms";
+import theme from 'styles/theme';
 
 const Banner = () => {
     return (
@@ -10,8 +9,11 @@ const Banner = () => {
             <Image
                 jpg={`/images/banners/top-banner.jpg`}
                 jpgMobile={`/images/banners/top-banner.jpg`}
+
+                webp={`/images/banners/top-banner.webp`}
+                webpMobile={`/images/banners/top-banner.webp`}
             />
-            <SvgIcons type='close' width={15} height={15} color={theme.close.color}/>
+            <SvgIcon type='close' width={15} height={15} color={theme.close.color}/>
         </Container>
     )
 };
