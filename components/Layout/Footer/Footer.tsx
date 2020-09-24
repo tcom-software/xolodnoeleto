@@ -4,10 +4,10 @@ import { Ul, Nav, UlsCon, Section, Copyright } from "./styles";
 import SvgIcons from "../../atoms/SvgIcon";
 
 const Footer = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState("");
   const handleOpen = (title: string) => {
     if (isOpen == title) {
-      setIsOpen(false);
+      setIsOpen("");
     } else {
       setIsOpen(title);
     }
@@ -46,9 +46,11 @@ const Footer = () => {
         {Data.socialNetworks.map(({ title, items }: any, i: number) => (
           <div key={i}>
             <h2>{title}</h2>
-            {items.map((path: string, i: number) => (
-              <img src={`/images/icons/${path}`} key={i} alt="" />
-            ))}
+            <div>
+              {items.map((path: string, i: number) => (
+                <img src={`/images/icons/${path}`} key={i} alt="" />
+              ))}
+            </div>
           </div>
         ))}
       </Section>

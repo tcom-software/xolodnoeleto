@@ -13,10 +13,6 @@ const Nav = styled.nav`
   & > ul {
     width: max-content;
 
-    &:first-child {
-      display: none;
-    }
-
     &:nth-child(2) {
       width: 80%;
       justify-self: center;
@@ -30,23 +26,30 @@ const Nav = styled.nav`
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     width: 100vw;
+    margin-bottom: 0px;
 
     & > ul {
       width: 100vw;
 
-      & > li:first-child {
-        background: #efefef;
-
-        & > svg {
-          display: block;
-        }
+      &:first-child {
+        display: none;
       }
-
+      &:last-child {
+        margin-top: 6px;
+      }
       &:nth-child(2) {
         justify-self: flex-start;
         width: 100%;
 
         & > div {
+          display: block;
+        }
+      }
+
+      & > li:first-child {
+        background: #efefef;
+
+        & > svg {
           display: block;
         }
       }
@@ -112,6 +115,32 @@ const Section = styled.section`
     }
     h3 {
       margin-right: 25px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column-reverse;
+    padding: 0;
+
+    & > div:last-child {
+      width: 100%;
+      flex-direction: column;
+      align-items: flex-start;
+      background: #f6f6f6;
+      padding: 28px 15px;
+
+      & > div {
+        margin-top: 20px;
+
+        & > img:first-child {
+          margin-left: 0;
+        }
+      }
+    }
+    & > div:first-child {
+      width: 100%;
+      justify-content: space-between;
+      padding: 12.5px 15px;
     }
   }
 `;
