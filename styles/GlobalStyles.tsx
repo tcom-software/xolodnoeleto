@@ -24,6 +24,7 @@ const GlobalStyles = createGlobalStyle`
   
   h2 {
     font-size: 14px;
+    font-weight: 700;
   }
 `;
 
