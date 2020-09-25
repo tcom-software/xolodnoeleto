@@ -1,10 +1,13 @@
 export default {
   body: {
-    background: "#F6F6F6",
+    background: "#FFFFFF",
     fontSize: "14px",
+    color: "#202020",
+    width: "1250px",
+    margin: "0 auto",
   },
   content: {
-    background: "#E5E5E5",
+    background: "#F6F6F6",
   },
   buttons: {
     padding: "1.3em 5.3em",

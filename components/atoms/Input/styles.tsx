@@ -6,7 +6,6 @@ const Label = styled.label``;
 const Input = styled.input`
   border: none;
   width: 100%;
-  background: #ffffff;
 
   ${({ props }) => {
     return css`
@@ -18,6 +17,7 @@ const Input = styled.input`
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  background: #ffffff;
 `;
 
 const InputBorder = styled.div`

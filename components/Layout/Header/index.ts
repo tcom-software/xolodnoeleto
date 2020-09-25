@@ -1,3 +1,14 @@
-import Header from './Header';
+import Header from "./Header";
+import { connect } from "react-redux";
 
-export default Header;
+const mapStateToProps = ({
+  general: {
+    header: { navigation },
+    phones,
+  },
+}) => ({
+  phones,
+  navigation,
+});
+
+export default connect(mapStateToProps)(Header);

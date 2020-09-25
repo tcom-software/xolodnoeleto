@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Data from "./data";
+import { connect } from "react-redux";
 import { Ul, Nav, UlsCon, Section, Copyright } from "./styles";
 import SvgIcons from "../../atoms/SvgIcon";
 
-const Footer = () => {
+const Footer = ({ menu, copyright, socialNetworks }) => {
   const [isOpen, setIsOpen] = useState("");
   const handleOpen = (title: string) => {
     if (isOpen == title) {
@@ -15,7 +15,7 @@ const Footer = () => {
   return (
     <footer>
       <Nav>
-        {Data.menu.map(({ items, sideItems, title }: any, i: number) => {
+        {menu.map(({ items, sideItems, title }: any, i: number) => {
           return (
             <Ul key={i}>
               <li onClick={() => handleOpen(title)}>
@@ -46,7 +46,7 @@ const Footer = () => {
       </Nav>
 
       <Section>
-        {Data.socialNetworks.map(({ title, items }: any, i: number) => {
+        {socialNetworks.map(({ title, items }: any, i: number) => {
           return (
             <div key={i}>
               <h2>{title}</h2>
@@ -59,9 +59,14 @@ const Footer = () => {
           );
         })}
       </Section>
-      <Copyright>{Data.Copyright.title}</Copyright>
+      <Copyright>{copyright.title}</Copyright>
     </footer>
   );
 };
 
-export default Footer;
+const mapStateToProps = ({ general: { socialNetworks, copyright, menu } }) => ({
+  socialNetworks,
+  copyright,
+  menu,
+});
+export default connect(mapStateToProps)(Footer);

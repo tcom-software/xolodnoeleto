@@ -21,10 +21,16 @@ const GlobalStyles = createGlobalStyle`
   picture {
     display: contents;
   }
-  
   h2 {
     font-size: 14px;
     font-weight: 700;
+  }
+  a {
+    color: ${theme.body.color};
+    text-decoration: none;
+  }
+  ul {
+    list-style: none;
   }
 `;
 
