@@ -60,16 +60,30 @@ const Nav = styled.nav`
 const UlsCon = styled.div`
   display: flex;
   justify-content: space-between;
+
   @media (max-width: 768px) {
-    display: none !important;
-    
+    & > ul {
+      transition: all 0.3s ease-in;
+      position: relative;
+      opacity: 0;
+      z-index: -1;
+      max-height: 0;
+    }
+
     ${({ title, isOpen }) => {
       if (title == isOpen) {
         return css`
-          display: block !important;
+          & > ul {
+            transition: all 0.3s ease-in;
+            width: 100%;
+            opacity: 1;
+            z-index: 1;
+            max-height: 2000px;
+          }
         `;
       }
     }}
+  }
 `;
 
 const Ul = styled.ul`

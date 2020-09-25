@@ -2,12 +2,38 @@ const GeneralData = {
   phones: ["+7 (495) 272-03-39", "+7 (495) 134-22-02"],
   socialNetworks: [
     {
-      title: "мы в соц. сетях",
-      items: ["vk.png", "instagram.png", "fb.png"],
+      title: "Мы в соц. сетях",
+      items: [
+        {
+          img: "vk.png",
+          link: "",
+        },
+        {
+          img: "instagram.png",
+          link: "",
+        },
+        {
+          img: "fb.png",
+          link: "",
+        },
+      ],
     },
     {
-      title: "принимаем",
-      items: ["master_card.png", "uniTeller.png", "visa.png"],
+      title: "Принимаем",
+      items: [
+        {
+          img: "master_card.png",
+          link: "",
+        },
+        {
+          img: "uniTeller.png",
+          link: "",
+        },
+        {
+          img: "visa.png",
+          link: "",
+        },
+      ],
     },
   ],
 };

@@ -20,7 +20,11 @@ const Footer = () => {
             <Ul key={i}>
               <li onClick={() => handleOpen(title)}>
                 <h2>{title}</h2>
-                <SvgIcons type="arrowRight" width={13} height={13} />
+                <SvgIcons
+                  type={title === isOpen ? `arrowDown` : `arrowRight`}
+                  width={13}
+                  height={13}
+                />
               </li>
               <UlsCon title={title} isOpen={isOpen}>
                 <Ul>
@@ -31,7 +35,6 @@ const Footer = () => {
                 {sideItems != undefined ? (
                   <Ul elseCase={true}>
                     {sideItems.map((value: any, index: number) => {
-                      console.log(value);
                       return <li key={index}>{value}</li>;
                     })}
                   </Ul>
@@ -43,16 +46,18 @@ const Footer = () => {
       </Nav>
 
       <Section>
-        {Data.socialNetworks.map(({ title, items }: any, i: number) => (
-          <div key={i}>
-            <h2>{title}</h2>
-            <div>
-              {items.map((path: string, i: number) => (
-                <img src={`/images/icons/${path}`} key={i} alt="" />
-              ))}
+        {Data.socialNetworks.map(({ title, items }: any, i: number) => {
+          return (
+            <div key={i}>
+              <h2>{title}</h2>
+              <div>
+                {items.map(({ img, link }: any, i: number) => {
+                  return <img src={`/images/icons/${img}`} key={i} alt="" />;
+                })}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </Section>
       <Copyright>{Data.Copyright.title}</Copyright>
     </footer>
