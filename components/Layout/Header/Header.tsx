@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Banner from "./Banner";
 import Link from "next/link";
 import {
@@ -10,22 +10,43 @@ import {
   SearchCon,
   SearchAndFavoriteCon,
 } from "./styles";
-import { Input, GlobalSection, SvgIcon, Image } from "@atoms";
+import { Input, GlobalSection, SvgIcon } from "@atoms";
 
 const Header = ({ navigation, phones }) => {
+  const [toggle, setToggle] = useState(false);
+
   return (
     <header>
       <Banner />
       <GlobalSection background={true}>
         <TopPanel>
+          <SvgIcon type="phone" width={23} height={23} />
+          <LogoCon isMobile={true}>
+            <Link href={""}>
+              <>
+                <img src="/images/logo/logo.png" alt="sun" />
+                <h1>XOLODNOELETO</h1>
+              </>
+            </Link>
+          </LogoCon>
+          <SvgIcon
+            type="hamburgerMenu"
+            width={25}
+            height={25}
+            callback={() => setToggle(!toggle)}
+          />
+        </TopPanel>
+        <TopPanel toggle={toggle} onlyMenu={true}>
           <Ul>
-            {navigation.map((item, i) => {
-              return (
-                <li key={i}>
-                  <Link href={""}>{item}</Link>
-                </li>
-              );
-            })}
+            {["% Акции", "Бренды", "Сравнить", "Избранные", ...navigation].map(
+              (item, i) => {
+                return (
+                  <li key={i}>
+                    <Link href={""}>{item}</Link>
+                  </li>
+                );
+              }
+            )}
           </Ul>
         </TopPanel>
       </GlobalSection>

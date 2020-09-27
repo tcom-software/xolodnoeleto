@@ -6,6 +6,38 @@ const TopPanel = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  & > svg {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    background: #fff;
+    padding: 15px;
+
+    ${({ onlyMenu }) =>
+      onlyMenu &&
+      css`
+        padding: 0;
+      `}
+    ul {
+      display: none;
+      ${({ toggle }) => {
+        if (toggle) {
+          return css`
+            display: block;
+          `;
+        }
+      }}
+      li > a {
+        display: block;
+        padding: 14px 10px;
+      }
+    }
+    svg {
+      display: block;
+    }
+  }
 `;
 
 const MainPanel = styled.section`
@@ -33,6 +65,19 @@ const LogoCon = styled.div`
   & > h1 {
     text-align: left;
     display: none;
+  }
+  ${({ isMobile }) =>
+    isMobile &&
+    css`
+      display: none;
+    `}
+
+  @media (max-width: 768px) {
+    ${({ isMobile }) =>
+      isMobile &&
+      css`
+        display: block;
+      `}
   }
 `;
 const PhonesCon = styled.div`

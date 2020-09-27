@@ -12,6 +12,7 @@ interface SvgProperty {
 
 const SvgIcons = (props: SvgProperty) => {
   const { callback } = props;
+
   const {
     inSide,
     svgProps: { id, viewBox },
@@ -25,7 +26,7 @@ const SvgIcons = (props: SvgProperty) => {
       fill={props.color}
       width={props.width}
       height={props.height}
-      onClick={callback}
+      onClick={() => callback()}
     >
       {inSide}
     </Svg>
