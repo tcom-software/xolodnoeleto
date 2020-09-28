@@ -5,14 +5,23 @@ import SvgIcons from "../SvgIcon";
 interface InputInterface {
   labelTitle?: string;
   search?: boolean;
+  svgColor?: string;
   width: number;
   height: number;
   placeholder: string;
   svgSize: number;
+  callback?: any;
 }
 
 const InputCase = (props: InputInterface) => {
-  const { labelTitle, search, placeholder, svgSize } = props;
+  const {
+    labelTitle,
+    search,
+    placeholder,
+    svgSize,
+    svgColor,
+    callback,
+  } = props;
 
   if (!!labelTitle) {
     return (
@@ -22,7 +31,13 @@ const InputCase = (props: InputInterface) => {
           <InputBorder props={props}>
             <Input props={props} placeholder={placeholder} />
             {search ? (
-              <SvgIcons type="search" width={svgSize} height={svgSize} />
+              <SvgIcons
+                type="search"
+                width={svgSize}
+                height={svgSize}
+                color={svgColor}
+                callback={callback}
+              />
             ) : null}
           </InputBorder>
         </Label>
@@ -35,7 +50,13 @@ const InputCase = (props: InputInterface) => {
           <InputBorder props={props}>
             <Input props={props} placeholder={placeholder} />
             {search ? (
-              <SvgIcons type="search" width={svgSize} height={svgSize} />
+              <SvgIcons
+                type="search"
+                width={svgSize}
+                height={svgSize}
+                color={svgColor}
+                callback={callback}
+              />
             ) : null}
           </InputBorder>
         </Label>

@@ -3,18 +3,18 @@ import React from "react";
 import styled, { css } from "styled-components";
 
 interface ButtonInterface {
-  variant: string;
+  type: string;
 }
 
 const Button = styled.button<ButtonInterface>`
   cursor: pointer;
   padding: ${({ theme }) => theme.buttons.padding};
 
-  ${({ theme, variant }) => {
-    switch (variant) {
+  ${({ theme, type }) => {
+    switch (type) {
       case "primary":
         return css`
-          color: white;
+          color: #ffffff;
           border: none;
           background: ${theme.buttons.primary.background};
         `;
@@ -32,9 +32,9 @@ const Button = styled.button<ButtonInterface>`
           background: ${theme.buttons.withIcon.background};
         `;
         break;
+      default:
     }
   }}
 `;
-
 
 export default Button;

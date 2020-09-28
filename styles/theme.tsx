@@ -32,4 +32,7 @@ export default {
   mobileMedia: {
     size: "768px",
   },
+  sally: {
+    color: "#EA4A4A",
+  },
 };

@@ -3,17 +3,20 @@ import Banner from "./Banner";
 import Link from "next/link";
 import {
   Ul,
+  Span,
   TopPanel,
   MainPanel,
   LogoCon,
   PhonesCon,
   SearchCon,
+  BottomPanel,
   SearchAndFavoriteCon,
 } from "./styles";
-import { Input, GlobalSection, SvgIcon } from "@atoms";
+import { Input, GlobalSection, SvgIcon, Button } from "@atoms";
 
-const Header = ({ navigation, phones }) => {
+const Header = ({ navigation, elseRefs, phones }) => {
   const [toggle, setToggle] = useState(false);
+  const [isOpenSearch, setIsOpenSearch] = useState(false);
 
   return (
     <header>
@@ -38,20 +41,18 @@ const Header = ({ navigation, phones }) => {
         </TopPanel>
         <TopPanel toggle={toggle} onlyMenu={true}>
           <Ul>
-            {["% Акции", "Бренды", "Сравнить", "Избранные", ...navigation].map(
-              (item, i) => {
-                return (
-                  <li key={i}>
-                    <Link href={""}>{item}</Link>
-                  </li>
-                );
-              }
-            )}
+            {[...elseRefs, ...navigation].map((item, i) => {
+              return (
+                <li key={i}>
+                  <Link href={""}>{item}</Link>
+                </li>
+              );
+            })}
           </Ul>
         </TopPanel>
       </GlobalSection>
       <GlobalSection>
-        <MainPanel>
+        <MainPanel isMobileHidden={true}>
           <LogoCon>
             <Link href={""}>
               <>
@@ -86,6 +87,51 @@ const Header = ({ navigation, phones }) => {
             Избранные
           </SearchAndFavoriteCon>
         </MainPanel>
+      </GlobalSection>
+      <GlobalSection>
+        <BottomPanel>
+          <Ul>
+            <li>
+              <SvgIcon
+                type="hamburgerMenu"
+                width={25}
+                height={25}
+                callback={() => {}}
+              />
+              Каталог товаров
+            </li>
+            <li>% Акции</li>
+            <li>Бренды</li>
+            <li>
+              <SearchCon mobileDisableView={true} isOpenSearch={isOpenSearch}>
+                <Input
+                  search={true}
+                  svgSize={20}
+                  width={350}
+                  height={35}
+                  placeholder={"search"}
+                  callback={() => setIsOpenSearch(!isOpenSearch)}
+                />
+
+                <Span />
+                <Span />
+                <Span />
+                <Span />
+                <Span />
+                <Span />
+              </SearchCon>
+            </li>
+            <li>
+              <SvgIcon type="basket" width={20} height={20} />
+            </li>
+            <li>
+              <Button type="with-icon">
+                <SvgIcon type="basket" width={20} height={20} />
+                Корзина пуста
+              </Button>
+            </li>
+          </Ul>
+        </BottomPanel>
       </GlobalSection>
     </header>
   );

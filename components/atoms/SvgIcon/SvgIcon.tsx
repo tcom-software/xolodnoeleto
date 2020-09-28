@@ -26,7 +26,7 @@ const SvgIcons = (props: SvgProperty) => {
       fill={props.color}
       width={props.width}
       height={props.height}
-      onClick={() => callback()}
+      onClick={callback != null ? () => callback() : null}
     >
       {inSide}
     </Svg>

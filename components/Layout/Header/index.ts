@@ -3,11 +3,12 @@ import { connect } from "react-redux";
 
 const mapStateToProps = ({
   general: {
-    header: { navigation },
+    header: { navigation, elseRefs },
     phones,
   },
 }) => ({
   phones,
+  elseRefs,
   navigation,
 });
 
