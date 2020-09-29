@@ -4,22 +4,26 @@ import theme from "../styles/theme";
 import Layout from "../components/Layout";
 import { ThemeProvider } from "styled-components";
 import GlobalStyles from "../styles/GlobalStyles";
-import {Provider} from 'react-redux';
+import { Provider } from "react-redux";
 
 import withRedux from "next-redux-wrapper";
-import store from '../redux/store';
+import store from "../redux/store";
+import { useSpring, animated } from "react-spring";
 
 function MyApp(props) {
-    const { Component, pageProps } = props;
+  const { Component, pageProps } = props;
+  const animationProps = useSpring({ opacity: 1, from: { opacity: 0 } });
 
   return (
     <ThemeProvider theme={theme}>
-        <Provider store={store}>
+      <Provider store={store}>
+        <animated.div style={animationProps}>
           <Layout>
             <GlobalStyles />
             <Component {...pageProps} />
           </Layout>
-        </Provider>
+        </animated.div>
+      </Provider>
     </ThemeProvider>
   );
 }
