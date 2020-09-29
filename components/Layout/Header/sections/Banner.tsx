@@ -1,11 +1,11 @@
 import React from "react";
-import { Container } from "./styles";
+import { BannerContainer } from "../styles";
 import { Image, SvgIcon } from "@atoms";
 import theme from "styles/theme";
 
 const Banner = () => {
   return (
-    <Container>
+    <BannerContainer>
       <Image
         jpg={`/images/banners/top-banner.jpg`}
         jpgMobile={`/images/banners/top-banner.jpg`}
@@ -17,9 +17,9 @@ const Banner = () => {
         width={15}
         height={15}
         color={theme.close.color}
-        callback={() => console.log(1)}
+        callback={() => {}}
       />
-    </Container>
+    </BannerContainer>
   );
 };
 
