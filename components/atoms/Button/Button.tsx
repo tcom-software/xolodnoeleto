@@ -4,11 +4,17 @@ import styled, { css } from "styled-components";
 
 interface ButtonInterface {
   type: string;
+  width: number;
+  height: number;
 }
 
 const Button = styled.button<ButtonInterface>`
   cursor: pointer;
-  padding: ${({ theme }) => theme.buttons.padding};
+  width: ${({ width }) => width}px;
+  height: ${({ height }) => height}px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   ${({ theme, type }) => {
     switch (type) {

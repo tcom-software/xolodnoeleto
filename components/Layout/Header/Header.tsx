@@ -5,6 +5,7 @@ import {
   Ul,
   Span,
   TopPanel,
+  CatalogUl,
   MainPanel,
   LogoCon,
   PhonesCon,
@@ -13,9 +14,10 @@ import {
   SearchAndFavoriteCon,
 } from "./styles";
 import { Input, GlobalSection, SvgIcon, Button } from "@atoms";
+import theme from "../../../styles/theme";
 
-const Header = ({ navigation, elseRefs, phones }) => {
-  const [toggle, setToggle] = useState(false);
+const Header = ({ navigation, elseRefs, phones, catalog }) => {
+  const [headerMenu, setHeaderMenu] = useState("");
   const [isOpenSearch, setIsOpenSearch] = useState(false);
 
   return (
@@ -36,10 +38,16 @@ const Header = ({ navigation, elseRefs, phones }) => {
             type="hamburgerMenu"
             width={25}
             height={25}
-            callback={() => setToggle(!toggle)}
+            callback={() => {
+              if (headerMenu == "navigation") {
+                setHeaderMenu("");
+              } else {
+                setHeaderMenu("navigation");
+              }
+            }}
           />
         </TopPanel>
-        <TopPanel toggle={toggle} onlyMenu={true}>
+        <TopPanel whatMenu={headerMenu} onlyMenu={true}>
           <Ul>
             {[...elseRefs, ...navigation].map((item, i) => {
               return (
@@ -89,16 +97,43 @@ const Header = ({ navigation, elseRefs, phones }) => {
         </MainPanel>
       </GlobalSection>
       <GlobalSection>
-        <BottomPanel>
+        <BottomPanel whatMenu={headerMenu}>
           <Ul>
-            <li>
+            <li
+              onClick={() => {
+                if (headerMenu == "catalog") {
+                  setHeaderMenu("");
+                } else {
+                  setHeaderMenu("catalog");
+                }
+              }}
+            >
               <SvgIcon
                 type="hamburgerMenu"
                 width={25}
                 height={25}
+                color={
+                  headerMenu === "catalog" ? theme.body.primaryColor : "#000"
+                }
                 callback={() => {}}
               />
               Каталог товаров
+              <CatalogUl whatMenu={headerMenu}>
+                {catalog.map((e, i) => {
+                  return (
+                    <li key={i}>
+                      <Link href="">{e}</Link>
+                    </li>
+                  );
+                })}
+                <SvgIcon
+                  type="box"
+                  width={15}
+                  height={15}
+                  color={theme.body.primaryColor}
+                  callback={() => {}}
+                />
+              </CatalogUl>
             </li>
             <li>% Акции</li>
             <li>Бренды</li>
@@ -125,10 +160,20 @@ const Header = ({ navigation, elseRefs, phones }) => {
               <SvgIcon type="basket" width={20} height={20} />
             </li>
             <li>
-              <Button type="with-icon">
+              <Button type="with-icon" width={190} height={47}>
                 <SvgIcon type="basket" width={20} height={20} />
                 Корзина пуста
               </Button>
+            </li>
+            <li>
+              <SvgIcon
+                type="close"
+                width={20}
+                height={20}
+                callback={() => {
+                  setHeaderMenu("");
+                }}
+              />
             </li>
           </Ul>
         </BottomPanel>

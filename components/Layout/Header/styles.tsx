@@ -30,8 +30,8 @@ const TopPanel = styled.section`
 
     ul {
       display: none;
-      ${({ toggle }) => {
-        if (toggle) {
+      ${({ whatMenu }) => {
+        if (whatMenu === "navigation") {
           return css`
             display: block;
           `;
@@ -74,7 +74,7 @@ const MainPanel = styled.section`
 
 const BottomPanel = styled.section`
   & > ul {
-    li {
+    & > li {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -87,22 +87,42 @@ const BottomPanel = styled.section`
         display: none;
       }
 
-      &:last-child {
-        button {
-          display: flex;
-          align-items: center;
-          justify-content: center;
+      &:first-child {
+        position: relative;
+
+        ${({ whatMenu }) => {
+          return (
+            whatMenu == "catalog" &&
+            css`
+              color: ${theme.body.primaryColor};
+            `
+          );
+        }}
+        &:nth-child(6) {
+          button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
         }
       }
+      &:nth-child(7) {
+        display: none;
+      }
     }
-
     @media (max-width: 768px) {
       display: grid;
       grid-template-columns: 3fr 2fr 1fr;
+      ${({ whatMenu }) => {
+        return (
+          whatMenu == "catalog" &&
+          css`
+            grid-template-columns: 1fr 1fr;
+          `
+        );
+      }}
 
-      li {
-        display: none;
-
+      & > li {
         &:first-child,
         &:nth-child(4),
         &:nth-child(5) {
@@ -117,6 +137,7 @@ const BottomPanel = styled.section`
         &:nth-child(4) > div > div > label > div {
           display: flex;
           justify-content: flex-end;
+
           svg {
             padding: 0;
             margin: 0;
@@ -125,8 +146,104 @@ const BottomPanel = styled.section`
         &:nth-child(5) {
           justify-self: flex-end;
         }
+
+        &:nth-child(2),
+        &:nth-child(3),
+        &:nth-child(6) {
+          display: none;
+        }
+        ${({ whatMenu }) => {
+          return (
+            whatMenu == "catalog" &&
+            css`
+              &:nth-child(4),
+              &:nth-child(5) {
+                display: none;
+              }
+              &:nth-child(7) {
+                display: flex;
+                justify-self: flex-end;
+              }
+            `
+          );
+        }}
       }
     }
+  }
+`;
+
+const CatalogUl = styled.ul`
+  position: absolute;
+  top: 140%;
+  left: 0;
+  padding: 15px;
+  width: 80vw;
+  background: #fff;
+  display: none;
+  flex-wrap: wrap;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  border-top: 4px solid ${theme.body.primaryColor};
+
+  li {
+    width: 33%;
+
+    a {
+      padding: 10px 0;
+      width: 100%;
+    }
+  }
+
+  svg {
+    position: absolute;
+    top: -16px;
+    left: 70px;
+  }
+  ${({ whatMenu }) => {
+    return (
+      whatMenu === "catalog" &&
+      css`
+        display: flex;
+      `
+    );
+  }}
+
+  @media (max-width: 768px) {
+    position: absolute;
+    top: 140%;
+    background: #fff;
+    transition: border-top 0.3s 0.3s ease-in, max-height 0.3s ease-in;
+    border-top: 0px solid ${theme.body.primaryColor};
+    width: 100vw;
+    left: -8px;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    border-top: 0 solid ${theme.body.primaryColor};
+
+    & > li {
+      width: 100%;
+      a {
+        padding: 12px;
+        display: block;
+      }
+    }
+
+    svg {
+      display: none;
+    }
+
+    ${({ whatMenu }) => {
+      return (
+        whatMenu === "catalog" &&
+        css`
+          transition: 0.3s border-top ease-in, max-height 0.4s 0.3s ease-in;
+          border-top: 4px solid ${theme.body.primaryColor};
+          max-height: 3000px;
+        `
+      );
+    }}
   }
 `;
 
@@ -167,7 +284,7 @@ const PhonesCon = styled.div`
   & > p {
     font-size: 13px;
     cursor: pointer;
-    color: #03a9f4;
+    color: ${theme.body.primaryColor};
     text-decoration: underline;
   }
 `;
@@ -182,7 +299,9 @@ const SearchCon = styled.div`
           width: auto;
 
           input {
-            display: none;
+            transition: 0.2s all ease-in;
+            transition-delay: 0.2s;
+            width: 0;
           }
         }
       `
@@ -247,45 +366,47 @@ const SearchCon = styled.div`
             width: 100%;
 
             input {
-              display: block;
+              transition: 0.2s all ease-in;
+              transition-delay: 0.2s;
+              width: 100%;
             }
           }
           span:nth-of-type(1) {
             transition: 0.2s all ease-in;
-            background: #000;
+            background: #d8d8d8;
             height: 100%;
             top: 0;
           }
           span:nth-of-type(1) {
             transition: 0.2s all ease-in;
-            background: #000;
+            background: #d8d8d8;
             height: 100%;
             top: 0;
           }
           span:nth-of-type(2) {
             transition: 0.2s all ease-in;
-            background: #000;
+            background: #d8d8d8;
             height: 100%;
             bottom: 0;
           }
           span:nth-of-type(3) {
             transition: 0.2s all ease-in;
             transition-delay: 0.2s;
-            background: #000;
+            background: #d8d8d8;
             width: 100%;
             top: 0;
           }
           span:nth-of-type(4) {
             transition: 0.2s all ease-in;
             transition-delay: 0.2s;
-            background: #000;
+            background: #d8d8d8;
             width: 100%;
             bottom: 0;
           }
           span:nth-of-type(5) {
             transition: 0.2s all ease-in;
             transition-delay: 0.4s;
-            background: #000;
+            background: #d8d8d8;
             height: 50%;
             left: 0;
             bottom: 0;
@@ -293,7 +414,7 @@ const SearchCon = styled.div`
           span:nth-of-type(6) {
             transition: 0.2s all ease-in;
             transition-delay: 0.4s;
-            background: #000;
+            background: #d8d8d8;
             height: 50%;
             left: 0;
             top: 0;
@@ -325,6 +446,7 @@ export {
   Ul,
   Span,
   TopPanel,
+  CatalogUl,
   MainPanel,
   LogoCon,
   PhonesCon,

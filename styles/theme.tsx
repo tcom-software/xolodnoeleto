@@ -5,6 +5,7 @@ export default {
     color: "#202020",
     width: "1250px",
     margin: "0 auto",
+    primaryColor: "#03a9f4",
   },
   content: {
     background: "#F6F6F6",
