@@ -11,7 +11,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { closeModal, openModal } from "../../../../redux/actions/modalActions";
 
-const Middle = ({ phones }) => {
+const Middle = ({ phones, openModal, closeModal }) => {
   return (
     <GlobalSection>
       <MainPanel isMobileHidden={true}>
@@ -29,7 +29,14 @@ const Middle = ({ phones }) => {
               <h2 key={i}>{e}</h2>
             ))}
           </hgroup>
-          <p>Заказать обратный звонок</p>
+          <p
+            onClick={() => {
+              console.log(11111);
+              openModal("CallBack");
+            }}
+          >
+            Заказать обратный звонок
+          </p>
         </PhonesCon>
         <SearchCon>
           <Input
@@ -57,4 +64,9 @@ const mapStateToProps = ({ general: { phones } }) => ({
   phones,
 });
 
-export default connect(mapStateToProps)(Middle);
+const mapDispatchToProps = (dispatch) => ({
+  openModal: (type) => dispatch(openModal(type)),
+  closeModal: () => dispatch(closeModal()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Middle);
