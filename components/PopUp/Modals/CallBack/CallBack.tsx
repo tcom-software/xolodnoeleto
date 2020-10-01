@@ -1,33 +1,11 @@
 import React, { useState } from "react";
 import { ModalContainer, Title, Body } from "./styles";
 import SvgIcons from "../../../atoms/SvgIcon";
-import { closeModal } from "../../../../redux/actions/modalActions";
-import { connect } from "react-redux";
-import { InputValidation } from "@atoms";
+import { InputValidation, Button } from "@atoms";
+import { array } from "./data";
 
-const array = [
-  {
-    name: "name",
-    type: "input",
-  },
-  {
-    name: "surname",
-    type: "input",
-  },
-  {
-    name: "phone",
-    type: "input",
-  },
-  {
-    name: "dateForCall",
-    type: "select",
-  },
-  {
-    name: "message",
-    type: "textarea",
-  },
-];
-const CallBack = ({ closeModal }) => {
+const CallBack = ({ closeModal, worksTime }) => {
+  const [errorState, setErrorState] = useState([]);
   const [info, setInfo] = useState({
     name: "",
     surname: "",
@@ -35,37 +13,51 @@ const CallBack = ({ closeModal }) => {
     dateForCall: "",
     message: "",
   });
+  const handleChange = (name) => (value) => setInfo({ ...info, [name]: value });
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-  const handleChange = (name) => (value) => {
-    setInfo({ ...info, [name]: value });
+    const array = Object.entries(info)
+      .map((e) => (e[1] == "" ? e[0] : null))
+      .filter((e) => e !== null);
+
+    if (array.length > 0) {
+      setErrorState(array);
+    } else {
+    }
   };
 
   return (
     <ModalContainer>
-      <Title>
-        Заказ обратново званка
-        <SvgIcons
-          type="close"
-          width={20}
-          height={20}
-          callback={() => closeModal()}
-        />
-      </Title>
-      <Body>
-        {array.map(({ name, type }: any, i: number) => (
-          <InputValidation
-            type={name}
-            key={i}
-            data={info}
-            callback={handleChange(name)}
+      <form onSubmit={handleSubmit}>
+        <Title>
+          Заказ обратново званка
+          <SvgIcons
+            type="close"
+            width={20}
+            height={20}
+            callback={() => closeModal()}
           />
-        ))}
-      </Body>
+        </Title>
+        <Body>
+          {array.map(({ name, type }: any, i: number) => (
+            <InputValidation
+              key={i}
+              type={type}
+              name={name}
+              data={info}
+              initialErrorState={!!~errorState.indexOf(name)}
+              worksTime={worksTime}
+              callback={handleChange(name)}
+            />
+          ))}
+          <Button type="primary" width="100%" height="47px">
+            ЗАКАЗАТЬ
+          </Button>
+        </Body>
+      </form>
     </ModalContainer>
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  closeModal: () => dispatch(closeModal()),
-});
-export default connect(false, mapDispatchToProps)(CallBack);
+export default CallBack;

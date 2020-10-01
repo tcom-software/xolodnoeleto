@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const ModalContainer = styled.div`
   width: 395px;
-  height: 445px;
+  height: auto;
 `;
 
 const Title = styled.div`

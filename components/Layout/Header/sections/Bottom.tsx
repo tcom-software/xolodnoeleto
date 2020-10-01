@@ -72,7 +72,7 @@ const Bottom = ({ catalog, modalType, openModal, closeModal }) => {
             <SvgIcon type="basket" width={20} height={20} />
           </li>
           <li>
-            <Button type="with-icon" width={190} height={47}>
+            <Button type="with-icon" width="190px" height="47px">
               <SvgIcon type="basket" width={20} height={20} />
               Корзина пуста
             </Button>

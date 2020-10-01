@@ -25,7 +25,7 @@ const InputBorder = styled.div`
   align-items: center;
   justify-content: center;
   padding: 10px;
-  border: ${theme.input.border};
+  border: 1px solid ${theme.input.borderColor};
 
   ${({ props }) => {
     return css`

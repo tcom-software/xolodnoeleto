@@ -1,10 +1,6 @@
 import Head from "next/head";
+import { HeadInfo } from "interfaces";
 
-interface HeadInfo {
-  metaTitle: string;
-  metaDescription: string;
-  metaKeyWord: string;
-}
 const HeaderTags = (props: HeadInfo) => {
   const { metaTitle, metaDescription, metaKeyWord } = props;
 

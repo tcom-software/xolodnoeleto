@@ -28,6 +28,7 @@ const initialState = {
     ],
   },
   phones: ["+7 (495) 272-03-39", "+7 (495) 134-22-02"],
+  worksTime: [9, 22],
   socialNetworks: [
     {
       title: "Мы в соц. сетях",

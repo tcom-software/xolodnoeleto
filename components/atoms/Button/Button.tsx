@@ -1,17 +1,11 @@
 import React from "react";
-
+import { ButtonInterface } from "interfaces";
 import styled, { css } from "styled-components";
-
-interface ButtonInterface {
-  type: string;
-  width: number;
-  height: number;
-}
 
 const Button = styled.button<ButtonInterface>`
   cursor: pointer;
-  width: ${({ width }) => width}px;
-  height: ${({ height }) => height}px;
+  width: ${({ width }) => width};
+  height: ${({ height }) => height};
   display: flex;
   align-items: center;
   justify-content: center;

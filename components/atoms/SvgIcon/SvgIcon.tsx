@@ -1,14 +1,7 @@
 import React from "react";
 import SvgTypes from "./svg-types";
 import Svg from "./styles";
-
-interface SvgProperty {
-  type: string;
-  width: number;
-  height: number;
-  color?: string;
-  callback?: any;
-}
+import { SvgProperty } from "interfaces";
 
 const SvgIcons = (props: SvgProperty) => {
   const { callback } = props;

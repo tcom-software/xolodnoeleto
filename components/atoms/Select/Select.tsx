@@ -1,46 +1,23 @@
 import React from "react";
+import { SelectTag } from "./styles";
 
-import styled, { css } from "styled-components";
-
-interface ButtonInterface {
-  type: string;
-  width: number;
-  height: number;
+interface SelectInterface {
+  title: string;
+  name: string;
+  children: any;
+  data: object;
+  callback: any;
 }
 
-const Button = styled.button<ButtonInterface>`
-  cursor: pointer;
-  width: ${({ width }) => width}px;
-  height: ${({ height }) => height}px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+const Select = ({ title, children, name, data, callback }: SelectInterface) => {
+  return (
+    <SelectTag value={data[name]} onChange={(e) => callback(e.target.value)}>
+      <option value="" disabled hidden>
+        {title}
+      </option>
+      {children}
+    </SelectTag>
+  );
+};
 
-  ${({ theme, type }) => {
-    switch (type) {
-      case "primary":
-        return css`
-          color: #ffffff;
-          border: none;
-          background: ${theme.buttons.primary.background};
-        `;
-        break;
-      case "secondary":
-        return css`
-          background: none;
-          color: #b1aeae;
-          background: ${theme.buttons.secondary.background};
-        `;
-      case "with-icon":
-        return css`
-          color: ${theme.buttons.withIcon.color};
-          border: ${theme.buttons.withIcon.border};
-          background: ${theme.buttons.withIcon.background};
-        `;
-        break;
-      default:
-    }
-  }}
-`;
-
-export default Button;
+export default Select;

@@ -25,7 +25,7 @@ export default {
     },
   },
   input: {
-    border: "1px solid #D8D8D8",
+    borderColor: "#D8D8D8",
   },
   close: {
     color: "#202020",
@@ -35,5 +35,8 @@ export default {
   },
   sally: {
     color: "#EA4A4A",
+  },
+  error: {
+    color: "#a94442",
   },
 };

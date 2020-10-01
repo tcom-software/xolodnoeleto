@@ -1,17 +1,7 @@
 import React from "react";
-import { Label, Input, Container, InputBorder } from "./styles";
 import SvgIcons from "../SvgIcon";
-
-interface InputInterface {
-  labelTitle?: string;
-  search?: boolean;
-  svgColor?: string;
-  width: number;
-  height: number;
-  placeholder: string;
-  svgSize: number;
-  callback?: any;
-}
+import { InputInterface } from "interfaces";
+import { Label, Input, Container, InputBorder } from "./styles";
 
 const InputCase = (props: InputInterface) => {
   const {
