@@ -88,6 +88,38 @@ const initialState = {
   copyright: {
     title: "xolodnoeleto.ru | продажа и установка кондиционеров",
   },
+  inputsValidationData: {
+    name: {
+      errorMessage: "Пожалуйста заполните имя",
+      validation: /^[a-zA-Z]{2,15}$/,
+      placeholder: "Имя",
+    },
+    surname: {
+      errorMessage: "Пожалуйста заполните фамилию",
+      validation: /^[a-zA-Z]{2,20}$/,
+      placeholder: "Фамилия",
+    },
+    phone: {
+      errorMessage: "Пример номера телефона +7 000 000-00-00",
+      // validation: "",
+      placeholder: "+7...",
+    },
+    dateForCall: {
+      errorMessage: "Выбранная дата недоступна",
+      validation: "",
+      placeholder: "Удобное время для звонка",
+    },
+    message: {
+      errorMessage: "Пожалуйста заполните Сообщение",
+      validation: /^[a-zA-Z0-9 ]*$/,
+      placeholder: "Сообщение",
+    },
+    email: {
+      errorMessage: "Incorrect email",
+      validation: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+      placeholder: "Email",
+    },
+  },
 };
 
 const counterReducer = (state = initialState, action) => {
