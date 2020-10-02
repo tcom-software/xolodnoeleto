@@ -43,12 +43,16 @@ const InputValidation = ({
   const needsTime = stop - start;
   const newArray = Array.from(Array(needsTime).keys());
 
-  // onchange select when submit done with empty array
-
   return (
     <InputContainer errorStyle={errorStyle}>
       {type === "select" ? (
-        <Select title={placeholder} data={data} name={name} callback={callback}>
+        <Select
+          title={placeholder}
+          data={data}
+          name={name}
+          callback={callback}
+          errorStyleCallback={() => setErrorStyle(false)}
+        >
           {newArray.map((e: number, i: number) => {
             const format =
               start + e < 10 ? `0${start + e}:00` : `${start + e}:00`;

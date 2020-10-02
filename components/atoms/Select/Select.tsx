@@ -7,11 +7,25 @@ interface SelectInterface {
   children: any;
   data: object;
   callback: any;
+  errorStyleCallback: any;
 }
 
-const Select = ({ title, children, name, data, callback }: SelectInterface) => {
+const Select = ({
+  title,
+  children,
+  name,
+  data,
+  callback,
+  errorStyleCallback,
+}: SelectInterface) => {
   return (
-    <SelectTag value={data[name]} onChange={(e) => callback(e.target.value)}>
+    <SelectTag
+      value={data[name]}
+      onChange={(e) => {
+        errorStyleCallback();
+        callback(e.target.value);
+      }}
+    >
       <option value="" disabled hidden>
         {title}
       </option>

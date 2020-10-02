@@ -3,6 +3,10 @@ import styled from "styled-components";
 const ModalContainer = styled.div`
   width: 395px;
   height: auto;
+  margin: 0 auto;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const Title = styled.div`

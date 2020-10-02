@@ -13,6 +13,10 @@ const PopUpContainer = styled.div`
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
     overflow: hidden;
   }
+
+  @media (max-width: 768px) {
+    width: 90%;
+  }
 `;
 
 export { PopUpContainer };

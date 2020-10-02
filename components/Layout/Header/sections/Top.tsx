@@ -9,7 +9,12 @@ const Top = ({ navigation, elseRefs, modalType, openModal, closeModal }) => {
   return (
     <GlobalSection background={true}>
       <TopPanel>
-        <SvgIcon type="phone" width={23} height={23} />
+        <SvgIcon
+          type="phone"
+          width={23}
+          height={23}
+          callback={() => openModal("CallBack")}
+        />
         <LogoCon isMobile={true}>
           <Link href={""}>
             <>
