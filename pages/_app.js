@@ -10,6 +10,9 @@ import withRedux from "next-redux-wrapper";
 import store from "../redux/store";
 import { useSpring, animated } from "react-spring";
 
+import "slick-carousel/slick/slick.scss";
+import "slick-carousel/slick/slick-theme.scss";
+
 function MyApp(props) {
   const { Component, pageProps } = props;
   const animationProps = useSpring({ opacity: 1, from: { opacity: 0 } });
