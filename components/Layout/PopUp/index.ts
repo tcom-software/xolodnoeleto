@@ -1,6 +1,6 @@
 import PopUp from "./PopUp";
 import { connect } from "react-redux";
-import { closeModal, openModal } from "../../redux/actions/modalActions";
+import { closeModal, openModal } from "../../../redux/actions/modalActions";
 
 const mapStateToProps = ({ modal: { modalType } }) => ({
   modalType,

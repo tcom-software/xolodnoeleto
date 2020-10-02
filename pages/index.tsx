@@ -1,13 +1,12 @@
 import React from "react";
-import HomeContent from "../components/Home";
-// import { connect } from "react-redux";
-// import { incrementCounter } from "../../redux/actions/counterActions";
+import Home from "../components/Home";
 
-const Home = () => {
-    // { counter, increment }
+const Index = () => {
   return (
-    <HomeContent />
+    <>
+      <Home />
+    </>
   );
-}
+};
 
-export default Home;
+export default Index;

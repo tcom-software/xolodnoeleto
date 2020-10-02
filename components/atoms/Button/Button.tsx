@@ -22,8 +22,8 @@ const Button = styled.button<ButtonInterface>`
       case "secondary":
         return css`
           background: none;
-          color: #b1aeae;
-          background: ${theme.buttons.secondary.background};
+          color: ${theme.buttons.secondary.color};
+          border: ${theme.buttons.secondary.border};
         `;
       case "with-icon":
         return css`

@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
-import PopUp from "../PopUp";
+import PopUp from "./PopUp";
 
 const Layout = ({ children }) => {
   return (

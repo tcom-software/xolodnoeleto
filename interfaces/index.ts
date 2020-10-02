@@ -41,3 +41,11 @@ export interface ButtonInterface {
   width: string;
   height: string;
 }
+export interface productInterface {
+  src: string;
+  title: string;
+  vendorCode: string;
+  selectedStarsCount: number;
+  price: string | number;
+  buttonBorder?: boolean;
+}

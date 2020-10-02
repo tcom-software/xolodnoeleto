@@ -1,6 +1,6 @@
 import CallBack from "./CallBack";
 import { connect } from "react-redux";
-import { closeModal } from "../../../../redux/actions/modalActions";
+import { closeModal } from "../../../../../redux/actions/modalActions";
 
 const mapStateToProps = ({ general: { worksTime } }) => ({
   worksTime,

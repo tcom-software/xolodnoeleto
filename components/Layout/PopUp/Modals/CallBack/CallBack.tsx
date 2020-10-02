@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ModalContainer, Title, Body } from "./styles";
-import SvgIcons from "../../../atoms/SvgIcon";
+import SvgIcons from "../../../../atoms/SvgIcon";
 import { InputValidation, Button } from "@atoms";
 import { array } from "./data";
 
