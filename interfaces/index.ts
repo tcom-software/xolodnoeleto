@@ -49,3 +49,15 @@ export interface productInterface {
   price: string | number;
   buttonBorder?: boolean;
 }
+export interface GlobalSectionInterface {
+  children?: any;
+  isWeb: boolean;
+  webPadding?: String;
+  mobilePadding?: String;
+  isMobile: boolean;
+  overflowStyle?: boolean;
+  borderTop?: boolean;
+  webBackground: string;
+  borderBottom?: boolean;
+  mobileBackground?: string;
+}

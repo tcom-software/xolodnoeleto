@@ -1,10 +1,11 @@
 import styled from "styled-components";
+import theme from "styles/theme";
 
 const ModalContainer = styled.div`
   width: 395px;
   height: auto;
   margin: 0 auto;
-  @media (max-width: 768px) {
+  @media (max-width: ${theme.mobileMedia.size}) {
     width: 100%;
   }
 `;

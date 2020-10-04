@@ -4,10 +4,19 @@ import Link from "next/link";
 import React from "react";
 import { connect } from "react-redux";
 import { openModal, closeModal } from "../../../../redux/actions/modalActions";
+import theme from "../../../../styles/theme";
 
 const Top = ({ navigation, elseRefs, modalType, openModal, closeModal }) => {
   return (
-    <GlobalSection background={true}>
+    <GlobalSection
+      isWeb={true}
+      padding={true}
+      isMobile={true}
+      borderTop={false}
+      borderBottom={false}
+      mobileBackground={theme.body.background}
+      webBackground={theme.body.secondBackground}
+    >
       <TopPanel>
         <SvgIcon
           type="phone"

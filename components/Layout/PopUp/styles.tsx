@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import theme from "styles/theme";
 
 const PopUpContainer = styled.div`
   position: absolute;
@@ -14,7 +15,7 @@ const PopUpContainer = styled.div`
     overflow: hidden;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: ${theme.mobileMedia.size}) {
     width: 90%;
   }
 `;

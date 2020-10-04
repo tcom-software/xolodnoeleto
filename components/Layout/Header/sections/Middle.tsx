@@ -10,10 +10,18 @@ import { GlobalSection, Input, SvgIcon } from "@atoms";
 import React from "react";
 import { connect } from "react-redux";
 import { closeModal, openModal } from "../../../../redux/actions/modalActions";
+import theme from "../../../../styles/theme";
 
 const Middle = ({ phones, openModal, closeModal }) => {
   return (
-    <GlobalSection>
+    <GlobalSection
+      isWeb={true}
+      padding={true}
+      isMobile={false}
+      borderTop={false}
+      borderBottom={false}
+      webBackground={theme.body.background}
+    >
       <MainPanel isMobileHidden={true}>
         <LogoCon>
           <Link href={""}>

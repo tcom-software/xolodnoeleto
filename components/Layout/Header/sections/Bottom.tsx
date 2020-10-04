@@ -10,7 +10,14 @@ const Bottom = ({ catalog, modalType, openModal, closeModal }) => {
   const [isOpenSearch, setIsOpenSearch] = useState(false);
 
   return (
-    <GlobalSection>
+    <GlobalSection
+      isWeb={true}
+      isMobile={true}
+      mobilePadding={"12.5px 8px"}
+      borderTop={true}
+      borderBottom={true}
+      webBackground={theme.body.secondBackground}
+    >
       <BottomPanel whatMenu={modalType}>
         <Ul>
           <li

@@ -4,6 +4,7 @@ import Slider from "react-slick";
 import { Container, Arrows } from "./styles";
 import { GlobalSection } from "@atoms";
 import SvgIcons from "../atoms/SvgIcon";
+import theme from "../../styles/theme";
 
 const Banner = () => {
   const images = data.map((e, i) => (
@@ -13,21 +14,36 @@ const Banner = () => {
     />
   ));
 
+  const NextSlick = ({ onClick }) => (
+    <span onClick={onClick}>
+      <SvgIcons type={"arrowRight"} width={20} height={20} color="white" />
+    </span>
+  );
+
+  const PrevSlick = ({ onClick }) => (
+    <span onClick={onClick}>
+      <SvgIcons type={"arrowLeft"} width={20} height={20} color="white" />
+    </span>
+  );
+
   return (
-    <GlobalSection>
+    <GlobalSection
+      isWeb={true}
+      isMobile={true}
+      overflowStyle={true}
+      borderTop={false}
+      borderBottom={false}
+      webBackground={theme.body.secondBackground}
+    >
       <Container>
         <Slider
           arrows={true}
-          prevArrow={
-            <Arrows left={true}>
-              <SvgIcons type="arrowLeft" width={20} height={20} />
-            </Arrows>
-          }
-          nextArrow={
-            <Arrows right={true}>
-              <SvgIcons type="arrowRight" width={20} height={20} />
-            </Arrows>
-          }
+          dots={true}
+          autoplay={true}
+          speed={1000}
+          autoplay-speed={10000}
+          prevArrow={<PrevSlick />}
+          nextArrow={<NextSlick />}
         >
           {images}
         </Slider>

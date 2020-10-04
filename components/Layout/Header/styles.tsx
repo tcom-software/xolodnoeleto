@@ -4,7 +4,6 @@ import theme from "styles/theme";
 const Span = styled.span``;
 
 const TopPanel = styled.section`
-  background: ${theme.content.background};
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -18,10 +17,7 @@ const TopPanel = styled.section`
   & > ul > li:first-child > a {
     color: ${theme.sally.color};
   }
-  @media (max-width: 768px) {
-    background: #fff;
-    padding: 15px;
-
+  @media (max-width: ${theme.mobileMedia.size}) {
     ${({ onlyMenu }) =>
       onlyMenu &&
       css`
@@ -54,13 +50,12 @@ const TopPanel = styled.section`
 `;
 
 const MainPanel = styled.section`
-  padding: 10px 0;
   background: ${theme.body.background};
   display: grid;
   align-items: center;
   grid-template-columns: 1fr 2fr 2fr 120px 120px;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${theme.mobileMedia.size}) {
     ${({ isMobileHidden }) => {
       return (
         isMobileHidden &&
@@ -110,9 +105,10 @@ const BottomPanel = styled.section`
         display: none;
       }
     }
-    @media (max-width: 768px) {
+    @media (max-width: ${theme.mobileMedia.size}) {
       display: grid;
       grid-template-columns: 3fr 2fr 1fr;
+
       ${({ whatMenu }) => {
         return (
           whatMenu == "catalog" &&
@@ -135,6 +131,10 @@ const BottomPanel = styled.section`
           align-items: center;
         }
         &:nth-child(4) > div > div > label > div {
+          background: ${theme.body.secondBackground};
+          input {
+            background: ${theme.body.secondBackground};
+          }
           display: flex;
           justify-content: flex-end;
 
@@ -176,6 +176,7 @@ const CatalogUl = styled.ul`
   position: absolute;
   top: 140%;
   left: 0;
+  z-index: 2;
   padding: 15px;
   width: 80vw;
   background: #fff;
@@ -207,7 +208,7 @@ const CatalogUl = styled.ul`
     );
   }}
 
-  @media (max-width: 768px) {
+  @media (max-width: ${theme.mobileMedia.size}) {
     position: absolute;
     top: 140%;
     background: #fff;
@@ -251,7 +252,6 @@ const Ul = styled.ul`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px;
   width: 100%;
 `;
 
@@ -271,7 +271,7 @@ const LogoCon = styled.div`
       display: none;
     `}
 
-  @media (max-width: 768px) {
+  @media (max-width: ${theme.mobileMedia.size}) {
     ${({ isMobile }) =>
       isMobile &&
       css`
@@ -308,7 +308,7 @@ const SearchCon = styled.div`
     );
   }}
 
-  @media(max-width: 768px) {
+  @media(max-width: ${theme.mobileMedia.size}) {
     position: relative;
 
     span {

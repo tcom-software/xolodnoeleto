@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import theme from "styles/theme";
 
 const Nav = styled.nav`
   display: grid;
@@ -7,8 +8,7 @@ const Nav = styled.nav`
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-rows: repeat(auto-fill, auto);
 
-  width: 60vw;
-  margin: 20px auto;
+  margin: 15px auto;
 
   & > ul {
     width: max-content;
@@ -23,7 +23,7 @@ const Nav = styled.nav`
     width: 90vw;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: ${theme.mobileMedia.size}) {
     grid-template-columns: 1fr;
     width: 100vw;
     margin-bottom: 0px;
@@ -61,7 +61,7 @@ const UlsCon = styled.div`
   display: flex;
   justify-content: space-between;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${theme.mobileMedia.size}) {
     & > ul {
       transition: all 0.3s ease-in;
       position: relative;
@@ -97,7 +97,7 @@ const Ul = styled.ul`
       display: none;
     }
   }
-  @media (max-width: 768px) {
+  @media (max-width: ${theme.mobileMedia.size}) {
     & > li {
       display: flex;
       align-items: center;
@@ -118,7 +118,6 @@ const Section = styled.section`
   align-items: center;
   justify-content: space-around;
   padding: 15px;
-  background: #efefef;
 
   & > div {
     display: flex;
@@ -132,7 +131,7 @@ const Section = styled.section`
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: ${theme.mobileMedia.size}) {
     flex-direction: column-reverse;
     padding: 0;
 
@@ -158,10 +157,16 @@ const Section = styled.section`
     }
   }
 `;
+
 const Copyright = styled.div`
   color: #565656;
   padding: 10px;
   text-align: center;
 `;
 
-export { Ul, Nav, UlsCon, Section, Copyright };
+const FooterContainer = styled.footer`
+  background: #f6f6f6;
+  border: 1px solid #e5e5e5;
+`;
+
+export { Ul, Nav, UlsCon, Section, Copyright, FooterContainer };
