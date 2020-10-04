@@ -121,6 +121,32 @@ const initialState = {
       placeholder: "Email",
     },
   },
+  aboutUsCards: [
+    {
+      title: "10 лет \n на рынке",
+      type: "hands",
+      width: "35px",
+      height: "35px",
+    },
+    {
+      title: "Своя \n доставка",
+      type: "delivery",
+      width: "35px",
+      height: "35px",
+    },
+    {
+      title: "Более 5 000 \n товаров в наличии",
+      type: "boxes",
+      width: "30px",
+      height: "30px",
+    },
+    {
+      title: "10 лет \n гарантии",
+      type: "shield",
+      width: "30px",
+      height: "30px",
+    },
+  ],
 };
 
 const counterReducer = (state = initialState, action) => {

@@ -3,7 +3,8 @@ import theme from "styles/theme";
 
 const Container = styled.div`
   width: 80%;
-  height: 415px;
+  min-height: 0;
+  max-height: 415px;
   margin: 10px auto;
   overflow: hidden;
 

@@ -5,6 +5,7 @@ import { Container, Arrows } from "./styles";
 import { GlobalSection } from "@atoms";
 import SvgIcons from "../atoms/SvgIcon";
 import theme from "../../styles/theme";
+import CardsAboutUs from "../CardsAboutUs";
 
 const Banner = () => {
   const images = data.map((e, i) => (
@@ -47,6 +48,9 @@ const Banner = () => {
         >
           {images}
         </Slider>
+      </Container>
+      <Container>
+        <CardsAboutUs />
       </Container>
     </GlobalSection>
   );
