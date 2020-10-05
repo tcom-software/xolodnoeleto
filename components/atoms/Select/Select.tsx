@@ -1,25 +1,19 @@
 import React from "react";
 import { SelectTag } from "./styles";
-
-interface SelectInterface {
-  title: string;
-  name: string;
-  children: any;
-  data: object;
-  callback: any;
-  errorStyleCallback: any;
-}
+import { SelectInterface } from "interfaces";
 
 const Select = ({
-  title,
-  children,
   name,
   data,
+  title,
+  forHtml,
   callback,
+  children,
   errorStyleCallback,
 }: SelectInterface) => {
   return (
     <SelectTag
+      id={forHtml}
       value={data[name]}
       onChange={(e) => {
         errorStyleCallback();

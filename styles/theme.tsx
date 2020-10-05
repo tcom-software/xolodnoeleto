@@ -7,8 +7,9 @@ export default {
     width: "1250px",
     margin: "0 auto",
     primaryColor: "#03a9f4",
-    fontBolder: "700",
-    fontBold: "500",
+    fontBolder: 700,
+    fontBold: 500,
+    someBorder: "#D8D8D8",
   },
   content: {
     background: "#F6F6F6",

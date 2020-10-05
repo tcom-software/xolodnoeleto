@@ -4,6 +4,9 @@ import styled, { css } from "styled-components";
 export const Global = styled.section`
   width: 100vw;
 
+  width: ${({ width }) => width};
+  height: ${({ height }) => height};
+
   ${({ overflowStyle }) => {
     if (overflowStyle) {
       return css`
@@ -35,13 +38,18 @@ export const Global = styled.section`
   ${({ isWeb }) => {
     if (isWeb) {
       return css`
-        display: block;
+        display: flex;
       `;
     }
   }}
+  
+  align-items: center;
 
-  @media(max-width: ${theme.mobileMedia.size}) {
+  @media (max-width: ${theme.mobileMedia.size}) {
     display: none;
+    width: ${({ widthMobile }) => widthMobile};
+    height: ${({ heightMobile }) => heightMobile};
+
     ${({ isMobile }) => {
       if (isMobile) {
         return css`

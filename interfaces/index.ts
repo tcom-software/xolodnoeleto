@@ -6,6 +6,7 @@ export interface InputValidationInterface {
   worksTime?: any;
   initialErrorState: any;
   inputsValidationData: object;
+  forHtml?: string;
 }
 
 export interface HeadInfo {
@@ -31,15 +32,19 @@ export interface InputInterface {
   callback?: any;
 }
 export interface ImageInterface {
-  jpg: string;
-  jpgMobile: string;
-  webp: string;
+  simpleWeb: string;
+  simpleMobile: string;
+  webpWeb: string;
   webpMobile: string;
 }
 export interface ButtonInterface {
   type: string;
   width: string;
   height: string;
+  color?: string;
+  border?: string;
+  background?: string;
+  fontWeight?: number;
 }
 export interface productInterface {
   src: string;
@@ -60,4 +65,17 @@ export interface GlobalSectionInterface {
   webBackground: string;
   borderBottom?: boolean;
   mobileBackground?: string;
+  width?: string;
+  height?: string;
+  heightMobile?: string;
+  widthMobile?: string;
+}
+export interface SelectInterface {
+  title: string;
+  name: string;
+  children: any;
+  data: object;
+  callback: any;
+  errorStyleCallback: any;
+  forHtml?: string;
 }

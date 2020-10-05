@@ -13,6 +13,7 @@ const InputValidation = ({
   worksTime,
   initialErrorState,
   inputsValidationData,
+  forHtml,
 }: InputValidationInterface) => {
   const [errorStyle, setErrorStyle] = useState(false);
   const { errorMessage, validation, placeholder } = inputsValidationData[name];
@@ -39,14 +40,15 @@ const InputValidation = ({
     }
   };
 
-  const [start, stop] = worksTime;
-  const needsTime = stop - start;
-  const newArray = Array.from(Array(needsTime).keys());
+  const Case = () => {
+    if (type === "select") {
+      const [start, stop] = worksTime;
+      const needsTime = stop - start;
+      const newArray = Array.from(Array(needsTime).keys());
 
-  return (
-    <InputContainer errorStyle={errorStyle}>
-      {type === "select" ? (
+      return (
         <Select
+          forHtml={forHtml}
           title={placeholder}
           data={data}
           name={name}
@@ -63,15 +65,24 @@ const InputValidation = ({
             );
           })}
         </Select>
-      ) : (
+      );
+    } else {
+      return (
         <Input
           type="text"
+          id={forHtml}
           value={data[name]}
           onChange={handleChange}
           placeholder={placeholder}
           errorStyle={errorStyle}
         />
-      )}
+      );
+    }
+  };
+
+  return (
+    <InputContainer errorStyle={errorStyle}>
+      {Case()}
       <Message errorStyle={errorStyle}>{errorMessage}</Message>
     </InputContainer>
   );

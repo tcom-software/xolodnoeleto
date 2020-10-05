@@ -13,9 +13,17 @@ const GlobalSection = ({
   borderBottom,
   webBackground,
   mobileBackground,
+  width,
+  height,
+  widthMobile,
+  heightMobile,
 }: GlobalSectionInterface) => {
   return (
     <Global
+      width={width}
+      height={height}
+      heightMobile={heightMobile}
+      widthMobile={widthMobile}
       isWeb={isWeb}
       isMobile={isMobile}
       mobileBackground={mobileBackground}

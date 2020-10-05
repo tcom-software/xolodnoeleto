@@ -2,14 +2,14 @@ import React from "react";
 import { ImageInterface } from "interfaces";
 
 const Image = (props: ImageInterface) => {
-  const { jpg, jpgMobile, webp, webpMobile } = props;
+  const { simpleWeb, simpleMobile, webpWeb, webpMobile } = props;
   return (
     <picture>
-      <source type="image/webp" media="(min-width:768px)" srcSet={webp} />
-      <source type="image/webp" srcSet={webpMobile} />
+      <source type="image/webp" media="(min-width:768px)" srcSet={webpMobile} />
+      <source type="image/webp" srcSet={webpWeb} />
 
-      <source media="(min-width:768px)" srcSet={jpg} />
-      <img src={jpgMobile} />
+      <source media="(max-width: 768px)" srcSet={simpleMobile} />
+      <img src={simpleWeb} />
     </picture>
   );
 };
