@@ -75,7 +75,14 @@ const Footer = ({ menu, copyright, socialNetworks }) => {
           })}
         </Section>
       </GlobalSection>
-      <Copyright>{copyright.title}</Copyright>
+      <GlobalSection
+        isWeb={true}
+        isMobile={true}
+        webBackground={theme.body.secondBackground}
+        mobilePadding={"0"}
+      >
+        <Copyright>{copyright.title}</Copyright>
+      </GlobalSection>
     </FooterContainer>
   );
 };

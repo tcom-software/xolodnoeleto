@@ -3,23 +3,23 @@ import SvgIcons from "../SvgIcon";
 import { InputInterface } from "interfaces";
 import { Label, Input, Container, InputBorder } from "./styles";
 
-const InputCase = (props: InputInterface) => {
-  const {
-    labelTitle,
-    search,
-    placeholder,
-    svgSize,
-    svgColor,
-    callback,
-  } = props;
-
+const InputCase = ({
+  labelTitle,
+  search,
+  placeholder,
+  svgSize,
+  svgColor,
+  callback,
+  width,
+  height,
+}: InputInterface) => {
   if (!!labelTitle) {
     return (
       <Container>
         <Label>
           {labelTitle}
-          <InputBorder props={props}>
-            <Input props={props} placeholder={placeholder} />
+          <InputBorder width={width} height={height}>
+            <Input placeholder={placeholder} />
             {search ? (
               <SvgIcons
                 type="search"
@@ -35,10 +35,10 @@ const InputCase = (props: InputInterface) => {
     );
   } else {
     return (
-      <Container props={props}>
+      <Container>
         <Label>
-          <InputBorder props={props}>
-            <Input props={props} placeholder={placeholder} />
+          <InputBorder width={width} height={height}>
+            <Input placeholder={placeholder} />
             {search ? (
               <SvgIcons
                 type="search"

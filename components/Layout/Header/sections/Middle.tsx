@@ -16,7 +16,6 @@ const Middle = ({ phones, openModal, closeModal }) => {
   return (
     <GlobalSection
       isWeb={true}
-      padding={true}
       isMobile={false}
       borderTop={false}
       borderBottom={false}
@@ -51,8 +50,8 @@ const Middle = ({ phones, openModal, closeModal }) => {
             search={true}
             placeholder={"search"}
             svgSize={16}
-            width={350}
-            height={35}
+            width="100%"
+            height="35px"
           />
         </SearchCon>
         <SearchAndFavoriteCon customMargin={true}>

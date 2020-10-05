@@ -16,6 +16,7 @@ const Container = styled.div`
     object-fit: cover;
   }
   .slick-slider {
+    height: 415px;
     span {
       position: absolute;
       z-index: 1;
@@ -50,6 +51,9 @@ const Container = styled.div`
 
   @media (max-width: ${theme.mobileMedia.size}) {
     width: 100%;
+    .slick-slider {
+      height: 363px;
+    }
   }
 `;
 

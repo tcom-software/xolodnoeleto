@@ -25,8 +25,8 @@ export interface InputInterface {
   labelTitle?: string;
   search?: boolean;
   svgColor?: string;
-  width: number;
-  height: number;
+  width: string;
+  height: string;
   placeholder: string;
   svgSize: number;
   callback?: any;
@@ -57,8 +57,8 @@ export interface productInterface {
 export interface GlobalSectionInterface {
   children?: any;
   isWeb: boolean;
-  webPadding?: String;
-  mobilePadding?: String;
+  webPadding?: string;
+  mobilePadding?: string;
   isMobile: boolean;
   overflowStyle?: boolean;
   borderTop?: boolean;

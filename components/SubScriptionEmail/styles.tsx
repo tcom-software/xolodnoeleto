@@ -78,8 +78,9 @@ const ImgContainer = styled.div`
         display: none;
       }
       &:last-of-type > img {
+        margin: 25px 0 15px;
         position: unset;
-        width: 100%;
+        width: 90%;
         height: auto;
       }
     }
