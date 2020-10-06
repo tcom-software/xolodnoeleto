@@ -75,7 +75,7 @@ const BottomPanel = styled.section`
       align-items: center;
       justify-content: center;
 
-      svg {
+      & > button > svg {
         margin-right: 10px;
       }
       &:nth-child(4),

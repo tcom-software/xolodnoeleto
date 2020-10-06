@@ -6,11 +6,19 @@ const BasketMenu = ({ whatMenu, basketItems, closeModal }: any) => {
   return (
     <Container whatMenu={whatMenu}>
       <ListContainer>
-        {basketItems.map(({ price, src, title }, i: number) => {
-          return (
-            <BasketProduct key={i} price={price} src={src} title={title} />
-          );
-        })}
+        {basketItems.map(
+          ({ price, src, title, model, manufacturer }, i: number) => {
+            return (
+              <BasketProduct
+                key={i}
+                src={src}
+                price={price}
+                model={model}
+                manufacturer={manufacturer}
+              />
+            );
+          }
+        )}
       </ListContainer>
     </Container>
   );

@@ -22,7 +22,10 @@ const Container = styled.div`
     );
   }}
 `;
-const ListContainer = styled.div``;
+const ListContainer = styled.div`
+  width: 95%;
+  margin: 10px auto;
+`;
 const ItemStyle = styled.div``;
 
 export { Container, ListContainer, ItemStyle };
