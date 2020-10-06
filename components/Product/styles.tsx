@@ -1,9 +1,9 @@
 import styled, { css } from "styled-components";
 import theme from "styles/theme";
 
-const Container = styled.div`
+const ProductContainer = styled.div`
   height: 389px;
-  width: 228px;
+  width: 100%;
   padding: 15px;
   border: 1px solid ${theme.product.borderColor};
 
@@ -35,7 +35,13 @@ const Container = styled.div`
     }};
     text-transform: uppercase;
   }
+  & > button:hover {
+    background: #0070f3;
+    color: #fff;
+    border: none;
+  }
 `;
+
 const Image = styled.img`
   width: 158px;
   height: 158px;
@@ -53,4 +59,4 @@ const Price = styled.div`
   font-weight: ${theme.body.fontBolder};
 `;
 
-export { Image, Title, Stars, Price, VendorCod, Container };
+export { Image, Title, Stars, Price, VendorCod, ProductContainer };

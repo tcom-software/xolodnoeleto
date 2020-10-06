@@ -1,6 +1,13 @@
 import React from "react";
 import { Button, Star } from "@atoms";
-import { Image, Title, Stars, Price, VendorCod, Container } from "./styles";
+import {
+  Image,
+  Title,
+  Stars,
+  Price,
+  VendorCod,
+  ProductContainer,
+} from "./styles";
 import { makePrice } from "utils";
 import { productInterface } from "interfaces";
 
@@ -13,7 +20,7 @@ const Product = ({
   selectedStarsCount,
 }: productInterface) => {
   return (
-    <Container border={buttonBorder}>
+    <ProductContainer border={buttonBorder}>
       <Image src={src} alt={title} />
       <Title>{title}</Title>
       <VendorCod>{vendorCode}</VendorCod>
@@ -31,7 +38,7 @@ const Product = ({
       >
         В корзину
       </Button>
-    </Container>
+    </ProductContainer>
   );
 };
 

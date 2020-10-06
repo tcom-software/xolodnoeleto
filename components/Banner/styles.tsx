@@ -2,7 +2,7 @@ import styled from "styled-components";
 import theme from "styles/theme";
 
 const Container = styled.div`
-  width: 80%;
+  width: 100%;
   min-height: 0;
   max-height: 415px;
   margin: 10px auto;
