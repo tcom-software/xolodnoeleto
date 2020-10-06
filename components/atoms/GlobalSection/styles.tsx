@@ -85,6 +85,10 @@ export const MiniDiv = styled.div`
       padding: ${webPadding};
     `}
 
+  @media (max-width: 1260px) {
+    padding: 8px 15px;
+  }
+
   @media (max-width: ${theme.mobileMedia.size}) {
     padding: 8px 8px;
 

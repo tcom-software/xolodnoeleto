@@ -1,6 +1,6 @@
 export default {
   body: {
-    background: "#F6F6F6",
+    background: "#FFF",
     secondBackground: "#E5E5E5",
 
     fontSize: "14px",

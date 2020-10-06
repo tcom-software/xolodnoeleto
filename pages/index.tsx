@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 
 import Product from "../components/Product";
 import ProductList from "../components/ProductList";
+import Brands from "../components/Brands";
 
 const Index = ({ newProducts }) => {
   return (
@@ -27,6 +28,7 @@ const Index = ({ newProducts }) => {
           }
         )}
       </ProductList>
+      <Brands />
       <SuperSale />
 
       <SubScriptionEmail />
