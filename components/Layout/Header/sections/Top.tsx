@@ -10,7 +10,6 @@ const Top = ({ navigation, elseRefs, modalType, openModal, closeModal }) => {
   return (
     <GlobalSection
       isWeb={true}
-      padding={true}
       isMobile={true}
       borderTop={false}
       borderBottom={false}

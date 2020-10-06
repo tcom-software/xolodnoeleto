@@ -61,8 +61,8 @@ const Bottom = ({ catalog, modalType, openModal, closeModal }) => {
               <Input
                 search={true}
                 svgSize={20}
-                width={350}
-                height={35}
+                width="350px"
+                height="35px"
                 placeholder={"search"}
                 callback={() => setIsOpenSearch(!isOpenSearch)}
               />
