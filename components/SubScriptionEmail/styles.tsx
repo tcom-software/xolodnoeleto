@@ -52,8 +52,8 @@ const Label = styled.label`
 const ImgContainer = styled.div`
   position: relative;
 
-  & > picture {
-    &:first-of-type > img {
+  & > div.lazyload-wrapper {
+    &:first-of-type > picture > img {
       position: absolute;
       left: 0;
       bottom: -184px;
@@ -61,7 +61,7 @@ const ImgContainer = styled.div`
       height: 430px;
       z-index: 2;
     }
-    &:last-of-type > img {
+    &:last-of-type > picture > img {
       position: absolute;
       right: 23px;
       bottom: -100px;
@@ -73,11 +73,11 @@ const ImgContainer = styled.div`
 
   @media (max-width: 768px) {
     text-align: center;
-    & > picture {
-      &:first-of-type > img {
+    & > div.lazyload-wrapper {
+      &:first-of-type > picture > img {
         display: none;
       }
-      &:last-of-type > img {
+      &:last-of-type > picture > img {
         margin: 25px 0 15px;
         position: unset;
         width: 90%;

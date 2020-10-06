@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Ul, Nav, UlsCon, Section, Copyright, FooterContainer } from "./styles";
 import SvgIcons from "../../atoms/SvgIcon";
-import { GlobalSection } from "@atoms";
+import { GlobalSection, Image } from "@atoms";
 import theme from "styles/theme";
 
 const Footer = ({ menu, copyright, socialNetworks }) => {
@@ -66,8 +66,18 @@ const Footer = ({ menu, copyright, socialNetworks }) => {
               <div key={i}>
                 <h2>{title}</h2>
                 <div>
-                  {items.map(({ img, link }: any, i: number) => {
-                    return <img src={`/images/icons/${img}`} key={i} alt="" />;
+                  {items.map(({ img, link, width, height }: any, i: number) => {
+                    return (
+                      <Image
+                        key={i}
+                        simpleWeb={`/images/icons/${img}`}
+                        simpleMobile={""}
+                        webpWeb={""}
+                        webpMobile={""}
+                        width={width}
+                        height={height}
+                      />
+                    );
                   })}
                 </div>
               </div>

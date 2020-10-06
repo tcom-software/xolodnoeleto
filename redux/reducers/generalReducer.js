@@ -36,14 +36,20 @@ const initialState = {
         {
           img: "vk.png",
           link: "",
+          width: "31px",
+          height: "31px",
         },
         {
           img: "instagram.png",
           link: "",
+          width: "31px",
+          height: "31px",
         },
         {
           img: "fb.png",
           link: "",
+          width: "31px",
+          height: "31px",
         },
       ],
     },
@@ -53,14 +59,20 @@ const initialState = {
         {
           img: "master_card.png",
           link: "",
-        },
-        {
-          img: "uniTeller.png",
-          link: "",
+          height: "31px",
+          width: "51px",
         },
         {
           img: "visa.png",
           link: "",
+          height: "16px",
+          width: "54px",
+        },
+        {
+          img: "uniTeller.png",
+          link: "",
+          height: "21px",
+          width: "105px",
         },
       ],
     },

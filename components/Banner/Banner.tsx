@@ -2,16 +2,19 @@ import React from "react";
 import data from "./data";
 import Slider from "react-slick";
 import { Container, Arrows } from "./styles";
-import { GlobalSection } from "@atoms";
+import { GlobalSection, Image } from "@atoms";
 import SvgIcons from "../atoms/SvgIcon";
 import theme from "../../styles/theme";
 import CardsAboutUs from "../CardsAboutUs";
 
 const Banner = () => {
   const images = data.map((e, i) => (
-    <img
+    <Image
       key={i}
-      src={`https://www.nastol.com.ua/pic/202009/1280x800/nastol.com.ua-423922.jpg`}
+      simpleWeb="https://www.nastol.com.ua/pic/202009/1280x800/nastol.com.ua-423922.jpg"
+      simpleMobile="https://www.nastol.com.ua/pic/202009/1280x800/nastol.com.ua-423922.jpg"
+      webpWeb={""}
+      webpMobile={""}
     />
   ));
 
@@ -40,9 +43,9 @@ const Banner = () => {
         <Slider
           arrows={true}
           dots={true}
-          autoplay={true}
-          speed={1000}
-          autoplay-speed={10000}
+          // autoplay={true}
+          // speed={1000}
+          // autoplay-speed={10000}
           prevArrow={<PrevSlick />}
           nextArrow={<NextSlick />}
         >

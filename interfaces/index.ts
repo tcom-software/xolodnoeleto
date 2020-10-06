@@ -36,6 +36,8 @@ export interface ImageInterface {
   simpleMobile: string;
   webpWeb: string;
   webpMobile: string;
+  width?: string;
+  height?: string;
 }
 export interface ButtonInterface {
   type: string;

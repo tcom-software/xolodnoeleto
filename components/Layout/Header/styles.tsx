@@ -448,7 +448,7 @@ const BannerContainer = styled.div`
   justify-content: center;
   background: #fff;
 
-  & > picture > img {
+  & > div.lazyload-wrapper > picture > img {
     @media (max-width: 900px) {
       width: 85vw;
       height: intrinsic;

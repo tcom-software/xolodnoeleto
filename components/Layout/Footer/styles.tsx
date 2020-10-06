@@ -123,9 +123,16 @@ const Section = styled.section`
     display: flex;
     align-items: center;
 
-    img {
-      margin: 0px 15px;
+    & > div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        margin: 0px 15px;
+      }
     }
+
     h3 {
       margin-right: 25px;
     }
