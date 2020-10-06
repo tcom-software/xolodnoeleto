@@ -46,8 +46,8 @@ const Banner = () => {
           // autoplay={true}
           // speed={1000}
           // autoplay-speed={10000}
-          prevArrow={<PrevSlick />}
-          nextArrow={<NextSlick />}
+          prevArrow={<PrevSlick onClick />}
+          nextArrow={<NextSlick onClick />}
         >
           {images}
         </Slider>
