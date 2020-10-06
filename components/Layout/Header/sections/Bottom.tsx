@@ -5,6 +5,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { closeModal, openModal } from "../../../../redux/actions/modalActions";
+import BasketMenu from "./BasketMenu";
 
 const Bottom = ({ catalog, modalType, openModal, closeModal }) => {
   const [isOpenSearch, setIsOpenSearch] = useState(false);
@@ -21,13 +22,9 @@ const Bottom = ({ catalog, modalType, openModal, closeModal }) => {
       <BottomPanel whatMenu={modalType}>
         <Ul>
           <li
-            onClick={() => {
-              if (modalType == "catalog") {
-                closeModal();
-              } else {
-                openModal("catalog");
-              }
-            }}
+            onClick={() =>
+              modalType == "catalog" ? closeModal() : openModal("catalog")
+            }
           >
             <SvgIcon
               type="hamburgerMenu"
@@ -79,10 +76,18 @@ const Bottom = ({ catalog, modalType, openModal, closeModal }) => {
             <SvgIcon type="basket" width={20} height={20} />
           </li>
           <li>
-            <Button type="with-icon" width="190px" height="47px">
+            <Button
+              type="with-icon"
+              width="190px"
+              height="47px"
+              onClick={() =>
+                modalType == "basket" ? closeModal() : openModal("basket")
+              }
+            >
               <SvgIcon type="basket" width={20} height={20} />
               Корзина пуста
             </Button>
+            <BasketMenu whatMenu={modalType} />
           </li>
           <li>
             <SvgIcon

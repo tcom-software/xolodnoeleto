@@ -70,6 +70,7 @@ const MainPanel = styled.section`
 const BottomPanel = styled.section`
   & > ul {
     & > li {
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -83,8 +84,6 @@ const BottomPanel = styled.section`
       }
 
       &:first-child {
-        position: relative;
-
         ${({ whatMenu }) => {
           return (
             whatMenu == "catalog" &&
