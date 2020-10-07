@@ -13,11 +13,11 @@ const Index = ({ newProducts }) => {
     <>
       <Banner />
       <ProductList title={"НОВЫЕ ПРОДУКТЫ"} mobileType={"scroll"}>
-        {newProducts.map(
-          ({ src, title, price, vendorCode, selectedStarsCount }, i) => {
+        {Object.values(newProducts).map(
+          ({ id, src, title, price, vendorCode, selectedStarsCount }) => {
             return (
               <Product
-                key={i}
+                key={id}
                 src={src}
                 title={title}
                 price={price}

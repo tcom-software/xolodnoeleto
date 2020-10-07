@@ -38,7 +38,6 @@ const Middle = ({ phones, openModal, closeModal }) => {
           </hgroup>
           <p
             onClick={() => {
-              console.log(11111);
               openModal("CallBack");
             }}
           >

@@ -161,11 +161,11 @@ const initialState = {
   ],
 };
 
-const counterReducer = (state = initialState, action) => {
+const generalReducer = (state = initialState, action) => {
   switch (action.type) {
     default:
       return { ...state };
   }
 };
 
-export default counterReducer;
+export default generalReducer;

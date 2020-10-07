@@ -1,12 +1,9 @@
-import Basket from "./BasketMenu";
+import BasketMenu from "./BasketMenu";
 import { connect } from "react-redux";
-import { closeModal } from "../../../../../redux/actions/modalActions";
 
-const mapStateToProps = ({ basket: { items } }) => ({
+const mapStateToProps = ({ basket: { items, total_amount } }) => ({
+  total_amount,
   basketItems: items,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  closeModal: () => dispatch(closeModal()),
-});
-export default connect(mapStateToProps, mapDispatchToProps)(Basket);
+export default connect(mapStateToProps)(BasketMenu);

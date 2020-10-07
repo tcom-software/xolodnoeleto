@@ -9,6 +9,7 @@ const Container = styled.div`
   z-index: 2;
   width: 616px;
   height: 383px;
+  padding: 15px;
 
   background: #ffffff;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
@@ -18,14 +19,35 @@ const Container = styled.div`
       whatMenu === "basket" &&
       css`
         display: flex;
+        flex-direction: column;
+        justify-content: space-between;
       `
     );
   }}
 `;
-const ListContainer = styled.div`
-  width: 95%;
-  margin: 10px auto;
-`;
-const ItemStyle = styled.div``;
 
-export { Container, ListContainer, ItemStyle };
+const ListContainer = styled.div`
+  overflow: scroll;
+  max-height: 240px;
+`;
+const MakeOrder = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 110px;
+  padding-top: 15px;
+  border-top: 1px solid #d8d8d8;
+`;
+const TotalPrice = styled.p`
+  font-size: 16px;
+  font-weight: ${theme.body.fontBolder};
+  color: ${theme.body.primaryColor};
+
+  & > span {
+    font-size: 16px;
+    margin-left: 65px;
+  }
+`;
+
+export { Container, ListContainer, MakeOrder, TotalPrice };

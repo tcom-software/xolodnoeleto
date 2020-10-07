@@ -1,4 +1,4 @@
-import { INITIAL_STATE } from "../actions/brandsActions";
+import * as types from "../actions/brandsActions";
 
 const initialState = {
   items: [
@@ -22,7 +22,7 @@ const initialState = {
 
 const brandsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case INITIAL_STATE:
+    case types.INITIAL_STATE:
       return {
         ...state,
       };

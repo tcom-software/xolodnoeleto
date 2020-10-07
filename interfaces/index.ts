@@ -81,3 +81,19 @@ export interface SelectInterface {
   errorStyleCallback: any;
   forHtml?: string;
 }
+export interface basketProductInterface {
+  src: string;
+  price: number;
+  model: string;
+  count: number;
+  manufacturer: string;
+  deleteBasketCount: any;
+  incrementBasketCount: any;
+  decrementBasketCount: any;
+}
+export interface IncDecInterface {
+  id: number;
+  count: number;
+  increment: any;
+  decrement: any;
+}
