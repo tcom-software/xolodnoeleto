@@ -4,8 +4,8 @@ import SubScriptionEmail from "../components/SubScriptionEmail";
 import SuperSale from "../components/SuperSale";
 import { connect } from "react-redux";
 
-import Product from "../components/Product";
-import ProductList from "../components/ProductList";
+import ProductGridView from "../components/ProductGridView";
+import ProductList from "../components/ProductsList";
 import Brands from "../components/Brands";
 
 const Index = ({ newProducts }) => {
@@ -16,7 +16,7 @@ const Index = ({ newProducts }) => {
         {Object.values(newProducts).map(
           ({ id, src, title, price, vendorCode, selectedStarsCount }) => {
             return (
-              <Product
+              <ProductGridView
                 key={id}
                 src={src}
                 title={title}

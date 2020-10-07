@@ -11,7 +11,7 @@ import {
 import { makePrice } from "utils";
 import { productInterface } from "interfaces";
 
-const Product = ({
+const ProductGridView = ({
   src,
   title,
   price,
@@ -42,4 +42,4 @@ const Product = ({
   );
 };
 
-export default Product;
+export default ProductGridView;
