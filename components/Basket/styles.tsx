@@ -11,6 +11,9 @@ const GridSection = styled.div`
   grid-gap: 25px;
   align-items: flex-start;
   grid-template-columns: 2fr 1fr;
+  @media (max-width: ${theme.mobileMedia.size}) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const Table = styled.table`
@@ -32,6 +35,26 @@ const Table = styled.table`
     &:first-of-type {
       height: max-content;
       box-shadow: unset;
+    }
+  }
+
+  @media (max-width: ${theme.mobileMedia.size}) {
+    order: 1;
+
+    & > tbody > tr {
+      height: 125px;
+      background: #fff;
+      -webkit-box-shadow: 0px 0px 0px 0.5px rgba(216, 216, 216, 0.75);
+      -moz-box-shadow: 0px 0px 0px 0.5px rgba(216, 216, 216, 0.75);
+      box-shadow: 0px 0px 0px 0.5px rgba(216, 216, 216, 0.75);
+
+      & > td {
+        & > div {
+        }
+      }
+      &:first-of-type {
+        display: none;
+      }
     }
   }
 `;

@@ -2,15 +2,14 @@ import styled, { css } from "styled-components";
 import theme from "styles/theme";
 
 const ProductContainer = styled.div`
-  height: 389px;
-  width: 100%;
-  padding: 15px;
-  border: 1px solid ${theme.product.borderColor};
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: 389px;
+  width: 100%;
+  padding: 15px;
+  border: 1px solid ${theme.product.borderColor};
 
   & > * {
     text-align: center;

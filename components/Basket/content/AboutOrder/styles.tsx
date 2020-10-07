@@ -8,6 +8,8 @@ const Container = styled.div`
   border: 1px solid ${theme.body.someBorder};
 
   @media (max-width: ${theme.mobileMedia.size}) {
+    border: none;
+    width: 100%;
   }
 `;
 

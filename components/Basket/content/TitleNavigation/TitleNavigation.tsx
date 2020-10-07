@@ -8,8 +8,8 @@ const TitleNavigation = ({ title, currentPage }) => {
     <GlobalSection
       isMobile={true}
       isWeb={true}
-      webBackground={theme.body.background}
       height="97px"
+      webBackground={theme.body.background}
     >
       <Container>
         <Nav>

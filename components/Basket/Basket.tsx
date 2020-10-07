@@ -15,6 +15,7 @@ const Basket = ({ basketItems }) => {
         isMobile={true}
         isWeb={true}
         webBackground={theme.body.background}
+        mobileBackground={theme.body.secondBackground}
       >
         <GridSection>
           <Table>
