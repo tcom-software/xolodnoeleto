@@ -29,6 +29,17 @@ const Container = styled.div`
 const ListContainer = styled.div`
   overflow: scroll;
   max-height: 240px;
+
+  & > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 66px;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #d8d8d8;
+  }
 `;
 const MakeOrder = styled.div`
   display: flex;

@@ -10,6 +10,7 @@ export default {
     primaryColor: "#03a9f4",
     fontBolder: 700,
     fontBold: 500,
+    fontNormal: 400,
     someBorder: "#D8D8D8",
   },
   content: {

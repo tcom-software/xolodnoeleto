@@ -90,6 +90,7 @@ export interface basketProductInterface {
   deleteBasketCount: any;
   incrementBasketCount: any;
   decrementBasketCount: any;
+  edit?: boolean;
 }
 export interface IncDecInterface {
   id: number;

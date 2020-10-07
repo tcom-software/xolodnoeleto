@@ -54,6 +54,7 @@ const initialState = {
     },
   },
   total_amount: 0,
+  stepState: 1,
 };
 
 const basketReducer = (state = initialState, action) => {

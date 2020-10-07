@@ -1,18 +1,12 @@
 import styled from "styled-components";
-import theme from "../../../../../../styles/theme";
+import theme from "styles/theme";
 
-const Item = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  height: 66px;
-  padding: 8px;
-  margin: 5px 0;
-  border: 1px solid #d8d8d8;
-`;
+const Item = styled.div``;
 const ImgContainer = styled.div``;
-const Title = styled.h3``;
+const Title = styled.h3`
+  padding-left: 10px;
+  border-left: 1px solid #d7d7d7;
+`;
 const Price = styled.div`
   font-weight: ${theme.body.fontBolder};
 `;

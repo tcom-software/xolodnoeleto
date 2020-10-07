@@ -14,10 +14,10 @@ const BasketProduct = (
     increment,
     decrement,
     deleteBasketItem,
+    edit = false,
   },
   basketProductInterface
 ) => {
-  const total = price;
   return (
     <Item>
       <ImgContainer>
@@ -36,6 +36,16 @@ const BasketProduct = (
         decrement,
       })}
       <Price>{makePrice(price * count)}</Price>
+
+      {edit ? (
+        <SvgIcons
+          type="edit"
+          width={13}
+          height={13}
+          callback={() => deleteBasketItem(id)}
+        />
+      ) : null}
+
       <SvgIcons
         type="close"
         width={13}
