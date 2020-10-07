@@ -1,17 +1,10 @@
-import { Container, Table, GridSection, Tr } from "./styles";
-import { TitleNavigation, Products, AboutOrder } from "./content";
+import { Container, Table, GridSection } from "./styles";
+import { TitleNavigation, AboutOrder } from "./content";
 import { GlobalSection } from "@atoms";
 import theme from "styles/theme";
-import SvgIcons from "../atoms/SvgIcon";
-import { IncDec, makePrice } from "../../utils";
+import ProductListView from "../ProductListView";
 
-const Basket = ({
-  stepState,
-  basketItems,
-  increment,
-  decrement,
-  deleteBasketItem,
-}) => {
+const Basket = ({ basketItems }) => {
   return (
     <Container>
       <TitleNavigation
@@ -35,44 +28,9 @@ const Basket = ({
                 <th>Изменить</th>
                 <th>Удалить</th>
               </tr>
-              {Object.values(basketItems).map(
-                ({ id, src, manufacturer, model, price, count }) => {
-                  return (
-                    <Tr key={id}>
-                      <td>
-                        <img src={src} width={57} height={57} />
-                      </td>
-                      <td>
-                        <div>
-                          <p>{manufacturer}</p>
-                          <p>{model}</p>
-                        </div>
-                      </td>
-                      <td>{makePrice(price)}</td>
-                      <td>
-                        {IncDec({
-                          id,
-                          count,
-                          increment,
-                          decrement,
-                        })}
-                      </td>
-                      <td>{makePrice(price * count)}</td>
-                      <td>
-                        <SvgIcons type="edit" width={15} height={15} />
-                      </td>
-                      <td>
-                        <SvgIcons
-                          type="close"
-                          width={15}
-                          height={15}
-                          callback={() => deleteBasketItem(id)}
-                        />
-                      </td>
-                    </Tr>
-                  );
-                }
-              )}
+              {Object.values(basketItems).map((item, id) => (
+                <ProductListView key={id} item={item} edit={true} />
+              ))}
             </tbody>
           </Table>
           <AboutOrder />

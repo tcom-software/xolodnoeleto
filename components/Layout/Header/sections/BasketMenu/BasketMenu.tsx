@@ -1,7 +1,14 @@
 import React from "react";
 import Link from "next/link";
-import { Container, ListContainer, MakeOrder, TotalPrice } from "./styles";
-import BasketProduct from "./BasketProduct";
+import {
+  Container,
+  ListContainer,
+  MakeOrder,
+  TotalPrice,
+  Table,
+} from "./styles";
+import ProductListView from "components/ProductListView";
+
 import { Button } from "@atoms";
 import { makePrice } from "utils";
 
@@ -9,21 +16,13 @@ const BasketMenu = ({ whatMenu, basketItems, total_amount }: any) => {
   return (
     <Container whatMenu={whatMenu}>
       <ListContainer>
-        {Object.values(basketItems).map(
-          ({ id, price, src, model, count, manufacturer }: any) => {
-            return (
-              <BasketProduct
-                key={id}
-                id={id}
-                src={src}
-                price={price}
-                model={model}
-                count={count}
-                manufacturer={manufacturer}
-              />
-            );
-          }
-        )}
+        <Table>
+          <tbody>
+            {Object.values(basketItems).map((item, id) => (
+              <ProductListView key={id} item={item} imageBorder={true} />
+            ))}
+          </tbody>
+        </Table>
       </ListContainer>
       <MakeOrder>
         <TotalPrice>

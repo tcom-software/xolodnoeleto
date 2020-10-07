@@ -9,7 +9,7 @@ const Container = styled.div`
   z-index: 2;
   width: 616px;
   height: 383px;
-  padding: 15px;
+  padding: 10px;
 
   background: #ffffff;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
@@ -60,5 +60,29 @@ const TotalPrice = styled.p`
     margin-left: 65px;
   }
 `;
+const Table = styled.table`
+  width: 99%;
+  margin: 0 auto;
+  align-items: center;
+  border-spacing: 0px 5px;
 
-export { Container, ListContainer, MakeOrder, TotalPrice };
+  & > tbody {
+    & > tr {
+      -webkit-box-shadow: 0px 0px 0px 0.5px rgba(216, 216, 216, 0.75);
+      -moz-box-shadow: 0px 0px 0px 0.5px rgba(216, 216, 216, 0.75);
+      box-shadow: 0px 0px 0px 0.5px rgba(216, 216, 216, 0.75);
+      & > td {
+        text-align: center;
+        &:last-of-type {
+          width: 40px;
+        }
+        & > div {
+          width: max-content;
+          text-align: left;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+`;
+export { Container, ListContainer, MakeOrder, TotalPrice, Table };
