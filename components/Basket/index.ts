@@ -1,21 +1,13 @@
 import Basket from "./Basket";
 import { connect } from "react-redux";
 
-import {
-  decrementBasketCount,
-  deleteBasketItem,
-  incrementBasketCount,
-} from "redux/actions/basketActions";
-
-const mapStateToProps = ({ basket: { items, stepState } }) => ({
+const mapStateToProps = ({
+  basket: { items, stepState },
+  general: { isMobile },
+}) => ({
+  isMobile,
   stepState,
   basketItems: items,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  increment: (id) => dispatch(incrementBasketCount(id)),
-  decrement: (id) => dispatch(decrementBasketCount(id)),
-  deleteBasketItem: (id) => dispatch(deleteBasketItem(id)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Basket);
+export default connect(mapStateToProps)(Basket);

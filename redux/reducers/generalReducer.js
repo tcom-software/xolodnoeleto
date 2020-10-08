@@ -1,3 +1,6 @@
+import * as types from "../actions/generalActions";
+import theme from "styles/theme";
+
 const initialState = {
   header: {
     navigation: [
@@ -159,10 +162,16 @@ const initialState = {
       height: "30px",
     },
   ],
+  isMobile: false,
 };
 
 const generalReducer = (state = initialState, action) => {
   switch (action.type) {
+    case types.IS_MOBILE:
+      return {
+        ...state,
+        isMobile: action.payload <= 768 ? true : false,
+      };
     default:
       return { ...state };
   }

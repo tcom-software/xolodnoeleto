@@ -1,13 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import {
-  Container,
-  ListContainer,
-  MakeOrder,
-  TotalPrice,
-  Table,
-} from "./styles";
-import ProductListView from "components/ProductListView";
+import { Container, ListContainer, MakeOrder, TotalPrice } from "./styles";
+import WebCase from "components/ProductListView/WebCase";
 
 import { Button } from "@atoms";
 import { makePrice } from "utils";
@@ -16,13 +10,7 @@ const BasketMenu = ({ whatMenu, basketItems, total_amount }: any) => {
   return (
     <Container whatMenu={whatMenu}>
       <ListContainer>
-        <Table>
-          <tbody>
-            {Object.values(basketItems).map((item, id) => (
-              <ProductListView key={id} item={item} imageBorder={true} />
-            ))}
-          </tbody>
-        </Table>
+        <WebCase basketItems={basketItems} />
       </ListContainer>
       <MakeOrder>
         <TotalPrice>

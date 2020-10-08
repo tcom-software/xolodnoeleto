@@ -33,12 +33,42 @@ const ListContainer = styled.div`
   & > div {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 
     height: 66px;
     padding: 8px;
     margin: 5px 0;
     border: 1px solid #d8d8d8;
+  }
+
+  width: 99%;
+  margin: 0 auto;
+  align-items: center;
+
+  & > table {
+    width: 100%;
+    border-collapse: collapse;
+
+    & > tbody {
+      & > tr {
+        border: 0.5px solid ${theme.body.someBorder};
+        &:first-of-type {
+          display: none !important;
+        }
+
+        & > td {
+          text-align: center;
+          &:last-of-type {
+            width: 40px;
+          }
+          & > div {
+            width: max-content;
+            text-align: left;
+            margin: 0 auto;
+          }
+        }
+      }
+    }
   }
 `;
 const MakeOrder = styled.div`
@@ -85,4 +115,5 @@ const Table = styled.table`
     }
   }
 `;
+
 export { Container, ListContainer, MakeOrder, TotalPrice, Table };

@@ -1,10 +1,13 @@
-import { Container, Table, GridSection } from "./styles";
+import { Container, GridSection } from "./styles";
 import { TitleNavigation, AboutOrder } from "./content";
 import { GlobalSection } from "@atoms";
 import theme from "styles/theme";
-import ProductListView from "../ProductListView";
+import MobileCase from "../ProductListView/MobileCase";
+import WebCase from "../ProductListView/WebCase";
 
-const Basket = ({ basketItems }) => {
+import React from "react";
+
+const Basket = ({ basketItems, isMobile }) => {
   return (
     <Container>
       <TitleNavigation
@@ -18,22 +21,11 @@ const Basket = ({ basketItems }) => {
         mobileBackground={theme.body.secondBackground}
       >
         <GridSection>
-          <Table>
-            <tbody>
-              <tr>
-                <th>Фото</th>
-                <th>Название товара</th>
-                <th>Цена /шт.</th>
-                <th>Количество</th>
-                <th>Итого</th>
-                <th>Изменить</th>
-                <th>Удалить</th>
-              </tr>
-              {Object.values(basketItems).map((item, id) => (
-                <ProductListView key={id} item={item} edit={true} />
-              ))}
-            </tbody>
-          </Table>
+          {isMobile ? (
+            <MobileCase basketItems={basketItems} />
+          ) : (
+            <WebCase basketItems={basketItems} edit={true} />
+          )}
           <AboutOrder />
         </GridSection>
       </GlobalSection>
