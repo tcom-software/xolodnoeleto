@@ -116,6 +116,11 @@ const basketReducer = (state = initialState, action) => {
           state.items[action.payload.id].price *
             state.items[action.payload.id].count,
       };
+    case types.CHANGE_ORDER_STATE:
+      return {
+        ...state,
+        stepState: action.payload,
+      };
     default:
       return { ...state };
   }

@@ -6,7 +6,13 @@ import WebCase from "components/ProductListView/WebCase";
 import { Button } from "@atoms";
 import { makePrice } from "utils";
 
-const BasketMenu = ({ whatMenu, basketItems, total_amount }: any) => {
+const BasketMenu = ({
+  whatMenu,
+  closeModal,
+  basketItems,
+  total_amount,
+  changeOrderStep,
+}: any) => {
   return (
     <Container whatMenu={whatMenu}>
       <ListContainer>
@@ -18,7 +24,12 @@ const BasketMenu = ({ whatMenu, basketItems, total_amount }: any) => {
           <span>{makePrice(total_amount)}</span>
         </TotalPrice>
         <Link href="/basket">
-          <Button type="primary" width="277px" height="47px">
+          <Button
+            type="primary"
+            width="277px"
+            height="47px"
+            onClick={() => changeOrderStep(1) && closeModal()}
+          >
             ОФОРМИТЬ ЗАКАЗ
           </Button>
         </Link>

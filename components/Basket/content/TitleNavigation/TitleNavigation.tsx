@@ -9,6 +9,7 @@ const TitleNavigation = ({ title, currentPage }) => {
       isMobile={true}
       isWeb={true}
       height="97px"
+      heightMobile="max-content"
       webBackground={theme.body.background}
     >
       <Container>

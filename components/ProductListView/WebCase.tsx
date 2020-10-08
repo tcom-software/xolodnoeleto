@@ -29,22 +29,27 @@ const WebCase = ({
   decrement,
   increment,
   deleteBasketItem,
+  imageBorder,
   edit,
+  header,
 }) => {
   return (
     <table>
       <tbody>
-        <tr>
-          <th>Фото</th>
-          <th>Название товара</th>
-          <th>Цена /шт.</th>
-          <th>Количество</th>
-          <th>Итого</th>
-          <th>Изменить</th>
-          <th>Удалить</th>
-        </tr>
+        {header ? (
+          <tr>
+            <th>Фото</th>
+            <th>Название товара</th>
+            <th>Цена /шт.</th>
+            <th>Количество</th>
+            <th>Итого</th>
+            <th>Изменить</th>
+            <th>Удалить</th>
+          </tr>
+        ) : null}
+
         {Object.values(basketItems).map(
-          ({ id, src, model, price, count, imageBorder, manufacturer }) => (
+          ({ id, src, model, price, count, manufacturer }) => (
             <tr key={id}>
               <td>
                 <img src={src} width={57} height={57} />

@@ -2,14 +2,22 @@ import styled, { css } from "styled-components";
 import theme from "styles/theme";
 
 const Container = styled.div`
+  background: #fff;
   position: relative;
   width: 360px;
   margin-top: 37px;
   border: 1px solid ${theme.body.someBorder};
 
+  ${({ stepCount }) =>
+    stepCount !== 1 &&
+    css`
+      margin-top: 0;
+    `}
   @media (max-width: ${theme.mobileMedia.size}) {
     border: none;
     width: 100%;
+    order: -1;
+    background: ${theme.body.secondBackground};
   }
 `;
 

@@ -16,6 +16,9 @@ const Container = styled.div`
   background: ${theme.body.background};
   height: 125px;
   padding: 6px;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 const Img = styled.img`
   height: 100%;

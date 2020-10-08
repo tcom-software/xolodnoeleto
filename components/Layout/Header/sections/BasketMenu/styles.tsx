@@ -53,9 +53,6 @@ const ListContainer = styled.div`
     & > tbody {
       & > tr {
         box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3);
-        &:first-of-type {
-          display: none !important;
-        }
 
         & > td {
           text-align: center;

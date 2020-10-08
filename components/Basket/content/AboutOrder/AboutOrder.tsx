@@ -3,9 +3,9 @@ import { Button } from "@atoms";
 import { Container, Title, MiniCon, Border } from "./styles";
 import { makePrice } from "utils";
 
-const AboutOrder = ({ total_amount, itemsCount }) => {
+const AboutOrder = ({ total_amount, itemsCount, stepCount }) => {
   return (
-    <Container>
+    <Container stepCount={stepCount}>
       <MiniCon>
         <Title>ВАШ ЗАКАЗ</Title>
       </MiniCon>

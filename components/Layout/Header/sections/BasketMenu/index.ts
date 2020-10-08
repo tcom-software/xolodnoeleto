@@ -1,9 +1,16 @@
 import BasketMenu from "./BasketMenu";
 import { connect } from "react-redux";
+import { changeOrderStep } from "redux/actions/basketActions";
+import { closeModal } from "../../../../../redux/actions/modalActions";
 
 const mapStateToProps = ({ basket: { items, total_amount } }) => ({
   total_amount,
   basketItems: items,
 });
 
-export default connect(mapStateToProps)(BasketMenu);
+const mapDispatchToProps = (dispatch) => ({
+  changeOrderStep: (step) => dispatch(changeOrderStep(step)),
+  closeModal: () => dispatch(closeModal()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(BasketMenu);

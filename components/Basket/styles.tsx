@@ -12,6 +12,7 @@ const GridSection = styled.div`
     align-items: center;
     & > tbody > tr {
       height: 100px;
+      background: #fff;
       box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 
       & > td {
@@ -50,9 +51,6 @@ const GridSection = styled.div`
 
   @media (max-width: ${theme.mobileMedia.size}) {
     grid-template-columns: 1fr;
-    & > div:last-child {
-      order: -1;
-    }
   }
 `;
 
