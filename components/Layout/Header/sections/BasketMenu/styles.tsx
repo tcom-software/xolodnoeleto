@@ -46,12 +46,13 @@ const ListContainer = styled.div`
   align-items: center;
 
   & > table {
-    width: 100%;
-    border-collapse: collapse;
+    width: 99%;
+    margin: 0px auto;
+    border-spacing: 0px 7px;
 
     & > tbody {
       & > tr {
-        border: 0.5px solid ${theme.body.someBorder};
+        box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3);
         &:first-of-type {
           display: none !important;
         }
