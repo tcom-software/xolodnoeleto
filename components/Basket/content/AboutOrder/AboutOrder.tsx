@@ -3,9 +3,14 @@ import { Button } from "@atoms";
 import { Container, Title, MiniCon, Border } from "./styles";
 import { makePrice } from "utils";
 
-const AboutOrder = ({ total_amount, itemsCount, stepCount }) => {
+const AboutOrder = ({
+  total_amount,
+  itemsCount,
+  stepState,
+  changeOrderStep,
+}) => {
   return (
-    <Container stepCount={stepCount}>
+    <Container stepState={stepState}>
       <MiniCon>
         <Title>ВАШ ЗАКАЗ</Title>
       </MiniCon>
@@ -34,9 +39,18 @@ const AboutOrder = ({ total_amount, itemsCount, stepCount }) => {
           <p>Итого к оплате</p>
           <p>{makePrice(total_amount)}</p>
         </div>
-        <Button type="primary" width="100%" height="47px">
-          ОФОРМИТЬ ЗАКАЗ
-        </Button>
+        {stepState === 1 ? (
+          <Button
+            type="primary"
+            width="100%"
+            height="47px"
+            onClick={() => {
+              changeOrderStep(2);
+            }}
+          >
+            ОФОРМИТЬ ЗАКАЗ
+          </Button>
+        ) : null}
       </MiniCon>
     </Container>
   );

@@ -1,11 +1,12 @@
 import { Container, GridSection } from "./styles";
 import { TitleNavigation, AboutOrder } from "./content";
-import { Button, GlobalSection } from "@atoms";
+import { Button, GlobalSection, InputValidation } from "@atoms";
 import theme from "styles/theme";
 import MobileCase from "../ProductListView/MobileCase";
 import WebCase from "../ProductListView/WebCase";
 import StepInformation from "./content/StepInformation";
-import React from "react";
+import React, { useState } from "react";
+import { array } from "../Layout/PopUp/Modals/CallBack/data";
 
 const steps = {
   stepOne: {
@@ -61,8 +62,57 @@ const customSwitch = (stepState) => {
   }
 };
 
-const Basket = ({ basketItems, isMobile, stepState }) => {
+const Basket = ({ basketItems, isMobile, stepState, BuyFormInputs }) => {
   const stepObject = customSwitch(stepState);
+  const [errorState, setErrorState] = useState([]);
+  const [info, setInfo] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    addressDelivery: "",
+    commentByOrder: "",
+  });
+  const array = [
+    {
+      name: "fullName",
+      type: "input",
+      label: "Ф.И.О.",
+    },
+    {
+      name: "email",
+      type: "input",
+      label: "E-Mail",
+    },
+    {
+      name: "phone",
+      type: "input",
+      label: "Телефон",
+    },
+    {
+      name: "addressDelivery",
+      type: "input",
+      label: "Адрес доставки",
+    },
+    {
+      name: "commentByOrder",
+      type: "input",
+      label: "Комментарии к заказу",
+    },
+  ];
+
+  const handleChange = (name) => (value) => setInfo({ ...info, [name]: value });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const array = Object.entries(info)
+      .map((e) => (e[1] == "" ? e[0] : null))
+      .filter((e) => e !== null);
+
+    if (array.length > 0) {
+      setErrorState(array);
+    } else {
+    }
+  };
 
   return (
     <Container>
@@ -76,7 +126,7 @@ const Basket = ({ basketItems, isMobile, stepState }) => {
         webBackground={theme.body.secondBackground}
         mobileBackground={theme.body.secondBackground}
       >
-        <GridSection>
+        <GridSection stepState={stepState}>
           {stepState === 1 ? (
             isMobile ? (
               <MobileCase basketItems={basketItems} />
@@ -85,17 +135,37 @@ const Basket = ({ basketItems, isMobile, stepState }) => {
             )
           ) : null}
 
-          {stepState !== 1 ? (
+          {stepState == 2 ? (
             <StepInformation stepStructure={stepObject}>
-              {isMobile ? (
-                <MobileCase basketItems={basketItems} />
-              ) : (
-                <WebCase
-                  basketItems={basketItems}
-                  edit={true}
-                  imageBorder={true}
-                />
-              )}
+              {stepState == 2 ? (
+                isMobile ? (
+                  <MobileCase basketItems={basketItems} />
+                ) : (
+                  <WebCase basketItems={basketItems} edit={true} />
+                )
+              ) : null}
+            </StepInformation>
+          ) : null}
+
+          {stepState == 3 ? (
+            <StepInformation stepStructure={stepObject}>
+              <form onSubmit={handleSubmit}>
+                {/*BuyFormInputs*/}
+                {array.map(({ name, type, label }: any, i: number) => (
+                  <div>
+                    <label htmlFor={name}> {label} </label>
+                    <InputValidation
+                      key={i}
+                      forHtml={name}
+                      type={type}
+                      name={name}
+                      data={info}
+                      initialErrorState={!!~errorState.indexOf(name)}
+                      callback={handleChange(name)}
+                    />
+                  </div>
+                ))}
+              </form>
             </StepInformation>
           ) : null}
 

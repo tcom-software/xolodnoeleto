@@ -105,6 +105,11 @@ const initialState = {
     title: "xolodnoeleto.ru | продажа и установка кондиционеров",
   },
   inputsValidationData: {
+    fullName: {
+      errorMessage: "Пожалуйста заполните полное имя",
+      validation: /^[a-zA-Z ]{2,15}$/,
+      placeholder: "Иванович Иван Иванов",
+    },
     name: {
       errorMessage: "Пожалуйста заполните имя",
       validation: /^[a-zA-Z]{2,15}$/,
@@ -120,6 +125,16 @@ const initialState = {
       // validation: "",
       placeholder: "+7...",
     },
+    addressDelivery: {
+      errorMessage: "Пожалуйста, напишите полный адрес",
+      validation: /^[a-zA-Z0-9 ]{2,30}$/,
+      placeholder: "Адрес...",
+    },
+    commentByOrder: {
+      errorMessage: "Пожалуйста, напишите комментарии",
+      validation: /^[a-zA-Z0-9 ]{2,30}$/,
+      placeholder: "без...",
+    },
     dateForCall: {
       errorMessage: "Выбранная дата недоступна",
       validation: "",
@@ -133,7 +148,7 @@ const initialState = {
     email: {
       errorMessage: "Incorrect email",
       validation: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-      placeholder: "Email",
+      placeholder: "@gmail.com",
     },
   },
   aboutUsCards: [

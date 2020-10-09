@@ -28,6 +28,9 @@ const Container = styled.div`
       }
     }
   }
+
+  & > form {
+  }
   @media (max-width: ${theme.mobileMedia.size}) {
   }
 `;
@@ -36,6 +39,35 @@ const ChildrenCon = styled.div`
   display: flex;
   align-items: flex-end !important;
   flex-direction: column;
+  cursor: unset !important;
+
+  & > form {
+    width: 100%;
+
+    & > div {
+      & > div {
+        margin-top: 15px;
+        font-weight: ${theme.body.fontBolder};
+      }
+    }
+  }
+  & > div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 400px) {
+    & > div:last-of-type {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      & > * {
+        margin-top: 10px;
+      }
+    }
+  }
 `;
 const Div = styled.div`
   ${({ current }) =>

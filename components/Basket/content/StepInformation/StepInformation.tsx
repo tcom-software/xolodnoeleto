@@ -13,7 +13,13 @@ const StepOne = ({ title }) => (
   </Link>
 );
 
-const StepsCases = ({ title, current, children }) => {
+const StepsCases = ({
+  title,
+  current,
+  children,
+  stepState,
+  changeOrderStep,
+}) => {
   return (
     <>
       <Div current={current}>
@@ -22,16 +28,36 @@ const StepsCases = ({ title, current, children }) => {
       {current ? (
         <ChildrenCon>
           {children}
-          <Button type="primary" width="170px" height="47px">
-            ДАЛЕЕ
-          </Button>
+          <div>
+            <Button
+              type="secondary"
+              width="170px"
+              height="47px"
+              onClick={() => changeOrderStep(stepState - 1)}
+            >
+              НАЗАД
+            </Button>
+            <Button
+              type="primary"
+              width="170px"
+              height="47px"
+              onClick={() => changeOrderStep(stepState + 1)}
+            >
+              ДАЛЕЕ
+            </Button>
+          </div>
         </ChildrenCon>
       ) : null}
     </>
   );
 };
 
-const StepInformation = ({ stepStructure, stepState, children }) => {
+const StepInformation = ({
+  stepStructure,
+  stepState,
+  children,
+  changeOrderStep,
+}) => {
   const StepsObjKeys = Object.keys(stepStructure);
 
   return (
@@ -47,6 +73,8 @@ const StepInformation = ({ stepStructure, stepState, children }) => {
                   key={index}
                   title={title}
                   children={children}
+                  stepState={stepState}
+                  changeOrderStep={changeOrderStep}
                   current={e === "current" ? true : false}
                 />
               );

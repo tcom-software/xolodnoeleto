@@ -8,11 +8,14 @@ const Container = styled.div`
   margin-top: 37px;
   border: 1px solid ${theme.body.someBorder};
 
-  ${({ stepCount }) =>
-    stepCount !== 1 &&
-    css`
-      margin-top: 0;
-    `}
+  ${({ stepState }) => {
+    if (stepState !== 1) {
+      return css`
+        margin-top: 0;
+      `;
+    }
+  }}}
+
   @media (max-width: ${theme.mobileMedia.size}) {
     border: none;
     width: 100%;

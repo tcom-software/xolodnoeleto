@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import theme from "styles/theme";
 
 const GridSection = styled.div`
@@ -10,6 +10,7 @@ const GridSection = styled.div`
   table {
     border-spacing: 0px 10px;
     align-items: center;
+
     & > tbody > tr {
       height: 100px;
       background: #fff;
@@ -23,11 +24,20 @@ const GridSection = styled.div`
           margin: 0 auto;
         }
       }
-      &:first-of-type {
-        height: max-content;
-        box-shadow: unset;
-      }
+
+      ${({ stepState }) => {
+        if (stepState === 1) {
+          return css`
+            &:first-of-type {
+              height: max-content;
+              box-shadow: unset;
+              background: none;
+            }
+          `;
+        }
+      }}
     }
+
     @media (max-width: ${theme.mobileMedia.size}) {
       order: 1;
 
@@ -42,6 +52,7 @@ const GridSection = styled.div`
           & > div {
           }
         }
+
         &:first-of-type {
           display: none;
         }
