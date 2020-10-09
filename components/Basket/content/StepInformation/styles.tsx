@@ -29,8 +29,6 @@ const Container = styled.div`
     }
   }
 
-  & > form {
-  }
   @media (max-width: ${theme.mobileMedia.size}) {
   }
 `;
@@ -41,7 +39,7 @@ const ChildrenCon = styled.div`
   flex-direction: column;
   cursor: unset !important;
 
-  & > form {
+  & > div > form {
     width: 100%;
 
     & > div {

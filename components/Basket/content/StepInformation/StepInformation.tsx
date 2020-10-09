@@ -28,24 +28,33 @@ const StepsCases = ({
       {current ? (
         <ChildrenCon>
           {children}
-          <div>
-            <Button
-              type="secondary"
-              width="170px"
-              height="47px"
-              onClick={() => changeOrderStep(stepState - 1)}
-            >
-              НАЗАД
-            </Button>
-            <Button
-              type="primary"
-              width="170px"
-              height="47px"
-              onClick={() => changeOrderStep(stepState + 1)}
-            >
-              ДАЛЕЕ
-            </Button>
-          </div>
+          {stepState === 3 ? null : (
+            <div>
+              <Button
+                type="secondary"
+                width="170px"
+                height="47px"
+                onClick={() => changeOrderStep(stepState - 1)}
+              >
+                НАЗАД
+              </Button>
+
+              {stepState === 3 ? (
+                <Button type="primary" width="170px" height="47px">
+                  ДАЛЕЕ
+                </Button>
+              ) : (
+                <Button
+                  type="primary"
+                  width="170px"
+                  height="47px"
+                  onClick={() => changeOrderStep(stepState + 1)}
+                >
+                  ДАЛЕЕ
+                </Button>
+              )}
+            </div>
+          )}
         </ChildrenCon>
       ) : null}
     </>

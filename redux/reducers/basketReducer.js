@@ -53,6 +53,70 @@ const initialState = {
       selectedStarsCount: 3,
     },
   },
+  basketSteps: {
+    stepOne: {
+      top: [],
+      current: [
+        { title: "Вернуться к выбору товаров", svgType: "longArrowLeft" },
+      ],
+      bottom: [],
+    },
+    stepTwo: {
+      top: [],
+      current: [{ title: "Товары в заказе" }],
+      bottom: [
+        { title: "Покупатель" },
+        { title: "Доставка" },
+        { title: "Оплата" },
+      ],
+    },
+    stepThree: {
+      top: [{ title: "Товары в заказе" }],
+      current: [{ title: "Покупатель" }],
+      bottom: [{ title: "Доставка" }, { title: "Оплата" }],
+    },
+    stepFour: {
+      top: [{ title: "Товары в заказе" }, { title: "Покупатель" }],
+      current: [{ title: "Доставка" }],
+      bottom: [{ title: "Оплата" }],
+    },
+    stepFive: {
+      top: [
+        { title: "Товары в заказе" },
+        { title: "Покупатель" },
+        { title: "Доставка" },
+      ],
+      current: [{ title: "Оплата" }],
+      bottom: [],
+    },
+  },
+  basketBuyInputs: [
+    {
+      name: "fullName",
+      type: "input",
+      label: "Ф.И.О.",
+    },
+    {
+      name: "email",
+      type: "input",
+      label: "E-Mail",
+    },
+    {
+      name: "phone",
+      type: "input",
+      label: "Телефон",
+    },
+    {
+      name: "addressDelivery",
+      type: "input",
+      label: "Адрес доставки",
+    },
+    {
+      name: "commentByOrder",
+      type: "input",
+      label: "Комментарии к заказу",
+    },
+  ],
   total_amount: 0,
   stepState: 1,
 };
