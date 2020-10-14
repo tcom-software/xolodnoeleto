@@ -5,7 +5,6 @@ const PopUp = ({ modalType, openModal, closeModal }) => {
   switch (modalType) {
     case "catalog":
     case "navigation":
-      return null;
     case "basket":
       return null;
     default:
