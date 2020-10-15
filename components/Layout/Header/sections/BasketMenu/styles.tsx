@@ -14,9 +14,9 @@ const Container = styled.div`
   background: #ffffff;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
 
-  ${({ whatMenu }) => {
+  ${({ modalType }) => {
     return (
-      whatMenu === "basket" &&
+      modalType === "basket" &&
       css`
         display: flex;
         flex-direction: column;

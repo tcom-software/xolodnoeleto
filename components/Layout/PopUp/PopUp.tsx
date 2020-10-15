@@ -1,7 +1,26 @@
+import React, { useEffect, useRef } from "react";
 import Modals from "./Modals";
 import { PopUpContainer } from "./styles";
 
-const PopUp = ({ modalType, openModal, closeModal }) => {
+const PopUp = ({ modalType, setModalRef, closeModal, modalRef }) => {
+  const customRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (customRef.current && !customRef.current.contains(event.target)) {
+        closeModal("");
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [customRef, closeModal]);
+
+  useEffect(() => {
+    setModalRef(customRef);
+  }, [modalType]);
+
   switch (modalType) {
     case "catalog":
     case "navigation":
@@ -11,7 +30,7 @@ const PopUp = ({ modalType, openModal, closeModal }) => {
       const Modal = Modals[modalType];
       return modalType != "" ? (
         <PopUpContainer>
-          <Modal />
+          <Modal modalType={modalType} modalRef={modalRef} />
         </PopUpContainer>
       ) : null;
   }

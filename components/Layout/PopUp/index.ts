@@ -1,13 +1,14 @@
 import PopUp from "./PopUp";
 import { connect } from "react-redux";
-import { closeModal, openModal } from "../../../redux/actions/modalActions";
+import { closeModal, setModalRef } from "redux/actions/modalActions";
 
-const mapStateToProps = ({ modal: { modalType } }) => ({
+const mapStateToProps = ({ modal: { modalType, modalRef } }) => ({
   modalType,
+  modalRef,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  openModal: (type) => dispatch(openModal(type)),
+  setModalRef: (ref) => dispatch(setModalRef(ref)),
   closeModal: () => dispatch(closeModal()),
 });
 

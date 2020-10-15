@@ -4,7 +4,7 @@ import SvgIcons from "../../../../atoms/SvgIcon";
 import { InputValidation, Button } from "@atoms";
 import { array } from "./data";
 
-const CallBack = ({ closeModal, worksTime }) => {
+const CallBack = ({ closeModal, worksTime, modalType, modalRef }) => {
   const [errorState, setErrorState] = useState([]);
   const [info, setInfo] = useState({
     name: "",
@@ -26,9 +26,9 @@ const CallBack = ({ closeModal, worksTime }) => {
     } else {
     }
   };
-
+  console.log(modalType, modalRef, "------------Callback");
   return (
-    <ModalContainer>
+    <ModalContainer ref={modalRef}>
       <form onSubmit={handleSubmit}>
         <Title>
           Заказ обратново званка

@@ -7,14 +7,18 @@ import { Button } from "@atoms";
 import { makePrice } from "utils";
 
 const BasketMenu = ({
-  whatMenu,
+  modalRef,
+  modalType,
   closeModal,
   basketItems,
   total_amount,
   changeOrderStep,
 }: any) => {
   return (
-    <Container whatMenu={whatMenu}>
+    <Container
+      modalType={modalType}
+      ref={modalType === "basket" ? modalRef : null}
+    >
       <ListContainer>
         <WebCase basketItems={basketItems} />
       </ListContainer>

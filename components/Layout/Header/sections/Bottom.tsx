@@ -4,10 +4,11 @@ import theme from "styles/theme";
 import Link from "next/link";
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { closeModal, openModal } from "../../../../redux/actions/modalActions";
+import { closeModal, openModal } from "redux/actions/modalActions";
+
 import BasketMenu from "./BasketMenu";
 
-const Bottom = ({ catalog, modalType, openModal, closeModal }) => {
+const Bottom = ({ catalog, modalType, modalRef, openModal, closeModal }) => {
   const [isOpenSearch, setIsOpenSearch] = useState(false);
 
   return (
@@ -19,22 +20,20 @@ const Bottom = ({ catalog, modalType, openModal, closeModal }) => {
       borderBottom={true}
       webBackground={theme.body.secondBackground}
     >
-      <BottomPanel whatMenu={modalType}>
+      <BottomPanel modalType={modalType}>
         <Ul>
-          <li
-            onClick={() =>
-              modalType == "catalog" ? closeModal() : openModal("catalog")
-            }
-          >
+          <li onClick={() => openModal("catalog")}>
             <SvgIcon
               type="hamburgerMenu"
               width={25}
               height={25}
               color={modalType === "catalog" ? theme.body.primaryColor : "#000"}
-              callback={() => {}}
             />
             Каталог товаров
-            <CatalogUl whatMenu={modalType}>
+            <CatalogUl
+              modalType={modalType}
+              ref={modalType === "catalog" ? modalRef : null}
+            >
               {catalog.map((e, i) => {
                 return (
                   <li key={i}>
@@ -80,14 +79,12 @@ const Bottom = ({ catalog, modalType, openModal, closeModal }) => {
               type="with-icon"
               width="190px"
               height="47px"
-              onClick={() =>
-                modalType == "basket" ? closeModal() : openModal("basket")
-              }
+              onClick={() => openModal("basket")}
             >
               <SvgIcon type="basket" width={20} height={20} />
               Корзина пуста
             </Button>
-            <BasketMenu whatMenu={modalType} />
+            <BasketMenu />
           </li>
           <li>
             <SvgIcon
@@ -107,9 +104,10 @@ const mapStateToProps = ({
   general: {
     header: { catalog },
   },
-  modal: { modalType },
+  modal: { modalType, modalRef },
 }) => ({
   catalog,
+  modalRef,
   modalType,
 });
 

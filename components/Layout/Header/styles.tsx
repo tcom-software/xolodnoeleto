@@ -26,8 +26,8 @@ const TopPanel = styled.section`
 
     ul {
       display: none;
-      ${({ whatMenu }) => {
-        if (whatMenu === "navigation") {
+      ${({ modalType }) => {
+        if (modalType === "navigation") {
           return css`
             display: block;
           `;
@@ -84,9 +84,9 @@ const BottomPanel = styled.section`
       }
 
       &:first-child {
-        ${({ whatMenu }) => {
+        ${({ modalType }) => {
           return (
-            whatMenu == "catalog" &&
+            modalType == "catalog" &&
             css`
               color: ${theme.body.primaryColor};
             `
@@ -108,9 +108,9 @@ const BottomPanel = styled.section`
       display: grid;
       grid-template-columns: 3fr 2fr 1fr;
 
-      ${({ whatMenu }) => {
+      ${({ modalType }) => {
         return (
-          whatMenu == "catalog" &&
+          modalType == "catalog" &&
           css`
             grid-template-columns: 1fr 1fr;
           `
@@ -151,9 +151,9 @@ const BottomPanel = styled.section`
         &:nth-child(6) {
           display: none;
         }
-        ${({ whatMenu }) => {
+        ${({ modalType }) => {
           return (
-            whatMenu == "catalog" &&
+            modalType == "catalog" &&
             css`
               &:nth-child(4),
               &:nth-child(5) {
@@ -198,9 +198,9 @@ const CatalogUl = styled.ul`
     top: -16px;
     left: 70px;
   }
-  ${({ whatMenu }) => {
+  ${({ modalType }) => {
     return (
-      whatMenu === "catalog" &&
+      modalType === "catalog" &&
       css`
         display: flex;
       `
@@ -234,9 +234,9 @@ const CatalogUl = styled.ul`
       display: none;
     }
 
-    ${({ whatMenu }) => {
+    ${({ modalType }) => {
       return (
-        whatMenu === "catalog" &&
+        modalType === "catalog" &&
         css`
           transition: 0.3s border-top ease-in, max-height 0.4s 0.3s ease-in;
           border-top: 4px solid ${theme.body.primaryColor};
