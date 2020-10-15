@@ -26,7 +26,6 @@ const CallBack = ({ closeModal, worksTime, modalType, modalRef }) => {
     } else {
     }
   };
-  console.log(modalType, modalRef, "------------Callback");
   return (
     <ModalContainer ref={modalRef}>
       <form onSubmit={handleSubmit}>

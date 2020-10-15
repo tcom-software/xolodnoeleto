@@ -10,11 +10,14 @@ import {
 } from "./styles";
 import { makePrice } from "utils";
 import { productInterface } from "interfaces";
+import { lightblue } from "color-name";
 
 const ProductGridView = ({
+  id,
   src,
   title,
   price,
+  addBasket,
   vendorCode,
   buttonBorder,
   selectedStarsCount,
@@ -35,6 +38,7 @@ const ProductGridView = ({
         width="170px"
         height="50px"
         border={buttonBorder}
+        onClick={() => addBasket(id)}
       >
         В корзину
       </Button>

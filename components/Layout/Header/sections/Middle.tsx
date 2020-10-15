@@ -9,10 +9,10 @@ import Link from "next/link";
 import { GlobalSection, Input, SvgIcon } from "@atoms";
 import React from "react";
 import { connect } from "react-redux";
-import { closeModal, openModal } from "../../../../redux/actions/modalActions";
-import theme from "../../../../styles/theme";
+import { openModal } from "redux/actions/modalActions";
+import theme from "styles/theme";
 
-const Middle = ({ phones, openModal, closeModal }) => {
+const Middle = ({ phones, openModal }) => {
   return (
     <GlobalSection
       isWeb={true}
@@ -23,11 +23,11 @@ const Middle = ({ phones, openModal, closeModal }) => {
     >
       <MainPanel isMobileHidden={true}>
         <LogoCon>
-          <Link href={""}>
-            <>
+          <Link href="/">
+            <a>
               <img src="/images/logo/logo.png" alt="sun" />
               <h1>XOLODNOELETO</h1>
-            </>
+            </a>
           </Link>
         </LogoCon>
         <PhonesCon>
@@ -72,7 +72,6 @@ const mapStateToProps = ({ general: { phones } }) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   openModal: (type) => dispatch(openModal(type)),
-  closeModal: () => dispatch(closeModal()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Middle);

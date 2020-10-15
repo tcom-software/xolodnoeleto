@@ -260,7 +260,7 @@ const LogoCon = styled.div`
   justify-self: flex-start;
   cursor: pointer;
 
-  & > h1 {
+  & > a > h1 {
     text-align: left;
     display: none;
   }

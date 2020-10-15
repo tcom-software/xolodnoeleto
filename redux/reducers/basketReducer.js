@@ -2,8 +2,8 @@ import * as types from "../actions/basketActions";
 
 const initialState = {
   items: {
-    45: {
-      id: 45,
+    1: {
+      id: 1,
       src: "/test-product.png",
       manufacturer: "Dahatsu",
       model: "COMFORT-ON-OFF-2019-DG-07",
@@ -12,8 +12,8 @@ const initialState = {
       count: 5,
       selectedStarsCount: 4,
     },
-    23: {
-      id: 23,
+    2: {
+      id: 2,
       src: "/test-product.png",
       manufacturer: "Dahatsu",
       model: "COMFORT-ON-OFF-2019-DG-07",
@@ -22,8 +22,8 @@ const initialState = {
       count: 3,
       selectedStarsCount: 3,
     },
-    24: {
-      id: 24,
+    3: {
+      id: 3,
       src: "/test-product.png",
       manufacturer: "Dahatsu",
       model: "COMFORT-ON-OFF-2019-DG-07",
@@ -32,8 +32,8 @@ const initialState = {
       count: 3,
       selectedStarsCount: 3,
     },
-    25: {
-      id: 25,
+    4: {
+      id: 4,
       src: "/test-product.png",
       manufacturer: "Dahatsu",
       model: "COMFORT-ON-OFF-2019-DG-07",
@@ -42,8 +42,8 @@ const initialState = {
       count: 3,
       selectedStarsCount: 3,
     },
-    26: {
-      id: 26,
+    5: {
+      id: 5,
       src: "/test-product.png",
       manufacturer: "Dahatsu",
       model: "COMFORT-ON-OFF-2019-DG-07",
@@ -123,6 +123,38 @@ const initialState = {
 
 const basketReducer = (state = initialState, action) => {
   switch (action.type) {
+    case types.ADD_BASKET:
+      if (state.items[action.payload]) {
+        return {
+          ...state,
+          items: {
+            ...state.items,
+            [action.payload]: {
+              ...state.items[action.payload],
+              count: state.items[action.payload].count + 1,
+            },
+          },
+        };
+      } else {
+        return {
+          ...state,
+          items: {
+            ...state.items,
+            [action.payload]: {
+              id: action.payload,
+              src: "/test-product.png",
+              manufacturer: "Dahatsu",
+              model: "COMFORT-ON-OFF-2019-DG-07",
+              vendorCode: "Артикул  | 7380",
+              price: 27129,
+              count: 1,
+              selectedStarsCount: 4,
+            },
+          },
+          total_amount: state.total_amount + 27129,
+        };
+      }
+
     case types.BASKET_INITIAL_STATE:
       return {
         ...state,
@@ -143,6 +175,9 @@ const basketReducer = (state = initialState, action) => {
         total_amount: state.total_amount + state.items[action.payload.id].price,
       };
     case types.DECREMENT:
+      console.log(state.items);
+      console.log(action.payload);
+
       return {
         ...state,
         items: {

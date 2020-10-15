@@ -18,6 +18,7 @@ const Index = ({ newProducts }) => {
             return (
               <ProductGridView
                 key={id}
+                id={id}
                 src={src}
                 title={title}
                 price={price}

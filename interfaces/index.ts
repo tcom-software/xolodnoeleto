@@ -49,12 +49,14 @@ export interface ButtonInterface {
   fontWeight?: number;
 }
 export interface productInterface {
+  id: number;
   src: string;
   title: string;
   vendorCode: string;
   selectedStarsCount: number;
   price: string | number;
   buttonBorder?: boolean;
+  addBasket: any;
 }
 export interface GlobalSectionInterface {
   children?: any;

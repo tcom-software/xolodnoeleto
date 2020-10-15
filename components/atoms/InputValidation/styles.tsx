@@ -23,7 +23,7 @@ const Input = styled.input`
 `;
 
 const Message = styled.div`
-  transition: 0.5s all ease-in;
+  transition: 0.3s all ease-in;
   width: 0;
   white-space: nowrap;
   overflow: hidden;
@@ -33,7 +33,7 @@ const Message = styled.div`
   ${({ errorStyle }) => {
     if (errorStyle) {
       return css`
-        transition: 1s all ease-in;
+        transition: 0.5s all ease-in;
         white-space: nowrap;
         width: 300px;
         color: ${theme.error.color};

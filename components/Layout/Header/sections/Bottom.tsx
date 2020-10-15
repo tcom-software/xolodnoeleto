@@ -8,7 +8,14 @@ import { closeModal, openModal } from "redux/actions/modalActions";
 
 import BasketMenu from "./BasketMenu";
 
-const Bottom = ({ catalog, modalType, modalRef, openModal, closeModal }) => {
+const Bottom = ({
+  catalog,
+  modalType,
+  modalRef,
+  openModal,
+  closeModal,
+  basketItemsCount,
+}) => {
   const [isOpenSearch, setIsOpenSearch] = useState(false);
 
   return (
@@ -82,7 +89,7 @@ const Bottom = ({ catalog, modalType, modalRef, openModal, closeModal }) => {
               onClick={() => openModal("basket")}
             >
               <SvgIcon type="basket" width={20} height={20} />
-              Корзина пуста
+              Корзина пуста ({basketItemsCount})
             </Button>
             <BasketMenu />
           </li>
@@ -105,10 +112,14 @@ const mapStateToProps = ({
     header: { catalog },
   },
   modal: { modalType, modalRef },
+  basket: { items },
 }) => ({
   catalog,
   modalRef,
   modalType,
+  basketItemsCount: Object.values(items)
+    .map(({ count }) => count)
+    .reduce((acc, next) => (next += acc), 0),
 });
 
 const mapDispatchToProps = (dispatch) => ({
