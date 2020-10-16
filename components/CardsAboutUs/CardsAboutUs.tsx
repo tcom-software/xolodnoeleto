@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Card, Title } from "./styles";
-import SvgIcons from "../atoms/SvgIcon";
+import { SvgIcon } from "@atoms";
 
 const CardsAboutUs = ({ aboutUsCards }) => {
   return (
@@ -8,7 +8,7 @@ const CardsAboutUs = ({ aboutUsCards }) => {
       {aboutUsCards.map((e, i) => (
         <Card key={i}>
           <Title> {e.title} </Title>
-          <SvgIcons type={e.type} width={e.width} height={e.height} />
+          <SvgIcon type={e.type} width={e.width} height={e.height} />
         </Card>
       ))}
     </Container>

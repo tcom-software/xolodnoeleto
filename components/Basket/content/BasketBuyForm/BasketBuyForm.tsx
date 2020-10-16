@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container } from "./styles";
+import { ByFormContainer } from "./styles";
 import { Button, InputValidation } from "@atoms";
 
 const BasketBuyForm = ({ changeOrderStep, stepState, basketBuyInputs }) => {
@@ -29,7 +29,7 @@ const BasketBuyForm = ({ changeOrderStep, stepState, basketBuyInputs }) => {
   };
 
   return (
-    <Container>
+    <ByFormContainer>
       <form onSubmit={handleSubmit}>
         <div>
           {basketBuyInputs.map(({ name, type, label }: any, i: number) => (
@@ -55,7 +55,7 @@ const BasketBuyForm = ({ changeOrderStep, stepState, basketBuyInputs }) => {
           </Button>
         </div>
       </form>
-    </Container>
+    </ByFormContainer>
   );
 };
 

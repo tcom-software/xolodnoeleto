@@ -2,7 +2,7 @@ import Basket from "./Basket";
 import { connect } from "react-redux";
 
 const mapStateToProps = ({
-  basket: { items, stepState, basketSteps, basketBuyInputs },
+  basket: { items, stepState, basketSteps, basketBuyInputs, stepsContentData },
   general: {
     isMobile,
     inputsValidationData: {
@@ -18,6 +18,7 @@ const mapStateToProps = ({
   stepState,
   basketSteps,
   basketBuyInputs,
+  stepsContentData,
   basketItems: items,
   BuyFormInputs: [fullName, email, phone, addressDelivery, commentByOrder],
 });

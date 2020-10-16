@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import theme from "styles/theme";
 
-const Container = styled.div`
+const AboutOrderContainer = styled.div`
   background: #fff;
   position: relative;
   width: 360px;
@@ -16,7 +16,7 @@ const Container = styled.div`
     }
   }}}
 
-  @media (max-width: ${theme.mobileMedia.size}) {
+  @media (max-width: 1200px) {
     border: none;
     width: 100%;
     order: -1;
@@ -38,18 +38,24 @@ const Border = styled.div`
 `;
 const MiniCon = styled.div`
   padding: 15px;
-  
+
   & > div {
     margin: 15px 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     ${({ childrenIsBold }) =>
       childrenIsBold &&
       css`
         font-weight: ${theme.body.fontBolder};
       `}
-  
+  }
+
+  &:last-of-type > div > p {
+    font-size: 16px;
+    font-weight: ${theme.body.fontBolder};
+  }
 `;
 
-export { Container, Title, MiniCon, Border };
+export { AboutOrderContainer, Title, MiniCon, Border };

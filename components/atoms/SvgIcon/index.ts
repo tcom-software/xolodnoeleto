@@ -1,3 +1,3 @@
-import SvgIcons from "./SvgIcon";
+import SvgIcon from "./SvgIcon";
 
-export default SvgIcons;
+export default SvgIcon;

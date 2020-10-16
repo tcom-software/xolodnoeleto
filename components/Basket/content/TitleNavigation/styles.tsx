@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import theme from "styles/theme";
 
-const Container = styled.div`
+const TitleNavigationContainer = styled.div`
   @media (max-width: ${theme.mobileMedia.size}) {
   }
 `;
@@ -28,4 +28,4 @@ const Nav = styled.nav`
   }
 `;
 
-export { Container, Title, Nav };
+export { TitleNavigationContainer, Title, Nav };

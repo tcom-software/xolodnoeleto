@@ -7,8 +7,15 @@ import { TitleNavigation, AboutOrder } from "./content";
 import MobileCase from "../ProductListView/MobileCase";
 import StepInformation from "./content/StepInformation";
 import BasketBuyForm from "./content/BasketBuyForm";
+import DeliveryOrPayment from "./content/DeliveryOrPayment";
 
-const Basket = ({ basketItems, isMobile, stepState, basketSteps }) => {
+const Basket = ({
+  basketItems,
+  isMobile,
+  stepState,
+  basketSteps,
+  stepsContentData: { stepFour, stepFive },
+}) => {
   const customSwitch = (stepState) => {
     switch (stepState) {
       case 1:
@@ -63,6 +70,18 @@ const Basket = ({ basketItems, isMobile, stepState, basketSteps }) => {
           {stepState == 3 ? (
             <StepInformation stepStructure={stepObject}>
               <BasketBuyForm />
+            </StepInformation>
+          ) : null}
+
+          {stepState == 4 ? (
+            <StepInformation stepStructure={stepObject}>
+              <DeliveryOrPayment data={stepFour} />
+            </StepInformation>
+          ) : null}
+
+          {stepState == 5 ? (
+            <StepInformation stepStructure={stepObject}>
+              <DeliveryOrPayment data={stepFive} />
             </StepInformation>
           ) : null}
 

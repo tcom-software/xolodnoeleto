@@ -1,7 +1,7 @@
 import { GlobalSection } from "@atoms";
 import Link from "next/link";
 import theme from "styles/theme";
-import { Container, Title, Nav } from "./styles";
+import { TitleNavigationContainer, Title, Nav } from "./styles";
 
 const TitleNavigation = ({ title, currentPage }) => {
   return (
@@ -12,12 +12,12 @@ const TitleNavigation = ({ title, currentPage }) => {
       heightMobile="max-content"
       webBackground={theme.body.background}
     >
-      <Container>
+      <TitleNavigationContainer>
         <Nav>
           <Link href="/">Главная</Link> / <span> {currentPage} </span>
         </Nav>
         <Title>{title}</Title>
-      </Container>
+      </TitleNavigationContainer>
     </GlobalSection>
   );
 };

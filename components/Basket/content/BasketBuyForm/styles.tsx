@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import theme from "styles/theme";
 
-const Container = styled.div`
+const ByFormContainer = styled.div`
   display: flex;
   flex-direction: column;
 
@@ -28,4 +28,4 @@ const Nav = styled.nav`
   }
 `;
 
-export { Container, Title, Nav };
+export { ByFormContainer, Title, Nav };

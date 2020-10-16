@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import SvgIcons from "../components/atoms/SvgIcon";
+import { SvgIcon } from "@atoms";
 import { IncDecInterface } from "interfaces";
 
 const Container = styled.div`
@@ -27,11 +27,11 @@ const IncDec = ({ id, count, increment, decrement }) => {
   return (
     <Container>
       <SvgBack onClick={() => decrement(id)}>
-        <SvgIcons type="minus" width={11} height={11} />
+        <SvgIcon type="minus" width={11} height={11} />
       </SvgBack>
       <Count>{count}</Count>
       <SvgBack onClick={() => increment(id)}>
-        <SvgIcons type="plus" width={11} height={11} />
+        <SvgIcon type="plus" width={11} height={11} />
       </SvgBack>
     </Container>
   );

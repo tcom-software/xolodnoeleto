@@ -38,7 +38,7 @@ const GridSection = styled.div`
       }}
     }
 
-    @media (max-width: ${theme.mobileMedia.size}) {
+    @media (max-width: 1200px) {
       order: 1;
 
       & > tbody > tr {
@@ -60,7 +60,7 @@ const GridSection = styled.div`
     }
   }
 
-  @media (max-width: ${theme.mobileMedia.size}) {
+  @media (max-width: 1200px) {
     grid-template-columns: 1fr;
   }
 `;

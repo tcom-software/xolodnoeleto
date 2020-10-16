@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@atoms";
-import { Container, Title, MiniCon, Border } from "./styles";
+import { AboutOrderContainer, Title, MiniCon, Border } from "./styles";
 import { makePrice } from "utils";
 
 const AboutOrder = ({
@@ -10,7 +10,7 @@ const AboutOrder = ({
   changeOrderStep,
 }) => {
   return (
-    <Container stepState={stepState}>
+    <AboutOrderContainer stepState={stepState}>
       <MiniCon>
         <Title>ВАШ ЗАКАЗ</Title>
       </MiniCon>
@@ -52,7 +52,7 @@ const AboutOrder = ({
           </Button>
         ) : null}
       </MiniCon>
-    </Container>
+    </AboutOrderContainer>
   );
 };
 

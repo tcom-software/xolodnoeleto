@@ -3,7 +3,7 @@ import SvgTypes from "./svg-types";
 import Svg from "./styles";
 import { SvgProperty } from "interfaces";
 
-const SvgIcons = (props: SvgProperty) => {
+const SvgIcon = (props: SvgProperty) => {
   const { callback } = props;
 
   const {
@@ -26,4 +26,4 @@ const SvgIcons = (props: SvgProperty) => {
   );
 };
 
-export default SvgIcons;
+export default SvgIcon;

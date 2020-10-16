@@ -1,7 +1,7 @@
-import SvgIcons from "../../../../../atoms/SvgIcon";
+import { SvgIcon } from "@atoms";
 import { makePrice, IncDec } from "utils";
-import { Item, ImgContainer, Title, Image, Price } from "./styles";
 import { basketProductInterface } from "interfaces";
+import { Item, ImgContainer, Title, Image, Price } from "./styles";
 
 const BasketProduct = (
   {
@@ -38,7 +38,7 @@ const BasketProduct = (
       <Price>{makePrice(price * count)}</Price>
 
       {edit ? (
-        <SvgIcons
+        <SvgIcon
           type="edit"
           width={13}
           height={13}
@@ -46,7 +46,7 @@ const BasketProduct = (
         />
       ) : null}
 
-      <SvgIcons
+      <SvgIcon
         type="close"
         width={13}
         height={13}

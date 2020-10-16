@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Container, Div, ChildrenCon } from "./styles";
+import { StepInformationContainer, Div, ChildrenCon } from "./styles";
 import SvgIcons from "../../../atoms/SvgIcon";
 import { Button } from "@atoms";
 
@@ -38,21 +38,14 @@ const StepsCases = ({
               >
                 НАЗАД
               </Button>
-
-              {stepState === 3 ? (
-                <Button type="primary" width="170px" height="47px">
-                  ДАЛЕЕ
-                </Button>
-              ) : (
-                <Button
-                  type="primary"
-                  width="170px"
-                  height="47px"
-                  onClick={() => changeOrderStep(stepState + 1)}
-                >
-                  ДАЛЕЕ
-                </Button>
-              )}
+              <Button
+                type="primary"
+                width="170px"
+                height="47px"
+                onClick={() => changeOrderStep(stepState + 1)}
+              >
+                {stepState !== 5 ? "ДАЛЕЕ" : "ОФОРМИТЬ ЗАКАЗ"}
+              </Button>
             </div>
           )}
         </ChildrenCon>
@@ -70,7 +63,7 @@ const StepInformation = ({
   const StepsObjKeys = Object.keys(stepStructure);
 
   return (
-    <Container>
+    <StepInformationContainer>
       {stepState === 1
         ? stepStructure["current"].map(({ title, svgType }, i) => {
             return <StepOne key={i} title={title} />;
@@ -89,7 +82,7 @@ const StepInformation = ({
               );
             });
           })}
-    </Container>
+    </StepInformationContainer>
   );
 };
 

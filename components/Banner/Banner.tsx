@@ -1,10 +1,9 @@
 import React from "react";
 import data from "./data";
 import Slider from "react-slick";
-import { Container, Arrows } from "./styles";
-import { GlobalSection, Image } from "@atoms";
-import SvgIcons from "../atoms/SvgIcon";
-import theme from "../../styles/theme";
+import { Container } from "./styles";
+import { GlobalSection, Image, SvgIcon } from "@atoms";
+import theme from "styles/theme";
 import CardsAboutUs from "../CardsAboutUs";
 
 const Banner = () => {
@@ -20,13 +19,13 @@ const Banner = () => {
 
   const NextSlick = ({ onClick }) => (
     <span onClick={onClick}>
-      <SvgIcons type={"arrowRight"} width={20} height={20} color="white" />
+      <SvgIcon type={"arrowRight"} width={20} height={20} color="white" />
     </span>
   );
 
   const PrevSlick = ({ onClick }) => (
     <span onClick={onClick}>
-      <SvgIcons type={"arrowLeft"} width={20} height={20} color="white" />
+      <SvgIcon type={"arrowLeft"} width={20} height={20} color="white" />
     </span>
   );
 

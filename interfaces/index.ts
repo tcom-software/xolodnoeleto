@@ -100,3 +100,12 @@ export interface IncDecInterface {
   increment: any;
   decrement: any;
 }
+
+export interface checkBoxInterface {
+  width: string;
+  height: string;
+  border: string;
+  padding: string;
+  background: string;
+  children?: any;
+}

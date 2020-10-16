@@ -117,8 +117,62 @@ const initialState = {
       label: "Комментарии к заказу",
     },
   ],
+  stepsContentData: {
+    stepFour: {
+      1: {
+        id: 1,
+        title: "Доставка курьером",
+        price: 0,
+        svg: "delivery",
+        width: "35px",
+        height: "22px",
+      },
+      2: {
+        id: 2,
+        title: "Доставка транспортной \n" + "компанией",
+        price: 500,
+        svg: "delivery",
+        width: "35px",
+        height: "22px",
+      },
+      3: {
+        id: 3,
+        title: "Самовывоз",
+        price: 0,
+        svg: "delivery",
+        width: "35px",
+        height: "22px",
+      },
+    },
+    stepFive: {
+      1: {
+        id: 1,
+        title: "Наличный расчет",
+        price: 0,
+        svg: "purse",
+        width: "32px",
+        height: "32px",
+      },
+      2: {
+        id: 2,
+        title: "Онлайн оплата",
+        price: 500,
+        svg: "CardWithCoin",
+        width: "32px",
+        height: "32px",
+      },
+      3: {
+        id: 3,
+        title: "Оплата картой при получении",
+        price: 0,
+        svg: "handWithCoin",
+        width: "32px",
+        height: "32px",
+      },
+    },
+  },
   total_amount: 0,
-  stepState: 1,
+  stepState: 5,
 };
 
 const basketReducer = (state = initialState, action) => {

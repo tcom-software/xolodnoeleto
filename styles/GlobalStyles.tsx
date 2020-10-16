@@ -32,6 +32,14 @@ const GlobalStyles = createGlobalStyle`
   ul {
     list-style: none;
   }
+  input,
+  select,
+  textarea,
+  button {
+    outline: none;
+    appearance: none;
+    border: 0;
+  }
 `;
 
 export default GlobalStyles;

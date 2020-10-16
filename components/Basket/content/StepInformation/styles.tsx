@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import theme from "styles/theme";
 
-const Container = styled.div`
+const StepInformationContainer = styled.div`
   & > div {
     min-height: 50px;
     padding: 15px;
@@ -14,6 +14,10 @@ const Container = styled.div`
     justify-content: flex-start;
     border: 1px solid ${theme.body.someBorder};
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+
+    &:first-of-type {
+      margin-top: 0;
+    }
   }
   & > div {
     & > table {
@@ -67,6 +71,7 @@ const ChildrenCon = styled.div`
     }
   }
 `;
+
 const Div = styled.div`
   ${({ current }) =>
     current &&
@@ -79,4 +84,4 @@ const Div = styled.div`
   }
 `;
 
-export { Container, Div, ChildrenCon };
+export { StepInformationContainer, Div, ChildrenCon };
