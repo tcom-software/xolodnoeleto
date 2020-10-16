@@ -89,6 +89,9 @@ const initialState = {
       current: [{ title: "Оплата" }],
       bottom: [],
     },
+    stepSix: {
+      text: `Спасибо за покупку \n Ваш заказ №7O3W4 от 26.03.2020 17:55 успешно создан.\nНомер вашей оплаты:\n №7O3W4/1\n\n Вы можете следить за выполнением своего заказа в Персональном разделе сайта. Обратите \n внимание, что для входа в этот раздел вам необходимо будет ввести логин и пароль пользователя\n сайта.\n \nОплата заказа: Наличный расчет`,
+    },
   },
   basketBuyInputs: [
     {
@@ -172,7 +175,7 @@ const initialState = {
     },
   },
   total_amount: 0,
-  stepState: 5,
+  stepState: 6,
 };
 
 const basketReducer = (state = initialState, action) => {

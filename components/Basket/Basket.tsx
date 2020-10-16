@@ -7,6 +7,7 @@ import { TitleNavigation, AboutOrder } from "./content";
 import MobileCase from "../ProductListView/MobileCase";
 import StepInformation from "./content/StepInformation";
 import BasketBuyForm from "./content/BasketBuyForm";
+import OrderDone from "./content/OrderDone";
 import DeliveryOrPayment from "./content/DeliveryOrPayment";
 
 const Basket = ({
@@ -28,6 +29,8 @@ const Basket = ({
         return basketSteps.stepFour;
       case 5:
         return basketSteps.stepFive;
+      case 6:
+        return basketSteps.stepSix;
       default:
         return basketSteps.stepOne;
     }
@@ -36,61 +39,74 @@ const Basket = ({
 
   return (
     <Container>
-      <TitleNavigation
-        title="Оформление заказа"
-        currentPage="Оформление Заказа"
-      />
+      {stepState === 6 ? null : (
+        <TitleNavigation
+          title="Оформление заказа"
+          currentPage="Оформление Заказа"
+        />
+      )}
+
       <GlobalSection
         isMobile={true}
         isWeb={true}
-        webBackground={theme.body.secondBackground}
-        mobileBackground={theme.body.secondBackground}
+        webBackground={
+          stepState === 6 ? theme.body.background : theme.body.secondBackground
+        }
+        mobileBackground={
+          stepState === 6 ? theme.body.background : theme.body.secondBackground
+        }
+        webPadding="50px 0"
+        mobilePadding="0 0"
       >
-        <GridSection stepState={stepState}>
-          {stepState === 1 ? (
-            isMobile ? (
-              <MobileCase basketItems={basketItems} />
-            ) : (
-              <WebCase basketItems={basketItems} edit={true} header={true} />
-            )
-          ) : null}
+        {stepState === 6 ? (
+          <OrderDone />
+        ) : (
+          <GridSection stepState={stepState}>
+            {stepState === 1 ? (
+              isMobile ? (
+                <MobileCase basketItems={basketItems} />
+              ) : (
+                <WebCase basketItems={basketItems} edit={true} header={true} />
+              )
+            ) : null}
 
-          {stepState == 2 ? (
-            <StepInformation stepStructure={stepObject}>
-              {stepState == 2 ? (
-                isMobile ? (
-                  <MobileCase basketItems={basketItems} />
-                ) : (
-                  <WebCase basketItems={basketItems} edit={true} />
-                )
-              ) : null}
-            </StepInformation>
-          ) : null}
+            {stepState == 2 ? (
+              <StepInformation stepStructure={stepObject}>
+                {stepState == 2 ? (
+                  isMobile ? (
+                    <MobileCase basketItems={basketItems} />
+                  ) : (
+                    <WebCase basketItems={basketItems} edit={true} />
+                  )
+                ) : null}
+              </StepInformation>
+            ) : null}
 
-          {stepState == 3 ? (
-            <StepInformation stepStructure={stepObject}>
-              <BasketBuyForm />
-            </StepInformation>
-          ) : null}
+            {stepState == 3 ? (
+              <StepInformation stepStructure={stepObject}>
+                <BasketBuyForm />
+              </StepInformation>
+            ) : null}
 
-          {stepState == 4 ? (
-            <StepInformation stepStructure={stepObject}>
-              <DeliveryOrPayment data={stepFour} />
-            </StepInformation>
-          ) : null}
+            {stepState == 4 ? (
+              <StepInformation stepStructure={stepObject}>
+                <DeliveryOrPayment data={stepFour} />
+              </StepInformation>
+            ) : null}
 
-          {stepState == 5 ? (
-            <StepInformation stepStructure={stepObject}>
-              <DeliveryOrPayment data={stepFive} />
-            </StepInformation>
-          ) : null}
+            {stepState == 5 ? (
+              <StepInformation stepStructure={stepObject}>
+                <DeliveryOrPayment data={stepFive} />
+              </StepInformation>
+            ) : null}
 
-          <AboutOrder />
+            <AboutOrder />
 
-          {stepState === 1 ? (
-            <StepInformation stepStructure={stepObject} />
-          ) : null}
-        </GridSection>
+            {stepState === 1 ? (
+              <StepInformation stepStructure={stepObject} />
+            ) : null}
+          </GridSection>
+        )}
       </GlobalSection>
     </Container>
   );
