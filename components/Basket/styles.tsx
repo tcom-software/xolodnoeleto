@@ -61,7 +61,7 @@ const GridSection = styled.div`
   }
 
   @media (max-width: 1200px) {
-    grid-template-columns: 1frgit;
+    grid-template-columns: 1fr;
   }
 `;
 
