@@ -27,42 +27,44 @@ const Container = styled.div`
 `;
 
 const ListContainer = styled.div`
-  overflow: scroll;
-  max-height: 240px;
-
   & > div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    overflow: scroll;
+    max-height: 240px;
 
-    height: 66px;
-    padding: 8px;
-    margin: 5px 0;
-    border: 1px solid #d8d8d8;
-  }
+    & > div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-  width: 99%;
-  margin: 0 auto;
-  align-items: center;
+      height: 66px;
+      padding: 8px;
+      margin: 5px 0;
+      border: 1px solid #d8d8d8;
+    }
 
-  & > table {
     width: 99%;
-    margin: 0px auto;
-    border-spacing: 0px 7px;
+    margin: 0 auto;
+    align-items: center;
 
-    & > tbody {
-      & > tr {
-        box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3);
+    & > table {
+      width: 99%;
+      margin: 0px auto;
+      border-spacing: 0px 7px;
 
-        & > td {
-          text-align: center;
-          &:last-of-type {
-            width: 40px;
-          }
-          & > div {
-            width: max-content;
-            text-align: left;
-            margin: 0 auto;
+      & > tbody {
+        & > tr {
+          box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3);
+
+          & > td {
+            text-align: center;
+            &:last-of-type {
+              width: 40px;
+            }
+            & > div {
+              width: max-content;
+              text-align: left;
+              margin: 0 auto;
+            }
           }
         }
       }

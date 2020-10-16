@@ -1,16 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { SvgIcon } from "@atoms";
-import { StepInformationContainer, Div, ChildrenCon } from "./styles";
-
-const StepOne = ({ title }) => (
-  <Link href={"/"}>
-    <div>
-      <SvgIcon type="longArrowLeft" width={15} height={15} />
-      <div> {title} </div>
-    </div>
-  </Link>
-);
+import { Div, ChildrenCon, StepInformationContainer } from "./styles";
 
 const StepsCases = ({ title, current, children }) => (
   <>
@@ -27,9 +18,14 @@ const StepInformation = ({ stepStructure, stepState, children }) => {
   return (
     <StepInformationContainer>
       {stepState === 1
-        ? stepStructure["current"].map(({ title, svgType }, i) => {
-            return <StepOne key={i} title={title} />;
-          })
+        ? stepStructure["current"].map(({ title, svgType }, i) => (
+            <Link href={"/"} key={i}>
+              <Div stepOneComeBack={true}>
+                <SvgIcon type="longArrowLeft" width={15} height={15} />
+                <div> {title} </div>
+              </Div>
+            </Link>
+          ))
         : StepsObjKeys.map((e) => {
             return stepStructure[e].map(({ title, svgType }, index) => {
               return (

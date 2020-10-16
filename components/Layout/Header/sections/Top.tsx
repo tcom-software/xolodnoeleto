@@ -1,12 +1,19 @@
+import React from "react";
+import Link from "next/link";
+import theme from "styles/theme";
+import { connect } from "react-redux";
 import { GlobalSection, SvgIcon } from "@atoms";
 import { LogoCon, Ul, TopPanel } from "../styles";
-import Link from "next/link";
-import React from "react";
-import { connect } from "react-redux";
-import { openModal, closeModal } from "../../../../redux/actions/modalActions";
-import theme from "../../../../styles/theme";
+import { openModal, closeModal } from "redux/actions/modalActions";
 
-const Top = ({ navigation, elseRefs, modalType, openModal, closeModal }) => {
+const Top = ({
+  navigation,
+  elseRefs,
+  modalType,
+  openModal,
+  closeModal,
+  modalRef,
+}) => {
   return (
     <GlobalSection
       isWeb={true}
@@ -21,14 +28,16 @@ const Top = ({ navigation, elseRefs, modalType, openModal, closeModal }) => {
           type="phone"
           width={23}
           height={23}
-          callback={() => openModal("CallBack")}
+          callback={() =>
+            modalType == "CallBack" ? closeModal() : openModal("CallBack")
+          }
         />
         <LogoCon isMobile={true}>
-          <Link href={""}>
-            <>
+          <Link href={"/"}>
+            <a>
               <img src="/images/logo/logo.png" alt="sun" />
               <h1>XOLODNOELETO</h1>
-            </>
+            </a>
           </Link>
         </LogoCon>
         <SvgIcon
@@ -44,7 +53,10 @@ const Top = ({ navigation, elseRefs, modalType, openModal, closeModal }) => {
           }}
         />
       </TopPanel>
-      <TopPanel whatMenu={modalType} onlyMenu={true}>
+      <TopPanel
+        modalType={modalType}
+        ref={modalType === "catalog" ? modalRef : null}
+      >
         <Ul>
           {[...elseRefs, ...navigation].map((item, i) => {
             return (
@@ -63,10 +75,11 @@ const mapStateToProps = ({
   general: {
     header: { navigation, elseRefs },
   },
-  modal: { modalType },
+  modal: { modalType, modalRef },
 }) => ({
   modalType,
   elseRefs,
+  modalRef,
   navigation,
 });
 const mapDispatchToProps = (dispatch) => ({

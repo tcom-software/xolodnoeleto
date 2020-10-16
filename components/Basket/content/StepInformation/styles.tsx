@@ -37,6 +37,7 @@ const StepInformationContainer = styled.div`
   }
 `;
 
+const GoLandingPage = styled.div``;
 const ChildrenCon = styled.div`
   display: flex;
   align-items: flex-end !important;
@@ -90,6 +91,14 @@ const Div = styled.div`
     current &&
     css`
       background: #f6f6f6 !important;
+    `}
+
+  ${({ stepOneComeBack }) =>
+    stepOneComeBack &&
+    css`
+      & > div {
+        margin-left: 10px;
+      }
     `}
 
   & > div {

@@ -177,7 +177,7 @@ const CatalogUl = styled.ul`
   left: 0;
   z-index: 2;
   padding: 15px;
-  width: 80vw;
+  width: 1000px;
   background: #fff;
   display: none;
   flex-wrap: wrap;
@@ -207,6 +207,9 @@ const CatalogUl = styled.ul`
     );
   }}
 
+  @media (max-width: 1100px) {
+    width: 90vw;
+  }
   @media (max-width: ${theme.mobileMedia.size}) {
     position: absolute;
     top: 140%;
@@ -252,6 +255,9 @@ const Ul = styled.ul`
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  & > li:first-of-type > svg {
+    margin-right: 10px;
+  }
 `;
 
 const LogoCon = styled.div`
@@ -275,6 +281,9 @@ const LogoCon = styled.div`
       isMobile &&
       css`
         display: block;
+        & > a > h1 {
+          display: none;
+        }
       `}
   }
 `;

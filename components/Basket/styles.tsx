@@ -5,7 +5,7 @@ const GridSection = styled.div`
   display: grid;
   grid-gap: 10px;
   align-items: flex-start;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 3fr 1fr;
 
   & > div {
     table {

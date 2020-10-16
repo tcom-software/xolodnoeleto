@@ -1,12 +1,11 @@
-import { Button, GlobalSection, Input, SvgIcon } from "@atoms";
-import { BottomPanel, CatalogUl, SearchCon, Span, Ul } from "../styles";
-import theme from "styles/theme";
-import Link from "next/link";
 import React, { useState } from "react";
+import Link from "next/link";
+import theme from "styles/theme";
 import { connect } from "react-redux";
-import { closeModal, openModal } from "redux/actions/modalActions";
-
 import BasketMenu from "./BasketMenu";
+import { Button, GlobalSection, Input, SvgIcon } from "@atoms";
+import { closeModal, openModal } from "redux/actions/modalActions";
+import { BottomPanel, CatalogUl, SearchCon, Span, Ul } from "../styles";
 
 const Bottom = ({
   catalog,
@@ -29,7 +28,13 @@ const Bottom = ({
     >
       <BottomPanel modalType={modalType}>
         <Ul>
-          <li onClick={() => openModal("catalog")}>
+          <li
+            onClick={() => {
+              return modalType == "catalog"
+                ? closeModal()
+                : openModal("catalog");
+            }}
+          >
             <SvgIcon
               type="hamburgerMenu"
               width={25}
@@ -39,7 +44,7 @@ const Bottom = ({
             Каталог товаров
             <CatalogUl
               modalType={modalType}
-              ref={modalType === "catalog" ? modalRef : null}
+              ref={modalType === "navigation" ? modalRef : null}
             >
               {catalog.map((e, i) => {
                 return (
@@ -86,7 +91,9 @@ const Bottom = ({
               type="with-icon"
               width="190px"
               height="47px"
-              onClick={() => openModal("basket")}
+              onClick={() =>
+                modalType == "basket" ? closeModal() : openModal("basket")
+              }
             >
               <SvgIcon type="basket" width={20} height={20} />
               Корзина пуста ({basketItemsCount})

@@ -1,10 +1,9 @@
 import React from "react";
-import SvgIcons from "../atoms/SvgIcon";
-import theme from "../../styles/theme";
-import styled from "styled-components";
-import { IncDec, makePrice } from "../../utils";
 import { connect } from "react-redux";
-import { Button } from "@atoms";
+import styled from "styled-components";
+import theme from "styles/theme";
+import { Button, SvgIcon } from "@atoms";
+import { IncDec, makePrice } from "utils";
 
 import {
   changeOrderStep,
@@ -86,11 +85,11 @@ const WebCase = ({
                 <td>{makePrice(price * count)}</td>
                 {edit ? (
                   <td>
-                    <SvgIcons type="edit" width={15} height={15} />
+                    <SvgIcon type="edit" width={15} height={15} />
                   </td>
                 ) : null}
                 <td>
-                  <SvgIcons
+                  <SvgIcon
                     type="close"
                     width={15}
                     height={15}
