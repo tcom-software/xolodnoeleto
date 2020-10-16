@@ -1,3 +1,8 @@
+import { IncDec, makePrice } from "../../utils";
+import { SvgIcon } from "@atoms";
+import React from "react";
+import { connect } from "react-redux";
+import { Button } from "@atoms";
 import {
   CalculateCon,
   Edit,
@@ -7,57 +12,79 @@ import {
   Title,
   Container,
 } from "./styles";
-import { IncDec, makePrice } from "../../utils";
-import SvgIcons from "../atoms/SvgIcon";
-import React from "react";
-import { connect } from "react-redux";
 
 import {
+  changeOrderStep,
   decrementBasketCount,
   deleteBasketItem,
   incrementBasketCount,
-} from "../../redux/actions/basketActions";
+} from "redux/actions/basketActions";
 
 const MobileCase = ({
   basketItems,
   increment,
   decrement,
+  stepState,
   deleteBasketItem,
 }) => {
-  return Object.values(basketItems).map(
-    ({ src, manufacturer, model, price, id, count }) => {
-      return (
-        <Container key={id}>
-          <ImgCon>
-            <Img src={src} />
-          </ImgCon>
-          <MiniCon>
-            <Title>
-              <p>{manufacturer}</p>
-              <p>{model}</p>
-            </Title>
-            <Edit>Изменить</Edit>
-            <CalculateCon>
-              <p>{makePrice(price)}</p>
-              <div>
-                {IncDec({
-                  id,
-                  count,
-                  increment,
-                  decrement,
-                })}
-              </div>
-            </CalculateCon>
-            <SvgIcons
-              type="close"
-              width={15}
-              height={15}
-              callback={() => deleteBasketItem(id)}
-            />
-          </MiniCon>
-        </Container>
-      );
-    }
+  return (
+    <>
+      {Object.values(basketItems).map(
+        ({ src, manufacturer, model, price, id, count }) => {
+          return (
+            <Container key={id}>
+              <ImgCon>
+                <Img src={src} />
+              </ImgCon>
+              <MiniCon>
+                <Title>
+                  <p>{manufacturer}</p>
+                  <p>{model}</p>
+                </Title>
+                <Edit>Изменить</Edit>
+                <CalculateCon>
+                  <p>{makePrice(price)}</p>
+                  <div>
+                    {IncDec({
+                      id,
+                      count,
+                      increment,
+                      decrement,
+                    })}
+                  </div>
+                </CalculateCon>
+                <SvgIcon
+                  type="close"
+                  width={15}
+                  height={15}
+                  callback={() => deleteBasketItem(id)}
+                />
+              </MiniCon>
+            </Container>
+          );
+        }
+      )}
+      {stepState == 2 ? (
+        <div>
+          <Button
+            type="secondary"
+            width="170px"
+            height="47px"
+            onClick={() => changeOrderStep(stepState - 1)}
+          >
+            НАЗАД
+          </Button>
+          <Button
+            type="primary"
+            width="170px"
+            height="47px"
+            onClick={() => changeOrderStep(stepState + 1)}
+          >
+            ДАЛЕЕ
+          </Button>
+        </div>
+      ) : null}
+    </>
   );
 };
 
@@ -65,6 +92,11 @@ const mapDispatchToProps = (dispatch) => ({
   increment: (id) => dispatch(incrementBasketCount(id)),
   decrement: (id) => dispatch(decrementBasketCount(id)),
   deleteBasketItem: (id) => dispatch(deleteBasketItem(id)),
+  changeOrderStep: (step) => dispatch(changeOrderStep(step)),
 });
 
-export default connect(false, mapDispatchToProps)(MobileCase);
+const mapStateToProps = ({ basket: { stepState } }) => ({
+  stepState,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MobileCase);

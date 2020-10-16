@@ -19,7 +19,7 @@ const StepInformationContainer = styled.div`
       margin-top: 0;
     }
   }
-  & > div {
+  & > div > div {
     & > table {
       width: 100%;
       background: #fff;
@@ -43,14 +43,27 @@ const ChildrenCon = styled.div`
   flex-direction: column;
   cursor: unset !important;
 
-  & > div > form {
-    width: 100%;
+  & > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-    & > div {
+    & > form {
+      width: 100%;
+
       & > div {
-        margin-top: 15px;
-        font-weight: ${theme.body.fontBolder};
+        & > div {
+          margin-top: 15px;
+          font-weight: ${theme.body.fontBolder};
+        }
       }
+    }
+    & > div {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
   }
   & > div {

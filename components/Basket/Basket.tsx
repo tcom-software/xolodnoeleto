@@ -36,7 +36,6 @@ const Basket = ({
     }
   };
   const stepObject = customSwitch(stepState);
-
   return (
     <Container>
       {stepState === 6 ? null : (

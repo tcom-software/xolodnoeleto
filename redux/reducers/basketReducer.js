@@ -175,7 +175,7 @@ const initialState = {
     },
   },
   total_amount: 0,
-  stepState: 6,
+  stepState: 1,
 };
 
 const basketReducer = (state = initialState, action) => {
@@ -211,7 +211,6 @@ const basketReducer = (state = initialState, action) => {
           total_amount: state.total_amount + 27129,
         };
       }
-
     case types.BASKET_INITIAL_STATE:
       return {
         ...state,
@@ -232,9 +231,6 @@ const basketReducer = (state = initialState, action) => {
         total_amount: state.total_amount + state.items[action.payload.id].price,
       };
     case types.DECREMENT:
-      console.log(state.items);
-      console.log(action.payload);
-
       return {
         ...state,
         items: {

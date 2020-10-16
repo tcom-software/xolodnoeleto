@@ -3,36 +3,45 @@ import theme from "styles/theme";
 
 const DeliveryContainer = styled.div`
   display: grid !important;
-  grid-template-columns: 2fr 1fr;
-  margin-bottom: 30px;
+  grid-template-columns: 1fr;
 
-  & > div:first-child {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
-  }
+  & > div:first-of-type {
+    display: grid !important;
+    grid-template-columns: 2fr 1fr;
+    margin-bottom: 30px;
 
-  & > div:last-child {
-    padding: 15px;
-    width: 100%;
-    border: 1px solid ${theme.body.someBorder};
-
-    & > p {
-      &:first-of-type {
-        color: ${theme.body.primaryColor};
-      }
-      font-size: 12px;
-    }
-    & > * {
-      margin: 5px 0;
-    }
-  }
-
-  @media (max-width: 768px) {
     & > div:first-child {
       display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+    }
+
+    & > div:last-child {
+      padding: 15px;
+      width: 100%;
+      border: 1px solid ${theme.body.someBorder};
+
+      & > p {
+        &:first-of-type {
+          color: ${theme.body.primaryColor};
+        }
+        font-size: 12px;
+      }
+      & > * {
+        margin: 5px 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      & > div:first-child {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
       grid-template-columns: 1fr;
     }
-    grid-template-columns: 1fr;
+  }
+  & > div:last-of-type {
+    display: flex;
+    justify-content: space-between;
   }
 `;
 
