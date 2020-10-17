@@ -31,6 +31,11 @@ const ListContainer = styled.div`
     overflow: scroll;
     max-height: 240px;
 
+    &::-webkit-scrollbar {
+      display: none;
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+    }
     & > div {
       display: flex;
       align-items: center;

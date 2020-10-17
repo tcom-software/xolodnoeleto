@@ -47,7 +47,12 @@ const BasketBuyForm = ({ changeOrderStep, stepState, basketBuyInputs }) => {
           ))}
         </div>
         <div>
-          <Button type="secondary" width="170px" height="47px">
+          <Button
+            type="secondary"
+            width="170px"
+            height="47px"
+            onClick={() => changeOrderStep(stepState - 1)}
+          >
             НАЗАД
           </Button>
           <Button type="primary" width="170px" height="47px">
