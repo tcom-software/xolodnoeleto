@@ -176,6 +176,14 @@ const initialState = {
   },
   total_amount: 0,
   stepState: 1,
+  stepsResult: {
+    stepOne: false,
+    stepTwo: false,
+    stepFive: false,
+    stepTree: false,
+    stepFour: false,
+    stepSix: false,
+  },
 };
 
 const basketReducer = (state = initialState, action) => {
@@ -211,6 +219,26 @@ const basketReducer = (state = initialState, action) => {
           total_amount: state.total_amount + 27129,
         };
       }
+    case types.INITIAL_STEPS_RESULT:
+      return {
+        ...state,
+        stepsResult: {
+          stepOne: false,
+          stepTwo: false,
+          stepTree: false,
+          stepFour: false,
+          stepFive: false,
+          stepSix: false,
+        },
+      };
+    case types.UPDATE_STEPS_RESULT:
+      return {
+        ...state,
+        stepsResult: {
+          ...state.stepsResult,
+          [action.payload.step]: action.payload.value,
+        },
+      };
     case types.BASKET_INITIAL_STATE:
       return {
         ...state,

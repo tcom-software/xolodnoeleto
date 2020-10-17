@@ -10,6 +10,7 @@ import {
   decrementBasketCount,
   deleteBasketItem,
   incrementBasketCount,
+  updateStepsResult,
 } from "redux/actions/basketActions";
 
 const BorderTd = styled.td`
@@ -35,6 +36,7 @@ const WebCase = ({
   stepState,
   header,
   changeOrderStep,
+  updateStepsResult,
 }) => {
   return (
     <div>
@@ -107,7 +109,10 @@ const WebCase = ({
             type="secondary"
             width="170px"
             height="47px"
-            onClick={() => changeOrderStep(stepState - 1)}
+            onClick={() => {
+              updateStepsResult({ step: "stepOne", value: false });
+              changeOrderStep(stepState - 1);
+            }}
           >
             НАЗАД
           </Button>
@@ -115,7 +120,10 @@ const WebCase = ({
             type="primary"
             width="170px"
             height="47px"
-            onClick={() => changeOrderStep(stepState + 1)}
+            onClick={() => {
+              updateStepsResult({ step: "stepTwo", value: true });
+              changeOrderStep(stepState + 1);
+            }}
           >
             ДАЛЕЕ
           </Button>
@@ -130,6 +138,7 @@ const mapDispatchToProps = (dispatch) => ({
   decrement: (id) => dispatch(decrementBasketCount(id)),
   deleteBasketItem: (id) => dispatch(deleteBasketItem(id)),
   changeOrderStep: (step) => dispatch(changeOrderStep(step)),
+  updateStepsResult: (data) => dispatch(updateStepsResult(data)),
 });
 
 const mapStateToProps = ({ basket: { stepState } }) => ({

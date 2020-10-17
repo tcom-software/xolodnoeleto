@@ -18,6 +18,7 @@ import {
   decrementBasketCount,
   deleteBasketItem,
   incrementBasketCount,
+  updateStepsResult,
 } from "redux/actions/basketActions";
 
 const MobileCase = ({
@@ -25,10 +26,12 @@ const MobileCase = ({
   increment,
   decrement,
   stepState,
+  changeOrderStep,
   deleteBasketItem,
+  updateStepsResult,
 }) => {
   return (
-    <>
+    <div>
       {Object.values(basketItems).map(
         ({ src, manufacturer, model, price, id, count }) => {
           return (
@@ -70,7 +73,10 @@ const MobileCase = ({
             type="secondary"
             width="170px"
             height="47px"
-            onClick={() => changeOrderStep(stepState - 1)}
+            onClick={() => {
+              updateStepsResult({ step: "stepOne", value: false });
+              changeOrderStep(stepState - 1);
+            }}
           >
             НАЗАД
           </Button>
@@ -78,13 +84,16 @@ const MobileCase = ({
             type="primary"
             width="170px"
             height="47px"
-            onClick={() => changeOrderStep(stepState + 1)}
+            onClick={() => {
+              updateStepsResult({ step: "stepTwo", value: true });
+              changeOrderStep(stepState + 1);
+            }}
           >
             ДАЛЕЕ
           </Button>
         </div>
       ) : null}
-    </>
+    </div>
   );
 };
 
@@ -93,6 +102,7 @@ const mapDispatchToProps = (dispatch) => ({
   decrement: (id) => dispatch(decrementBasketCount(id)),
   deleteBasketItem: (id) => dispatch(deleteBasketItem(id)),
   changeOrderStep: (step) => dispatch(changeOrderStep(step)),
+  updateStepsResult: (step) => dispatch(updateStepsResult(step)),
 });
 
 const mapStateToProps = ({ basket: { stepState } }) => ({

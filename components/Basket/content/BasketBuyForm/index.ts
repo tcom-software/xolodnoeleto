@@ -1,6 +1,9 @@
 import BasketBuyForm from "./BasketBuyForm";
 import { connect } from "react-redux";
-import { changeOrderStep } from "../../../../redux/actions/basketActions";
+import {
+  changeOrderStep,
+  updateStepsResult,
+} from "redux/actions/basketActions";
 
 const mapStateToProps = ({
   basket: { stepState, basketBuyInputs },
@@ -23,6 +26,7 @@ const mapStateToProps = ({
 
 const mapDispatchToProps = (dispatch) => ({
   changeOrderStep: (step) => dispatch(changeOrderStep(step)),
+  updateStepsResult: (data) => dispatch(updateStepsResult(data)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BasketBuyForm);

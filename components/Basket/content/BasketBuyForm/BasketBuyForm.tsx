@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import { ByFormContainer } from "./styles";
 import { Button, InputValidation } from "@atoms";
 
-const BasketBuyForm = ({ changeOrderStep, stepState, basketBuyInputs }) => {
+const BasketBuyForm = ({
+  changeOrderStep,
+  stepState,
+  basketBuyInputs,
+  updateStepsResult,
+}) => {
   const [errorState, setErrorState] = useState([]);
   const [info, setInfo] = useState({
     fullName: "",
@@ -24,6 +29,7 @@ const BasketBuyForm = ({ changeOrderStep, stepState, basketBuyInputs }) => {
     if (basketBuyInputs.length > 0) {
       setErrorState(basketBuyInputs);
     } else {
+      updateStepsResult({ step: "stepTree", value: info });
       changeOrderStep(stepState + 1);
     }
   };
@@ -51,7 +57,10 @@ const BasketBuyForm = ({ changeOrderStep, stepState, basketBuyInputs }) => {
             type="secondary"
             width="170px"
             height="47px"
-            onClick={() => changeOrderStep(stepState - 1)}
+            onClick={() => {
+              updateStepsResult({ step: "stepTwo", value: false });
+              changeOrderStep(stepState - 1);
+            }}
           >
             НАЗАД
           </Button>

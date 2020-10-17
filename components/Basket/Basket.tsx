@@ -15,6 +15,7 @@ const Basket = ({
   isMobile,
   stepState,
   basketSteps,
+  stepsResult,
   stepsContentData: { stepFour, stepFive },
 }) => {
   const customSwitch = (stepState) => {
@@ -36,6 +37,7 @@ const Basket = ({
     }
   };
   const stepObject = customSwitch(stepState);
+
   return (
     <Container>
       {stepState === 6 ? null : (

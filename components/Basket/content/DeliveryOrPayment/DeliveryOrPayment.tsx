@@ -4,7 +4,13 @@ import { makePrice } from "utils";
 import { Button, CheckBox, SvgIcon } from "@atoms";
 import { DeliveryContainer, DeliveryItem, PriceSpan } from "./styles";
 
-const DeliveryOrPayment = ({ data, stepState, changeOrderStep }) => {
+const DeliveryOrPayment = ({
+  data,
+  stepState,
+  changeOrderStep,
+  updateStepsResult,
+  makeInitialStepsResult,
+}) => {
   const [typeId, setTypeId] = useState(1);
 
   return (
@@ -83,15 +89,32 @@ const DeliveryOrPayment = ({ data, stepState, changeOrderStep }) => {
           type="secondary"
           width="170px"
           height="47px"
-          onClick={() => changeOrderStep(stepState - 1)}
+          onClick={() => {
+            if (stepState === 4) {
+              updateStepsResult({ step: "stepTree", value: false });
+            } else if (stepState === 5) {
+              updateStepsResult({ step: "stepFour", value: false });
+            }
+            changeOrderStep(stepState - 1);
+          }}
         >
-          НАЗАД 4444
+          НАЗАД
         </Button>
         <Button
           type="primary"
           width="170px"
           height="47px"
-          onClick={() => changeOrderStep(stepState + 1)}
+          onClick={() => {
+            if (stepState === 4) {
+              updateStepsResult({ step: "stepFour", value: typeId });
+            } else if (stepState === 5) {
+              updateStepsResult({ step: "stepFive", value: typeId });
+              // Here will be axios call for sending info to backend and update redux steps object
+
+              makeInitialStepsResult();
+            }
+            changeOrderStep(stepState + 1);
+          }}
         >
           {stepState !== 5 ? "ДАЛЕЕ" : "ОФОРМИТЬ ЗАКАЗ"}
         </Button>

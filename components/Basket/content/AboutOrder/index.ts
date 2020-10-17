@@ -1,6 +1,9 @@
 import AboutOrder from "./AboutOrder";
 import { connect } from "react-redux";
-import { changeOrderStep } from "../../../../redux/actions/basketActions";
+import {
+  changeOrderStep,
+  updateStepsResult,
+} from "redux/actions/basketActions";
 
 const mapStateToProps = ({ basket: { items, total_amount, stepState } }) => ({
   stepState,
@@ -9,5 +12,6 @@ const mapStateToProps = ({ basket: { items, total_amount, stepState } }) => ({
 });
 const mapDispatchToProps = (dispatch) => ({
   changeOrderStep: (step) => dispatch(changeOrderStep(step)),
+  updateStepsResult: (data) => dispatch(updateStepsResult(data)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(AboutOrder);

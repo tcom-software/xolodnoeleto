@@ -8,6 +8,7 @@ const AboutOrder = ({
   itemsCount,
   stepState,
   changeOrderStep,
+  updateStepsResult,
 }) => {
   return (
     <AboutOrderContainer stepState={stepState}>
@@ -45,7 +46,8 @@ const AboutOrder = ({
             width="100%"
             height="47px"
             onClick={() => {
-              changeOrderStep(2);
+              updateStepsResult({ step: "stepOne", value: true });
+              changeOrderStep(stepState + 1);
             }}
           >
             ОФОРМИТЬ ЗАКАЗ
