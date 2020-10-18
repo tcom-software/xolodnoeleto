@@ -434,20 +434,22 @@ const SearchCon = styled.div`
 `;
 
 const SearchAndFavoriteCon = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  & > a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 
-  ${({ customMargin }) => {
-    if (customMargin) {
-      return css`
-        & > svg {
-          margin: 6.6px 0;
-        }
-      `;
-    }
-  }}
+    ${({ customMargin }) => {
+      if (customMargin) {
+        return css`
+          & > svg {
+            margin: 6.6px 0;
+          }
+        `;
+      }
+    }}
+  }
 `;
 
 const BannerContainer = styled.div`

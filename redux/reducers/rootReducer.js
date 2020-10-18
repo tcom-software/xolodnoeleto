@@ -3,6 +3,7 @@ import modalReducer from "./modalReducer";
 import productListReducer from "./productListReducer";
 import brandsReducer from "./brandsReducer";
 import basketReducer from "./basketReducer";
+import compareReducer from "./compareReducer";
 import { combineReducers } from "redux";
 
 const rootReducer = combineReducers({
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   products: productListReducer,
   brands: brandsReducer,
   basket: basketReducer,
+  compare: compareReducer,
 });
 
 export default rootReducer;

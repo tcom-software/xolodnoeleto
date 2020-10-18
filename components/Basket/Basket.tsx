@@ -3,12 +3,13 @@ import theme from "styles/theme";
 import { GlobalSection } from "@atoms";
 import WebCase from "../ProductListView/WebCase";
 import { Container, GridSection } from "./styles";
-import { TitleNavigation, AboutOrder } from "./content";
+import { AboutOrder } from "./content";
 import MobileCase from "../ProductListView/MobileCase";
 import StepInformation from "./content/StepInformation";
 import BasketBuyForm from "./content/BasketBuyForm";
 import OrderDone from "./content/OrderDone";
 import DeliveryOrPayment from "./content/DeliveryOrPayment";
+import TitleNavigation from "../TitleNavigation";
 
 const Basket = ({
   basketItems,

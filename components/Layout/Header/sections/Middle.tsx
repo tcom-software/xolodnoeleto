@@ -50,12 +50,20 @@ const Middle = ({ phones, openModal, modalType }) => {
           />
         </SearchCon>
         <SearchAndFavoriteCon customMargin={true}>
-          <SvgIcon type={"compare"} width={20} height={13} />
-          Сравнить
+          <Link href={"/compare"}>
+            <a>
+              <SvgIcon type={"compare"} width={20} height={13} />
+              Сравнить
+            </a>
+          </Link>
         </SearchAndFavoriteCon>
         <SearchAndFavoriteCon>
-          <SvgIcon type={"favorite"} width={19.5} height={25} />
-          Избранные
+          <Link href={"/favorite"}>
+            <a>
+              <SvgIcon type={"favorite"} width={19.5} height={25} />
+              Избранные
+            </a>
+          </Link>
         </SearchAndFavoriteCon>
       </MainPanel>
     </GlobalSection>
