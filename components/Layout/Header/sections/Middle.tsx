@@ -12,7 +12,7 @@ import { connect } from "react-redux";
 import { openModal } from "redux/actions/modalActions";
 import theme from "styles/theme";
 
-const Middle = ({ phones, openModal }) => {
+const Middle = ({ phones, openModal, modalType }) => {
   return (
     <GlobalSection
       isWeb={true}
@@ -36,11 +36,7 @@ const Middle = ({ phones, openModal }) => {
               <h2 key={i}>{e}</h2>
             ))}
           </hgroup>
-          <p
-            onClick={() => {
-              openModal("CallBack");
-            }}
-          >
+          <p onClick={() => (modalType !== "" ? null : openModal("CallBack"))}>
             Заказать обратный звонок
           </p>
         </PhonesCon>
@@ -66,7 +62,8 @@ const Middle = ({ phones, openModal }) => {
   );
 };
 
-const mapStateToProps = ({ general: { phones } }) => ({
+const mapStateToProps = ({ general: { phones }, modal: { modalType } }) => ({
+  modalType,
   phones,
 });
 

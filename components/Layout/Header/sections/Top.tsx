@@ -6,14 +6,7 @@ import { GlobalSection, SvgIcon } from "@atoms";
 import { LogoCon, Ul, TopPanel } from "../styles";
 import { openModal, closeModal } from "redux/actions/modalActions";
 
-const Top = ({
-  navigation,
-  elseRefs,
-  modalType,
-  openModal,
-  closeModal,
-  modalRef,
-}) => {
+const Top = ({ navigation, elseRefs, modalType, openModal, modalRef }) => {
   return (
     <GlobalSection
       isWeb={true}
@@ -28,9 +21,7 @@ const Top = ({
           type="phone"
           width={23}
           height={23}
-          callback={() =>
-            modalType == "CallBack" ? closeModal() : openModal("CallBack")
-          }
+          callback={() => (modalType !== "" ? null : openModal("CallBack"))}
         />
         <LogoCon isMobile={true}>
           <Link href={"/"}>
@@ -44,13 +35,7 @@ const Top = ({
           type="hamburgerMenu"
           width={25}
           height={25}
-          callback={() => {
-            if (modalType == "navigation") {
-              closeModal();
-            } else {
-              openModal("navigation");
-            }
-          }}
+          callback={() => (modalType !== "" ? null : openModal("navigation"))}
         />
       </TopPanel>
       <TopPanel

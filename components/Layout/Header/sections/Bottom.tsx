@@ -28,13 +28,7 @@ const Bottom = ({
     >
       <BottomPanel modalType={modalType}>
         <Ul>
-          <li
-            onClick={() => {
-              return modalType == "catalog"
-                ? closeModal()
-                : openModal("catalog");
-            }}
-          >
+          <li onClick={() => (modalType !== "" ? null : openModal("catalog"))}>
             <SvgIcon
               type="hamburgerMenu"
               width={25}
@@ -84,16 +78,18 @@ const Bottom = ({
             </SearchCon>
           </li>
           <li>
-            <SvgIcon type="basket" width={20} height={20} />
+            <Link href={"/basket"}>
+              <a>
+                <SvgIcon type="basket" width={20} height={20} />
+              </a>
+            </Link>
           </li>
           <li>
             <Button
               type="with-icon"
               width="190px"
               height="47px"
-              onClick={() =>
-                modalType == "basket" ? closeModal() : openModal("basket")
-              }
+              onClick={() => (modalType !== "" ? null : openModal("basket"))}
             >
               <SvgIcon type="basket" width={20} height={20} />
               Корзина пуста ({basketItemsCount})

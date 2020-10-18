@@ -8,7 +8,9 @@ const PopUp = ({ modalType, setModalRef, closeModal, modalRef }) => {
   useEffect(() => {
     function handleClickOutside(event) {
       if (customRef.current && !customRef.current.contains(event.target)) {
-        closeModal("");
+        setTimeout(() => {
+          closeModal("");
+        }, 200);
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
