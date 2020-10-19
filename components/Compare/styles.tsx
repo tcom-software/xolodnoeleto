@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import theme from "styles/theme";
 
 const CompareContainer = styled.div`
@@ -11,14 +11,13 @@ const CompareContainer = styled.div`
     );
 
   & > div {
-    & > * {
-      margin: 7px 0;
-    }
     &:nth-of-type(1) {
       width: 400px;
       padding: 15px;
       border: 1px solid ${theme.body.someBorder};
-
+      & > div {
+        margin: 7px 0;
+      }
       & > div:last-of-type > div {
         background: #fff;
         padding: 7px 15px;
@@ -45,10 +44,79 @@ const CompareContainer = styled.div`
         ${({ productCounts }) => productCounts},
         minmax(200px, 400px)
       );
+
+      & > div {
+        padding: 15px;
+        position: relative;
+        background: #fff;
+        border-right: 1px solid ${theme.body.someBorder};
+        & > p {
+          margin-top: 10px;
+        }
+        & > div {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin: 48px 0 25px;
+          p {
+            font-size: 20px;
+          }
+          button {
+            text-transform: uppercase;
+          }
+        }
+        & > svg {
+          position: absolute;
+          top: 15px;
+          right: 15px;
+        }
+      }
     }
   }
 
   @media (max-width: ${theme.mobileMedia.size}) {
+    grid-template-columns: 1fr;
+
+    & > div {
+      &:nth-of-type(1) {
+        width: 100%;
+        padding: 0;
+        border: none;
+        border-bottom: 1px solid ${theme.body.someBorder};
+
+        button {
+          width: 100%;
+        }
+      }
+      &:nth-of-type(2) {
+        display: grid;
+        grid-template-columns: repeat(
+          ${({ productCounts }) => productCounts},
+          1fr
+        );
+
+        ${({ productCounts }) => {
+          if (productCounts >= 3) {
+            return css`
+              overflow: scroll;
+            `;
+          }
+        }},
+
+        & > div {
+          & > div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+
+            button {
+              text-transform: uppercase;
+            }
+          }
+        }
+      }
+    }
   }
 `;
 

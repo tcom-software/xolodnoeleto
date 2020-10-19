@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { CompareContainer } from "./styles";
 import { Button, GlobalSection, Input, SvgIcon } from "@atoms";
 import theme from "styles/theme";
+import { makePrice } from "../../utils";
 
 const Compare = ({
+  addBasket,
   compareProducts,
   addCompareProduct,
   removeCompareProduct,
@@ -17,6 +19,7 @@ const Compare = ({
       isWeb={true}
       isMobile={true}
       webBackground={theme.body.secondBackground}
+      mobileBackground={theme.body.background}
     >
       <CompareContainer productCounts={products.length}>
         <div>
@@ -68,16 +71,32 @@ const Compare = ({
           </div>
         </div>
         <div>
-          {products.map(
-            ({ id, src, title, vendorCode, price, selectedStarsCount }) => {
-              return (
-                <div key={id}>
-                  <img src={src} alt="title" />
-                  <p>{title}</p>
+          {products.map(({ id, src, title, price }) => {
+            return (
+              <div key={id}>
+                <img src={src} alt="title" />
+                <SvgIcon
+                  type={"close"}
+                  width={20}
+                  height={20}
+                  color={"#202020"}
+                  callback={() => removeCompareProduct(id)}
+                />
+                <p>{title}</p>
+                <div>
+                  <p>{makePrice(price)}</p>
+                  <Button
+                    type="secondary"
+                    width={"156px"}
+                    height={"45px"}
+                    onClick={() => addBasket(id)}
+                  >
+                    В корзину
+                  </Button>
                 </div>
-              );
-            }
-          )}
+              </div>
+            );
+          })}
         </div>
       </CompareContainer>
     </GlobalSection>
