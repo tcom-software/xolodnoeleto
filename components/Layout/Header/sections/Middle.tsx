@@ -7,12 +7,14 @@ import {
 } from "../styles";
 import Link from "next/link";
 import { GlobalSection, Input, SvgIcon } from "@atoms";
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { openModal } from "redux/actions/modalActions";
 import theme from "styles/theme";
 
 const Middle = ({ phones, openModal, modalType }) => {
+  const [open, setOpen] = useState(false);
+
   return (
     <GlobalSection
       isWeb={true}
@@ -24,7 +26,18 @@ const Middle = ({ phones, openModal, modalType }) => {
       <MainPanel isMobileHidden={true}>
         <LogoCon>
           <Link href="/">
-            <a>
+            <a
+              onClick={() => {
+                setOpen(!open);
+              }}
+            >
+              <SvgIcon
+                type="logo"
+                width={150}
+                height={24}
+                animation={true}
+                reverse={open}
+              />
               <img src="/images/logo/logo.png" alt="sun" />
               <h1>XOLODNOELETO</h1>
             </a>

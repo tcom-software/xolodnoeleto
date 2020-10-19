@@ -55,6 +55,21 @@ const MainPanel = styled.section`
   align-items: center;
   grid-template-columns: 1fr 2fr 2fr 120px 120px;
 
+  & > div:nth-of-type(1) {
+     position: relative;
+     
+    & > a {
+      img {
+         display: none;
+      }
+      h1 {
+        display: none;
+        text-align: left;
+      }
+    }
+  }
+  
+
   @media (max-width: ${theme.mobileMedia.size}) {
     ${({ isMobileHidden }) => {
       return (
@@ -266,10 +281,6 @@ const LogoCon = styled.div`
   justify-self: flex-start;
   cursor: pointer;
 
-  & > a > h1 {
-    text-align: left;
-    display: none;
-  }
   ${({ isMobile }) =>
     isMobile &&
     css`

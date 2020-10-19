@@ -20,6 +20,8 @@ export interface SvgProperty {
   height: number;
   color?: string;
   callback?: any;
+  animation?: boolean;
+  reverse?: boolean;
 }
 export interface InputInterface {
   labelTitle?: string;
