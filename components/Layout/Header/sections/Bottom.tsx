@@ -6,6 +6,7 @@ import BasketMenu from "./BasketMenu";
 import { Button, GlobalSection, Input, SvgIcon } from "@atoms";
 import { closeModal, openModal } from "redux/actions/modalActions";
 import { BottomPanel, CatalogUl, SearchCon, Span, Ul } from "../styles";
+import { useSpring, animated } from "react-spring";
 
 const Bottom = ({
   catalog,
@@ -16,6 +17,11 @@ const Bottom = ({
   basketItemsCount,
 }) => {
   const [isOpenSearch, setIsOpenSearch] = useState(false);
+  const spring = useSpring({
+    from: { val: 0 },
+    to: { val: basketItemsCount },
+    config: { duration: 1500 },
+  });
 
   return (
     <GlobalSection
@@ -92,7 +98,11 @@ const Bottom = ({
               onClick={() => (modalType !== "" ? null : openModal("basket"))}
             >
               <SvgIcon type="basket" width={20} height={20} />
-              Корзина пуста ({basketItemsCount})
+              Корзина пуста (
+              <animated.span>
+                {spring.val.interpolate((val) => Math.floor(val))}
+              </animated.span>
+              )
             </Button>
             <BasketMenu />
           </li>
