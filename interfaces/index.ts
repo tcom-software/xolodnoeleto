@@ -23,6 +23,13 @@ export interface SvgProperty {
   animation?: boolean;
   reverse?: boolean;
 }
+export interface SvgIconAnimInterface {
+  type: string;
+  width: number;
+  height: number;
+  color: string;
+  duration: number;
+}
 export interface InputInterface {
   labelTitle?: string;
   search?: boolean;
