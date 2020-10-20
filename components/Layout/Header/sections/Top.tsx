@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { GlobalSection, SvgIcon } from "@atoms";
 import { LogoCon, Ul, TopPanel } from "../styles";
 import { openModal, closeModal } from "redux/actions/modalActions";
+import { SvgIconAnim } from "@atoms";
 
 const Top = ({ navigation, elseRefs, modalType, openModal, modalRef }) => {
   return (
@@ -26,6 +27,13 @@ const Top = ({ navigation, elseRefs, modalType, openModal, modalRef }) => {
         <LogoCon isMobile={true}>
           <Link href={"/"}>
             <a>
+              <SvgIconAnim
+                type="logo"
+                width={150}
+                height={24}
+                color="black"
+                duration={20000}
+              />
               <img src="/images/logo/logo.png" alt="sun" />
               <h1>XOLODNOELETO</h1>
             </a>
