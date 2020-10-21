@@ -17,7 +17,7 @@ const Bottom = ({
   basketItemsCount,
 }) => {
   const [isOpenSearch, setIsOpenSearch] = useState(false);
-  const spring = useSpring({
+  const spring: any = useSpring({
     from: { val: 0 },
     to: { val: basketItemsCount },
     config: { duration: 1500 },
