@@ -8,6 +8,9 @@ import ProductGridView from "../components/ProductGridView";
 import ProductList from "../components/ProductsList";
 import Brands from "../components/Brands";
 import LazyLoad from "react-lazyload";
+import ShowMoreWrapper from "../components/ShowMoreWrapper";
+import { GlobalSection } from "@atoms";
+import theme from "styles/theme";
 
 const Index = ({ newProducts }) => {
   return (
@@ -39,6 +42,25 @@ const Index = ({ newProducts }) => {
       </LazyLoad>
       <LazyLoad>
         <SubScriptionEmail />
+      </LazyLoad>
+      <LazyLoad>
+        <GlobalSection
+          isWeb={true}
+          isMobile={true}
+          webBackground={theme.body.background}
+          mobilePadding="25px 0"
+          webPadding="50px 0 20px"
+        >
+          <ShowMoreWrapper
+            text={
+              "В зависимости от функций, которые выполняет кондиционер, и его мощности меняются размеры и стоимость кондиционера. Покупая кондиционер, обратите внимание, на какую квадратуру он рассчитан, чтобы не переплачивать. Ведь слишком мощный кондиционер будет переохлаждать помещение и потреблять больше электроэнергии. А, например, для спальни можно выбрать более бесшумную модель кондиционера.\n" +
+              "Сегодня очень популярны бытовые сплит-системы – кондиционеры, состоящие из внутреннего и наружного блоков. Для большего комфорта основные шумопроизводящие элементы кондиционера вынесены в наружный блок, который располагается за пределами охлаждаемого помещения. На нашем сайте можно найти большой ассортимент сплит-систем от бытовых до полупромышленных моделей.\n" +
+              "Сегодня очень популярны бытовые сплит-системы – кондиционеры, состоящие из внутреннего и наружного блоков. Для большего комфорта основные шумопроизводящие элементы кондиционера вынесены в наружный блок, который располагается за пределами охлаждаемого помещения. На нашем сайте можно найти большой ассортимент сплит-систем от бытовых до полупромышленных моделей.\n"
+            }
+            fromHeight={100}
+            border={"none"}
+          />
+        </GlobalSection>
       </LazyLoad>
     </>
   );
