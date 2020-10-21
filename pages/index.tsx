@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import ProductGridView from "../components/ProductGridView";
 import ProductList from "../components/ProductsList";
 import Brands from "../components/Brands";
+import LazyLoad from "react-lazyload";
 
 const Index = ({ newProducts }) => {
   return (
@@ -29,10 +30,15 @@ const Index = ({ newProducts }) => {
           }
         )}
       </ProductList>
-      <Brands />
-      <SuperSale />
-
-      <SubScriptionEmail />
+      <LazyLoad>
+        <Brands />
+      </LazyLoad>
+      <LazyLoad>
+        <SuperSale />
+      </LazyLoad>
+      <LazyLoad>
+        <SubScriptionEmail />
+      </LazyLoad>
     </>
   );
 };
