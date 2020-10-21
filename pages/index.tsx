@@ -30,11 +30,12 @@ const Index = ({ newProducts }) => {
           }
         )}
       </ProductList>
-      <LazyLoad>
-        <Brands />
-      </LazyLoad>
+
       <LazyLoad>
         <SuperSale />
+      </LazyLoad>
+      <LazyLoad>
+        <Brands />
       </LazyLoad>
       <LazyLoad>
         <SubScriptionEmail />

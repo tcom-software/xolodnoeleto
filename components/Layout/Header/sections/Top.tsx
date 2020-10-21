@@ -7,7 +7,14 @@ import { LogoCon, Ul, TopPanel } from "../styles";
 import { openModal, closeModal } from "redux/actions/modalActions";
 import { SvgIconAnim } from "@atoms";
 
-const Top = ({ navigation, elseRefs, modalType, openModal, modalRef }) => {
+const Top = ({
+  navigation,
+  elseRefs,
+  modalType,
+  openModal,
+  modalRef,
+  isMobile,
+}) => {
   return (
     <GlobalSection
       isWeb={true}
@@ -27,13 +34,16 @@ const Top = ({ navigation, elseRefs, modalType, openModal, modalRef }) => {
         <LogoCon isMobile={true}>
           <Link href={"/"}>
             <a>
-              <SvgIconAnim
-                type="logo"
-                width={150}
-                height={24}
-                color="black"
-                duration={20000}
-              />
+              {isMobile ? (
+                <SvgIconAnim
+                  type="logo"
+                  width={150}
+                  height={24}
+                  color="black"
+                  duration={20000}
+                />
+              ) : null}
+
               <img src="/images/logo/logo.png" alt="sun" />
               <h1>XOLODNOELETO</h1>
             </a>
@@ -67,9 +77,11 @@ const Top = ({ navigation, elseRefs, modalType, openModal, modalRef }) => {
 const mapStateToProps = ({
   general: {
     header: { navigation, elseRefs },
+    isMobile,
   },
   modal: { modalType, modalRef },
 }) => ({
+  isMobile,
   modalType,
   elseRefs,
   modalRef,

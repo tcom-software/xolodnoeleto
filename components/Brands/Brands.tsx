@@ -9,9 +9,10 @@ const Brands = ({ brands }) => {
       isMobile={true}
       isWeb={true}
       webBackground={theme.body.background}
+      webPadding={"0 0 70px 0"}
     >
       <Container>
-        <Title>Bренды</Title>
+        <Title>Бренды</Title>
         <BrandsList>
           {brands.map(({ src }, i) => {
             return (
