@@ -71,7 +71,7 @@ const Middle = ({ phones, openModal, modalType }) => {
           </Link>
         </SearchAndFavoriteCon>
         <SearchAndFavoriteCon>
-          <Link href={"/favorite"}>
+          <Link href={"/favorites"}>
             <a>
               <SvgIcon type={"favorite"} width={19.5} height={25} />
               Избранные

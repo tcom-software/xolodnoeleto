@@ -34,13 +34,9 @@ const MiniCon = styled.div`
 
   & > svg {
     position: absolute;
-    top: 15px;
-    right: 15px;
+    top: 10px;
+    right: 10px;
   }
-`;
-const Edit = styled.div`
-  text-decoration: underline;
-  color: #03a9f4;
 `;
 const CalculateCon = styled.div`
   display: flex;
@@ -77,7 +73,6 @@ export {
   Container,
   Img,
   MiniCon,
-  Edit,
   ImgCon,
   CalculateCon,
 };

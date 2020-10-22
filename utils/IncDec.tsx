@@ -23,7 +23,7 @@ const SvgBack = styled.div`
 `;
 const Count = styled.div``;
 
-const IncDec = ({ id, count, increment, decrement }) => {
+const IncDec = (id, count, increment, decrement) => {
   return (
     <Container>
       <SvgBack onClick={() => decrement(id)}>

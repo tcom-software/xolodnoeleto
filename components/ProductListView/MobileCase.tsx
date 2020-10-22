@@ -3,15 +3,7 @@ import { SvgIcon } from "@atoms";
 import React from "react";
 import { connect } from "react-redux";
 import { Button } from "@atoms";
-import {
-  CalculateCon,
-  Edit,
-  Img,
-  ImgCon,
-  MiniCon,
-  Title,
-  Container,
-} from "./styles";
+import { CalculateCon, Img, ImgCon, MiniCon, Title, Container } from "./styles";
 
 import {
   changeOrderStep,
@@ -21,14 +13,27 @@ import {
   updateStepsResult,
 } from "redux/actions/basketActions";
 
+import {
+  decrementFavoriteCount,
+  deleteFavoriteItem,
+  incrementFavoriteCount,
+} from "../../redux/actions/favoriteActions";
+
 const MobileCase = ({
   basketItems,
-  increment,
-  decrement,
   stepState,
   changeOrderStep,
-  deleteBasketItem,
   updateStepsResult,
+
+  functionalType,
+
+  incrementFavorite,
+  decrementFavorite,
+  deleteFavoriteItem,
+
+  incrementBasket,
+  decrementBasket,
+  deleteBasketItem,
 }) => {
   return (
     <div>
@@ -44,23 +49,23 @@ const MobileCase = ({
                   <p>{manufacturer}</p>
                   <p>{model}</p>
                 </Title>
-                <Edit>Изменить</Edit>
                 <CalculateCon>
                   <p>{makePrice(price)}</p>
                   <div>
-                    {IncDec({
-                      id,
-                      count,
-                      increment,
-                      decrement,
-                    })}
+                    {functionalType == "favorite"
+                      ? IncDec(id, count, incrementFavorite, decrementFavorite)
+                      : IncDec(id, count, incrementBasket, decrementBasket)}
                   </div>
                 </CalculateCon>
                 <SvgIcon
                   type="close"
                   width={15}
                   height={15}
-                  callback={() => deleteBasketItem(id)}
+                  callback={() =>
+                    functionalType == "favorite"
+                      ? deleteFavoriteItem(id)
+                      : deleteBasketItem(id)
+                  }
                 />
               </MiniCon>
             </Container>
@@ -98,11 +103,15 @@ const MobileCase = ({
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  increment: (id) => dispatch(incrementBasketCount(id)),
-  decrement: (id) => dispatch(decrementBasketCount(id)),
+  incrementBasket: (id) => dispatch(incrementBasketCount(id)),
+  decrementBasket: (id) => dispatch(decrementBasketCount(id)),
   deleteBasketItem: (id) => dispatch(deleteBasketItem(id)),
   changeOrderStep: (step) => dispatch(changeOrderStep(step)),
   updateStepsResult: (step) => dispatch(updateStepsResult(step)),
+
+  incrementFavorite: (data) => dispatch(incrementFavoriteCount(data)),
+  decrementFavorite: (data) => dispatch(decrementFavoriteCount(data)),
+  deleteFavoriteItem: (data) => dispatch(deleteFavoriteItem(data)),
 });
 
 const mapStateToProps = ({ basket: { stepState } }) => ({

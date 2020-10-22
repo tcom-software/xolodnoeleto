@@ -188,6 +188,32 @@ const initialState = {
 
 const basketReducer = (state = initialState, action) => {
   switch (action.type) {
+    case types.ADD_IN_TO_BASKET_FROM_FAVORITES:
+      if (state.items[action.payload.id]) {
+        return {
+          ...state,
+          items: {
+            ...state.items,
+            [action.payload.id]: {
+              ...state.items[action.payload.id],
+              count:
+                state.items[action.payload.id].count + action.payload.count,
+            },
+          },
+        };
+      } else {
+        return {
+          ...state,
+          items: {
+            ...state.items,
+            [action.payload.id]: {
+              ...action.payload,
+            },
+          },
+          total_amount:
+            state.total_amount + action.payload.count * action.payload.price,
+        };
+      }
     case types.ADD_BASKET:
       if (state.items[action.payload]) {
         return {
@@ -246,7 +272,7 @@ const basketReducer = (state = initialState, action) => {
           .map((e) => e.price * e.count)
           .reduce((acc, next) => acc + next, 0),
       };
-    case types.INCREMENT:
+    case types.INCREMENT_BASKET:
       return {
         ...state,
         items: {
@@ -258,7 +284,7 @@ const basketReducer = (state = initialState, action) => {
         },
         total_amount: state.total_amount + state.items[action.payload.id].price,
       };
-    case types.DECREMENT:
+    case types.DECREMENT_BASKET:
       return {
         ...state,
         items: {
@@ -276,7 +302,7 @@ const basketReducer = (state = initialState, action) => {
             ? state.total_amount
             : state.total_amount - state.items[action.payload.id].price,
       };
-    case types.DELETE_ITEM:
+    case types.DELETE_BASKET_ITEM:
       return {
         ...state,
         items: {

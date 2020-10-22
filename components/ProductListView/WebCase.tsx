@@ -1,42 +1,42 @@
 import React from "react";
 import { connect } from "react-redux";
-import styled from "styled-components";
-import theme from "styles/theme";
 import { Button, SvgIcon } from "@atoms";
 import { IncDec, makePrice } from "utils";
 
 import {
+  addBasket,
   changeOrderStep,
   decrementBasketCount,
   deleteBasketItem,
   incrementBasketCount,
   updateStepsResult,
+  addBasketFromFavorite,
 } from "redux/actions/basketActions";
 
-const BorderTd = styled.td`
-  position: relative;
-  span {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    height: 70%;
-    width: 0.5px;
-    background: ${theme.body.someBorder};
-  }
-`;
+import {
+  decrementFavoriteCount,
+  deleteFavoriteItem,
+  incrementFavoriteCount,
+} from "redux/actions/favoriteActions";
 
 const WebCase = ({
-  basketItems,
-  decrement,
-  increment,
-  deleteBasketItem,
-  imageBorder,
-  edit,
-  stepState,
   header,
+  stepState,
+  basketItems,
+  basketButton,
   changeOrderStep,
   updateStepsResult,
+  functionalType,
+
+  addBasket,
+  addBasketFromFavorite,
+  incrementBasket,
+  decrementBasket,
+  deleteBasketItem,
+
+  incrementFavorite,
+  decrementFavorite,
+  deleteFavoriteItem,
 }) => {
   return (
     <div>
@@ -49,22 +49,18 @@ const WebCase = ({
               <th>Цена /шт.</th>
               <th>Количество</th>
               <th>Итого</th>
-              <th>Изменить</th>
+              {basketButton ? <th></th> : null}
               <th>Удалить</th>
             </tr>
           ) : null}
 
-          {Object.values(basketItems).map(
-            ({ id, src, model, price, count, manufacturer }) => (
+          {Object.values(basketItems).map((item) => {
+            const { id, src, model, price, count, manufacturer }: any = item;
+            return (
               <tr key={id}>
                 <td>
                   <img src={src} width={57} height={57} />
                 </td>
-                {imageBorder ? (
-                  <BorderTd>
-                    <span></span>
-                  </BorderTd>
-                ) : null}
                 <td>
                   <div>
                     <p>{manufacturer}</p>
@@ -77,17 +73,25 @@ const WebCase = ({
                   </div>
                 </td>
                 <td>
-                  {IncDec({
-                    id,
-                    count,
-                    increment,
-                    decrement,
-                  })}
+                  {functionalType == "favorite"
+                    ? IncDec(id, count, incrementFavorite, decrementFavorite)
+                    : IncDec(id, count, incrementBasket, decrementBasket)}
                 </td>
                 <td>{makePrice(price * count)}</td>
-                {edit ? (
+                {basketButton ? (
                   <td>
-                    <SvgIcon type="edit" width={15} height={15} />
+                    <Button
+                      type={"secondary"}
+                      width={`100%`}
+                      height={"47px"}
+                      onClick={() =>
+                        functionalType == "favorite"
+                          ? addBasketFromFavorite(item)
+                          : addBasket(id)
+                      }
+                    >
+                      В корзину
+                    </Button>
                   </td>
                 ) : null}
                 <td>
@@ -95,12 +99,16 @@ const WebCase = ({
                     type="close"
                     width={15}
                     height={15}
-                    callback={() => deleteBasketItem(id)}
+                    callback={() =>
+                      functionalType == "favorite"
+                        ? deleteFavoriteItem(id)
+                        : deleteBasketItem(id)
+                    }
                   />
                 </td>
               </tr>
-            )
-          )}
+            );
+          })}
         </tbody>
       </table>
       {stepState == 2 ? (
@@ -134,11 +142,18 @@ const WebCase = ({
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  increment: (id) => dispatch(incrementBasketCount(id)),
-  decrement: (id) => dispatch(decrementBasketCount(id)),
-  deleteBasketItem: (id) => dispatch(deleteBasketItem(id)),
   changeOrderStep: (step) => dispatch(changeOrderStep(step)),
   updateStepsResult: (data) => dispatch(updateStepsResult(data)),
+
+  addBasket: (id) => dispatch(addBasket(id)),
+  addBasketFromFavorite: (id) => dispatch(addBasketFromFavorite(id)),
+
+  incrementBasket: (id) => dispatch(incrementBasketCount(id)),
+  decrementBasket: (id) => dispatch(decrementBasketCount(id)),
+  deleteBasketItem: (id) => dispatch(deleteBasketItem(id)),
+  incrementFavorite: (data) => dispatch(incrementFavoriteCount(data)),
+  decrementFavorite: (data) => dispatch(decrementFavoriteCount(data)),
+  deleteFavoriteItem: (data) => dispatch(deleteFavoriteItem(data)),
 });
 
 const mapStateToProps = ({ basket: { stepState } }) => ({

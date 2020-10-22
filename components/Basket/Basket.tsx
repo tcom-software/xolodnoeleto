@@ -66,9 +66,13 @@ const Basket = ({
           <GridSection stepState={stepState}>
             {stepState === 1 ? (
               isMobile ? (
-                <MobileCase basketItems={basketItems} />
+                <MobileCase basketItems={basketItems} functionalType="basket" />
               ) : (
-                <WebCase basketItems={basketItems} edit={true} header={true} />
+                <WebCase
+                  basketItems={basketItems}
+                  header={true}
+                  functionalType="basket"
+                />
               )
             ) : null}
 
@@ -76,9 +80,15 @@ const Basket = ({
               <StepInformation stepStructure={stepObject}>
                 {stepState == 2 ? (
                   isMobile ? (
-                    <MobileCase basketItems={basketItems} />
+                    <MobileCase
+                      basketItems={basketItems}
+                      functionalType="basket"
+                    />
                   ) : (
-                    <WebCase basketItems={basketItems} edit={true} />
+                    <WebCase
+                      basketItems={basketItems}
+                      functionalType="basket"
+                    />
                   )
                 ) : null}
               </StepInformation>

@@ -20,7 +20,7 @@ const Bottom = ({
   const spring: any = useSpring({
     from: { val: 0 },
     to: { val: basketItemsCount },
-    config: { duration: 1500 },
+    config: { duration: 500 },
   });
 
   return (
