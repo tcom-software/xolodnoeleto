@@ -6,6 +6,8 @@ import { Button } from "@atoms";
 import { CalculateCon, Img, ImgCon, MiniCon, Title, Container } from "./styles";
 
 import {
+  addBasket,
+  addBasketFromFavorite,
   changeOrderStep,
   decrementBasketCount,
   deleteBasketItem,
@@ -17,7 +19,7 @@ import {
   decrementFavoriteCount,
   deleteFavoriteItem,
   incrementFavoriteCount,
-} from "../../redux/actions/favoriteActions";
+} from "redux/actions/favoriteActions";
 
 const MobileCase = ({
   basketItems,
@@ -26,6 +28,9 @@ const MobileCase = ({
   updateStepsResult,
 
   functionalType,
+
+  addBasket,
+  addBasketFromFavorite,
 
   incrementFavorite,
   decrementFavorite,
@@ -37,41 +42,52 @@ const MobileCase = ({
 }) => {
   return (
     <div>
-      {Object.values(basketItems).map(
-        ({ src, manufacturer, model, price, id, count }) => {
-          return (
-            <Container key={id}>
-              <ImgCon>
-                <Img src={src} />
-              </ImgCon>
-              <MiniCon>
-                <Title>
-                  <p>{manufacturer}</p>
-                  <p>{model}</p>
-                </Title>
-                <CalculateCon>
-                  <p>{makePrice(price)}</p>
-                  <div>
-                    {functionalType == "favorite"
-                      ? IncDec(id, count, incrementFavorite, decrementFavorite)
-                      : IncDec(id, count, incrementBasket, decrementBasket)}
-                  </div>
-                </CalculateCon>
-                <SvgIcon
-                  type="close"
-                  width={15}
-                  height={15}
-                  callback={() =>
-                    functionalType == "favorite"
-                      ? deleteFavoriteItem(id)
-                      : deleteBasketItem(id)
-                  }
-                />
-              </MiniCon>
-            </Container>
-          );
-        }
-      )}
+      {Object.values(basketItems).map((item: any) => {
+        const { src, manufacturer, model, price, id, count } = item;
+
+        return (
+          <Container key={id}>
+            <ImgCon>
+              <Img src={src} />
+            </ImgCon>
+            <MiniCon>
+              <Title>
+                <p>{manufacturer}</p>
+                <p>{model}</p>
+              </Title>
+              <div
+                className="addBasket"
+                onClick={() => {
+                  console.log(1111111);
+                  functionalType == "favorite"
+                    ? addBasketFromFavorite(item)
+                    : addBasket(id);
+                }}
+              >
+                В корзину
+              </div>
+              <CalculateCon>
+                <p>{makePrice(price)}</p>
+                <div>
+                  {functionalType == "favorite"
+                    ? IncDec(id, count, incrementFavorite, decrementFavorite)
+                    : IncDec(id, count, incrementBasket, decrementBasket)}
+                </div>
+              </CalculateCon>
+              <SvgIcon
+                type="close"
+                width={15}
+                height={15}
+                callback={() =>
+                  functionalType == "favorite"
+                    ? deleteFavoriteItem(id)
+                    : deleteBasketItem(id)
+                }
+              />
+            </MiniCon>
+          </Container>
+        );
+      })}
       {stepState == 2 ? (
         <div>
           <Button
@@ -103,6 +119,9 @@ const MobileCase = ({
 };
 
 const mapDispatchToProps = (dispatch) => ({
+  addBasket: (id) => dispatch(addBasket(id)),
+  addBasketFromFavorite: (item) => dispatch(addBasketFromFavorite(item)),
+
   incrementBasket: (id) => dispatch(incrementBasketCount(id)),
   decrementBasket: (id) => dispatch(decrementBasketCount(id)),
   deleteBasketItem: (id) => dispatch(deleteBasketItem(id)),

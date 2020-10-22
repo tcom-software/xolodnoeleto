@@ -13,6 +13,7 @@ const Favorite = ({ isMobile, favoriteProducts }) => {
       <GlobalSection
         isWeb={true}
         isMobile={true}
+        mobileBackground={theme.body.background}
         webBackground={theme.body.secondBackground}
       >
         <FavoriteContainer>

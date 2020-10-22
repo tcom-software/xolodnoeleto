@@ -37,6 +37,9 @@ const MiniCon = styled.div`
     top: 10px;
     right: 10px;
   }
+  .addBasket {
+    color: ${theme.body.colorSecondary};
+  }
 `;
 const CalculateCon = styled.div`
   display: flex;

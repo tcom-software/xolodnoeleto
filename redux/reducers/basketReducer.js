@@ -200,6 +200,8 @@ const basketReducer = (state = initialState, action) => {
                 state.items[action.payload.id].count + action.payload.count,
             },
           },
+          total_amount:
+            state.total_amount + action.payload.count * action.payload.price,
         };
       } else {
         return {
@@ -225,6 +227,7 @@ const basketReducer = (state = initialState, action) => {
               count: state.items[action.payload].count + 1,
             },
           },
+          total_amount: state.total_amount + state.items[action.payload].price,
         };
       } else {
         return {
