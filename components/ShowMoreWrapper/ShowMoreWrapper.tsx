@@ -4,14 +4,14 @@ import { SvgIcon } from "@atoms";
 import { useSpring } from "react-spring";
 import { ShowMoreContainer, ShowMoreText } from "./styles";
 
-const ShowMoreWrapper = ({ text, fromHeight, border }) => {
+const ShowMoreWrapper = ({ text, fromHeight, border, color }) => {
   const [open, setOpen] = useState(false);
   const [height, setHeight] = useState();
   const pHeight = useRef(0);
 
   useEffect(() => {
     const { offsetHeight }: any = pHeight.current;
-    setHeight(offsetHeight);
+    setHeight(offsetHeight + 10);
   }, [pHeight]);
 
   const styles = useSpring({
@@ -21,7 +21,7 @@ const ShowMoreWrapper = ({ text, fromHeight, border }) => {
 
   return (
     <ShowMoreContainer>
-      <ShowMoreText style={styles}>
+      <ShowMoreText style={styles} color={color}>
         <p ref={pHeight}>{text}</p>
       </ShowMoreText>
       <div onClick={() => setOpen(!open)}>

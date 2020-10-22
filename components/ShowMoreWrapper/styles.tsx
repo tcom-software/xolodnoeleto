@@ -4,7 +4,7 @@ import { animated } from "react-spring";
 
 const ShowMoreContainer = styled(animated.div)`
   & > div:nth-of-type(2) {
-    margin: 10px;
+    margin: 20px 0 10px 0;
     display: flex;
     cursor: pointer;
     align-items: center;
@@ -27,6 +27,7 @@ const ShowMoreText = styled(animated.div)`
   & > p {
     margin: 0;
     padding: 15px;
+    color: ${({ color }) => (color ? color : "#202020")};
   }
 `;
 
