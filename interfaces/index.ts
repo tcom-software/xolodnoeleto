@@ -66,6 +66,7 @@ export interface productInterface {
   price: string | number;
   buttonBorder?: boolean;
   addBasket: any;
+  superPrice?: boolean;
 }
 export interface GlobalSectionInterface {
   children?: any;

@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 import theme from "styles/theme";
 
 const ProductContainer = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,6 +12,21 @@ const ProductContainer = styled.div`
   padding: 15px;
   border: 1px solid ${theme.product.borderColor};
 
+  .super-price {
+    position: absolute;
+    top: 15px;
+    left: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 97px;
+    height: 23px;
+    color: white;
+    font-size: 11px;
+    font-weight: 800;
+    background: #ea4a4a;
+  }
   & > * {
     text-align: center;
     margin-top: 11px;

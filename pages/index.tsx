@@ -33,9 +33,28 @@ const Index = ({ newProducts, landing }) => {
           }
         )}
       </ProductList>
-
       <LazyLoad>
         <SuperSale />
+      </LazyLoad>
+      <LazyLoad>
+        <ProductList title={"СУПЕРЦЕНЫ УСПЕЙ КУПИТЬ!"} mobileType={"scroll"}>
+          {Object.values(newProducts).map(
+            ({ id, src, title, price, vendorCode, selectedStarsCount }) => {
+              return (
+                <ProductGridView
+                  key={id}
+                  id={id}
+                  src={src}
+                  title={title}
+                  price={price}
+                  vendorCode={vendorCode}
+                  selectedStarsCount={selectedStarsCount}
+                  superPrice={true}
+                />
+              );
+            }
+          )}
+        </ProductList>
       </LazyLoad>
       <LazyLoad>
         <Brands />

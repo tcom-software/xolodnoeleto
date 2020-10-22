@@ -18,12 +18,14 @@ const ProductGridView = ({
   title,
   price,
   addBasket,
+  superPrice,
   vendorCode,
   buttonBorder,
   selectedStarsCount,
 }: productInterface) => {
   return (
     <ProductContainer border={buttonBorder}>
+      {superPrice ? <div className="super-price">СУПЕРЦЕНА</div> : null}
       <Image src={src} alt={title} />
       <Title>{title}</Title>
       <VendorCod>{vendorCode}</VendorCod>
