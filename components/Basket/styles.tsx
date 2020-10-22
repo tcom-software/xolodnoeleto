@@ -7,6 +7,19 @@ const GridSection = styled.div`
   align-items: flex-start;
   grid-template-columns: 3fr 1fr;
 
+  & > div:nth-of-type(1) {
+    & > div {
+      ${({ stepState, isMobile }) =>
+        (stepState == 1 || stepState == 2) &&
+        isMobile &&
+        css`
+          padding: 10px;
+          margin: 10px 0;
+          border: 1px solid ${theme.body.someBorder};
+        `}
+    }
+  }
+
   & > div {
     table {
       width: 100%;

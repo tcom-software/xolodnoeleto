@@ -55,7 +55,9 @@ const Basket = ({
           stepState === 6 ? theme.body.background : theme.body.secondBackground
         }
         mobileBackground={
-          stepState === 6 ? theme.body.background : theme.body.secondBackground
+          stepState === 6 || stepState === 1 || stepState === 2
+            ? theme.body.background
+            : theme.body.secondBackground
         }
         webPadding="50px 0"
         mobilePadding="0 0"
@@ -63,7 +65,7 @@ const Basket = ({
         {stepState === 6 ? (
           <OrderDone />
         ) : (
-          <GridSection stepState={stepState}>
+          <GridSection stepState={stepState} isMobile={isMobile}>
             {stepState === 1 ? (
               isMobile ? (
                 <MobileCase basketItems={basketItems} functionalType="basket" />

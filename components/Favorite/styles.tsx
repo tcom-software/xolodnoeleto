@@ -62,6 +62,10 @@ const FavoriteContainer = styled.div`
         }
       }
     }
+    & > div {
+      border: 1px solid ${theme.body.someBorder};
+      margin: 10px 0;
+    }
   }
 
   @media (max-width: ${theme.mobileMedia.size}) {
