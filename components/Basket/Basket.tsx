@@ -16,7 +16,6 @@ const Basket = ({
   isMobile,
   stepState,
   basketSteps,
-  stepsResult,
   stepsContentData: { stepFour, stepFive },
 }) => {
   const customSwitch = (stepState) => {
@@ -51,14 +50,8 @@ const Basket = ({
       <GlobalSection
         isMobile={true}
         isWeb={true}
-        webBackground={
-          stepState === 6 ? theme.body.background : theme.body.secondBackground
-        }
-        mobileBackground={
-          stepState === 6 || stepState === 1 || stepState === 2
-            ? theme.body.background
-            : theme.body.secondBackground
-        }
+        webBackground={theme.body.secondBackground}
+        mobileBackground={theme.body.secondBackground}
         webPadding="50px 0"
         mobilePadding="0 0"
       >

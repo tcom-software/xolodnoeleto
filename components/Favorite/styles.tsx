@@ -64,11 +64,6 @@ const FavoriteContainer = styled.div`
           -moz-box-shadow: 0px 0px 0px 0.5px rgba(216, 216, 216, 0.75);
           box-shadow: 0px 0px 0px 0.5px rgba(216, 216, 216, 0.75);
 
-          & > td {
-            & > div {
-            }
-          }
-
           &:first-of-type {
             display: none;
           }
@@ -76,8 +71,12 @@ const FavoriteContainer = styled.div`
       }
     }
     & > div {
-      border: 1px solid ${theme.body.someBorder};
       margin: 10px 0;
+      border: 1px solid ${theme.body.someBorder};
+
+      &:last-of-type {
+        display: none;
+      }
     }
   }
 

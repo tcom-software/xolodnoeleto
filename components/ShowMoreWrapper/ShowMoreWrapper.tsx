@@ -7,7 +7,7 @@ import { ShowMoreContainer, ShowMoreText } from "./styles";
 const ShowMoreWrapper = ({ text, fromHeight, border, color }) => {
   const [open, setOpen] = useState(false);
   const [height, setHeight] = useState();
-  const pHeight = useRef(0);
+  const pHeight: any = useRef(0);
 
   useEffect(() => {
     const { offsetHeight }: any = pHeight.current;

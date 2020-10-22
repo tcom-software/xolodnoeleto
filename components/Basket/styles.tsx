@@ -7,21 +7,8 @@ const GridSection = styled.div`
   align-items: flex-start;
   grid-template-columns: 3fr 1fr;
 
-  & > div:nth-of-type(1) {
-    & > div {
-      ${({ stepState, isMobile }) =>
-        (stepState == 1 || stepState == 2) &&
-        isMobile &&
-        css`
-          padding: 10px;
-          margin: 10px 0;
-          border: 1px solid ${theme.body.someBorder};
-        `}
-    }
-  }
-
-  & > div {
-    table {
+  & > div:first-of-type {
+    & > table {
       width: 100%;
       border-spacing: 0px 10px;
       align-items: center;
@@ -75,16 +62,23 @@ const GridSection = styled.div`
           -moz-box-shadow: 0px 0px 0px 0.5px rgba(216, 216, 216, 0.75);
           box-shadow: 0px 0px 0px 0.5px rgba(216, 216, 216, 0.75);
 
-          & > td {
-            & > div {
-            }
-          }
-
           &:first-of-type {
             display: none;
           }
         }
       }
+    }
+    & > div {
+      margin: 10px 0;
+      border: 1px solid ${theme.body.someBorder};
+
+      &:last-of-type {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      padding: 10px;
     }
   }
 

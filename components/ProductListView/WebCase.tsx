@@ -3,6 +3,10 @@ import { connect } from "react-redux";
 import { Button, SvgIcon } from "@atoms";
 import { IncDec, makePrice } from "utils";
 
+/**
+ *  This Component give styled from parent component
+ * */
+
 import {
   addBasket,
   changeOrderStep,

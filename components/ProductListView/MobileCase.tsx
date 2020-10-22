@@ -5,6 +5,10 @@ import { connect } from "react-redux";
 import { Button } from "@atoms";
 import { CalculateCon, Img, ImgCon, MiniCon, Title, Container } from "./styles";
 
+/**
+ *  This Component give styled from parent component
+ * */
+
 import {
   addBasket,
   addBasketFromFavorite,

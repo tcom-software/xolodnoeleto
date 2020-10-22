@@ -36,16 +36,6 @@ const ListContainer = styled.div`
       -ms-overflow-style: none; /* IE and Edge */
       scrollbar-width: none; /* Firefox */
     }
-    & > div {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      height: 66px;
-      padding: 8px;
-      margin: 5px 0;
-      border: 1px solid #d8d8d8;
-    }
 
     width: 99%;
     margin: 0 auto;
@@ -73,6 +63,9 @@ const ListContainer = styled.div`
           }
         }
       }
+    }
+    & > div {
+      display: none !important;
     }
   }
 `;

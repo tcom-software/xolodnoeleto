@@ -8,8 +8,8 @@ const StepInformationContainer = styled.div`
     margin: 10px 0;
     display: flex;
     cursor: pointer;
+    background: #fff;
     align-items: center;
-    background: #ffffff;
     box-sizing: border-box;
     justify-content: flex-start;
     border: 1px solid ${theme.body.someBorder};
@@ -29,6 +29,14 @@ const StepInformationContainer = styled.div`
         & > tr {
           box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3);
         }
+      }
+    }
+    & > div {
+      margin: 10px 0;
+      border: 1px solid ${theme.body.someBorder};
+
+      &:last-of-type {
+        border: none;
       }
     }
   }
