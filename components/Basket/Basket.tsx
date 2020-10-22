@@ -73,6 +73,7 @@ const Basket = ({
                 <WebCase
                   basketItems={basketItems}
                   header={true}
+                  borderShow={true}
                   functionalType="basket"
                 />
               )
@@ -89,6 +90,7 @@ const Basket = ({
                   ) : (
                     <WebCase
                       basketItems={basketItems}
+                      borderShow={true}
                       functionalType="basket"
                     />
                   )

@@ -26,6 +26,7 @@ const Favorite = ({ isMobile, favoriteProducts }) => {
             <WebCase
               basketItems={favoriteProducts}
               header={true}
+              borderShow={true}
               basketButton={true}
               functionalType="favorite"
             />

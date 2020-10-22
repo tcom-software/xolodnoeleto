@@ -22,10 +22,12 @@ import {
 const WebCase = ({
   header,
   stepState,
+  borderShow,
   basketItems,
   basketButton,
   changeOrderStep,
   updateStepsResult,
+
   functionalType,
 
   addBasket,
@@ -44,6 +46,7 @@ const WebCase = ({
         <tbody>
           {header ? (
             <tr>
+              {functionalType == "favorite" ? <th>#</th> : null}
               <th>Фото</th>
               <th>Название товара</th>
               <th>Цена /шт.</th>
@@ -54,12 +57,14 @@ const WebCase = ({
             </tr>
           ) : null}
 
-          {Object.values(basketItems).map((item) => {
+          {Object.values(basketItems).map((item, index) => {
             const { id, src, model, price, count, manufacturer }: any = item;
             return (
               <tr key={id}>
+                {functionalType == "favorite" ? <td>{index + 1}</td> : null}
                 <td>
                   <img src={src} width={57} height={57} />
+                  {borderShow ? <span></span> : null}
                 </td>
                 <td>
                   <div>

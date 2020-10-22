@@ -32,7 +32,19 @@ const GridSection = styled.div`
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 
         & > td {
+          position: relative;
           text-align: center;
+
+          & > span {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            height: 60%;
+            margin: auto;
+            border-right: 0.5px solid ${theme.body.someBorder};
+          }
+
           & > div {
             width: max-content;
             text-align: left;
