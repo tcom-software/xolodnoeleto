@@ -92,6 +92,10 @@ const FiltersContainer = styled.div`
       .second-view {
         display: none;
       }
+      .show-more-show-less {
+        cursor: pointer;
+        color: ${theme.body.primaryColor};
+      }
     }
   }
 `;
