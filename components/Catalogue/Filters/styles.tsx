@@ -40,6 +40,7 @@ const FiltersContainer = styled.div`
         width: 100%;
         display: flex;
         justify-content: space-between;
+        margin-bottom: 15px;
 
         input {
           width: 45%;
@@ -48,6 +49,26 @@ const FiltersContainer = styled.div`
         }
       }
       &__between-new-style {
+        .rc-slider {
+          .rc-slider-rail {
+            height: 2px !important;
+            background: #898989 !important;
+          }
+          .rc-slider-track {
+            height: 2px !important;
+            background: #898989 !important;
+          }
+          .rc-slider-handle {
+            &:active,
+            &:hover {
+              border: unset !important;
+              box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5) !important;
+            }
+
+            border: unset !important;
+            box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.17);
+          }
+        }
       }
     }
   }

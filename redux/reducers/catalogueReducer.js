@@ -5,7 +5,8 @@ const initialState = {
     price: {
       id: 1,
       type: "between",
-      title: "Цена (Руб.)",
+      enTitle: "Price",
+      ruTitle: "Цена (Руб.)",
       values: {
         from: 0,
         to: 0,
@@ -14,7 +15,8 @@ const initialState = {
     brands: {
       id: 2,
       type: "multipleCases",
-      title: "Бренды",
+      ruTitle: "Бренды",
+      enTitle: "Brands",
       values: [
         { id: 3, name: "Dantex" },
         { id: 4, name: "Daikin" },
@@ -67,7 +69,8 @@ const initialState = {
     ServicedArea: {
       id: 49,
       type: "multipleCases",
-      title: "Обслуживаемая площадь",
+      ruTitle: "Обслуживаемая площадь",
+      enTitle: "ServicedArea",
       values: [
         { id: 50, name: "до 20 м2" },
         { id: 51, name: "21 - 25 м2" },
@@ -80,7 +83,8 @@ const initialState = {
     CoolingCapacity: {
       id: 56,
       type: "between",
-      title: "Мощность в режиме охлаждения",
+      ruTitle: "Мощность в режиме охлаждения",
+      enTitle: "CoolingCapacity",
       values: {
         from: 0,
         to: 0,
@@ -89,7 +93,8 @@ const initialState = {
     HeatingPower: {
       id: 57,
       type: "between",
-      title: "Мощность в режиме обогрева",
+      ruTitle: "Мощность в режиме обогрева",
+      enTitle: "HeatingPower",
       values: {
         from: 0,
         to: 0,
@@ -98,7 +103,8 @@ const initialState = {
     EnergyClass: {
       id: 58,
       type: "multipleCases",
-      title: "Класс энергопотребления",
+      ruTitle: "Класс энергопотребления",
+      enTitle: "EnergyClass",
       values: [
         { id: 59, name: "A" },
         { id: 60, name: "A+" },
