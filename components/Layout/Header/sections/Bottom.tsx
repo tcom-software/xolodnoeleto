@@ -47,9 +47,12 @@ const Bottom = ({
               ref={modalType === "navigation" ? modalRef : null}
             >
               {catalog.map((e, i) => {
+                const cataloguePath = e.replace(/[ -()]/gi, "_");
                 return (
                   <li key={i}>
-                    <Link href="">{e}</Link>
+                    <Link href={`catalogue/${cataloguePath}`}>
+                      <a>{e}</a>
+                    </Link>
                   </li>
                 );
               })}
