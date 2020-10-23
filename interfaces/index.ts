@@ -118,4 +118,5 @@ export interface checkBoxInterface {
   padding: string;
   background: string;
   children?: any;
+  callback?: any;
 }

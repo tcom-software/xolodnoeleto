@@ -8,7 +8,8 @@ const FiltersContainer = styled.div`
     padding: 15px;
   }
 
-  .between {
+  .between,
+  .multiple-cases {
     display: flex;
     flex-direction: column;
     border-bottom: 1px solid ${theme.body.someBorder};
@@ -34,8 +35,10 @@ const FiltersContainer = styled.div`
         cursor: pointer;
       }
     }
+  }
 
-    .show_hide_content {
+  .between {
+    .show-hide-content {
       &__from-to-and {
         width: 100%;
         display: flex;
@@ -69,6 +72,25 @@ const FiltersContainer = styled.div`
             box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.17);
           }
         }
+      }
+    }
+  }
+  .multiple-cases {
+    .title {
+    }
+    .show-hide-content {
+      .checkbox-name-container {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-bottom: 13px;
+
+        p {
+          margin-left: 10px;
+        }
+      }
+      .second-view {
+        display: none;
       }
     }
   }
