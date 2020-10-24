@@ -4,6 +4,8 @@ import theme from "../../../../styles/theme";
 import React from "react";
 
 const MultipleCases = ({
+  index,
+  showMore,
   e,
   data,
   openFromSubs,
@@ -13,7 +15,12 @@ const MultipleCases = ({
   setOpenFromMains,
 }) => {
   return (
-    <div className="multiple-cases" key={e.id}>
+    <div
+      key={e.id}
+      className={`multiple-cases ${
+        index < 4 ? `showedFilters` : showMore ? "showedFilters" : "hideFilters"
+      }`}
+    >
       <TitleSection
         e={e}
         openFromMains={openFromMains}

@@ -2,9 +2,22 @@ import TitleSection from "./TitleSection";
 import { Range } from "rc-slider";
 import React from "react";
 
-const Between = ({ e, data, setData, openFromMains, setOpenFromMains }) => {
+const Between = ({
+  index,
+  showMore,
+  e,
+  data,
+  setData,
+  openFromMains,
+  setOpenFromMains,
+}) => {
   return (
-    <div key={e.id} className="between">
+    <div
+      key={e.id}
+      className={`between ${
+        index < 4 ? `showedFilters` : showMore ? "showedFilters" : "hideFilters"
+      }`}
+    >
       <TitleSection
         e={e}
         openFromMains={openFromMains}

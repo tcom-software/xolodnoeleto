@@ -6,6 +6,7 @@ const Button = styled.button<ButtonInterface>`
   cursor: pointer;
   width: ${({ width }) => width};
   height: ${({ height }) => height};
+  color: ${({ color }) => color};
   font-weight: ${({ fontWeight }) => fontWeight};
   display: flex;
   align-items: center;
