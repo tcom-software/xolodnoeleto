@@ -3,6 +3,7 @@ import theme from "styles/theme";
 
 const FiltersContainer = styled.div`
   background: #fff;
+  height: max-content;
 
   & > form {
     & > button {
@@ -106,6 +107,23 @@ const FiltersContainer = styled.div`
 
     .hideFilters {
       display: none;
+    }
+  }
+
+  .mobile-filters-toggle {
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+      cursor: pointer;
+      margin: 15px auto;
+      padding: 14px 15px;
+      border: 1px solid ${theme.body.someBorder};
+
+      svg {
+        margin-right: 10px;
+      }
     }
   }
 `;

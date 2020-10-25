@@ -4,6 +4,8 @@ import ProductGridView from "../components/ProductGridView";
 import ProductList from "../components/ProductsList";
 import TitleNavigation from "../components/TitleNavigation";
 import Compare from "../components/Compare";
+import theme from "../styles/theme";
+import { GlobalSection } from "@atoms";
 
 const Index = ({ seenProducts }) => {
   return (
@@ -13,23 +15,30 @@ const Index = ({ seenProducts }) => {
         currentPage="Сравнение товаров"
       />
       <Compare />
-      <ProductList title={"вы недавно смотрели"} mobileType={"scroll"}>
-        {Object.values(seenProducts).map(
-          ({ id, src, title, price, vendorCode, selectedStarsCount }) => {
-            return (
-              <ProductGridView
-                key={id}
-                id={id}
-                src={src}
-                title={title}
-                price={price}
-                vendorCode={vendorCode}
-                selectedStarsCount={selectedStarsCount}
-              />
-            );
-          }
-        )}
-      </ProductList>
+      <GlobalSection
+        isWeb={true}
+        isMobile={true}
+        webBackground={theme.body.background}
+        webPadding="40px 0"
+      >
+        <ProductList title={"Вы недавно смотрели"} mobileType={"scroll"}>
+          {Object.values(seenProducts).map(
+            ({ id, src, title, price, vendorCode, selectedStarsCount }) => {
+              return (
+                <ProductGridView
+                  key={id}
+                  id={id}
+                  src={src}
+                  title={title}
+                  price={price}
+                  vendorCode={vendorCode}
+                  selectedStarsCount={selectedStarsCount}
+                />
+              );
+            }
+          )}
+        </ProductList>
+      </GlobalSection>
     </>
   );
 };

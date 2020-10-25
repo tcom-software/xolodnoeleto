@@ -1,3 +1,12 @@
 import Catalogue from "./Catalogue";
+import { connect } from "react-redux";
 
-export default Catalogue;
+const mapStateToProps = ({
+  catalogue: { products },
+  general: { isMobile },
+}) => ({
+  products,
+  isMobile,
+});
+
+export default connect(mapStateToProps)(Catalogue);

@@ -55,11 +55,21 @@ const ProductContainer = styled.div`
     color: #fff;
     border: none;
   }
+
+  @media (max-width: 768px) {
+    & > button {
+      width: 90%;
+    }
+  }
 `;
 
 const Image = styled.img`
   width: 158px;
   height: 158px;
+  @media (max-width: 768px) {
+    width: 100%;
+    height: auto;
+  }
 `;
 const Title = styled.div``;
 const VendorCod = styled.div`

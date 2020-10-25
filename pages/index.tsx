@@ -16,28 +16,13 @@ const Index = ({ newProducts, landing }) => {
   return (
     <>
       <Banner />
-      <ProductList title={"НОВЫЕ ПРОДУКТЫ"} mobileType={"scroll"}>
-        {Object.values(newProducts).map(
-          ({ id, src, title, price, vendorCode, selectedStarsCount }) => {
-            return (
-              <ProductGridView
-                key={id}
-                id={id}
-                src={src}
-                title={title}
-                price={price}
-                vendorCode={vendorCode}
-                selectedStarsCount={selectedStarsCount}
-              />
-            );
-          }
-        )}
-      </ProductList>
-      <LazyLoad>
-        <SuperSale />
-      </LazyLoad>
-      <LazyLoad>
-        <ProductList title={"СУПЕРЦЕНЫ УСПЕЙ КУПИТЬ!"} mobileType={"scroll"}>
+      <GlobalSection
+        isWeb={true}
+        isMobile={true}
+        webBackground={theme.body.background}
+        webPadding="40px 0"
+      >
+        <ProductList title={"НОВЫЕ ПРОДУКТЫ"} mobileType={"scroll"}>
           {Object.values(newProducts).map(
             ({ id, src, title, price, vendorCode, selectedStarsCount }) => {
               return (
@@ -49,12 +34,41 @@ const Index = ({ newProducts, landing }) => {
                   price={price}
                   vendorCode={vendorCode}
                   selectedStarsCount={selectedStarsCount}
-                  superPrice={true}
                 />
               );
             }
           )}
         </ProductList>
+      </GlobalSection>
+      <LazyLoad>
+        <SuperSale />
+      </LazyLoad>
+      <LazyLoad>
+        <GlobalSection
+          isWeb={true}
+          isMobile={true}
+          webBackground={theme.body.background}
+          webPadding="40px 0"
+        >
+          <ProductList title={"СУПЕРЦЕНЫ УСПЕЙ КУПИТЬ!"} mobileType={"scroll"}>
+            {Object.values(newProducts).map(
+              ({ id, src, title, price, vendorCode, selectedStarsCount }) => {
+                return (
+                  <ProductGridView
+                    key={id}
+                    id={id}
+                    src={src}
+                    title={title}
+                    price={price}
+                    vendorCode={vendorCode}
+                    selectedStarsCount={selectedStarsCount}
+                    superPrice={true}
+                  />
+                );
+              }
+            )}
+          </ProductList>
+        </GlobalSection>
       </LazyLoad>
       <LazyLoad>
         <Brands />
