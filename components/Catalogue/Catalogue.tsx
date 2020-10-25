@@ -6,6 +6,7 @@ import Filters from "./Filters";
 import theme from "styles/theme";
 import ProductGridView from "../ProductGridView";
 import ProductList from "../ProductsList";
+import Pagination from "../Pagination";
 
 const Catalogue = ({ products, isMobile }) => {
   const router = useRouter();
@@ -56,6 +57,7 @@ const Catalogue = ({ products, isMobile }) => {
             </div>
           </div>
         </CatalogueContainer>
+        <Pagination />
       </GlobalSection>
       <GlobalSection
         isWeb={true}

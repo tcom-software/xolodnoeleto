@@ -11,6 +11,7 @@ const Between = ({
   openFromMains,
   setOpenFromMains,
 }) => {
+  console.log(data);
   return (
     <div
       key={e.id}
@@ -54,6 +55,10 @@ const Between = ({
               min={0}
               max={9999999}
               allowCross={false}
+              value={[
+                data[e.id] === undefined ? 0 : data[e.id].from,
+                data[e.id] === undefined ? 0 : data[e.id].to,
+              ]}
               onChange={([from, to]) => {
                 setData({
                   ...data,
