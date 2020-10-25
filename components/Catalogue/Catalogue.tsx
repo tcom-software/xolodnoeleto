@@ -17,6 +17,7 @@ const Catalogue = () => {
     >
       <CatalogueContainer>
         <Filters />
+        <div>Catalogue</div>
       </CatalogueContainer>
     </GlobalSection>
   );

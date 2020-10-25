@@ -12,8 +12,6 @@ const Filters = ({ filters }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setData({});
-    console.log(11111);
   };
 
   return (
