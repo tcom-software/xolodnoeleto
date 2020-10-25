@@ -57,6 +57,11 @@ const FiltersContainer = styled.div`
             width: 45%;
             padding: 5px 10px;
             border: 1px solid ${theme.body.someBorder};
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button {
+              -webkit-appearance: none;
+              margin: 0;
+            }
           }
         }
         &__between-new-style {
