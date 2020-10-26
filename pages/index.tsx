@@ -11,8 +11,19 @@ import LazyLoad from "react-lazyload";
 import ShowMoreWrapper from "../components/ShowMoreWrapper";
 import { GlobalSection } from "@atoms";
 import theme from "styles/theme";
+import ReviewList from "../components/ReviewList";
 
 const Index = ({ newProducts, landing }) => {
+  return (
+    <GlobalSection
+      isWeb={true}
+      isMobile={true}
+      webBackground={theme.body.background}
+    >
+      <ReviewList />
+    </GlobalSection>
+  );
+
   return (
     <>
       <Banner />
@@ -89,6 +100,9 @@ const Index = ({ newProducts, landing }) => {
             text={landing}
             fromHeight={90}
             border={"none"}
+            svgShow={true}
+            buttonStyle={false}
+            buttonText={[`Показать больше`, `Показать меньше`]}
           />
         </GlobalSection>
       </LazyLoad>
