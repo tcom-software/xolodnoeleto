@@ -29,7 +29,7 @@ const Between = ({
             <div>
               <input
                 type="number"
-                value={data[e.id].from}
+                value={data[e.id] == undefined ? 0 : data[e.id].from}
                 onChange={({ target: { value } }) =>
                   setData({
                     ...data,
@@ -57,7 +57,7 @@ const Between = ({
           <div className="show-hide-content__between-new-style">
             <Range
               min={0}
-              max={9999999}
+              max={2000000}
               allowCross={false}
               value={[
                 data[e.id] === undefined ? 0 : data[e.id].from,

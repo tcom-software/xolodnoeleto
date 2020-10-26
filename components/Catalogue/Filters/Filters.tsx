@@ -6,20 +6,12 @@ import { Button, SvgIcon } from "@atoms";
 
 const Filters = ({ filters, isMobile }) => {
   const [mobileAvailableFilters, setMobileAvailableFilters] = useState(false);
-  const [data, setData] = useState({
-    1: {
-      from: 0,
-      to: 0,
-    },
-  });
+  const [data, setData] = useState({});
+
   const [showMore, setMore] = useState(false);
   const [openFromSubs, setOpenFromSubs] = useState([]);
   const [openFromMains, setOpenFromMains] = useState([]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(11111);
-  };
   const MobileFiltersToggle = () => (
     <div
       className="mobile-filters-toggle"
@@ -37,76 +29,73 @@ const Filters = ({ filters, isMobile }) => {
     </div>
   );
 
-  const FiltersHtml = () => (
-    <form onSubmit={handleSubmit}>
-      <Button
-        type={"secondary"}
-        color="#565656"
-        width={"199px"}
-        height={"47px"}
-      >
-        Очистить фильтр
-      </Button>
-
-      {Object.values(filters).map((e: any, i) => {
-        if (e.type == "between") {
-          return (
-            <Between
-              index={i}
-              showMore={showMore}
-              e={e}
-              key={e.id}
-              data={data}
-              setData={setData}
-              openFromMains={openFromMains}
-              setOpenFromMains={setOpenFromMains}
-            />
-          );
-        } else if (e.type == "multipleCases") {
-          return (
-            <MultipleCases
-              index={i}
-              showMore={showMore}
-              e={e}
-              key={e.id}
-              data={data}
-              setData={setData}
-              openFromSubs={openFromSubs}
-              setOpenFromSubs={setOpenFromSubs}
-              openFromMains={openFromMains}
-              setOpenFromMains={setOpenFromMains}
-            />
-          );
-        }
-      })}
-
-      <Button
-        type={"with-icon"}
-        width={"199px"}
-        height={"47px"}
-        onClick={() => setMore(!showMore)}
-      >
-        {showMore ? `Закрыть` : `Показать все фильтры`}
-      </Button>
-      <Button
-        type={"secondary"}
-        color="#565656"
-        width={"199px"}
-        height={"47px"}
-      >
-        Очистить фильтр
-      </Button>
-    </form>
-  );
-
   return (
-    <FiltersContainer>
+    <FiltersContainer
+      isMobile={isMobile}
+      mobileAvailableFilters={mobileAvailableFilters}
+    >
       {isMobile ? <MobileFiltersToggle /> : null}
-      {isMobile && mobileAvailableFilters ? (
-        <FiltersHtml />
-      ) : !isMobile ? (
-        <FiltersHtml />
-      ) : null}
+      <div className="form">
+        <Button
+          type={"secondary"}
+          color="#565656"
+          width={"199px"}
+          height={"47px"}
+          onClick={() => setData({})}
+        >
+          Очистить фильтр
+        </Button>
+
+        {Object.values(filters).map((e: any, i) => {
+          if (e.type == "between") {
+            return (
+              <Between
+                index={i}
+                showMore={showMore}
+                e={e}
+                key={e.id}
+                data={data}
+                setData={setData}
+                openFromMains={openFromMains}
+                setOpenFromMains={setOpenFromMains}
+              />
+            );
+          } else if (e.type == "multipleCases") {
+            return (
+              <MultipleCases
+                index={i}
+                showMore={showMore}
+                e={e}
+                key={e.id}
+                data={data}
+                setData={setData}
+                openFromSubs={openFromSubs}
+                setOpenFromSubs={setOpenFromSubs}
+                openFromMains={openFromMains}
+                setOpenFromMains={setOpenFromMains}
+              />
+            );
+          }
+        })}
+
+        <Button
+          type={"with-icon"}
+          width={"199px"}
+          height={"47px"}
+          onClick={() => setMore(!showMore)}
+        >
+          {showMore ? `Закрыть` : `Показать все фильтры`}
+        </Button>
+        <Button
+          type={"secondary"}
+          color="#565656"
+          width={"199px"}
+          height={"47px"}
+          onClick={() => setData({})}
+        >
+          Очистить фильтр
+        </Button>
+      </div>
     </FiltersContainer>
   );
 };

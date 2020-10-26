@@ -1,11 +1,11 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import theme from "styles/theme";
 
 const FiltersContainer = styled.div`
   background: #fff;
   height: max-content;
 
-  & > form {
+  & > .form {
     & > button {
       margin: 10px auto;
     }
@@ -142,6 +142,23 @@ const FiltersContainer = styled.div`
         margin-right: 10px;
       }
     }
+  }
+
+  @media (max-width: 768px) {
+    & > .form {
+      display: none;
+    }
+    ${({ mobileAvailableFilters, isMobile }) => {
+      return (
+        mobileAvailableFilters &&
+        isMobile &&
+        css`
+          & > .form {
+            display: block;
+          }
+        `
+      );
+    }}
   }
 `;
 
