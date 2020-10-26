@@ -6,13 +6,19 @@ import { Button, SvgIcon } from "@atoms";
 
 const Filters = ({ filters, isMobile }) => {
   const [mobileAvailableFilters, setMobileAvailableFilters] = useState(false);
-  const [data, setData] = useState({});
+  const [data, setData] = useState({
+    1: {
+      from: 0,
+      to: 0,
+    },
+  });
   const [showMore, setMore] = useState(false);
   const [openFromSubs, setOpenFromSubs] = useState([]);
   const [openFromMains, setOpenFromMains] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(11111);
   };
   const MobileFiltersToggle = () => (
     <div

@@ -11,7 +11,6 @@ const Between = ({
   openFromMains,
   setOpenFromMains,
 }) => {
-  console.log(data);
   return (
     <div
       key={e.id}
@@ -27,28 +26,33 @@ const Between = ({
       {openFromMains.indexOf(e.enTitle) != -1 ? (
         <div className="show-hide-content">
           <div className="show-hide-content__from-to-and">
-            <input
-              type="number"
-              placeholder="от"
-              value={data[e.id] == undefined ? 0 : data[e.id].from}
-              onChange={({ target: { value } }) =>
-                setData({
-                  ...data,
-                  [e.id]: { to: 0, ...data[e.id], from: value },
-                })
-              }
-            />
-            <input
-              type="number"
-              placeholder="до"
-              value={data[e.id] == undefined ? 0 : data[e.id].to}
-              onChange={({ target: { value } }) =>
-                setData({
-                  ...data,
-                  [e.id]: { from: 0, ...data[e.id], to: value },
-                })
-              }
-            />
+            <div>
+              <input
+                type="number"
+                value={data[e.id].from}
+                onChange={({ target: { value } }) =>
+                  setData({
+                    ...data,
+                    [e.id]: { ...data[e.id], from: value },
+                  })
+                }
+              />
+              <span>От: </span>
+            </div>
+
+            <div>
+              <input
+                type="number"
+                value={data[e.id] == undefined ? 0 : data[e.id].to}
+                onChange={({ target: { value } }) =>
+                  setData({
+                    ...data,
+                    [e.id]: { from: 0, ...data[e.id], to: value },
+                  })
+                }
+              />
+              <span>До: </span>
+            </div>
           </div>
           <div className="show-hide-content__between-new-style">
             <Range

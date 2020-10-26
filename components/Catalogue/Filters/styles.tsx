@@ -53,14 +53,26 @@ const FiltersContainer = styled.div`
           justify-content: space-between;
           margin-bottom: 15px;
 
-          input {
+          & > div {
+            position: relative;
             width: 45%;
-            padding: 5px 10px;
-            border: 1px solid ${theme.body.someBorder};
-            &::-webkit-outer-spin-button,
-            &::-webkit-inner-spin-button {
-              -webkit-appearance: none;
-              margin: 0;
+
+            input {
+              width: 100%;
+              font-size: 12px;
+              padding: 5px 5px 5px 23px;
+              border: 1px solid ${theme.body.someBorder};
+              &::-webkit-outer-spin-button,
+              &::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+              }
+            }
+            span {
+              position: absolute;
+              left: 4px;
+              top: 6px;
+              font-size: 11px;
             }
           }
         }

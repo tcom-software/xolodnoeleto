@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ReactPaginate from "react-paginate";
 import { PaginationContainer } from "./styles";
 
-const Pagination = () => {
+const Pagination = ({ isMobile }) => {
   // const [currentPage, setCurrentPage] = useState(pageFromUrl ? pageFromUrl : 1);
 
   return (
@@ -13,12 +13,12 @@ const Pagination = () => {
         marginPagesDisplayed={3}
         previousLabel={
           <span className="arrow-icons" data-direction="left">
-            предыдущий
+            {isMobile ? `<<` : `предыдущий`}
           </span>
         }
         nextLabel={
           <span className="arrow-icons" data-direction="right">
-            следующий
+            {isMobile ? `>>` : `следующий`}
           </span>
         }
         // initialPage={currentPage - 1}

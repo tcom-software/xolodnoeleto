@@ -46,13 +46,11 @@ const PaginationContainer = styled.div`
         width: auto;
         height: auto;
         border: none;
-        box-shadow: unset;
       }
       &:last-of-type {
         width: auto;
         height: auto;
         border: none;
-        box-shadow: unset;
       }
     }
   }
@@ -66,11 +64,9 @@ const PaginationContainer = styled.div`
 
       li {
         background: #ffffff;
-        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
 
         &.selected {
           background: #24a2d4 !important;
-          box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
         }
       }
     }
