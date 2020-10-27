@@ -15,7 +15,8 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@famous": ["components/FamousComponents"]
+      "@famous": ["components/FamousComponents"],
+      "@utils": ["utils"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/index.js"],

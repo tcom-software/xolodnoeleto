@@ -4,7 +4,7 @@ import { Container, ListContainer, MakeOrder, TotalPrice } from "./styles";
 import WebCase from "components/ProductListView/WebCase";
 
 import { Button } from "@famous";
-import { makePrice } from "utils";
+import { makePrice } from "@utils";
 
 const BasketMenu = ({
   modalRef,

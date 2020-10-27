@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Button, SvgIcon } from "@famous";
-import { IncDec, makePrice } from "utils";
+import { IncDec, makePrice } from "@utils";
 
 /**
  *  This Component give styled from parent component

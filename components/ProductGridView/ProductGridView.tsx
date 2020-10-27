@@ -8,7 +8,7 @@ import {
   VendorCod,
   ProductContainer,
 } from "./styles";
-import { makePrice } from "utils";
+import { makePrice } from "@utils";
 import { productInterface } from "interfaces";
 import { lightblue } from "color-name";
 

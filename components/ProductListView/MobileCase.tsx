@@ -1,5 +1,5 @@
 import React from "react";
-import { IncDec, makePrice } from "utils";
+import { IncDec, makePrice } from "@utils";
 import { connect } from "react-redux";
 import { Button, SvgIcon } from "@famous";
 import { CalculateCon, Img, ImgCon, MiniCon, Title, Container } from "./styles";

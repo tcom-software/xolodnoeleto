@@ -1,5 +1,5 @@
 import { SvgIcon } from "@famous";
-import { makePrice, IncDec } from "../../../../../../utils";
+import { makePrice, IncDec } from "@utils";
 import { basketProductInterface } from "interfaces";
 import { Item, ImgContainer, Title, Image, Price } from "./styles";
 
