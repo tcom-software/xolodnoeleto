@@ -1,8 +1,7 @@
-import { IncDec, makePrice } from "../../utils";
-import { SvgIcon } from "@atoms";
 import React from "react";
+import { IncDec, makePrice } from "utils";
 import { connect } from "react-redux";
-import { Button } from "@atoms";
+import { Button, SvgIcon } from "@famous";
 import { CalculateCon, Img, ImgCon, MiniCon, Title, Container } from "./styles";
 
 /**

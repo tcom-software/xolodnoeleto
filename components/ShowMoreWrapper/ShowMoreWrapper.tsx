@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import theme from "styles/theme";
-import { SvgIcon, Button } from "@atoms";
+import { SvgIcon, Button } from "@famous";
 import { useSpring } from "react-spring";
 import { ShowMoreContainer, ShowMoreText } from "./styles";
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ByFormContainer } from "./styles";
-import { Button, InputValidation } from "@atoms";
+import { Button, InputValidation } from "@famous";
 
 const BasketBuyForm = ({
   changeOrderStep,

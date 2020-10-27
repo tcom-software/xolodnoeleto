@@ -1,6 +1,6 @@
 import React from "react";
 import theme from "styles/theme";
-import { GlobalSection } from "@atoms";
+import { GlobalSection } from "@famous";
 import WebCase from "../ProductListView/WebCase";
 import { Container, GridSection } from "./styles";
 import { AboutOrder } from "./content";

@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "@atoms";
+import { Button } from "@famous";
 import { AboutOrderContainer, Title, MiniCon, Border } from "./styles";
 import { makePrice } from "utils";
 

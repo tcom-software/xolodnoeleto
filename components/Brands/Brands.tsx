@@ -1,7 +1,7 @@
-import { GlobalSection } from "@atoms";
+import { GlobalSection } from "@famous";
 import theme from "../../styles/theme";
 import { Container, Brand, Title, BrandsList } from "./styles";
-import Image from "../atoms/Image";
+import { Image } from "@famous";
 
 const Brands = ({ brands }) => {
   return (

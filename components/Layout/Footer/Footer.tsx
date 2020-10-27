@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Ul, Nav, UlsCon, Section, Copyright, FooterContainer } from "./styles";
-import SvgIcons from "../../atoms/SvgIcon";
-import { GlobalSection, Image } from "@atoms";
+import { SvgIcon } from "@famous";
+import { GlobalSection, Image } from "@famous";
 import theme from "styles/theme";
 
 const Footer = ({ menu, copyright, socialNetworks }) => {
@@ -28,7 +28,7 @@ const Footer = ({ menu, copyright, socialNetworks }) => {
               <Ul key={i}>
                 <li onClick={() => handleOpen(title)}>
                   <h2>{title}</h2>
-                  <SvgIcons
+                  <SvgIcon
                     type={title === isOpen ? `arrowDown` : `arrowRight`}
                     width={13}
                     height={13}

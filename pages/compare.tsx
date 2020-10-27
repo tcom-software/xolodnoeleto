@@ -5,7 +5,7 @@ import ProductList from "../components/ProductsList";
 import TitleNavigation from "../components/TitleNavigation";
 import Compare from "../components/Compare";
 import theme from "../styles/theme";
-import { GlobalSection } from "@atoms";
+import { GlobalSection } from "@famous";
 
 const Index = ({ seenProducts }) => {
   return (

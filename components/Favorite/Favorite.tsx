@@ -2,7 +2,7 @@ import React from "react";
 import theme from "styles/theme";
 import TitleNavigation from "../TitleNavigation";
 import { FavoriteContainer } from "./styles";
-import { GlobalSection } from "@atoms";
+import { GlobalSection } from "@famous";
 import MobileCase from "../ProductListView/MobileCase";
 import WebCase from "../ProductListView/WebCase";
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import theme from "styles/theme";
 import { makePrice } from "utils";
-import { Button, CheckBox, SvgIcon } from "@atoms";
+import { Button, CheckBox, SvgIcon } from "@famous";
 import { DeliveryContainer, DeliveryItem, PriceSpan } from "./styles";
 
 const DeliveryOrPayment = ({

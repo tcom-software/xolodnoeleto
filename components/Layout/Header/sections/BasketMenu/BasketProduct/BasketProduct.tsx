@@ -1,5 +1,5 @@
-import { SvgIcon } from "@atoms";
-import { makePrice, IncDec } from "utils";
+import { SvgIcon } from "@famous";
+import { makePrice, IncDec } from "../../../../../../utils";
 import { basketProductInterface } from "interfaces";
 import { Item, ImgContainer, Title, Image, Price } from "./styles";
 
@@ -29,12 +29,7 @@ const BasketProduct = (
         <span>{model}</span>
       </Title>
       <Price>{makePrice(price)}</Price>
-      {IncDec({
-        id,
-        count,
-        increment,
-        decrement,
-      })}
+      {IncDec(id, count, increment, decrement)}
       <Price>{makePrice(price * count)}</Price>
 
       {edit ? (

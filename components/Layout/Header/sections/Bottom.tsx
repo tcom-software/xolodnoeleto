@@ -3,7 +3,7 @@ import Link from "next/link";
 import theme from "styles/theme";
 import { connect } from "react-redux";
 import BasketMenu from "./BasketMenu";
-import { Button, GlobalSection, Input, SvgIcon } from "@atoms";
+import { Button, GlobalSection, Input, SvgIcon } from "@famous";
 import { closeModal, openModal } from "redux/actions/modalActions";
 import { BottomPanel, CatalogUl, SearchCon, Span, Ul } from "../styles";
 import { useSpring, animated } from "react-spring";

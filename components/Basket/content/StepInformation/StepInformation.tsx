@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { SvgIcon } from "@atoms";
+import { SvgIcon } from "@famous";
 import { Div, ChildrenCon, StepInformationContainer } from "./styles";
 
 const StepsCases = ({ title, current, children }) => (

@@ -2,7 +2,7 @@ import { ReviewListContainer } from "./styles";
 import React from "react";
 import Review from "../Review";
 import Slider from "react-slick";
-import { Button, SvgIcon } from "@atoms";
+import { Button, SvgIcon } from "@famous";
 
 const ReviewList = ({ reviewItems, isMobile, openModal }) => {
   const NextSlick = ({ onClick }) => (

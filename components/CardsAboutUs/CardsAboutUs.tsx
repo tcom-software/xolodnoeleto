@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Card, Title } from "./styles";
-import { SvgIcon } from "@atoms";
+import { SvgIcon } from "@famous";
 
 const CardsAboutUs = ({ aboutUsCards }) => {
   return (

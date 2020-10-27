@@ -3,26 +3,26 @@ import Banner from "../components/Banner";
 import SubScriptionEmail from "../components/SubScriptionEmail";
 import SuperSale from "../components/SuperSale";
 import { connect } from "react-redux";
-
 import ProductGridView from "../components/ProductGridView";
 import ProductList from "../components/ProductsList";
 import Brands from "../components/Brands";
 import LazyLoad from "react-lazyload";
 import ShowMoreWrapper from "../components/ShowMoreWrapper";
-import { GlobalSection } from "@atoms";
+import { GlobalSection } from "@famous";
+
 import theme from "styles/theme";
 import ReviewList from "../components/ReviewList";
 
 const Index = ({ newProducts, landing }) => {
-  return (
-    <GlobalSection
-      isWeb={true}
-      isMobile={true}
-      webBackground={theme.body.background}
-    >
-      <ReviewList />
-    </GlobalSection>
-  );
+  // return (
+  //   <GlobalSection
+  //     isWeb={true}
+  //     isMobile={true}
+  //     webBackground={theme.body.background}
+  //   >
+  //     <ReviewList />
+  //   </GlobalSection>
+  // );
 
   return (
     <>

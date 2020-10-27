@@ -1,4 +1,4 @@
-import { SvgIcon } from "@atoms";
+import { SvgIcon } from "@famous";
 import React from "react";
 
 const TitleSection = ({ e, openFromMains, setOpenFromMains }) => {

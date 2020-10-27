@@ -1,4 +1,4 @@
-import { Button, GlobalSection, Image, InputValidation } from "@atoms";
+import { Button, GlobalSection, Image, InputValidation } from "@famous";
 import theme from "styles/theme";
 import { Container, Form, Label, ImgContainer } from "./styles";
 import React, { useState } from "react";

@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Star } from "@atoms";
+import { Button, Star } from "@famous";
 import {
   Image,
   Title,

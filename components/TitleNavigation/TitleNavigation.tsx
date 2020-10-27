@@ -1,4 +1,4 @@
-import { GlobalSection } from "@atoms";
+import { GlobalSection } from "@famous";
 import Link from "next/link";
 import theme from "styles/theme";
 import { TitleNavigationContainer, Title, Nav } from "./styles";

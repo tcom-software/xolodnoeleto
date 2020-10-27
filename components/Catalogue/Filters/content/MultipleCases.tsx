@@ -1,6 +1,6 @@
 import TitleSection from "./TitleSection";
-import { CheckBox, SvgIcon } from "@atoms";
-import theme from "../../../../styles/theme";
+import { CheckBox, SvgIcon } from "@famous";
+import theme from "styles/theme";
 import React from "react";
 
 const MultipleCases = ({

@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Button, SvgIcon } from "@atoms";
+import { Button, SvgIcon } from "@famous";
 import { OrderDoneContainer } from "./styles";
 import theme from "styles/theme";
 

@@ -2,10 +2,9 @@ import React from "react";
 import Link from "next/link";
 import theme from "styles/theme";
 import { connect } from "react-redux";
-import { GlobalSection, SvgIcon } from "@atoms";
+import { GlobalSection, SvgIcon, SvgIconAnim } from "@famous";
 import { LogoCon, Ul, TopPanel } from "../styles";
 import { openModal, closeModal } from "redux/actions/modalActions";
-import { SvgIconAnim } from "@atoms";
 
 const Top = ({
   navigation,

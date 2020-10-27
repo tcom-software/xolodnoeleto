@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import theme from "styles/theme";
 import { connect } from "react-redux";
-import { Select, SvgIcon } from "@atoms";
+import { Select, SvgIcon } from "@famous";
 import { phoneNumberFormat } from "utils";
 import DatePicker from "react-datepicker";
 import ImageUploading from "react-images-uploading";

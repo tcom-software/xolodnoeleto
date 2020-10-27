@@ -2,7 +2,7 @@ import React from "react";
 import data from "./data";
 import Slider from "react-slick";
 import { Container } from "./styles";
-import { GlobalSection, Image, SvgIcon } from "@atoms";
+import { GlobalSection, Image, SvgIcon } from "@famous";
 import theme from "styles/theme";
 import CardsAboutUs from "../CardsAboutUs";
 

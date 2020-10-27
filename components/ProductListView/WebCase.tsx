@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Button, SvgIcon } from "@atoms";
+import { Button, SvgIcon } from "@famous";
 import { IncDec, makePrice } from "utils";
 
 /**

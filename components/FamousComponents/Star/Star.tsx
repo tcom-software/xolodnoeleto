@@ -1,5 +1,5 @@
 import React from "react";
-import { SvgIcon } from "@atoms";
+import { SvgIcon } from "@famous";
 import theme from "styles/theme";
 
 const Star = ({ item: i, selected: s }) => {

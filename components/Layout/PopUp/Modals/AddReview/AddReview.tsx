@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { ModalContainer, Title, Body } from "./styles";
-import { SvgIcon } from "@atoms";
-import { InputValidation, Button } from "@atoms";
+import { InputValidation, Button, SvgIcon } from "@famous";
 import { array } from "./data";
 
 const AddReview = ({ modalRef, closeModal }) => {

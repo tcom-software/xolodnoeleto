@@ -1,5 +1,5 @@
 import React from "react";
-import { GlobalSection, Image, Button } from "@atoms";
+import { GlobalSection, Image, Button } from "@famous";
 import { Container } from "./styles";
 import theme from "styles/theme";
 

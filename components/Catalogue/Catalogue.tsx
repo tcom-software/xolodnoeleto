@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { CatalogueContainer } from "./styles";
 import { useRouter } from "next/router";
-import { GlobalSection } from "@atoms";
+import { GlobalSection } from "@famous";
 import Filters from "./Filters";
 import theme from "styles/theme";
 import ProductGridView from "../ProductGridView";

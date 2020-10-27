@@ -1,6 +1,6 @@
 import React from "react";
 import { BannerContainer } from "../styles";
-import { Image, SvgIcon } from "@atoms";
+import { Image, SvgIcon } from "@famous";
 import theme from "styles/theme";
 
 const Banner = () => {

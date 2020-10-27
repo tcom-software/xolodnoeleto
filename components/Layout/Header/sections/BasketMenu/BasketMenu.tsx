@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Container, ListContainer, MakeOrder, TotalPrice } from "./styles";
 import WebCase from "components/ProductListView/WebCase";
 
-import { Button } from "@atoms";
+import { Button } from "@famous";
 import { makePrice } from "utils";
 
 const BasketMenu = ({

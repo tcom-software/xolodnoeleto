@@ -6,7 +6,7 @@ import {
   SearchCon,
 } from "../styles";
 import Link from "next/link";
-import { GlobalSection, Input, SvgIcon } from "@atoms";
+import { GlobalSection, Input, SvgIcon } from "@famous";
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { openModal } from "redux/actions/modalActions";

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { SvgIcon } from "@atoms";
+import { SvgIcon } from "@famous";
 import { IncDecInterface } from "interfaces";
 
 const Container = styled.div`
