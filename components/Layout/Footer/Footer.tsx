@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
-import { Ul, Nav, UlsCon, Section, Copyright, FooterContainer } from "./styles";
-import { SvgIcon } from "@famous";
-import { GlobalSection, Image } from "@famous";
 import theme from "styles/theme";
+import { connect } from "react-redux";
+import { GlobalSection, Image, SvgIcon } from "@famous";
+import { Ul, Nav, UlsCon, Section, Copyright, FooterContainer } from "./styles";
 
 const Footer = ({ menu, copyright, socialNetworks }) => {
   const [isOpen, setIsOpen] = useState("");

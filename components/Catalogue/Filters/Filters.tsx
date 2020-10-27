@@ -1,8 +1,8 @@
 import React, { useState } from "react";
+import { Button, SvgIcon } from "@famous";
 import Between from "./content/Between";
 import { FiltersContainer } from "./styles";
 import MultipleCases from "./content/MultipleCases";
-import { Button, SvgIcon } from "@famous";
 
 const Filters = ({ filters, isMobile }) => {
   const [mobileAvailableFilters, setMobileAvailableFilters] = useState(false);

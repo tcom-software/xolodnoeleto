@@ -1,5 +1,5 @@
-import { SvgIcon } from "@famous";
 import React from "react";
+import { SvgIcon } from "@famous";
 
 const TitleSection = ({ e, openFromMains, setOpenFromMains }) => {
   return (

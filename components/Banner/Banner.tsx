@@ -1,10 +1,10 @@
 import React from "react";
 import data from "./data";
+import theme from "styles/theme";
 import Slider from "react-slick";
 import { Container } from "./styles";
-import { GlobalSection, Image, SvgIcon } from "@famous";
-import theme from "styles/theme";
 import CardsAboutUs from "../CardsAboutUs";
+import { GlobalSection, Image, SvgIcon } from "@famous";
 
 const Banner = () => {
   const images = data.map((e, i) => (
@@ -42,9 +42,6 @@ const Banner = () => {
         <Slider
           arrows={true}
           dots={true}
-          // autoplay={true}
-          // speed={1000}
-          // autoplay-speed={10000}
           prevArrow={<PrevSlick onClick />}
           nextArrow={<NextSlick onClick />}
         >

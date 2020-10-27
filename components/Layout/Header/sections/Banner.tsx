@@ -1,7 +1,7 @@
 import React from "react";
-import { BannerContainer } from "../styles";
-import { Image, SvgIcon } from "@famous";
 import theme from "styles/theme";
+import { Image, SvgIcon } from "@famous";
+import { BannerContainer } from "../styles";
 
 const Banner = () => {
   return (

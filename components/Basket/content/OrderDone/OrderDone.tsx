@@ -1,8 +1,8 @@
 import React from "react";
 import Link from "next/link";
+import theme from "styles/theme";
 import { Button, SvgIcon } from "@famous";
 import { OrderDoneContainer } from "./styles";
-import theme from "styles/theme";
 
 const OrderDone = ({ text }) => {
   return (

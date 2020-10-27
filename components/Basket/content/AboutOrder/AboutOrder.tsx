@@ -1,7 +1,7 @@
 import React from "react";
+import { makePrice } from "@utils";
 import { Button } from "@famous";
 import { AboutOrderContainer, Title, MiniCon, Border } from "./styles";
-import { makePrice } from "@utils";
 
 const AboutOrder = ({
   total_amount,

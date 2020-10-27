@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { CompareContainer } from "./styles";
-import { Button, GlobalSection, Input, SvgIcon } from "@famous";
 import theme from "styles/theme";
 import { makePrice } from "@utils";
+import { CompareContainer } from "./styles";
+import { Button, GlobalSection, Input, SvgIcon } from "@famous";
 
 const Compare = ({
   addBasket,

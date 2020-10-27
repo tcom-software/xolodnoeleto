@@ -1,7 +1,6 @@
-import { GlobalSection } from "@famous";
-import theme from "../../styles/theme";
-import { Container, Brand, Title, BrandsList } from "./styles";
-import { Image } from "@famous";
+import theme from "styles/theme";
+import { Image, GlobalSection } from "@famous";
+import { BrandsContainer } from "./styles";
 
 const Brands = ({ brands }) => {
   return (
@@ -11,23 +10,23 @@ const Brands = ({ brands }) => {
       webBackground={theme.body.background}
       webPadding={"0 0 70px 0"}
     >
-      <Container>
-        <Title>Бренды</Title>
-        <BrandsList>
+      <BrandsContainer>
+        <h3>Бренды</h3>
+        <div className="brands-list">
           {brands.map(({ src }, i) => {
             return (
-              <Brand key={i}>
+              <div className="brand" key={i}>
                 <Image
                   simpleWeb={src}
                   simpleMobile={src}
                   webpWeb={""}
                   webpMobile={""}
                 />
-              </Brand>
+              </div>
             );
           })}
-        </BrandsList>
-      </Container>
+        </div>
+      </BrandsContainer>
     </GlobalSection>
   );
 };

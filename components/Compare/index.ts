@@ -11,9 +11,9 @@ const mapStateToProps = ({ compare: { compareProducts } }) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  addBasket: (id) => dispatch(addBasket(id)),
   addCompareProduct: (data) => dispatch(addCompareProduct(data)),
   removeCompareProduct: (data) => dispatch(removeCompareProduct(data)),
-  addBasket: (id) => dispatch(addBasket(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Compare);

@@ -1,15 +1,17 @@
 import React from "react";
 import theme from "styles/theme";
 import { GlobalSection } from "@famous";
-import WebCase from "../ProductListView/WebCase";
 import { Container, GridSection } from "./styles";
-import { AboutOrder } from "./content";
+import WebCase from "../ProductListView/WebCase";
 import MobileCase from "../ProductListView/MobileCase";
-import StepInformation from "./content/StepInformation";
-import BasketBuyForm from "./content/BasketBuyForm";
-import OrderDone from "./content/OrderDone";
-import DeliveryOrPayment from "./content/DeliveryOrPayment";
 import TitleNavigation from "../TitleNavigation";
+import {
+  AboutOrder,
+  StepInformation,
+  BasketBuyForm,
+  OrderDone,
+  DeliveryOrPayment,
+} from "./content";
 
 const Basket = ({
   basketItems,

@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
-import "../styles/globals.css";
+import React, { useEffect } from "react";
+import store from "../redux/store";
 import theme from "../styles/theme";
+import { Provider } from "react-redux";
 import Layout from "../components/Layout";
+import withRedux from "next-redux-wrapper";
 import { ThemeProvider } from "styled-components";
 import GlobalStyles from "../styles/GlobalStyles";
-import { Provider } from "react-redux";
-import withRedux from "next-redux-wrapper";
-import store from "../redux/store";
 import { useSpring, animated } from "react-spring";
 import { setIsMobile } from "../redux/actions/generalActions";
 
+import "../styles/globals.css";
 import "slick-carousel/slick/slick.scss";
 import "slick-carousel/slick/slick-theme.scss";
 import "rc-slider/assets/index.css";
@@ -47,3 +47,9 @@ function MyApp(props) {
 const makeStore = () => store;
 
 export default withRedux(makeStore)(MyApp);
+
+/*
+ *   Filters mobile
+ *    Favorite Mobile
+ *
+ * */

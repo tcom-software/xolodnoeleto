@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { CatalogueContainer } from "./styles";
-import { useRouter } from "next/router";
-import { GlobalSection } from "@famous";
 import Filters from "./Filters";
 import theme from "styles/theme";
-import ProductGridView from "../ProductGridView";
-import ProductList from "../ProductsList";
+import { GlobalSection } from "@famous";
+import { useRouter } from "next/router";
 import Pagination from "../Pagination";
+import ProductList from "../ProductsList";
+import { CatalogueContainer } from "./styles";
+import ProductGridView from "../ProductGridView";
 
 const Catalogue = ({ products, isMobile }) => {
   const router = useRouter();

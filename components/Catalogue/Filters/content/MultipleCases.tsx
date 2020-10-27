@@ -1,7 +1,7 @@
+import React from "react";
+import theme from "styles/theme";
 import TitleSection from "./TitleSection";
 import { CheckBox, SvgIcon } from "@famous";
-import theme from "styles/theme";
-import React from "react";
 
 const MultipleCases = ({
   index,

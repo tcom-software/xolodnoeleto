@@ -1,7 +1,7 @@
-import { GlobalSection } from "@famous";
 import Link from "next/link";
 import theme from "styles/theme";
-import { TitleNavigationContainer, Title, Nav } from "./styles";
+import { GlobalSection } from "@famous";
+import { TitleNavigationContainer } from "./styles";
 
 const TitleNavigation = ({ title, currentPage }) => {
   return (
@@ -13,10 +13,10 @@ const TitleNavigation = ({ title, currentPage }) => {
       webBackground={theme.body.background}
     >
       <TitleNavigationContainer>
-        <Nav>
+        <div className="nav">
           <Link href="/">Главная</Link> / <span> {currentPage} </span>
-        </Nav>
-        <Title>{title}</Title>
+        </div>
+        <h2 className="title">{title}</h2>
       </TitleNavigationContainer>
     </GlobalSection>
   );

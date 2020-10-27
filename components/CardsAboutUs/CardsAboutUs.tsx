@@ -1,15 +1,15 @@
 import React from "react";
-import { Container, Card, Title } from "./styles";
 import { SvgIcon } from "@famous";
+import { Container } from "./styles";
 
 const CardsAboutUs = ({ aboutUsCards }) => {
   return (
     <Container>
       {aboutUsCards.map((e, i) => (
-        <Card key={i}>
-          <Title> {e.title} </Title>
+        <div className="card" key={i}>
+          <p> {e.title} </p>
           <SvgIcon type={e.type} width={e.width} height={e.height} />
-        </Card>
+        </div>
       ))}
     </Container>
   );
