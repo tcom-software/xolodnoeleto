@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ModalContainer, Title, Body } from "./styles";
-import { InputValidation, Button, SvgIcon } from "@famous";
+// @ts-ignore
+import { FillFormItem, Button, SvgIcon } from "@famous";
 import { array } from "./data";
 
 const AddReview = ({ modalRef, closeModal }) => {
@@ -43,7 +44,7 @@ const AddReview = ({ modalRef, closeModal }) => {
         </Title>
         <Body>
           {array.map(({ name, type }: any, i: number) => (
-            <InputValidation
+            <FillFormItem
               key={i}
               type={type}
               name={name}

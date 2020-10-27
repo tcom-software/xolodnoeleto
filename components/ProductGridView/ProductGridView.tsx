@@ -10,7 +10,6 @@ import {
 } from "./styles";
 import { makePrice } from "@utils";
 import { productInterface } from "interfaces";
-import { lightblue } from "color-name";
 
 const ProductGridView = ({
   id,

@@ -1,5 +1,5 @@
 import { ReviewContainer } from "./styles";
-import { Star } from "FamousComponents";
+import { Star } from "@famous";
 import { Stars } from "../ProductGridView/styles";
 import React, { useState } from "react";
 import ShowMoreWrapper from "../ShowMoreWrapper";

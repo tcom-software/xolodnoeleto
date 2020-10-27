@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ByFormContainer } from "./styles";
-import { Button, InputValidation } from "@famous";
+// @ts-ignore
+import { Button, FillFormItem } from "@famous";
 
 const BasketBuyForm = ({
   changeOrderStep,
@@ -41,7 +42,7 @@ const BasketBuyForm = ({
           {basketBuyInputs.map(({ name, type, label }: any, i: number) => (
             <div key={i}>
               <label htmlFor={name}> {label} </label>
-              <InputValidation
+              <FillFormItem
                 forHtml={name}
                 type={type}
                 name={name}

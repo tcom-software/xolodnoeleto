@@ -23,7 +23,7 @@ const Container = styled.section`
   }
 `;
 
-const Form = styled.form`
+const SubScriptionForm = styled.form`
   padding: 15px 20px;
   border: 1px solid ${theme.body.someBorder};
   background: ${theme.body.background};
@@ -87,4 +87,4 @@ const ImgContainer = styled.div`
   }
 `;
 
-export { Container, Form, Label, ImgContainer };
+export { Container, SubScriptionForm, Label, ImgContainer };

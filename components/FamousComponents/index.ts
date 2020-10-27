@@ -8,4 +8,4 @@ export { default as Select } from "./Select";
 export { default as Star } from "./Star";
 export { default as Button } from "./Button";
 export { default as GlobalSection } from "./GlobalSection";
-export { default as InputValidation } from "./InputValidation";
+export { default as FillFormItem } from "./FillFormItem";

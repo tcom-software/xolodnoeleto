@@ -1,5 +1,6 @@
 import React from "react";
 import theme from "styles/theme";
+// @ts-ignore
 import { GlobalSection } from "@famous";
 import WebCase from "../ProductListView/WebCase";
 import { Container, GridSection } from "./styles";

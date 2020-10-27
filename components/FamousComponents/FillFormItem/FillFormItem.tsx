@@ -5,10 +5,10 @@ import { Select, SvgIcon } from "@famous";
 import { phoneNumberFormat } from "@utils";
 import DatePicker from "react-datepicker";
 import ImageUploading from "react-images-uploading";
-import { InputValidationInterface } from "interfaces";
+import { FormValidationInterface } from "interfaces";
 import { Input, Message, InputContainer, Textarea } from "./styles";
 
-const InputValidation = ({
+const FillFormItem = ({
   data,
   callback,
   name,
@@ -17,7 +17,7 @@ const InputValidation = ({
   initialErrorState,
   inputsValidationData,
   forHtml,
-}: InputValidationInterface) => {
+}: FormValidationInterface) => {
   const [errorStyle, setErrorStyle] = useState(false);
   const { errorMessage, validation, placeholder } = inputsValidationData[name];
 
@@ -80,6 +80,8 @@ const InputValidation = ({
         />
       );
     } else if (type === "uploadImages") {
+      const { uploadImages }: any = data;
+
       return (
         <ImageUploading
           multiple
@@ -89,9 +91,9 @@ const InputValidation = ({
           onChange={(imageData) => {
             callback([...imageData]);
           }}
+          value={uploadImages}
         >
           {({ imageList, onImageUpload, onImageRemoveAll }) => {
-            const { uploadImages } = data;
             return (
               <div className="upload-image-container" onClick={onImageUpload}>
                 <p>Загрузить Изображение ({uploadImages.length})</p>
@@ -154,4 +156,4 @@ const InputValidation = ({
 const mapStateToProps = ({ general: { inputsValidationData } }) => ({
   inputsValidationData,
 });
-export default connect(mapStateToProps)(InputValidation);
+export default connect(mapStateToProps)(FillFormItem);

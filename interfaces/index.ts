@@ -1,4 +1,4 @@
-export interface InputValidationInterface {
+export interface FormValidationInterface {
   data: object;
   callback: any;
   name: string;

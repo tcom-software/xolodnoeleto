@@ -1,6 +1,7 @@
-import { Button, GlobalSection, Image, InputValidation } from "@famous";
+// @ts-ignore
+import { Button, GlobalSection, Image, FillFormItem } from "@famous";
 import theme from "styles/theme";
-import { Container, Form, Label, ImgContainer } from "./styles";
+import { Container, SubScriptionForm, Label, ImgContainer } from "./styles";
 import React, { useState } from "react";
 
 const SubScriptionEmail = () => {
@@ -29,11 +30,11 @@ const SubScriptionEmail = () => {
       webBackground={theme.body.secondBackground}
     >
       <Container>
-        <Form onSubmit={handleSubmit}>
+        <SubScriptionForm onSubmit={handleSubmit}>
           <Label htmlFor="subscriptionEmail">
             Введите адрес электронной почты
           </Label>
-          <InputValidation
+          <FillFormItem
             forHtml={"subscriptionEmail"}
             type={"text"}
             name={"email"}
@@ -53,7 +54,7 @@ const SubScriptionEmail = () => {
           >
             Отправить
           </Button>
-        </Form>
+        </SubScriptionForm>
         <ImgContainer>
           <Image
             simpleWeb="images/subscription-email/girl.png"
