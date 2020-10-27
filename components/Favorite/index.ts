@@ -3,9 +3,10 @@ import { connect } from "react-redux";
 
 const mapStateToProps = ({
   favorite: { items: favoriteProducts },
-  general: { isMobile },
+  general: { isMobile, seenProducts },
 }) => ({
   isMobile,
+  seenProducts,
   favoriteProducts,
 });
 

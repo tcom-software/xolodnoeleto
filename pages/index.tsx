@@ -1,14 +1,13 @@
 import React from "react";
-import Banner from "../components/Banner";
-import SubScriptionEmail from "../components/SubScriptionEmail";
-import SuperSale from "../components/SuperSale";
 import { connect } from "react-redux";
-import ProductGridView from "../components/ProductGridView";
-import ProductList from "../components/ProductsList";
-import Brands from "../components/Brands";
 import LazyLoad from "react-lazyload";
-import ShowMoreWrapper from "../components/ShowMoreWrapper";
 import { GlobalSection } from "@famous";
+import Banner from "../components/Banner";
+import Brands from "../components/Brands";
+import SuperSale from "../components/SuperSale";
+import ProductList from "../components/ProductsList";
+import SubScriptionEmail from "../components/SubScriptionEmail";
+import ShowMoreWrapper from "../components/ShowMoreWrapper";
 
 import theme from "styles/theme";
 import ReviewList from "../components/ReviewList";
@@ -33,23 +32,11 @@ const Index = ({ newProducts, landing }) => {
         webBackground={theme.body.background}
         webPadding="40px 0"
       >
-        <ProductList title={"НОВЫЕ ПРОДУКТЫ"} mobileType={"scroll"}>
-          {Object.values(newProducts).map(
-            ({ id, src, title, price, vendorCode, selectedStarsCount }) => {
-              return (
-                <ProductGridView
-                  key={id}
-                  id={id}
-                  src={src}
-                  title={title}
-                  price={price}
-                  vendorCode={vendorCode}
-                  selectedStarsCount={selectedStarsCount}
-                />
-              );
-            }
-          )}
-        </ProductList>
+        <ProductList
+          title={"НОВЫЕ ПРОДУКТЫ"}
+          mobileType={"scroll"}
+          products={newProducts}
+        />
       </GlobalSection>
       <LazyLoad>
         <SuperSale />
@@ -61,24 +48,11 @@ const Index = ({ newProducts, landing }) => {
           webBackground={theme.body.background}
           webPadding="40px 0"
         >
-          <ProductList title={"СУПЕРЦЕНЫ УСПЕЙ КУПИТЬ!"} mobileType={"scroll"}>
-            {Object.values(newProducts).map(
-              ({ id, src, title, price, vendorCode, selectedStarsCount }) => {
-                return (
-                  <ProductGridView
-                    key={id}
-                    id={id}
-                    src={src}
-                    title={title}
-                    price={price}
-                    vendorCode={vendorCode}
-                    selectedStarsCount={selectedStarsCount}
-                    superPrice={true}
-                  />
-                );
-              }
-            )}
-          </ProductList>
+          <ProductList
+            title={"СУПЕРЦЕНЫ УСПЕЙ КУПИТЬ!"}
+            mobileType={"scroll"}
+            products={newProducts}
+          />
         </GlobalSection>
       </LazyLoad>
       <LazyLoad>

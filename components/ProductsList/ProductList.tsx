@@ -1,11 +1,28 @@
 import React from "react";
 import { Container, Title, ListContainer } from "./styles";
+import ProductGridView from "../ProductGridView";
 
-const ProductList = ({ title, children, mobileType }) => {
+const ProductList = ({ title, products, mobileType }) => {
   return (
     <Container>
       <Title>{title}</Title>
-      <ListContainer mobileType={mobileType}>{children}</ListContainer>
+      <ListContainer mobileType={mobileType}>
+        {Object.values(products).map(
+          ({ id, src, title, price, vendorCode, selectedStarsCount }) => {
+            return (
+              <ProductGridView
+                key={id}
+                id={id}
+                src={src}
+                title={title}
+                price={price}
+                vendorCode={vendorCode}
+                selectedStarsCount={selectedStarsCount}
+              />
+            );
+          }
+        )}
+      </ListContainer>
     </Container>
   );
 };

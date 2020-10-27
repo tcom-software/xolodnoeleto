@@ -40,6 +40,10 @@ export const Global = styled.section`
       return css`
         display: flex;
       `;
+    } else if (!isWeb) {
+      return css`
+        display: none;
+      `;
     }
   }}
   
@@ -55,8 +59,13 @@ export const Global = styled.section`
         return css`
           display: block;
         `;
+      } else if (!isMobile) {
+        return css`
+          display: none;
+        `;
       }
     }}
+
     ${({ mobileBackground }) => {
       if (mobileBackground) {
         return css`

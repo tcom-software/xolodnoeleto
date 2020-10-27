@@ -5,8 +5,10 @@ import { FavoriteContainer } from "./styles";
 import { GlobalSection } from "@famous";
 import MobileCase from "../ProductListView/MobileCase";
 import WebCase from "../ProductListView/WebCase";
+import ProductList from "../ProductsList";
+import ProductGridView from "../ProductGridView";
 
-const Favorite = ({ isMobile, favoriteProducts }) => {
+const Favorite = ({ isMobile, favoriteProducts, seenProducts }) => {
   return (
     <>
       <TitleNavigation title={"ИЗБРАННЫЕ"} currentPage={"Избранные"} />
@@ -37,7 +39,13 @@ const Favorite = ({ isMobile, favoriteProducts }) => {
         isWeb={false}
         isMobile={true}
         webBackground={theme.body.background}
-      ></GlobalSection>
+      >
+        <ProductList
+          title={"ВЫ НЕДАВНО СМОТРЕЛИ"}
+          mobileType={"scroll"}
+          products={seenProducts}
+        />
+      </GlobalSection>
     </>
   );
 };

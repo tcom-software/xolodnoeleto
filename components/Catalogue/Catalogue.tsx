@@ -65,23 +65,11 @@ const Catalogue = ({ products, isMobile }) => {
         webBackground={theme.body.background}
         webPadding={"35px 0px"}
       >
-        <ProductList title={"ВЫ НЕДАВНО СМОТРЕЛИ"} mobileType={"scroll"}>
-          {Object.values(items.slice(0, 3)).map(
-            ({ id, src, title, price, vendorCode, selectedStarsCount }) => {
-              return (
-                <ProductGridView
-                  key={id}
-                  id={id}
-                  src={src}
-                  title={title}
-                  price={price}
-                  vendorCode={vendorCode}
-                  selectedStarsCount={selectedStarsCount}
-                />
-              );
-            }
-          )}
-        </ProductList>
+        <ProductList
+          title={"ВЫ НЕДАВНО СМОТРЕЛИ"}
+          mobileType={"scroll"}
+          products={items.slice(0, 3)}
+        />
       </GlobalSection>
     </>
   );

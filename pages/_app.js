@@ -50,6 +50,5 @@ export default withRedux(makeStore)(MyApp);
 
 /*
  *   Filters mobile
- *    Favorite Mobile
  *
  * */
