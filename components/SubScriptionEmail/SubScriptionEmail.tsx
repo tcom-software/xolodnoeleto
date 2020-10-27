@@ -1,8 +1,7 @@
-// @ts-ignore
-import { Button, GlobalSection, Image, FillFormItem } from "@famous";
-import theme from "styles/theme";
-import { Container, SubScriptionForm, Label, ImgContainer } from "./styles";
 import React, { useState } from "react";
+import theme from "styles/theme";
+import { Button, GlobalSection, Image, FillFormItem } from "@famous";
+import { Container, SubScriptionForm, Label, ImgContainer } from "./styles";
 
 const SubScriptionEmail = () => {
   const [info, setInfo] = useState({ email: "" });

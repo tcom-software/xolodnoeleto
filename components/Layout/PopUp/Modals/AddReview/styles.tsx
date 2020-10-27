@@ -2,7 +2,7 @@ import styled from "styled-components";
 import theme from "styles/theme";
 
 const ModalContainer = styled.div`
-  width: 395px;
+  width: 490px;
   height: auto;
   margin: 0 auto;
   @media (max-width: ${theme.mobileMedia.size}) {

@@ -17,6 +17,7 @@ const FillFormItem = ({
   initialErrorState,
   inputsValidationData,
   forHtml,
+  textareaHeight,
 }: FormValidationInterface) => {
   const [errorStyle, setErrorStyle] = useState(false);
   const { errorMessage, validation, placeholder } = inputsValidationData[name];
@@ -72,6 +73,7 @@ const FillFormItem = ({
     } else if (type === "textarea") {
       return (
         <Textarea
+          height={textareaHeight}
           id={forHtml}
           value={data[name]}
           onChange={handleChange}

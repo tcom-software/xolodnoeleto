@@ -7,6 +7,7 @@ export interface FormValidationInterface {
   initialErrorState: any;
   inputsValidationData: object;
   forHtml?: string;
+  textareaHeight: number | null;
 }
 
 export interface HeadInfo {

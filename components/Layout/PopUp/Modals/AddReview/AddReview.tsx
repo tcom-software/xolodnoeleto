@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { ModalContainer, Title, Body } from "./styles";
-// @ts-ignore
 import { FillFormItem, Button, SvgIcon } from "@famous";
 import { array } from "./data";
 
@@ -51,6 +50,7 @@ const AddReview = ({ modalRef, closeModal }) => {
               data={info}
               callback={handleChange(name)}
               initialErrorState={!!~errorState.indexOf(name)}
+              textareaHeight={160}
             />
           ))}
           <div className="rating-container">

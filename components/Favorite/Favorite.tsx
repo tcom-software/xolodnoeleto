@@ -33,6 +33,11 @@ const Favorite = ({ isMobile, favoriteProducts }) => {
           )}
         </FavoriteContainer>
       </GlobalSection>
+      <GlobalSection
+        isWeb={false}
+        isMobile={true}
+        webBackground={theme.body.background}
+      ></GlobalSection>
     </>
   );
 };

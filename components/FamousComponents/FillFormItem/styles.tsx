@@ -93,10 +93,11 @@ const Message = styled.div`
 
 const Textarea = styled.textarea`
   transition: 0.5s all ease-in;
+  height: 160px;
+  height: ${({ height }) => height}px;
   padding: 13px;
   resize: none;
   width: 100%;
-  height: 160px;
   color: ${theme.body.color};
   border: 1px solid ${theme.input.borderColor};
 

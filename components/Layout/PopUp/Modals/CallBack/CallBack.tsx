@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { ModalContainer, Title, Body } from "./styles";
-// @ts-ignore
 import { FillFormItem, Button, SvgIcon } from "@famous";
 import { array } from "./data";
 

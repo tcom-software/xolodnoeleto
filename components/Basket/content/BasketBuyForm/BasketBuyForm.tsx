@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { ByFormContainer } from "./styles";
-// @ts-ignore
 import { Button, FillFormItem } from "@famous";
 
 const BasketBuyForm = ({
@@ -49,6 +48,7 @@ const BasketBuyForm = ({
                 data={info}
                 initialErrorState={!!~errorState.indexOf(name)}
                 callback={handleChange(name)}
+                textareaHeight={90}
               />
             </div>
           ))}

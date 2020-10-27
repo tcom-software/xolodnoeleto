@@ -116,7 +116,7 @@ const initialState = {
     },
     {
       name: "commentByOrder",
-      type: "input",
+      type: "textarea",
       label: "Комментарии к заказу",
     },
   ],

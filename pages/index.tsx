@@ -14,15 +14,15 @@ import theme from "styles/theme";
 import ReviewList from "../components/ReviewList";
 
 const Index = ({ newProducts, landing }) => {
-  // return (
-  //   <GlobalSection
-  //     isWeb={true}
-  //     isMobile={true}
-  //     webBackground={theme.body.background}
-  //   >
-  //     <ReviewList />
-  //   </GlobalSection>
-  // );
+  /*return (
+    <GlobalSection
+      isWeb={true}
+      isMobile={true}
+      webBackground={theme.body.background}
+    >
+      <ReviewList />
+    </GlobalSection>
+  );*/
 
   return (
     <>
