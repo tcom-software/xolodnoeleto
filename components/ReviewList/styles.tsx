@@ -39,6 +39,11 @@ const ReviewListContainer = styled.div`
       }
     }
   }
+  & > button {
+    margin: 10px auto;
+    font-size: 18px;
+    font-weight: 800;
+  }
 `;
 
 export { ReviewListContainer };

@@ -4,13 +4,12 @@ import { SvgIcon } from "@atoms";
 import { InputValidation, Button } from "@atoms";
 import { array } from "./data";
 
-const CallBack = ({ closeModal, worksTime, modalType, modalRef }) => {
+const AddReview = ({ modalType, modalRef, openModal, closeModal }) => {
   const [errorState, setErrorState] = useState([]);
   const [info, setInfo] = useState({
-    name: "",
-    surname: "",
-    phone: "",
-    dateForCall: "",
+    fullName: "",
+    address: "",
+    date: "",
     message: "",
   });
   const handleChange = (name) => (value) => setInfo({ ...info, [name]: value });
@@ -26,12 +25,11 @@ const CallBack = ({ closeModal, worksTime, modalType, modalRef }) => {
     } else {
     }
   };
-
   return (
     <ModalContainer ref={modalRef}>
       <form onSubmit={handleSubmit}>
         <Title>
-          Заказ обратново званка
+          ДОБАВИТЬ КОММЕНТАРИЙ
           <SvgIcon
             type="close"
             width={20}
@@ -47,12 +45,16 @@ const CallBack = ({ closeModal, worksTime, modalType, modalRef }) => {
               name={name}
               data={info}
               initialErrorState={!!~errorState.indexOf(name)}
-              worksTime={worksTime}
               callback={handleChange(name)}
             />
           ))}
-          <Button type="primary" width="100%" height="47px">
-            ЗАКАЗАТЬ
+          <Button
+            type="default"
+            width="100%"
+            height="47px"
+            background={"#FFD600"}
+          >
+            Отправить
           </Button>
         </Body>
       </form>
@@ -60,4 +62,4 @@ const CallBack = ({ closeModal, worksTime, modalType, modalRef }) => {
   );
 };
 
-export default CallBack;
+export default AddReview;

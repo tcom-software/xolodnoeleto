@@ -125,6 +125,11 @@ const initialState = {
       // validation: "",
       placeholder: "+7...",
     },
+    address: {
+      errorMessage: "Полный Адрес, Город, Улица",
+      validation: /^[a-zA-Z0-9 ]{2,30}$/,
+      placeholder: "Адрес...",
+    },
     addressDelivery: {
       errorMessage: "Пожалуйста, напишите полный адрес",
       validation: /^[a-zA-Z0-9 ]{2,30}$/,
@@ -134,6 +139,11 @@ const initialState = {
       errorMessage: "Пожалуйста, напишите комментарии",
       validation: /^[a-zA-Z0-9 ]{2,30}$/,
       placeholder: "без...",
+    },
+    date: {
+      errorMessage: "Выбранная дата монтажа",
+      validation: "",
+      placeholder: "Дата Монтажа _ _/ _ _/_ _ _ _",
     },
     dateForCall: {
       errorMessage: "Выбранная дата недоступна",

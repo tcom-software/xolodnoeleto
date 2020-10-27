@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Select } from "@atoms";
-import { Input, Message, InputContainer } from "./styles";
+import { Input, Message, InputContainer, Textarea } from "./styles";
 import { phoneNumberFormat } from "utils";
 import { InputValidationInterface } from "interfaces";
 
@@ -65,6 +65,16 @@ const InputValidation = ({
             );
           })}
         </Select>
+      );
+    } else if (type === "textarea") {
+      return (
+        <Textarea
+          id={forHtml}
+          value={data[name]}
+          onChange={handleChange}
+          placeholder={placeholder}
+          errorStyle={errorStyle}
+        />
       );
     } else {
       return (

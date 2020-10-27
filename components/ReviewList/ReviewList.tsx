@@ -2,9 +2,9 @@ import { ReviewListContainer } from "./styles";
 import React from "react";
 import Review from "../Review";
 import Slider from "react-slick";
-import { SvgIcon } from "@atoms";
+import { Button, SvgIcon } from "@atoms";
 
-const ReviewList = ({ reviewItems, isMobile }) => {
+const ReviewList = ({ reviewItems, isMobile, openModal }) => {
   const NextSlick = ({ onClick }) => (
     <span onClick={onClick}>
       <SvgIcon type={"arrowRight"} width={20} height={20} color="black" />
@@ -40,6 +40,17 @@ const ReviewList = ({ reviewItems, isMobile }) => {
           }
         )}
       </Slider>
+      <Button
+        type={"default"}
+        width={"260px"}
+        height={"56px"}
+        color={"black"}
+        boxShadow={"0px 0px 20px rgba(0, 0, 0, 0.15)"}
+        background="#FFD600"
+        onClick={() => openModal("AddReview")}
+      >
+        Добавить отзыв
+      </Button>
     </ReviewListContainer>
   );
 };

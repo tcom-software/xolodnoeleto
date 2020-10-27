@@ -8,6 +8,7 @@ const Button = styled.button<ButtonInterface>`
   height: ${({ height }) => height};
   color: ${({ color }) => color};
   font-weight: ${({ fontWeight }) => fontWeight};
+  box-shadow: ${({ boxShadow }) => boxShadow};
   display: flex;
   align-items: center;
   justify-content: center;

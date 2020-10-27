@@ -42,4 +42,25 @@ const Message = styled.div`
   }}
 `;
 
-export { Input, Message, InputContainer };
+const Textarea = styled.textarea`
+  transition: 0.5s all ease-in;
+  padding: 13px;
+  resize: none;
+  width: 100%;
+  height: 160px;
+  color: ${theme.body.color};
+  border: 1px solid ${theme.input.borderColor};
+
+  ${({ errorStyle }) => {
+    if (errorStyle) {
+      return css`
+        transition: 0.5s all ease-in;
+        white-space: nowrap;
+        color: ${theme.error.color};
+        border: 1px solid ${theme.error.color};
+      `;
+    }
+  }}
+`;
+
+export { Input, Message, InputContainer, Textarea };
