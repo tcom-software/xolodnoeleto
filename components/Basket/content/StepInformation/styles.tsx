@@ -31,21 +31,24 @@ const StepInformationContainer = styled.div`
         }
       }
     }
-    & > div {
-      margin: 10px 0;
-      border: 1px solid ${theme.body.someBorder};
+    ${({ stepState }) =>
+      stepState === 2 &&
+      css`
+        & > div {
+          margin: 10px 0;
+          border: 1px solid ${theme.body.someBorder};
 
-      &:last-of-type {
-        border: none;
-      }
-    }
+          &:last-of-type {
+            border: none;
+          }
+        }
+      `}
   }
 
   @media (max-width: ${theme.mobileMedia.size}) {
   }
 `;
 
-const GoLandingPage = styled.div``;
 const ChildrenCon = styled.div`
   display: flex;
   align-items: flex-end !important;

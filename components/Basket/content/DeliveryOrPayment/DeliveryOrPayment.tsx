@@ -29,6 +29,7 @@ const DeliveryOrPayment = ({
                         padding="2px"
                         border={`none`}
                         background={theme.body.primaryColor}
+                        callback={() => {}}
                       >
                         <SvgIcon
                           type="checkedRadioArrow"
@@ -44,6 +45,7 @@ const DeliveryOrPayment = ({
                         padding="2px"
                         border={`1px solid  ${theme.body.someBorder}`}
                         background="transparent"
+                        callback={() => {}}
                       >
                         {" "}
                       </CheckBox>

@@ -175,7 +175,7 @@ const initialState = {
     },
   },
   total_amount: 0,
-  stepState: 1,
+  stepState: 5,
   stepsResult: {
     stepOne: false,
     stepTwo: false,

@@ -68,13 +68,19 @@ const GridSection = styled.div`
         }
       }
     }
-    & > div {
-      margin: 10px 0;
-      border: 1px solid ${theme.body.someBorder};
+    @media (max-width: 768px) {
+      ${({ stepState }) =>
+        stepState == 1 &&
+        css`
+          & > div {
+            margin: 10px 0;
+            border: 1px solid ${theme.body.someBorder};
 
-      &:last-of-type {
-        display: none;
-      }
+            &:last-of-type {
+              display: none;
+            }
+          }
+        `}
     }
 
     @media (max-width: 768px) {

@@ -16,7 +16,7 @@ const StepInformation = ({ stepStructure, stepState, children }) => {
   const StepsObjKeys = Object.keys(stepStructure);
 
   return (
-    <StepInformationContainer>
+    <StepInformationContainer stepState={stepState}>
       {stepState === 1
         ? stepStructure["current"].map(({ title, svgType }, i) => (
             <Link href={"/"} key={i}>

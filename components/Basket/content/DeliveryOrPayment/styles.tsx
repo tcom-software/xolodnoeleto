@@ -7,6 +7,7 @@ const DeliveryContainer = styled.div`
 
   & > div:first-of-type {
     display: grid !important;
+    align-items: flex-start;
     grid-template-columns: 2fr 1fr;
     margin-bottom: 30px;
 
