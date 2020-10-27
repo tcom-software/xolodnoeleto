@@ -695,6 +695,37 @@ const SvgTypes = {
       />
     ),
   },
+  circleWithPlus: {
+    svgProps: {
+      id: "",
+      version: "1.1",
+      viewBox: "0 0 18 18",
+    },
+
+    inSide: (
+      <>
+        <animated.path
+          d="M8.59375 17C13.012 17 16.5938 13.4183 16.5938 9C16.5938 4.58172 13.012 1 8.59375 1C4.17547 1 0.59375 4.58172 0.59375 9C0.59375 13.4183 4.17547 17 8.59375 17Z"
+          fill="white"
+          stroke="#03A9F4"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <animated.path
+          d="M8.59375 5.79993V12.1999"
+          stroke="#03A9F4"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <animated.path
+          d="M5.39355 9H11.7936"
+          stroke="#03A9F4"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </>
+    ),
+  },
 };
 
 export default SvgTypes;

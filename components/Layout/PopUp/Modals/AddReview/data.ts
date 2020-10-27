@@ -9,7 +9,11 @@ const array = [
   },
   {
     name: "date",
-    type: "input",
+    type: "datepicker",
+  },
+  {
+    name: "uploadImages",
+    type: "uploadImages",
   },
   {
     name: "message",

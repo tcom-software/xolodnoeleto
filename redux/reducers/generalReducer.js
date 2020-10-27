@@ -140,6 +140,11 @@ const initialState = {
       validation: /^[a-zA-Z0-9 ]{2,30}$/,
       placeholder: "без...",
     },
+    uploadImages: {
+      errorMessage: "",
+      validation: "",
+      placeholder: "",
+    },
     date: {
       errorMessage: "Выбранная дата монтажа",
       validation: "",

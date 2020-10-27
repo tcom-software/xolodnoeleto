@@ -13,6 +13,7 @@ import { setIsMobile } from "../redux/actions/generalActions";
 import "slick-carousel/slick/slick.scss";
 import "slick-carousel/slick/slick-theme.scss";
 import "rc-slider/assets/index.css";
+import "react-datepicker/dist/react-datepicker.css";
 
 const useWidth = () => {
   const handleResize = () => {

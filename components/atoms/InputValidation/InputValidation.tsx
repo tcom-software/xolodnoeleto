@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
+import theme from "styles/theme";
 import { connect } from "react-redux";
-import { Select } from "@atoms";
-import { Input, Message, InputContainer, Textarea } from "./styles";
+import { Select, SvgIcon } from "@atoms";
 import { phoneNumberFormat } from "utils";
+import DatePicker from "react-datepicker";
+import ImageUploading from "react-images-uploading";
 import { InputValidationInterface } from "interfaces";
+import { Input, Message, InputContainer, Textarea } from "./styles";
 
 const InputValidation = ({
   data,
@@ -41,7 +44,7 @@ const InputValidation = ({
   };
 
   const Case = () => {
-    if (type === "select") {
+    if (type === "select" && worksTime) {
       const [start, stop] = worksTime;
       const needsTime = stop - start;
       const newArray = Array.from(Array(needsTime).keys());
@@ -75,6 +78,56 @@ const InputValidation = ({
           placeholder={placeholder}
           errorStyle={errorStyle}
         />
+      );
+    } else if (type === "uploadImages") {
+      return (
+        <ImageUploading
+          multiple
+          maxNumber={5}
+          maxFileSize={20 * 1024 * 1024} // 20 MB
+          acceptType={["jpg", "jpeg", "png"]}
+          onChange={(imageData) => {
+            callback([...imageData]);
+          }}
+        >
+          {({ imageList, onImageUpload, onImageRemoveAll }) => {
+            const { uploadImages } = data;
+            return (
+              <div className="upload-image-container" onClick={onImageUpload}>
+                <p>Загрузить Изображение ({uploadImages.length})</p>
+                {uploadImages.length === 0 ? (
+                  <SvgIcon type="circleWithPlus" width={16} height={16} />
+                ) : (
+                  <SvgIcon
+                    type="close"
+                    width={16}
+                    height={16}
+                    callback={() => onImageRemoveAll()}
+                    color={theme.body.primaryColor}
+                  />
+                )}
+              </div>
+            );
+          }}
+        </ImageUploading>
+      );
+    } else if (type === "datepicker") {
+      return (
+        <div
+          className={`datepicker-container ${
+            errorStyle ? "datepicker-error" : ""
+          }`}
+        >
+          <DatePicker
+            selected={data[name]}
+            onChange={(data) => {
+              callback(data);
+            }}
+            placeholderText={placeholder}
+          />
+          <SvgIcon type={"arrowUp"} width={10} height={10} />
+          <SvgIcon type={"arrowDown"} width={10} height={10} />
+        </div>
       );
     } else {
       return (
