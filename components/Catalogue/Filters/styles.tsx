@@ -35,12 +35,21 @@ const FiltersContainer = styled.div`
           left: -15px;
           top: 0px;
           background: #898989;
+          @media (max-width: 768px) {
+            display: none;
+          }
         }
         svg {
           position: absolute;
           right: 0;
-          top: 0px;
           cursor: pointer;
+
+          &:nth-of-type(1) {
+            top: 3px;
+          }
+          &:nth-of-type(2) {
+            top: 15px;
+          }
         }
       }
     }
@@ -60,6 +69,7 @@ const FiltersContainer = styled.div`
             input {
               width: 100%;
               font-size: 12px;
+              height: 35px;
               padding: 5px 5px 5px 23px;
               border: 1px solid ${theme.body.someBorder};
               &::-webkit-outer-spin-button,
@@ -71,7 +81,7 @@ const FiltersContainer = styled.div`
             span {
               position: absolute;
               left: 4px;
-              top: 6px;
+              top: 10px;
               font-size: 11px;
             }
           }
@@ -125,6 +135,16 @@ const FiltersContainer = styled.div`
     .hideFilters {
       display: none;
     }
+
+    @media (max-width: 786px) {
+      .between,
+      .multiple-cases {
+        padding: 10px 0px;
+        .title {
+          margin-bottom: 10px;
+        }
+      }
+    }
   }
 
   .mobile-filters-toggle {
@@ -140,6 +160,17 @@ const FiltersContainer = styled.div`
 
       svg {
         margin-right: 10px;
+      }
+      @media (max-width: 768px) {
+        p {
+          color: #c30707;
+        }
+      }
+    }
+    @media (max-width: 768px) {
+      .active {
+        border: none;
+        justify-content: space-between;
       }
     }
   }

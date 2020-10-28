@@ -21,6 +21,7 @@ const Catalogue = ({ products, isMobile }) => {
         isMobile={true}
         webBackground={theme.body.secondBackground}
         mobileBackground={theme.body.background}
+        mobilePadding={"10px 20px"}
       >
         <CatalogueContainer>
           <Filters />
@@ -31,9 +32,10 @@ const Catalogue = ({ products, isMobile }) => {
               <div className="title-section">
                 <p>{Object.values(products).length} Товаров</p>
                 <select className="sort-by">
+                  Цена: высокая-низкая
                   <option>Сортировать: по популярности</option>
-                  <option>Сортировать: по минимальной цене</option>
-                  <option>Сортировать: по максимальной цене</option>
+                  <option>Цена: низкая-высокая</option>
+                  <option>Цена: высокая-низкая</option>
                 </select>
               </div>
             )}

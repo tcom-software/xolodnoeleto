@@ -47,8 +47,3 @@ function MyApp(props) {
 const makeStore = () => store;
 
 export default withRedux(makeStore)(MyApp);
-
-/*
- *   Filters mobile
- *
- * */

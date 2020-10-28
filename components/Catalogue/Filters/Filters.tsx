@@ -17,9 +17,12 @@ const Filters = ({ filters, isMobile }) => {
       className="mobile-filters-toggle"
       onClick={() => setMobileAvailableFilters(!mobileAvailableFilters)}
     >
-      <div className="container">
+      <div className={`container ${mobileAvailableFilters ? "active" : ""}`}>
         {mobileAvailableFilters ? (
-          `Закрыть фильтры`
+          <>
+            <p>Очистить фильтр</p>
+            <SvgIcon type="close" width={20} height={20} color={"#202020"} />
+          </>
         ) : (
           <>
             <SvgIcon type="openFiltersMobile" width={25} height={25} /> Фильтры
@@ -36,15 +39,19 @@ const Filters = ({ filters, isMobile }) => {
     >
       {isMobile ? <MobileFiltersToggle /> : null}
       <div className="form">
-        <Button
-          type={"secondary"}
-          color="#565656"
-          width={"199px"}
-          height={"47px"}
-          onClick={() => setData({})}
-        >
-          Очистить фильтр
-        </Button>
+        {!isMobile ? (
+          <Button
+            type={"secondary"}
+            color="#565656"
+            width={"199px"}
+            height={"47px"}
+            onClick={() => setData({})}
+          >
+            Очистить фильтр
+          </Button>
+        ) : null}
+
+        {/*{isMobile ? "sortirovka" : null}*/}
 
         {Object.values(filters).map((e: any, i) => {
           if (e.type == "between") {
@@ -78,23 +85,27 @@ const Filters = ({ filters, isMobile }) => {
           }
         })}
 
-        <Button
-          type={"with-icon"}
-          width={"199px"}
-          height={"47px"}
-          onClick={() => setMore(!showMore)}
-        >
-          {showMore ? `Закрыть` : `Показать все фильтры`}
-        </Button>
-        <Button
-          type={"secondary"}
-          color="#565656"
-          width={"199px"}
-          height={"47px"}
-          onClick={() => setData({})}
-        >
-          Очистить фильтр
-        </Button>
+        {!isMobile ? (
+          <>
+            <Button
+              type={"with-icon"}
+              width={"199px"}
+              height={"47px"}
+              onClick={() => setMore(!showMore)}
+            >
+              {showMore ? `Закрыть` : `Показать все фильтры`}
+            </Button>
+            <Button
+              type={"secondary"}
+              color="#565656"
+              width={"199px"}
+              height={"47px"}
+              onClick={() => setData({})}
+            >
+              Очистить фильтр
+            </Button>
+          </>
+        ) : null}
       </div>
     </FiltersContainer>
   );

@@ -1,7 +1,14 @@
 import React from "react";
 import { SvgIcon } from "@famous";
+import { connect } from "react-redux";
 
-const TitleSection = ({ e, openFromMains, setOpenFromMains }) => {
+const TitleSection = ({
+  e,
+  type = "",
+  openFromMains,
+  setOpenFromMains,
+  isMobile,
+}) => {
   return (
     <div
       className="title"
@@ -18,13 +25,26 @@ const TitleSection = ({ e, openFromMains, setOpenFromMains }) => {
     >
       <p>{e.ruTitle}</p>
       <span></span>
-      <SvgIcon
-        type={openFromMains.indexOf(e.enTitle) != -1 ? "arrowUp" : "arrowDown"}
-        width={15}
-        height={15}
-      />
+
+      {type == "multiple-cases" && isMobile ? (
+        <>
+          <SvgIcon type={"arrowUp"} width={13} height={13} />
+          <SvgIcon type={"arrowDown"} width={13} height={13} />
+        </>
+      ) : (
+        <SvgIcon
+          type={
+            openFromMains.indexOf(e.enTitle) != -1 ? "arrowUp" : "arrowDown"
+          }
+          width={13}
+          height={13}
+        />
+      )}
     </div>
   );
 };
 
-export default TitleSection;
+const mapStateToProps = ({ general: { isMobile } }) => ({
+  isMobile,
+});
+export default connect(mapStateToProps)(TitleSection);

@@ -23,6 +23,7 @@ const MultipleCases = ({
     >
       <TitleSection
         e={e}
+        type={"multiple-cases"}
         openFromMains={openFromMains}
         setOpenFromMains={setOpenFromMains}
       />
