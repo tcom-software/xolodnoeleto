@@ -3,6 +3,7 @@ import { Button, SvgIcon } from "@famous";
 import Between from "./content/Between";
 import { FiltersContainer } from "./styles";
 import MultipleCases from "./content/MultipleCases";
+import SimpleCase from "./content/SimpleCase";
 
 const Filters = ({ filters, isMobile }) => {
   const [mobileAvailableFilters, setMobileAvailableFilters] = useState(false);
@@ -51,10 +52,20 @@ const Filters = ({ filters, isMobile }) => {
           </Button>
         ) : null}
 
-        {/*{isMobile ? "sortirovka" : null}*/}
-
         {Object.values(filters).map((e: any, i) => {
-          if (e.type == "between") {
+          if (e.type == "simpleCases") {
+            return (
+              <SimpleCase
+                index={i}
+                showMore={showMore}
+                e={e}
+                data={data}
+                setData={setData}
+                openFromMains={openFromMains}
+                setOpenFromMains={setOpenFromMains}
+              />
+            );
+          } else if (e.type == "between") {
             return (
               <Between
                 index={i}

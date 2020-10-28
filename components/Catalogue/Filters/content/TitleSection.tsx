@@ -11,7 +11,9 @@ const TitleSection = ({
 }) => {
   return (
     <div
-      className="title"
+      className={`title ${
+        openFromMains.indexOf(e.enTitle) != -1 ? "active" : ""
+      }`}
       onClick={() => {
         const index = openFromMains.indexOf(e.enTitle);
         if (index === -1) {

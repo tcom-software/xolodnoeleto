@@ -2,6 +2,17 @@ import * as types from "../actions/catalogueActions";
 
 const initialState = {
   filters: {
+    sortBy: {
+      id: 59,
+      type: "simpleCases",
+      ruTitle: "Сортировать",
+      enTitle: "sortBy",
+      values: [
+        { id: 60, name: "по популярности" },
+        { id: 61, name: "Цена: низкая-высокая" },
+        { id: 62, name: "Цена: высокая-низкая" },
+      ],
+    },
     price: {
       id: 1,
       type: "between",
