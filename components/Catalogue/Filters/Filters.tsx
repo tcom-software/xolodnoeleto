@@ -56,6 +56,7 @@ const Filters = ({ filters, isMobile }) => {
           if (e.type == "simpleCases") {
             return (
               <SimpleCase
+                key={e.id}
                 index={i}
                 showMore={showMore}
                 e={e}
