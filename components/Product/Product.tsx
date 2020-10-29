@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { ProductTopContainer, ProductBottomContainer } from "./styles";
 import { GlobalSection } from "@famous";
 import theme from "styles/theme";
-import ImageContainer from "./content/ImageContainer";
-import InformationContainer from "./content/InformationContainer";
 import { useRouter } from "next/router";
-import ShowMoreWrapper from "../ShowMoreWrapper";
-import ProductList from "../ProductsList";
 import ReviewList from "../ReviewList";
+import ProductList from "../ProductsList";
+import ShowMoreWrapper from "../ShowMoreWrapper";
+import ImageContainer from "./content/ImageContainer";
+import FunctionalContainer from "./content/FunctionalContainer";
+import { ProductTopContainer, ProductBottomContainer } from "./styles";
 
 const Product = ({ product, seenProducts }) => {
   const router = useRouter();
@@ -24,7 +24,7 @@ const Product = ({ product, seenProducts }) => {
       >
         <ProductTopContainer>
           <ImageContainer productKey={id} />
-          <InformationContainer />
+          <FunctionalContainer />
         </ProductTopContainer>
       </GlobalSection>
       <GlobalSection

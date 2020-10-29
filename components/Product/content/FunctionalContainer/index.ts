@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import InformationContainer from "./InformationContainer";
+import FunctionalContainer from "./FunctionalContainer";
 import { addCompareProduct } from "redux/actions/compareActions";
 import { addToFavorite } from "redux/actions/favoriteActions";
 import { addBasket } from "redux/actions/basketActions";
@@ -24,4 +24,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(InformationContainer);
+)(FunctionalContainer);

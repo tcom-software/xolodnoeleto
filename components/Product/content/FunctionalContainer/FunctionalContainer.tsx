@@ -3,7 +3,7 @@ import React from "react";
 import { IncDec, makePrice } from "@utils";
 import { ProductInformationContainer } from "./styles";
 
-const InformationContainer = ({
+const FunctionalContainer = ({
   product,
   isMobile,
   addBasket,
@@ -127,4 +127,4 @@ const InformationContainer = ({
   );
 };
 
-export default InformationContainer;
+export default FunctionalContainer;
