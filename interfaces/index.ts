@@ -48,6 +48,8 @@ export interface ImageInterface {
   webpMobile: string;
   width?: string;
   height?: string;
+  callback?: any;
+  customClass?: string;
 }
 export interface ButtonInterface {
   type: string;

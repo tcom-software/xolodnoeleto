@@ -125,6 +125,53 @@ const ProductsInitialState = {
       selectedStarsCount: 2,
     },
   },
+  superPriceProducts: {
+    1: {
+      id: 1,
+      src: "/test-product.png",
+      title: "Dahatsu COMFORT-ON-OFF-2019-DG-07",
+      vendorCode: "Артикул  | 7380",
+      price: 22240,
+      superPrice: true,
+      selectedStarsCount: 4,
+    },
+    2: {
+      id: 2,
+      src: "/test-product.png",
+      title: "Dahatsu COMFORT-ON-OFF-2019-DG-07",
+      vendorCode: "Артикул  | 7480",
+      price: 22240,
+      superPrice: true,
+      selectedStarsCount: 3,
+    },
+    3: {
+      id: 3,
+      src: "/test-product.png",
+      title: "Dahatsu COMFORT-ON-OFF-2019-DG-07",
+      vendorCode: "Артикул  | 7480",
+      price: 22240,
+      superPrice: true,
+      selectedStarsCount: 5,
+    },
+    4: {
+      id: 4,
+      src: "/test-product.png",
+      title: "Dahatsu COMFORT-ON-OFF-2019-DG-07",
+      vendorCode: "Артикул  | 7450",
+      price: 22240,
+      superPrice: true,
+      selectedStarsCount: 4,
+    },
+    5: {
+      id: 5,
+      src: "/test-product.png",
+      title: "Dahatsu COMFORT-ON-OFF-2019-DG-07",
+      vendorCode: "Артикул  | 7480",
+      price: 22240,
+      superPrice: true,
+      selectedStarsCount: 2,
+    },
+  },
 };
 
 const ProductListReducer = (state = ProductsInitialState, action) => {

@@ -8,7 +8,15 @@ const ProductList = ({ title, products, mobileType }) => {
       <Title>{title}</Title>
       <ListContainer mobileType={mobileType}>
         {Object.values(products).map(
-          ({ id, src, title, price, vendorCode, selectedStarsCount }) => {
+          ({
+            id,
+            src,
+            title,
+            price,
+            vendorCode,
+            selectedStarsCount,
+            superPrice = false,
+          }) => {
             return (
               <ProductGridView
                 key={id}
@@ -17,6 +25,7 @@ const ProductList = ({ title, products, mobileType }) => {
                 title={title}
                 price={price}
                 vendorCode={vendorCode}
+                superPrice={superPrice}
                 selectedStarsCount={selectedStarsCount}
               />
             );

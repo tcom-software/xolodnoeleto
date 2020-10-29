@@ -12,7 +12,7 @@ import ShowMoreWrapper from "../components/ShowMoreWrapper";
 import theme from "styles/theme";
 import ReviewList from "../components/ReviewList";
 
-const Index = ({ newProducts, landing }) => {
+const Index = ({ newProducts, superPriceProducts, landing }) => {
   /*return (
     <GlobalSection
       isWeb={true}
@@ -51,7 +51,7 @@ const Index = ({ newProducts, landing }) => {
           <ProductList
             title={"СУПЕРЦЕНЫ УСПЕЙ КУПИТЬ!"}
             mobileType={"scroll"}
-            products={newProducts}
+            products={superPriceProducts}
           />
         </GlobalSection>
       </LazyLoad>
@@ -85,12 +85,13 @@ const Index = ({ newProducts, landing }) => {
 };
 
 const mapStateToProps = ({
-  products: { newProducts },
+  products: { newProducts, superPriceProducts },
   general: {
     showMoreTexts: { landing },
   },
 }) => ({
   landing,
   newProducts,
+  superPriceProducts,
 });
 export default connect(mapStateToProps)(Index);

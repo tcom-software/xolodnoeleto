@@ -4,7 +4,16 @@ import LazyLoad from "react-lazyload";
 import { Img } from "./styles";
 
 const Image = (props: ImageInterface) => {
-  const { simpleWeb, simpleMobile, webpWeb, webpMobile, width, height } = props;
+  const {
+    simpleWeb,
+    simpleMobile,
+    webpWeb,
+    webpMobile,
+    width,
+    height,
+    callback,
+    customClass = "",
+  } = props;
   return (
     <LazyLoad>
       <picture>
@@ -16,7 +25,13 @@ const Image = (props: ImageInterface) => {
         <source type="image/webp" srcSet={webpWeb} />
 
         <source media="(max-width: 768px)" srcSet={simpleMobile} />
-        <Img src={simpleWeb} width={width} height={height} />
+        <Img
+          src={simpleWeb}
+          width={width}
+          height={height}
+          onClick={callback}
+          className={customClass}
+        />
       </picture>
     </LazyLoad>
   );

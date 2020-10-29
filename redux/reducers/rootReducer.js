@@ -7,6 +7,7 @@ import compareReducer from "./compareReducer";
 import favoriteReducer from "./favoriteReducer";
 import catalogueReducer from "./catalogueReducer";
 import reviewReducer from "./reviewReducer";
+import productReducer from "./productReducer";
 
 import { combineReducers } from "redux";
 
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   favorite: favoriteReducer,
   catalogue: catalogueReducer,
   review: reviewReducer,
+  product: productReducer,
 });
 
 export default rootReducer;
