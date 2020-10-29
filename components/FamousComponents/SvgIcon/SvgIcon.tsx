@@ -29,7 +29,7 @@ const SvgIcon = (props: SvgProperty) => {
       fill={props.color}
       width={props.width}
       height={props.height}
-      onClick={callback != null ? () => callback() : null}
+      onClick={callback != null ? (e) => callback(e) : null}
     >
       {props.animation ? (
         <>

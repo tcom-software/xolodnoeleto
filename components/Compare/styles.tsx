@@ -45,7 +45,7 @@ const CompareContainer = styled.div`
         minmax(200px, 400px)
       );
 
-      & > div {
+      & > a > div {
         padding: 15px;
         position: relative;
         background: #fff;
@@ -103,7 +103,7 @@ const CompareContainer = styled.div`
           }
         }},
 
-        & > div {
+        & > a > div {
           & > div {
             display: flex;
             flex-direction: column;

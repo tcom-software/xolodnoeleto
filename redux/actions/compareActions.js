@@ -13,10 +13,10 @@ export const addCompareProduct = (object = null) => {
             model: "Dahatsu",
             vendorCode: "Артикул  | 7450",
             price: 22240,
+            count: 1,
             selectedStarsCount: 4,
           }
         : object;
-
     dispatch({
       type: ADD_COMPARE_PRODUCT,
       payload: { ...product },

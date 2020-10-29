@@ -24,8 +24,16 @@ const InformationContainer = ({
   return (
     <ProductInformationContainer>
       <div className="level-one">
-        <div>
+        <div className="vendor-code-container">
           Артикул | <span className="vendor-code">{vendorCode}</span>
+        </div>
+        <div className="calc">
+          {IncDec(
+            product.id,
+            product.count,
+            incrementProduct,
+            decrementProduct
+          )}
         </div>
         <div className="few-svg">
           <SvgIcon
@@ -89,6 +97,31 @@ const InformationContainer = ({
           <SvgIcon type="delivery" width={30} height={30} color={"#5B5B5B"} />
           <p>Условия доставки</p>
         </div>
+        <div className="mobile-brand-image">
+          <Image
+            simpleWeb={brand}
+            simpleMobile={brand}
+            webpWeb={""}
+            webpMobile={""}
+          />
+        </div>
+      </div>
+      <div className="level-five-mobile">
+        <div className="title-and-price-container">
+          <div className="title">
+            <p>{manufacturer}</p>
+            <p>{model}</p>
+          </div>
+          <p className="price">{makePrice(price)}</p>
+        </div>
+        <Button
+          type="primary"
+          width="100%"
+          height="50px"
+          onClick={() => addBasket(product)}
+        >
+          В корзину
+        </Button>
       </div>
     </ProductInformationContainer>
   );

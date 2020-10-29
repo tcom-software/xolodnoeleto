@@ -2,7 +2,7 @@ import styled from "styled-components";
 import theme from "styles/theme";
 
 const PopUpContainer = styled.div`
-  position: absolute;
+  position: fixed;
   top: 90px;
   left: 0;
   right: 0;

@@ -3,14 +3,21 @@ import theme from "styles/theme";
 import { animated } from "react-spring";
 
 const ShowMoreContainer = styled(animated.div)`
-  & > div:nth-of-type(2) {
+  .show-more-button-align {
     margin: 20px 0 10px 0;
-    display: flex;
     cursor: pointer;
-    align-items: center;
-    justify-content: center;
     color: ${theme.body.colorSecondary};
-
+    text-align: ${({ buttontextalign }) => buttontextalign};
+    button {
+      margin: ${({ buttontextalign }) => {
+        switch (buttontextalign) {
+          case "center":
+            return "0 auto";
+          default:
+            return "0 auto";
+        }
+      }};
+    }
     svg {
       margin: 0 10px;
     }
@@ -26,7 +33,7 @@ const ShowMoreText = styled(animated.div)`
 
   & > p {
     margin: 0;
-    padding: 15px;
+    padding: ${({ padding }) => padding};
     color: ${({ color }) => (color ? color : "#202020")};
   }
 `;

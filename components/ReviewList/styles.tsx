@@ -1,6 +1,19 @@
 import styled from "styled-components";
 
 const ReviewListContainer = styled.div`
+  overflow: hidden;
+
+  .header {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 80;
+    margin-top: 20px;
+  }
+  .title {
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
   .slick-slider {
     position: relative;
     & > span {
@@ -35,7 +48,7 @@ const ReviewListContainer = styled.div`
     @media (max-width: 768px) {
       .slick-list {
         width: 100%;
-        padding: 0 12vw;
+        padding: 0 12vw 0 14vw;
       }
     }
   }

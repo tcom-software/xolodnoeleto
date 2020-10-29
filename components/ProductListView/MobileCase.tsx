@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { IncDec, makePrice } from "@utils";
 import { connect } from "react-redux";
 import { Button, SvgIcon } from "@famous";
@@ -49,12 +50,20 @@ const MobileCase = ({
         return (
           <Container key={id}>
             <ImgCon>
-              <Img src={src} />
+              <Link href={`/product/${model}`}>
+                <a>
+                  <Img src={src} />
+                </a>
+              </Link>
             </ImgCon>
             <MiniCon>
               <Title>
-                <p>{manufacturer}</p>
-                <p>{model}</p>
+                <Link href={`/product/${model}`}>
+                  <a>
+                    <p>{manufacturer}</p>
+                    <p>{model}</p>
+                  </a>
+                </Link>
               </Title>
               <div className="addBasket" onClick={() => addBasket(item)}>
                 В корзину

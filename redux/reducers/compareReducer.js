@@ -2,36 +2,16 @@ import * as types from "../actions/compareActions";
 
 const initialState = {
   compareProducts: {
-    1: {
-      id: 1,
+    2525: {
+      id: 2525,
       src: "/test-product.png",
-      manufacturer: "COMFORT-ON-OFF-2019-DG-07",
-      model: "Dahatsu",
+      manufacturer: "Dahatsu",
+      model: "COMFORT-ON-OFF-2019-DG-07",
       vendorCode: "Артикул  | 7380",
       count: 1,
       price: 22240,
       selectedStarsCount: 4,
     },
-    // 2: {
-    //   id: 2,
-    //   src: "/test-product.png",
-    //   manufacturer: "COMFORT-ON-OFF-2019-DG-07",
-    //   model: "Dahatsu",
-    //   vendorCode: "Артикул  | 7480",
-    //   count: 1,
-    //   price: 22240,
-    //   selectedStarsCount: 3,
-    // },
-    // 3: {
-    //   id: 3,
-    //   src: "/test-product.png",
-    //   manufacturer: "COMFORT-ON-OFF-2019-DG-07",
-    //   model: "Dahatsu",
-    //   vendorCode: "Артикул  | 7480",
-    //   count: 1,
-    //   price: 22240,
-    //   selectedStarsCount: 5,
-    // },
   },
 };
 

@@ -28,6 +28,8 @@ const Review = ({ avatarPath, fullName, starCount, description }) => {
           border={"none"}
           svgShow={false}
           buttonStyle={true}
+          padding="15px"
+          buttonTextAlign="center"
           buttonText={["Читать ещё", "Закрыть"]}
         />
       </div>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Link from "next/link";
 import theme from "styles/theme";
 import { makePrice } from "@utils";
 import { CompareContainer } from "./styles";
@@ -77,29 +78,39 @@ const Compare = ({
             const { id, src, manufacturer, model, price }: any = product;
 
             return (
-              <div key={id}>
-                <img src={src} alt="title" />
-                <SvgIcon
-                  type={"close"}
-                  width={20}
-                  height={20}
-                  color={"#202020"}
-                  callback={() => removeCompareProduct(id)}
-                />
-                <p>{model}</p>
-                <p> {manufacturer}</p>
-                <div>
-                  <p>{makePrice(price)}</p>
-                  <Button
-                    type="secondary"
-                    width={"156px"}
-                    height={"45px"}
-                    onClick={() => addBasket(product)}
-                  >
-                    В корзину
-                  </Button>
-                </div>
-              </div>
+              <Link href={`/product/${model}`} key={id}>
+                <a>
+                  <div>
+                    <img src={src} alt="title" />
+                    <SvgIcon
+                      type={"close"}
+                      width={20}
+                      height={20}
+                      color={"#202020"}
+                      callback={(e) => {
+                        e.preventDefault();
+                        removeCompareProduct(id);
+                      }}
+                    />
+                    <p>{model}</p>
+                    <p> {manufacturer}</p>
+                    <div>
+                      <p>{makePrice(price)}</p>
+                      <Button
+                        type="secondary"
+                        width={"156px"}
+                        height={"45px"}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          addBasket(product);
+                        }}
+                      >
+                        В корзину
+                      </Button>
+                    </div>
+                  </div>
+                </a>
+              </Link>
             );
           })}
         </div>

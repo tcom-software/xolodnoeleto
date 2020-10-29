@@ -98,6 +98,7 @@ export interface SelectInterface {
   forHtml?: string;
 }
 export interface basketProductInterface {
+  id: number;
   src: string;
   price: number;
   model: string;
@@ -107,6 +108,9 @@ export interface basketProductInterface {
   incrementBasketCount: any;
   decrementBasketCount: any;
   edit?: boolean;
+  increment?: any;
+  decrement?: any;
+  deleteBasketItem?: any;
 }
 export interface IncDecInterface {
   id: number;
@@ -123,4 +127,16 @@ export interface checkBoxInterface {
   background: string;
   children?: any;
   callback?: any;
+}
+export interface ShowMoreWrapperInterface {
+  text: string;
+  border: string;
+  color: string;
+  svgShow: boolean;
+  padding: string;
+  buttonText: [string, string];
+  fromHeight: number;
+  buttonStyle: boolean;
+  buttonTextAlign: string;
+  children?: any;
 }

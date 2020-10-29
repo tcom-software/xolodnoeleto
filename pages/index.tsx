@@ -10,19 +10,8 @@ import SubScriptionEmail from "../components/SubScriptionEmail";
 import ShowMoreWrapper from "../components/ShowMoreWrapper";
 
 import theme from "styles/theme";
-import ReviewList from "../components/ReviewList";
 
 const Index = ({ newProducts, superPriceProducts, landing }) => {
-  /*return (
-    <GlobalSection
-      isWeb={true}
-      isMobile={true}
-      webBackground={theme.body.background}
-    >
-      <ReviewList />
-    </GlobalSection>
-  );*/
-
   return (
     <>
       <Banner />
@@ -76,6 +65,8 @@ const Index = ({ newProducts, superPriceProducts, landing }) => {
             border={"none"}
             svgShow={true}
             buttonStyle={false}
+            padding={"15px"}
+            buttonTextAlign="center"
             buttonText={[`Показать больше`, `Показать меньше`]}
           />
         </GlobalSection>

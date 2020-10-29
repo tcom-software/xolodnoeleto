@@ -3,23 +3,27 @@ import theme from "styles/theme";
 import { SvgIcon, Button } from "@famous";
 import { useSpring } from "react-spring";
 import { ShowMoreContainer, ShowMoreText } from "./styles";
+import { ShowMoreWrapperInterface } from "interfaces";
 
 const ShowMoreWrapper = ({
   text,
-  fromHeight,
   border,
   color,
-  buttonText,
   svgShow,
+  padding,
+  children,
+  buttonText,
+  fromHeight,
   buttonStyle,
-}) => {
+  buttonTextAlign,
+}: ShowMoreWrapperInterface) => {
   const [open, setOpen] = useState(false);
   const [height, setHeight] = useState();
   const pHeight: any = useRef(0);
 
   useEffect(() => {
     const { offsetHeight }: any = pHeight.current;
-    setHeight(offsetHeight + 10);
+    setHeight(offsetHeight + 50);
   }, [pHeight]);
 
   const styles = useSpring({
@@ -28,11 +32,11 @@ const ShowMoreWrapper = ({
   });
 
   return (
-    <ShowMoreContainer>
-      <ShowMoreText style={styles} color={color}>
+    <ShowMoreContainer buttontextalign={buttonTextAlign}>
+      <ShowMoreText style={styles} color={color} padding={padding}>
         <p ref={pHeight}>{text}</p>
       </ShowMoreText>
-      <div onClick={() => setOpen(!open)}>
+      <div onClick={() => setOpen(!open)} className="show-more-button-align">
         {buttonStyle ? (
           <Button type={"with-icon"} width={"139px"} height={"40px"}>
             {open ? buttonText[1] : buttonText[0]}

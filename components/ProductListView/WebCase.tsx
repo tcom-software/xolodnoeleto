@@ -1,8 +1,8 @@
 import React from "react";
+import Link from "next/link";
 import { connect } from "react-redux";
 import { Button, SvgIcon } from "@famous";
 import { IncDec, makePrice } from "@utils";
-
 /**
  *  This Component give styled from parent component
  * */
@@ -66,13 +66,21 @@ const WebCase = ({
               <tr key={id}>
                 {functionalType == "favorite" ? <td>{index + 1}</td> : null}
                 <td>
-                  <img src={src} width={57} height={57} />
+                  <Link href={`/product/${model}`}>
+                    <a>
+                      <img src={src} width={57} height={57} />
+                    </a>
+                  </Link>
                   {borderShow ? <span></span> : null}
                 </td>
                 <td>
                   <div>
-                    <p>{manufacturer}</p>
-                    <p>{model}</p>
+                    <Link href={`/product/${model}`}>
+                      <a>
+                        <p>{manufacturer}</p>
+                        <p>{model}</p>
+                      </a>
+                    </Link>
                   </div>
                 </td>
                 <td>

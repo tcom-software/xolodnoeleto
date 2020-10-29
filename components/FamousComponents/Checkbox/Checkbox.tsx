@@ -2,10 +2,15 @@ import React from "react";
 import { CheckBoxContainer } from "./styles";
 import { checkBoxInterface } from "interfaces";
 
-const CheckBox = (
-  { width, height, border, padding, children, background, callback },
-  checkBoxInterface
-) => {
+const CheckBox = ({
+  width,
+  height,
+  border,
+  padding,
+  children,
+  background,
+  callback,
+}: checkBoxInterface) => {
   return (
     <CheckBoxContainer
       width={width}

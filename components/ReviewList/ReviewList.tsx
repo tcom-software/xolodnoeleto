@@ -19,6 +19,11 @@ const ReviewList = ({ reviewItems, isMobile, openModal }) => {
 
   return (
     <ReviewListContainer>
+      <h2 className="header">ОСТАВИТЬ ОТЗЫВ</h2>
+      <p className="title">
+        Бригада монтажников молодцы,монтаж за час! Менеджерам тоже
+        спасибо,всегда на связи и очень лояльны к клиенту. Считаю на сегодня.
+      </p>
       <Slider
         arrows={true}
         dots={false}

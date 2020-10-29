@@ -100,7 +100,12 @@ const Bottom = ({
               height="47px"
               onClick={() => (modalType !== "" ? null : openModal("basket"))}
             >
-              <SvgIcon type="basket" width={20} height={20} />
+              <SvgIcon
+                type="basket"
+                width={20}
+                height={20}
+                color={theme.body.primaryColor}
+              />
               Корзина пуста (
               <animated.span>
                 {spring.val.interpolate((val) => Math.floor(val))}

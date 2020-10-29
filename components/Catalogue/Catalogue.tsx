@@ -41,8 +41,8 @@ const Catalogue = ({ products, isMobile }) => {
             )}
 
             <div className="products">
-              {Object.values(items).map((item) => {
-                return <ProductGridView item={item} />;
+              {Object.values(items).map((item, index) => {
+                return <ProductGridView key={index} item={item} />;
               })}
             </div>
           </div>

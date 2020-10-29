@@ -3,10 +3,13 @@ import { Spring } from "react-spring/renderprops.cjs";
 import SvgTypes from "../SvgIcon/svg-types";
 import { SvgIconAnimInterface } from "interfaces";
 
-const SvgIconAnim = (
-  { type, width, height, color, duration },
-  SvgIconAnimInterface
-) => {
+const SvgIconAnim = ({
+  type,
+  width,
+  height,
+  color,
+  duration,
+}: SvgIconAnimInterface) => {
   const {
     inSide,
     animation,
