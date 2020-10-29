@@ -87,6 +87,17 @@ const favoriteReducer = (state = initialState, action) => {
             ? state.total_amount
             : state.total_amount - state.items[action.payload.id].price,
       };
+    case types.ADD_TO_FAVORITE:
+      if (state.items[action.payload.id]) {
+        return { ...state };
+      } else {
+        return {
+          ...state.items,
+          [action.payload.id]: {
+            ...action.payload,
+          },
+        };
+      }
     case types.DELETE_ITEM_FAVORITE:
       return {
         ...state,

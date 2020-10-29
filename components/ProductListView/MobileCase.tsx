@@ -10,7 +10,6 @@ import { CalculateCon, Img, ImgCon, MiniCon, Title, Container } from "./styles";
 
 import {
   addBasket,
-  addBasketFromFavorite,
   changeOrderStep,
   decrementBasketCount,
   deleteBasketItem,
@@ -33,7 +32,6 @@ const MobileCase = ({
   functionalType,
 
   addBasket,
-  addBasketFromFavorite,
 
   incrementFavorite,
   decrementFavorite,
@@ -58,15 +56,7 @@ const MobileCase = ({
                 <p>{manufacturer}</p>
                 <p>{model}</p>
               </Title>
-              <div
-                className="addBasket"
-                onClick={() => {
-                  console.log(1111111);
-                  functionalType == "favorite"
-                    ? addBasketFromFavorite(item)
-                    : addBasket(id);
-                }}
-              >
+              <div className="addBasket" onClick={() => addBasket(item)}>
                 В корзину
               </div>
               <CalculateCon>
@@ -122,8 +112,7 @@ const MobileCase = ({
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  addBasket: (id) => dispatch(addBasket(id)),
-  addBasketFromFavorite: (item) => dispatch(addBasketFromFavorite(item)),
+  addBasket: (product) => dispatch(addBasket(product)),
 
   incrementBasket: (id) => dispatch(incrementBasketCount(id)),
   decrementBasket: (id) => dispatch(decrementBasketCount(id)),

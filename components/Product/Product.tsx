@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { ProductTopContainer, ProductBottomContainer } from "./styles";
 import { GlobalSection } from "@famous";
 import theme from "styles/theme";
-import ImageContainer from "./content/ImageContainer/ImageContainer";
-import InformationContainer from "./content/InformationContainer/InformationContainer";
+import ImageContainer from "./content/ImageContainer";
+import InformationContainer from "./content/InformationContainer";
 import { useRouter } from "next/router";
 
 const Product = ({ product }) => {
@@ -18,8 +18,8 @@ const Product = ({ product }) => {
         webBackground={theme.body.background}
       >
         <ProductTopContainer>
-          <ImageContainer product={product} />
-          <InformationContainer product={product} />
+          <ImageContainer productKey={id} />
+          <InformationContainer />
         </ProductTopContainer>
       </GlobalSection>
       <GlobalSection

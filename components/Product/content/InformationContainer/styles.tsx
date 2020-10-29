@@ -17,7 +17,9 @@ const ProductInformationContainer = styled.div`
     margin-bottom: 10px;
     padding-bottom: 10px;
     border-bottom: 1px solid ${theme.body.someBorder};
-
+    & > div > .vendor-code {
+      font-weight: 800;
+    }
     .few-svg {
       svg {
         margin: 0 7px;
@@ -48,6 +50,9 @@ const ProductInformationContainer = styled.div`
   }
   .level-three {
     .calc {
+      display: flex;
+      justify-content: flex-start;
+      margin-bottom: 25px;
     }
     .add-basket-and-brand-container {
       display: flex;
@@ -56,7 +61,6 @@ const ProductInformationContainer = styled.div`
 
       img {
         width: 100px;
-        height: 50px;
         padding: 0 10px;
         border: 1px solid ${theme.body.someBorder};
       }

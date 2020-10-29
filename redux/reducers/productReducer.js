@@ -2,11 +2,11 @@ import * as types from "../actions/productActions";
 
 const initialState = {
   product: {
-    id: 1,
+    id: Math.floor(Math.random() * 5000),
     src: "/test-product.png",
     manufacturer: "Dahatsu",
     model: "COMFORT-ON-OFF-2019-DG-07",
-    vendorCode: "Артикул  | 7380",
+    vendorCode: "7380",
     price: 27129,
     count: 1,
     superPrice: true,
@@ -44,6 +44,22 @@ const initialState = {
 
 const favoriteReducer = (state = initialState, action) => {
   switch (action.type) {
+    case types.INCREMENT_PRODUCT:
+      return {
+        ...state,
+        product: {
+          ...state.product,
+          count: state.product.count + 1,
+        },
+      };
+    case types.DECREMENT_PRODUCT:
+      return {
+        ...state,
+        product: {
+          ...state.product,
+          count: state.product.count === 1 ? 1 : state.product.count - 1,
+        },
+      };
     default:
       return { ...state };
   }

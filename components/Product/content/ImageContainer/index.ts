@@ -1,3 +1,9 @@
+import { connect } from "react-redux";
 import ImageContainer from "./ImageContainer";
 
-export default ImageContainer;
+const mapStateToProps = ({ general: { isMobile }, product: { product } }) => ({
+  product,
+  isMobile,
+});
+
+export default connect(mapStateToProps)(ImageContainer);

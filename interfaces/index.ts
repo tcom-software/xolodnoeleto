@@ -61,6 +61,7 @@ export interface ButtonInterface {
   fontWeight?: number;
 }
 export interface productInterface {
+  item: any;
   id: number;
   src: string;
   title: string;

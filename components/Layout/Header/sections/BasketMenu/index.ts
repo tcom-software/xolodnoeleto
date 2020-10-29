@@ -1,7 +1,7 @@
 import BasketMenu from "./BasketMenu";
 import { connect } from "react-redux";
 import { changeOrderStep } from "redux/actions/basketActions";
-import { closeModal } from "../../../../../redux/actions/modalActions";
+import { closeModal } from "redux/actions/modalActions";
 
 const mapStateToProps = ({
   basket: { items, total_amount },

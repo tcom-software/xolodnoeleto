@@ -14,7 +14,6 @@ import {
   deleteBasketItem,
   incrementBasketCount,
   updateStepsResult,
-  addBasketFromFavorite,
 } from "redux/actions/basketActions";
 
 import {
@@ -35,7 +34,7 @@ const WebCase = ({
   functionalType,
 
   addBasket,
-  addBasketFromFavorite,
+
   incrementBasket,
   decrementBasket,
   deleteBasketItem,
@@ -93,11 +92,7 @@ const WebCase = ({
                       type={"secondary"}
                       width={`100%`}
                       height={"47px"}
-                      onClick={() =>
-                        functionalType == "favorite"
-                          ? addBasketFromFavorite(item)
-                          : addBasket(id)
-                      }
+                      onClick={() => addBasket(item)}
                     >
                       В корзину
                     </Button>
@@ -154,8 +149,7 @@ const mapDispatchToProps = (dispatch) => ({
   changeOrderStep: (step) => dispatch(changeOrderStep(step)),
   updateStepsResult: (data) => dispatch(updateStepsResult(data)),
 
-  addBasket: (id) => dispatch(addBasket(id)),
-  addBasketFromFavorite: (id) => dispatch(addBasketFromFavorite(id)),
+  addBasket: (product) => dispatch(addBasket(product)),
 
   incrementBasket: (id) => dispatch(incrementBasketCount(id)),
   decrementBasket: (id) => dispatch(decrementBasketCount(id)),

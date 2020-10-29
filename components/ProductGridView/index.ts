@@ -3,7 +3,7 @@ import { addBasket } from "redux/actions/basketActions";
 import { connect } from "react-redux";
 
 const mapDispatchToProps = (dispatch) => ({
-  addBasket: (id) => dispatch(addBasket(id)),
+  addBasket: (product) => dispatch(addBasket(product)),
 });
 
 export default connect(false, mapDispatchToProps)(ProductGridView);

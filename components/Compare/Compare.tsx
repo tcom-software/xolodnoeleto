@@ -54,11 +54,13 @@ const Compare = ({
           })}
 
           <div>
-            {products.map(({ id, src, title }) => {
+            {products.map(({ id, src, manufacturer, model }) => {
               return (
                 <div key={id}>
                   <img src={src} />
-                  <p>{title}</p>
+                  <p>
+                    {manufacturer} {model}
+                  </p>
                   <SvgIcon
                     type="close"
                     width={20}
@@ -71,7 +73,9 @@ const Compare = ({
           </div>
         </div>
         <div>
-          {products.map(({ id, src, title, price }) => {
+          {products.map((product) => {
+            const { id, src, manufacturer, model, price }: any = product;
+
             return (
               <div key={id}>
                 <img src={src} alt="title" />
@@ -82,14 +86,15 @@ const Compare = ({
                   color={"#202020"}
                   callback={() => removeCompareProduct(id)}
                 />
-                <p>{title}</p>
+                <p>{model}</p>
+                <p> {manufacturer}</p>
                 <div>
                   <p>{makePrice(price)}</p>
                   <Button
                     type="secondary"
                     width={"156px"}
                     height={"45px"}
-                    onClick={() => addBasket(id)}
+                    onClick={() => addBasket(product)}
                   >
                     В корзину
                   </Button>

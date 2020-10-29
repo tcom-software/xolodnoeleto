@@ -12,21 +12,28 @@ import { makePrice } from "@utils";
 import { productInterface } from "interfaces";
 
 const ProductGridView = ({
-  id,
-  src,
-  title,
-  price,
+  item: product,
   addBasket,
   superPrice,
-  vendorCode,
   buttonBorder,
-  selectedStarsCount,
 }: productInterface) => {
+  const {
+    id,
+    src,
+    manufacturer,
+    model,
+    price,
+    vendorCode,
+    selectedStarsCount,
+  } = product;
   return (
     <ProductContainer border={buttonBorder}>
       {superPrice ? <div className="super-price">СУПЕРЦЕНА</div> : null}
-      <Image src={src} alt={title} />
-      <Title>{title}</Title>
+      <Image src={src} alt={manufacturer} />
+      <Title>
+        <p>{model}</p>
+        <p>{manufacturer}</p>
+      </Title>
       <VendorCod>{vendorCode}</VendorCod>
       <Stars>
         {Array.from(Array(5).keys()).map((e, i) => {
@@ -39,7 +46,7 @@ const ProductGridView = ({
         width="170px"
         height="50px"
         border={buttonBorder}
-        onClick={() => addBasket(id)}
+        onClick={() => addBasket(product)}
       >
         В корзину
       </Button>

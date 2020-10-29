@@ -6,7 +6,6 @@ import { GlobalSection } from "@famous";
 import MobileCase from "../ProductListView/MobileCase";
 import WebCase from "../ProductListView/WebCase";
 import ProductList from "../ProductsList";
-import ProductGridView from "../ProductGridView";
 
 const Favorite = ({ isMobile, favoriteProducts, seenProducts }) => {
   return (

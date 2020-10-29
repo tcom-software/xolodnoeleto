@@ -1,3 +1,27 @@
+import { connect } from "react-redux";
 import InformationContainer from "./InformationContainer";
+import { addCompareProduct } from "redux/actions/compareActions";
+import { addToFavorite } from "redux/actions/favoriteActions";
+import { addBasket } from "redux/actions/basketActions";
+import {
+  incrementProductCount,
+  decrementProductCount,
+} from "redux/actions/productActions";
 
-export default InformationContainer;
+const mapStateToProps = ({ general: { isMobile }, product: { product } }) => ({
+  product,
+  isMobile,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  addCompareProduct: (data) => dispatch(addCompareProduct(data)),
+  addToFavorite: (data) => dispatch(addToFavorite(data)),
+  addBasket: (product) => dispatch(addBasket(product)),
+  incrementProduct: () => dispatch(incrementProductCount()),
+  decrementProduct: () => dispatch(decrementProductCount()),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(InformationContainer);

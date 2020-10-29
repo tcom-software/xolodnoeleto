@@ -188,7 +188,10 @@ const initialState = {
 
 const basketReducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.ADD_IN_TO_BASKET_FROM_FAVORITES:
+    case types.ADD_BASKET:
+      const { count, price } = action.payload;
+      const makePrice = count === undefined ? price : count * price;
+
       if (state.items[action.payload.id]) {
         return {
           ...state,
@@ -196,12 +199,10 @@ const basketReducer = (state = initialState, action) => {
             ...state.items,
             [action.payload.id]: {
               ...state.items[action.payload.id],
-              count:
-                state.items[action.payload.id].count + action.payload.count,
+              count: state.items[action.payload.id].count + count,
             },
           },
-          total_amount:
-            state.total_amount + action.payload.count * action.payload.price,
+          total_amount: state.total_amount + makePrice,
         };
       } else {
         return {
@@ -212,40 +213,7 @@ const basketReducer = (state = initialState, action) => {
               ...action.payload,
             },
           },
-          total_amount:
-            state.total_amount + action.payload.count * action.payload.price,
-        };
-      }
-    case types.ADD_BASKET:
-      if (state.items[action.payload]) {
-        return {
-          ...state,
-          items: {
-            ...state.items,
-            [action.payload]: {
-              ...state.items[action.payload],
-              count: state.items[action.payload].count + 1,
-            },
-          },
-          total_amount: state.total_amount + state.items[action.payload].price,
-        };
-      } else {
-        return {
-          ...state,
-          items: {
-            ...state.items,
-            [action.payload]: {
-              id: action.payload,
-              src: "/test-product.png",
-              manufacturer: "Dahatsu",
-              model: "COMFORT-ON-OFF-2019-DG-07",
-              vendorCode: "Артикул  | 7380",
-              price: 27129,
-              count: 1,
-              selectedStarsCount: 4,
-            },
-          },
-          total_amount: state.total_amount + 27129,
+          total_amount: state.total_amount + makePrice,
         };
       }
     case types.INITIAL_STEPS_RESULT:

@@ -3,7 +3,7 @@ import theme from "styles/theme";
 
 const ProductTopContainer = styled.div`
   display: grid;
-  grid-gap: 20px;
+  grid-gap: 60px;
   grid-template-columns: 1fr 1fr;
 
   @media (max-width: 768px) {

@@ -2,25 +2,46 @@ import { Button, Image, Star, SvgIcon } from "@famous";
 import React from "react";
 import { IncDec, makePrice } from "@utils";
 import { ProductInformationContainer } from "./styles";
-import theme from "styles/theme";
 
 const InformationContainer = ({
-  product: {
+  product,
+  isMobile,
+  addBasket,
+  addToFavorite,
+  addCompareProduct,
+  incrementProduct,
+  decrementProduct,
+}: any) => {
+  const {
     vendorCode,
     selectedStarsCount,
     manufacturer,
     model,
     price,
     brand,
-  },
-}) => {
+  } = product;
+
   return (
     <ProductInformationContainer>
       <div className="level-one">
-        <div>{vendorCode}</div>
+        <div>
+          Артикул | <span className="vendor-code">{vendorCode}</span>
+        </div>
         <div className="few-svg">
-          <SvgIcon type={"compare"} width={20} height={20} color={"#202020"} />
-          <SvgIcon type={"favorite"} width={20} height={20} color={"#202020"} />
+          <SvgIcon
+            type={"compare"}
+            width={20}
+            height={20}
+            color={"#202020"}
+            callback={() => addCompareProduct(product)}
+          />
+          <SvgIcon
+            type={"favorite"}
+            width={20}
+            height={20}
+            color={"#202020"}
+            callback={() => addToFavorite(product)}
+          />
         </div>
       </div>
       <div className="level-two">
@@ -39,7 +60,12 @@ const InformationContainer = ({
       </div>
       <div className="level-three">
         <div className="calc">
-          {/*{IncDec(id, count, incrementFavorite, decrementFavorite)}*/}
+          {IncDec(
+            product.id,
+            product.count,
+            incrementProduct,
+            decrementProduct
+          )}
         </div>
         <div className="add-basket-and-brand-container">
           <Image
@@ -48,7 +74,12 @@ const InformationContainer = ({
             webpWeb={""}
             webpMobile={""}
           />
-          <Button type="primary" width="170px" height="50px">
+          <Button
+            type="primary"
+            width="170px"
+            height="50px"
+            onClick={() => addBasket(product)}
+          >
             В корзину
           </Button>
         </div>
@@ -62,4 +93,5 @@ const InformationContainer = ({
     </ProductInformationContainer>
   );
 };
+
 export default InformationContainer;
