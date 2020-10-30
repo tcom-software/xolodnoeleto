@@ -17,9 +17,11 @@ const TitleNavigationContainer = styled.div`
     font-size: 24px;
     margin-top: 10px;
     font-weight: ${theme.body.fontBolder};
+    text-transform: uppercase;
 
     @media (max-width: ${theme.mobileMedia.size}) {
       margin: 0;
+      font-size: 20px;
     }
   }
 

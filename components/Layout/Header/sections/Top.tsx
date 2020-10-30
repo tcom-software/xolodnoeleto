@@ -60,10 +60,12 @@ const Top = ({
         ref={modalType === "catalog" ? modalRef : null}
       >
         <Ul>
-          {[...elseRefs, ...navigation].map((item, i) => {
+          {[...elseRefs, ...navigation].map(({ title, url }, i) => {
             return (
               <li key={i}>
-                <Link href={""}>{item}</Link>
+                <Link href={url}>
+                  <a>{title}</a>
+                </Link>
               </li>
             );
           })}
