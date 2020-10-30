@@ -21,11 +21,14 @@ const AcInstallationContainer = styled.div`
   .level-one {
     display: grid;
     margin: 20px 0;
+    grid-gap: 20px;
     grid-template-columns: 1fr;
 
     .top {
       display: grid;
+      grid-gap: 20px;
       grid-template-columns: 1fr 1fr;
+
       & > div {
         h2 {
           font-size: 15px;
@@ -36,6 +39,7 @@ const AcInstallationContainer = styled.div`
     }
     .bottom {
       display: grid;
+      grid-gap: 20px;
       align-items: center;
       grid-template-columns: 1fr 1fr;
       & > p {
@@ -195,6 +199,7 @@ const AcInstallationContainer = styled.div`
 
   @media (max-width: 768px) {
     padding: 0;
+    border: none;
     margin-bottom: 0;
 
     h2 {
@@ -208,8 +213,11 @@ const AcInstallationContainer = styled.div`
       .bottom {
         grid-gap: 20px;
         grid-template-columns: 1fr;
-        img {
+        .lazyload-wrapper {
           width: 100%;
+          img {
+            width: 100%;
+          }
         }
       }
       .top > div > h2 {
@@ -246,6 +254,9 @@ const AcInstallationContainer = styled.div`
           overflow: scroll;
           grid-template-columns: repeat(4, minmax(200px, 1fr)) !important;
         }
+      }
+      .level-five {
+        margin: 15px 0;
       }
       .level-eight {
         .apartment-renovation {
