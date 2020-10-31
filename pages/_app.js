@@ -8,6 +8,7 @@ import { ThemeProvider } from "styled-components";
 import GlobalStyles from "../styles/GlobalStyles";
 import { useSpring, animated } from "react-spring";
 import { setIsMobile } from "../redux/actions/generalActions";
+import BigImage from "../components/BigImage";
 
 import "../styles/globals.css";
 import "slick-carousel/slick/slick.scss";
@@ -39,6 +40,7 @@ function MyApp(props) {
             <Component {...pageProps} />
           </Layout>
         </animated.div>
+        <BigImage />
       </Provider>
     </ThemeProvider>
   );

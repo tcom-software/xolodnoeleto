@@ -4,17 +4,17 @@ import theme from "styles/theme";
 const InstallationPhotoContainer = styled.div`
   display: grid;
   grid-gap: 20px;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
 
   .item {
     transition: all 0.4s ease-in;
     background: #fff;
     border: 1px solid ${theme.body.someBorder};
-
+    width: 100%;
     .lazyload-wrapper {
+      width: 100%;
       img {
-        //width: 100%;
-        //max-height: 130px;
+        width: 100%;
         object-fit: cover;
       }
     }
@@ -25,6 +25,14 @@ const InstallationPhotoContainer = styled.div`
     }
   }
   @media (max-width: 768px) {
+    grid-gap: 15px;
+    .item {
+      .lazyload-wrapper {
+        img {
+          object-fit: cover;
+        }
+      }
+    }
   }
 `;
 

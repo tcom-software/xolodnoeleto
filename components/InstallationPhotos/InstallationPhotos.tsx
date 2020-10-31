@@ -5,7 +5,11 @@ import TitleNavigation from "../TitleNavigation";
 import React from "react";
 import ProductList from "../ProductsList";
 
-const InstallationPhotos = ({ seenProducts, InstallationPhotos }) => {
+const InstallationPhotos = ({
+  seenProducts,
+  InstallationPhotos,
+  changeBigImage,
+}) => {
   return (
     <>
       <TitleNavigation title="Фото Наших Монтажей" currentPage="Категория" />
@@ -16,10 +20,7 @@ const InstallationPhotos = ({ seenProducts, InstallationPhotos }) => {
         webPadding={"30px 0"}
       >
         <InstallationPhotoContainer
-          onClick={(e) => {
-            console.log(e.target);
-            console.log(e.target.src);
-          }}
+          onClick={(e) => e.target.src && changeBigImage(e.target.src)}
         >
           {InstallationPhotos.map((e, i) => {
             return (

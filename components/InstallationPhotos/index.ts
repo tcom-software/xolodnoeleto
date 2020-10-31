@@ -1,5 +1,6 @@
 import InstallationPhotos from "./InstallationPhotos";
 import { connect } from "react-redux";
+import { changeBigImage } from "redux/actions/generalActions";
 
 const mapStateToProps = ({
   general: { InstallationPhotos },
@@ -9,4 +10,7 @@ const mapStateToProps = ({
   InstallationPhotos,
 });
 
-export default connect(mapStateToProps)(InstallationPhotos);
+const mapDispatchToProps = (dispatch) => ({
+  changeBigImage: (src) => dispatch(changeBigImage(src)),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(InstallationPhotos);
