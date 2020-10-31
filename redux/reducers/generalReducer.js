@@ -6,7 +6,7 @@ const initialState = {
       { title: "Оплата и доставка", url: "/" },
       { title: "О нас", url: "/" },
       { title: "Установка Кондиционеров", url: "/ac_installation" },
-      { title: "Фото Наших Монтажей", url: "/" },
+      { title: "Фото Наших Монтажей", url: "/installation_photos" },
       { title: "Наши Клиенты", url: "/" },
       { title: "Наши Сертификаты", url: "/" },
       { title: "Контакты", url: "/" },
@@ -439,6 +439,20 @@ const initialState = {
       },
     },
   },
+  InstallationPhotos: [
+    "test-product.png",
+    "test-product.png",
+    "test-product.png",
+    "test-product.png",
+    "test-product.png",
+    "test-product.png",
+    "test-product.png",
+    "test-product.png",
+    "test-product.png",
+    "test-product.png",
+    "test-product.png",
+    "test-product.png",
+  ],
 };
 
 const generalReducer = (state = initialState, action) => {
