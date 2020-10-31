@@ -12,7 +12,10 @@ const InstallationPhotos = ({
 }) => {
   return (
     <>
-      <TitleNavigation title="Фото Наших Монтажей" currentPage="Категория" />
+      <TitleNavigation
+        title="Фото Наших Монтажей"
+        currentPage="Фото Наших Монтажей"
+      />
       <GlobalSection
         isWeb={true}
         isMobile={true}

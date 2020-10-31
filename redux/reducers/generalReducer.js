@@ -7,7 +7,7 @@ const initialState = {
       { title: "О нас", url: "/" },
       { title: "Установка Кондиционеров", url: "/ac_installation" },
       { title: "Фото Наших Монтажей", url: "/installation_photos" },
-      { title: "Наши Клиенты", url: "/" },
+      { title: "Наши Клиенты", url: "/our_clients" },
       { title: "Наши Сертификаты", url: "/" },
       { title: "Контакты", url: "/" },
     ],
@@ -453,6 +453,48 @@ const initialState = {
     "test-product.png",
     "test-product.png",
     "test-product.png",
+  ],
+  ourClients: [
+    {
+      srcOne: "test-product.png",
+      srcTwo: "test-three-product.jpg",
+    },
+    {
+      srcOne: "test-product.png",
+      srcTwo: "test-three-product.jpg",
+    },
+    {
+      srcOne: "test-product.png",
+      srcTwo: "test-three-product.jpg",
+    },
+    {
+      srcOne: "test-product.png",
+      srcTwo: "test-three-product.jpg",
+    },
+    {
+      srcOne: "test-product.png",
+      srcTwo: "test-three-product.jpg",
+    },
+    {
+      srcOne: "test-product.png",
+      srcTwo: "test-three-product.jpg",
+    },
+    {
+      srcOne: "test-product.png",
+      srcTwo: "test-three-product.jpg",
+    },
+    {
+      srcOne: "test-product.png",
+      srcTwo: "test-three-product.jpg",
+    },
+    {
+      srcOne: "test-product.png",
+      srcTwo: "test-three-product.jpg",
+    },
+    {
+      srcOne: "test-product.png",
+      srcTwo: "test-three-product.jpg",
+    },
   ],
 };
 
