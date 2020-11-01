@@ -43,9 +43,7 @@ export interface InputInterface {
 }
 export interface ImageInterface {
   simpleWeb: string;
-  simpleMobile: string;
   webpWeb: string;
-  webpMobile: string;
   width?: string;
   height?: string;
   callback?: any;

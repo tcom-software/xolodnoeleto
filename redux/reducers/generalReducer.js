@@ -5,10 +5,10 @@ const initialState = {
     navigation: [
       { title: "Оплата и доставка", url: "/" },
       { title: "О нас", url: "/" },
-      { title: "Установка Кондиционеров", url: "/ac_installation" },
-      { title: "Фото Наших Монтажей", url: "/installation_photos" },
-      { title: "Наши Клиенты", url: "/our_clients" },
-      { title: "Наши Сертификаты", url: "/" },
+      { title: "Установка Кондиционеров", url: "/ac-installation" },
+      { title: "Фото Наших Монтажей", url: "/installation-photos" },
+      { title: "Наши Клиенты", url: "/our-clients" },
+      { title: "Наши Сертификаты", url: "/certificates" },
       { title: "Контакты", url: "/" },
     ],
     elseRefs: [
@@ -531,6 +531,7 @@ const initialState = {
     { srcOne: "15.png" },
     { srcOne: "16.gif" },
   ],
+  certificates: 14,
 };
 
 const generalReducer = (state = initialState, action) => {

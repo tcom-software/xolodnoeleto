@@ -55,17 +55,10 @@ const SubScriptionEmail = () => {
           </Button>
         </SubScriptionForm>
         <ImgContainer>
-          <Image
-            simpleWeb="images/subscription-email/girl.png"
-            simpleMobile="images/subscription-email/girl.png"
-            webpWeb={""}
-            webpMobile={""}
-          />
+          <Image simpleWeb="images/subscription-email/girl.png" webpWeb={""} />
           <Image
             simpleWeb="/images/subscription-email/subscribe-text.png"
-            simpleMobile="images/subscription-email/subscribe-text.png"
             webpWeb={""}
-            webpMobile={""}
           />
         </ImgContainer>
       </Container>

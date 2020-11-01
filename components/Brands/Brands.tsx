@@ -16,12 +16,7 @@ const Brands = ({ brands }) => {
           {brands.map(({ src }, i) => {
             return (
               <div className="brand" key={i}>
-                <Image
-                  simpleWeb={src}
-                  simpleMobile={src}
-                  webpWeb={""}
-                  webpMobile={""}
-                />
+                <Image simpleWeb={src} webpWeb={""} />
               </div>
             );
           })}

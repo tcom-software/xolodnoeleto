@@ -8,9 +8,7 @@ const Banner = () => {
     <BannerContainer>
       <Image
         simpleWeb={`/images/banners/top-banner.jpg`}
-        simpleMobile={`/images/banners/top-banner.jpg`}
         webpWeb={`/images/banners/top-banner.webp`}
-        webpMobile={`/images/banners/top-banner.webp`}
       />
       <SvgIcon
         type="close"

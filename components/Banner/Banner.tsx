@@ -11,9 +11,7 @@ const Banner = () => {
     <Image
       key={i}
       simpleWeb="https://www.nastol.com.ua/pic/202009/1280x800/nastol.com.ua-423922.jpg"
-      simpleMobile="https://www.nastol.com.ua/pic/202009/1280x800/nastol.com.ua-423922.jpg"
       webpWeb={""}
-      webpMobile={""}
     />
   ));
 

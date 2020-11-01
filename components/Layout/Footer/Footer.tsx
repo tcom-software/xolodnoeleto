@@ -70,9 +70,7 @@ const Footer = ({ menu, copyright, socialNetworks }) => {
                       <Image
                         key={i}
                         simpleWeb={`/images/icons/${img}`}
-                        simpleMobile={""}
                         webpWeb={""}
-                        webpMobile={""}
                         width={width}
                         height={height}
                       />

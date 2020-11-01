@@ -40,9 +40,7 @@ const AcInstallation = ({
             <div className="top">
               <Image
                 simpleWeb={"/images/ac_installation/montajniki.jpg"}
-                simpleMobile={"/images/ac_installation/montajniki.jpg"}
                 webpWeb={""}
-                webpMobile={""}
               />
               <div>
                 <h2>{title}</h2>
@@ -53,11 +51,7 @@ const AcInstallation = ({
               <p>{secondPath}</p>
               <Image
                 simpleWeb={"/images/ac_installation/montajniki_sertifikat.png"}
-                simpleMobile={
-                  "/images/ac_installation/montajniki_sertifikat.png"
-                }
                 webpWeb={""}
-                webpMobile={""}
               />
             </div>
           </div>
@@ -182,9 +176,7 @@ const AcInstallation = ({
                       <p className="your-number">Вариант Номер {i + 1}</p>
                       <Image
                         simpleWeb={"/images/ac_installation/cases/" + e.src}
-                        simpleMobile={"/images/ac_installation/cases/" + e.src}
                         webpWeb={""}
-                        webpMobile={""}
                       />
                       <p className="title">{e.title}</p>
                     </div>
@@ -201,11 +193,7 @@ const AcInstallation = ({
                     simpleWeb={
                       "/images/ac_installation/" + ApartmentRenovation.src
                     }
-                    simpleMobile={
-                      "/images/ac_installation/" + ApartmentRenovation.src
-                    }
                     webpWeb={""}
-                    webpMobile={""}
                   />
                 </div>
                 <p>{ApartmentRenovation.secondText}</p>

@@ -15,12 +15,7 @@ const SuperSale = () => {
       }
     >
       <Container>
-        <Image
-          simpleWeb="images/banners/super-sale-web.png"
-          simpleMobile="images/banners/super-sale-mobile.png"
-          webpWeb={""}
-          webpMobile={""}
-        />
+        <Image simpleWeb="images/banners/super-sale-web.png" webpWeb={""} />
         <Button type="primary" width={"180px"} height={"50px"}>
           смотреть все
         </Button>

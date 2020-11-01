@@ -76,12 +76,7 @@ const FunctionalContainer = ({
           )}
         </div>
         <div className="add-basket-and-brand-container">
-          <Image
-            simpleWeb={brand}
-            simpleMobile={brand}
-            webpWeb={""}
-            webpMobile={""}
-          />
+          <Image simpleWeb={brand} webpWeb={""} />
           <Button
             type="primary"
             width="170px"
@@ -98,12 +93,7 @@ const FunctionalContainer = ({
           <p>Условия доставки</p>
         </div>
         <div className="mobile-brand-image">
-          <Image
-            simpleWeb={brand}
-            simpleMobile={brand}
-            webpWeb={""}
-            webpMobile={""}
-          />
+          <Image simpleWeb={brand} webpWeb={""} />
         </div>
       </div>
       <div className="level-five-mobile">
