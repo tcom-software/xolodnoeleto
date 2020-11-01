@@ -1,5 +1,6 @@
 import OurClients from "./OurClients";
 import { connect } from "react-redux";
+import { changeBigImage } from "redux/actions/generalActions";
 
 const mapStateToProps = ({
   general: { ourClients },
@@ -9,4 +10,7 @@ const mapStateToProps = ({
   seenProducts,
 });
 
-export default connect(mapStateToProps)(OurClients);
+const mapDispatchToProps = (dispatch) => ({
+  changeBigImage: (src) => dispatch(changeBigImage(src)),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(OurClients);

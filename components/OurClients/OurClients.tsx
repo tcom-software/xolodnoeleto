@@ -2,10 +2,10 @@ import React from "react";
 import theme from "styles/theme";
 import { GlobalSection, Image } from "@famous";
 import TitleNavigation from "../TitleNavigation";
-import { OurClientsContainer, Titleh3 } from "./styles";
+import { OurClientsContainer, Titleh3, Item } from "./styles";
 import ProductList from "../ProductsList";
 
-const OurClients = ({ ourClients, seenProducts }) => {
+const OurClients = ({ ourClients, seenProducts, changeBigImage }) => {
   return (
     <>
       <TitleNavigation title="НАШИ КЛИЕНТЫ" currentPage="ФНАШИ КЛИЕНТЫ" />
@@ -17,15 +17,28 @@ const OurClients = ({ ourClients, seenProducts }) => {
       >
         <Titleh3>МЫ НЕ ТОЛЬКО ПОКАЗЫВАЕМ, МЫ ДОКАЗЫВАЕМ</Titleh3>
 
-        <OurClientsContainer
-        // Click={(e) => e.target.src && changeBigImage(e.target.src)}
-        >
+        <OurClientsContainer>
           {ourClients.map(({ srcOne, srcTwo }, i) => {
             return (
-              <div className="item" key={i}>
-                <img src={srcTwo} className="front-img" />
-                <img src={srcOne} className="backend-img" />
-              </div>
+              <Item key={i} srcTwo={srcTwo} exception={srcOne == "11/1.png"}>
+                <div className="front-con">
+                  <img
+                    src={`images/client_images/${srcOne}`}
+                    className="front-img"
+                  />
+                </div>
+                {srcTwo ? (
+                  <div className="backend-con">
+                    <img
+                      src={`images/client_images/${srcTwo}`}
+                      className="backend-img"
+                      onClick={() => {
+                        changeBigImage(`images/client_images/${srcTwo}`);
+                      }}
+                    />
+                  </div>
+                ) : null}
+              </Item>
             );
           })}
         </OurClientsContainer>
