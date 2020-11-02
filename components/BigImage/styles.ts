@@ -22,11 +22,13 @@ const BigImageContainer = styled.div`
 
   .content {
     text-align: center;
-    margin-top: 25px;
+    margin-top: 15px;
 
     img {
       pointer-events: none;
       width: 40%;
+      max-height: 95vh;
+      object-fit: cover;
       animation: ${rotate} 0.5s ease forwards;
     }
   }
