@@ -66,7 +66,11 @@ const Bottom = ({
             </CatalogUl>
           </li>
           <li>% Акции</li>
-          <li>Бренды</li>
+          <li>
+            <Link href="/brands">
+              <a>Бренды</a>
+            </Link>
+          </li>
           <li>
             <SearchCon mobileDisableView={true} isOpenSearch={isOpenSearch}>
               <Input
