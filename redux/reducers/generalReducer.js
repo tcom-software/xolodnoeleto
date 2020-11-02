@@ -9,7 +9,7 @@ const initialState = {
       { title: "Фото Наших Монтажей", url: "/installation-photos" },
       { title: "Наши Клиенты", url: "/our-clients" },
       { title: "Наши Сертификаты", url: "/certificates" },
-      { title: "Контакты", url: "/" },
+      { title: "Контакты", url: "/contact-us" },
     ],
     elseRefs: [
       { title: "% Акции", url: "" },
@@ -142,6 +142,11 @@ const initialState = {
       placeholder: "Адрес...",
     },
     commentByOrder: {
+      errorMessage: "Пожалуйста, напишите комментарии",
+      validation: /^[a-zA-Z0-9 ]{2,30}$/,
+      placeholder: "без...",
+    },
+    comment: {
       errorMessage: "Пожалуйста, напишите комментарии",
       validation: /^[a-zA-Z0-9 ]{2,30}$/,
       placeholder: "без...",
