@@ -55,7 +55,7 @@ const PaginationContainer = styled.div`
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: ${theme.mobileMedia.size}) {
     ul {
       display: flex;
       flex-wrap: wrap;

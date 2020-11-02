@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import theme from "styles/theme";
 
 const Container = styled.section`
   width: 100%;
@@ -16,7 +17,7 @@ const Container = styled.section`
     margin: 0 auto;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: ${theme.mobileMedia.size}) {
     width: 100%;
     text-align: center;
 

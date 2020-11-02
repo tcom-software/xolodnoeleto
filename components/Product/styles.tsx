@@ -6,7 +6,7 @@ const ProductTopContainer = styled.div`
   grid-gap: 60px;
   grid-template-columns: 1fr 1fr;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${theme.mobileMedia.size}) {
     grid-gap: 20px;
     grid-template-columns: 1fr;
   }
@@ -68,7 +68,7 @@ const ProductBottomContainer = styled.div`
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: ${theme.mobileMedia.size}) {
     .specification,
     .description {
       border: none;

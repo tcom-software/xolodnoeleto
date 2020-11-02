@@ -16,7 +16,7 @@ const Container = styled.div`
   background: ${theme.body.background};
   height: 125px;
   padding: 6px;
-  @media (max-width: 768px) {
+  @media (max-width: ${theme.mobileMedia.size}) {
     width: 100%;
   }
 `;

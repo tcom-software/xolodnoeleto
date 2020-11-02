@@ -52,7 +52,7 @@ const ProductContainer = styled.div`
       border: none;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: ${theme.mobileMedia.size}) {
       & > button {
         width: 90%;
       }
@@ -63,7 +63,7 @@ const ProductContainer = styled.div`
 const Image = styled.img`
   width: 158px;
   height: 158px;
-  @media (max-width: 768px) {
+  @media (max-width: ${theme.mobileMedia.size}) {
     height: auto;
   }
 `;

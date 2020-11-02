@@ -9,7 +9,7 @@ const Container = styled.section`
   margin: 0 auto;
   align-items: center;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${theme.mobileMedia.size}) {
     width: 98%;
     height: auto;
     grid-template-columns: 1fr;

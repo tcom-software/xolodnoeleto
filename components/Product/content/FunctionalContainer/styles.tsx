@@ -90,7 +90,7 @@ const ProductInformationContainer = styled.div`
     display: none;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: ${theme.mobileMedia.size}) {
     & > div {
       margin-bottom: 0px;
     }

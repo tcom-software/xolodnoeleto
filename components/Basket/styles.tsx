@@ -68,7 +68,7 @@ const GridSection = styled.div`
         }
       }
     }
-    @media (max-width: 768px) {
+    @media (max-width: ${theme.mobileMedia.size}) {
       ${({ stepState }) =>
         stepState == 1 &&
         css`
@@ -83,7 +83,7 @@ const GridSection = styled.div`
         `}
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: ${theme.mobileMedia.size}) {
       padding: 10px;
     }
   }

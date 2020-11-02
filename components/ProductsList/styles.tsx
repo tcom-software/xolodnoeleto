@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import theme from "styles/theme";
 
 const Container = styled.section``;
 
@@ -8,7 +9,7 @@ const ListContainer = styled.div`
   grid-gap: 20px;
   grid-template-columns: repeat(auto-fill, minmax(228px, 1fr));
 
-  @media (max-width: 768px) {
+  @media (max-width: ${theme.mobileMedia.size}) {
     ${({ mobileType }) => {
       if (mobileType === "scroll") {
         return css`
