@@ -43,6 +43,11 @@ export default class MyDocument extends Document {
           <meta property="og:url" content="https://www.laitklimat.ru/" />
           {/*<meta name="theme-color" content={theme.colors.secondary} />*/}
           <link
+            rel="shortcut icon"
+            href="https://www.nastol.com.ua/large/202010/434244.jpg"
+            type="image/x-icon"
+          />
+          <link
             rel="stylesheet"
             type="text/css"
             href="//fonts.googleapis.com/css?family=Open+Sans"
