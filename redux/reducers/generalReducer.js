@@ -94,13 +94,18 @@ const initialState = {
     {
       title: "Компания",
       items: [
-        "Бренды",
-        "Категории",
-        "Оплата и Доставка",
-        "Установка Кондиционеров",
-        "Фото Наших Монтажей",
+        { title: "Бренды", url: "/brands" },
+        { title: "Категории", url: "" },
+        { title: "Оплата и Доставка", url: "/payment-and-delivery" },
+        { title: "Установка Кондиционеров", url: "/ac-installation" },
+        { title: "Фото Наших Монтажей", url: "/installation-photos" },
       ],
-      sideItems: ["Наши Клиенты", "Наши Сертификаты", "О нас", "Контакты"],
+      sideItems: [
+        { title: "Наши Клиенты", url: "/our-clients" },
+        { title: "Наши Сертификаты", url: "/certificates" },
+        { title: "О нас", url: "" },
+        { title: "Контакты", url: "/contact-us" },
+      ],
     },
     {
       title: "Контакты",
