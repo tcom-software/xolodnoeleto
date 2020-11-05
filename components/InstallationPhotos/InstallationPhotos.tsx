@@ -28,12 +28,7 @@ const InstallationPhotos = ({
           {InstallationPhotos.map((e, i) => {
             return (
               <div className="item" key={i}>
-                <Image
-                  simpleWeb={e}
-                  simpleMobile={e}
-                  webpWeb={""}
-                  webpMobile={""}
-                />
+                <Image simpleWeb={e} webpWeb={""} />
               </div>
             );
           })}
