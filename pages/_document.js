@@ -42,11 +42,11 @@ export default class MyDocument extends Document {
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <meta property="og:url" content="https://www.laitklimat.ru/" />
           {/*<meta name="theme-color" content={theme.colors.secondary} />*/}
-          <link
+          {/*<link
             rel="shortcut icon"
             href="https://www.nastol.com.ua/large/202010/434244.jpg"
             type="image/x-icon"
-          />
+          />*/}
           <link
             rel="stylesheet"
             type="text/css"
