@@ -4,7 +4,7 @@ const initialState = {
   header: {
     navigation: [
       { title: "Оплата и доставка", url: "/payment-and-delivery" },
-      { title: "О нас", url: "/" },
+      { title: "О нас", url: "/about-us" },
       { title: "Установка Кондиционеров", url: "/ac-installation" },
       { title: "Фото Наших Монтажей", url: "/installation-photos" },
       { title: "Наши Клиенты", url: "/our-clients" },
@@ -103,7 +103,7 @@ const initialState = {
       sideItems: [
         { title: "Наши Клиенты", url: "/our-clients" },
         { title: "Наши Сертификаты", url: "/certificates" },
-        { title: "О нас", url: "" },
+        { title: "О нас", url: "/about-us" },
         { title: "Контакты", url: "/contact-us" },
       ],
     },
