@@ -6,7 +6,7 @@ import Layout from "../components/Layout";
 import withRedux from "next-redux-wrapper";
 import { ThemeProvider } from "styled-components";
 import GlobalStyles from "../styles/GlobalStyles";
-import { useSpring, animated } from "react-spring";
+import { animated } from "react-spring";
 import { setIsMobile } from "../redux/actions/generalActions";
 import BigImage from "../components/BigImage";
 import { Transition } from "react-spring/renderprops.cjs";
@@ -17,6 +17,7 @@ import "slick-carousel/slick/slick.scss";
 import "slick-carousel/slick/slick-theme.scss";
 import "rc-slider/assets/index.css";
 import "react-datepicker/dist/react-datepicker.css";
+import Footer from "../components/Layout/Footer";
 
 const useWidth = () => {
   const handleResize = () => {
@@ -39,35 +40,40 @@ function MyApp(props) {
       pageProps,
     },
   ];
-  const animationProps = useSpring({ opacity: 1, from: { opacity: 0 } });
+
   useWidth();
+
   return (
     <ThemeProvider theme={theme}>
       <Provider store={store}>
-        <animated.div style={animationProps}>
-          <Layout>
-            <GlobalStyles />
-            <div style={{ position: "relative", "will-change": "transform" }}>
-              <Transition
-                items={items}
-                keys={(item) => item.id}
-                from={{ transform: "translateX(-100%)", position: "absolute" }}
-                initial={{
-                  transform: "translateX(-100%)",
-                  position: "absolute",
-                }}
-                enter={{ transform: "translateX(0)", position: "absolute" }}
-                leave={{ transform: "translateX(100%)", position: "absolute" }}
-              >
-                {({ Component, pageProps }) => (styles) => (
-                  <animated.div style={{ ...styles, width: "100%" }}>
-                    <Component {...pageProps} />
-                  </animated.div>
-                )}
-              </Transition>
-            </div>
-          </Layout>
-        </animated.div>
+        <Layout>
+          <GlobalStyles />
+          <div
+            style={{
+              position: "relative",
+              willChange: "transform",
+            }}
+          >
+            <Transition
+              items={items}
+              keys={(item) => item.id}
+              from={{ transform: "translateX(-100%)", position: "absolute" }}
+              initial={{
+                transform: "translateX(-100%)",
+                position: "absolute",
+              }}
+              enter={{ transform: "translateX(0)", position: "absolute" }}
+              leave={{ transform: "translateX(100%)", position: "absolute" }}
+            >
+              {({ Component, pageProps }) => (styles) => (
+                <animated.div style={{ ...styles, width: "100%" }}>
+                  <Component {...pageProps} />
+                  <Footer />
+                </animated.div>
+              )}
+            </Transition>
+          </div>
+        </Layout>
         <BigImage />
       </Provider>
     </ThemeProvider>

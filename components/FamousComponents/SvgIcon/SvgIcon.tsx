@@ -8,7 +8,7 @@ const AnimFeTurbulence = animated("feTurbulence");
 const AnimFeDisplacementMap = animated("feDisplacementMap");
 
 const SvgIcon = (props: SvgProperty) => {
-  const { callback, reverse } = props;
+  const { callback, reverse, animationUniqId, className } = props;
 
   const {
     inSide,
@@ -29,12 +29,13 @@ const SvgIcon = (props: SvgProperty) => {
       fill={props.color}
       width={props.width}
       height={props.height}
+      className={className}
       onClick={callback != null ? (e) => callback(e) : null}
     >
       {props.animation ? (
         <>
           <defs>
-            <filter id="water">
+            <filter id={animationUniqId ? animationUniqId : id}>
               <AnimFeTurbulence
                 type="fractalNoise"
                 baseFrequency={freq}
@@ -52,7 +53,7 @@ const SvgIcon = (props: SvgProperty) => {
               />
             </filter>
           </defs>
-          <g filter="url(#water)">{inSide}</g>
+          <g filter={`url(#${animationUniqId})`}>{inSide}</g>
         </>
       ) : (
         inSide

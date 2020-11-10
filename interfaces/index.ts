@@ -23,6 +23,8 @@ export interface SvgProperty {
   callback?: any;
   animation?: boolean;
   reverse?: boolean;
+  className?: String;
+  animationUniqId?: String;
 }
 export interface SvgIconAnimInterface {
   type: string;

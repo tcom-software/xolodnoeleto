@@ -37,6 +37,7 @@ const Middle = ({ phones, openModal, modalType }) => {
                 height={24}
                 animation={true}
                 reverse={open}
+                animationUniqId="logo"
               />
               <img src="/images/logo/logo.png" alt="sun" />
               <h1>XOLODNOELETO</h1>

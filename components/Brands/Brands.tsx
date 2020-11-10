@@ -16,7 +16,7 @@ const Brands = ({ brandItems, seenProducts }) => {
         isMobile={true}
         webBackground={theme.body.secondBackground}
         mobileBackground={theme.body.background}
-        webPadding={"0 0 30px 0"}
+        webPadding={"20px 0 30px 0"}
       >
         <Letters selected={selected} setSelected={setSelected} />
       </GlobalSection>
