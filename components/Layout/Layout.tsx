@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "./Header";
+import Footer from "./Footer";
 import PopUp from "./PopUp";
 
 const Layout = ({ children }) => {
@@ -7,6 +8,7 @@ const Layout = ({ children }) => {
     <>
       <Header />
       <main>{children}</main>
+      <Footer />
       <PopUp />
     </>
   );

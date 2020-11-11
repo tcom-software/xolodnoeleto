@@ -463,6 +463,7 @@ const BannerContainer = styled.div`
   display: flex;
   justify-content: center;
   background: #fff;
+  height: max-content;
 
   & > div.lazyload-wrapper > picture > img {
     @media (max-width: 900px) {
@@ -470,12 +471,11 @@ const BannerContainer = styled.div`
       height: intrinsic;
     }
   }
-
   & > svg {
     position: absolute;
     cursor: pointer;
     top: 40%;
-    right: 5%;
+    right: 0%;
 
     @media (max-width: ${theme.mobileMedia.size}) {
       width: 2vw;
