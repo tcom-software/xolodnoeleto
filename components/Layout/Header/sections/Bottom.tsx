@@ -5,17 +5,11 @@ import { connect } from "react-redux";
 import BasketMenu from "./BasketMenu";
 import { Button, GlobalSection, Input, SvgIcon } from "@famous";
 import { closeModal, openModal } from "redux/actions/modalActions";
-import { BottomPanel, CatalogUl, SearchCon, Span, Ul } from "../styles";
+import { BottomPanel, SearchCon, Span, Ul } from "../styles";
 import { useSpring, animated } from "react-spring";
+import Catalog from "./Catalog";
 
-const Bottom = ({
-  catalog,
-  modalType,
-  modalRef,
-  openModal,
-  closeModal,
-  basketItemsCount,
-}) => {
+const Bottom = ({ modalType, openModal, closeModal, basketItemsCount }) => {
   const [isOpenSearch, setIsOpenSearch] = useState(false);
   const spring: any = useSpring({
     from: { val: 0 },
@@ -42,28 +36,7 @@ const Bottom = ({
               color={modalType === "catalog" ? theme.body.primaryColor : "#000"}
             />
             Каталог товаров
-            <CatalogUl
-              modalType={modalType}
-              ref={modalType === "navigation" ? modalRef : null}
-            >
-              {catalog.map((e, i) => {
-                const cataloguePath = e.replace(/[ -()]/gi, "_");
-                return (
-                  <li key={i}>
-                    <Link href={`catalogue/${cataloguePath}`}>
-                      <a>{e}</a>
-                    </Link>
-                  </li>
-                );
-              })}
-              <SvgIcon
-                type="box"
-                width={15}
-                height={15}
-                color={theme.body.primaryColor}
-                callback={() => {}}
-              />
-            </CatalogUl>
+            <Catalog />
           </li>
           <li>% Акции</li>
           <li>
@@ -133,13 +106,9 @@ const Bottom = ({
 };
 
 const mapStateToProps = ({
-  general: {
-    header: { catalog },
-  },
   modal: { modalType, modalRef },
   basket: { items },
 }) => ({
-  catalog,
   modalRef,
   modalType,
   basketItemsCount: Object.values(items)

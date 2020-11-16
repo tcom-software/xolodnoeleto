@@ -171,92 +171,18 @@ const BottomPanel = styled.section`
   }
 `;
 
-const CatalogUl = styled.ul`
-  position: absolute;
-  top: 140%;
-  left: 0;
-  z-index: 2;
-  padding: 15px;
-  width: 1000px;
-  background: #fff;
-  display: none;
-  flex-wrap: wrap;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
-  border-top: 4px solid ${theme.body.primaryColor};
-
-  li {
-    width: 33%;
-
-    a {
-      padding: 10px 0;
-      display: block;
-    }
-  }
-
-  svg {
-    position: absolute;
-    top: -16px;
-    left: 70px;
-  }
-  ${({ modalType }) => {
-    return (
-      modalType === "catalog" &&
-      css`
-        display: flex;
-      `
-    );
-  }}
-
-  @media (max-width: 1100px) {
-    width: 90vw;
-  }
-  @media (max-width: ${theme.mobileMedia.size}) {
-    position: absolute;
-    top: 140%;
-    background: #fff;
-    transition: border-top 0.3s 0.3s ease-in, max-height 0.3s ease-in;
-    border-top: 0px solid ${theme.body.primaryColor};
-    width: 100vw;
-    left: -8px;
-    max-height: 0;
-    overflow: hidden;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    border-top: 0 solid ${theme.body.primaryColor};
-
-    & > li {
-      width: 100%;
-      a {
-        padding: 12px;
-        display: block;
-      }
-    }
-
-    svg {
-      display: none;
-    }
-
-    ${({ modalType }) => {
-      return (
-        modalType === "catalog" &&
-        css`
-          transition: 0.3s border-top ease-in, max-height 0.4s 0.3s ease-in;
-          border-top: 4px solid ${theme.body.primaryColor};
-          max-height: 3000px;
-        `
-      );
-    }}
-  }
-`;
-
 const Ul = styled.ul`
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
+
   & > li:first-of-type > svg {
     margin-right: 10px;
+  }
+
+  & > li {
+    cursor: pointer;
   }
 `;
 
@@ -489,7 +415,6 @@ export {
   Span,
   LogoCon,
   TopPanel,
-  CatalogUl,
   MainPanel,
   PhonesCon,
   SearchCon,
