@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import axios from "axios";
 import store from "../redux/store";
 import theme from "../styles/theme";
 import { Provider } from "react-redux";
@@ -27,9 +26,6 @@ const useWidth = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 };
-
-axios.defaults.baseURL = "https://axios-app.firebaseio.com";
-axios.defaults.headers.projectid = "56";
 
 function MyApp(props) {
   const { Component, pageProps } = props;

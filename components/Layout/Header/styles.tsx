@@ -177,8 +177,23 @@ const Ul = styled.ul`
   justify-content: space-between;
   width: 100%;
 
-  & > li:first-of-type > svg {
-    margin-right: 10px;
+  & > li:first-of-type {
+    svg {
+      &:first-of-type {
+        margin-right: 10px;
+      }
+      &:last-of-type {
+        position: absolute;
+        top: 100%;
+        display: none;
+        &.show-box {
+          display: block;
+        }
+        @media (max-width: 768px) {
+          display: none !important;
+        }
+      }
+    }
   }
 
   & > li {

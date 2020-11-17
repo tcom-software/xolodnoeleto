@@ -3,13 +3,19 @@ import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import rootReducer from "./reducers/rootReducer";
 import { basketInitialState } from "./actions/basketActions";
+import { loadCatalogList } from "./actions/generalActions";
+
+// import getConfig from "next/config";
+// console.log(getConfig());
 
 /** window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ **/
+
 const store = createStore(
   rootReducer,
   composeWithDevTools(applyMiddleware(thunkMiddleware))
 );
 
+store.dispatch(loadCatalogList());
 store.dispatch(basketInitialState());
 
 export default store;

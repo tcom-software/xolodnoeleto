@@ -37,6 +37,14 @@ const Bottom = ({ modalType, openModal, closeModal, basketItemsCount }) => {
             />
             Каталог товаров
             <Catalog />
+            <SvgIcon
+              type="box"
+              width={15}
+              height={15}
+              color={theme.body.primaryColor}
+              className={modalType == "catalog" ? "show-box" : ""}
+              callback={() => {}}
+            />
           </li>
           <li>% Акции</li>
           <li>
