@@ -4,7 +4,7 @@ import { SvgIcon } from "@famous";
 import theme from "styles/theme";
 import { CatalogUl } from "./styles";
 
-const Catalog = ({ catalog, modalType, modalRef }) => {
+const Catalog = ({ catalog, modalType, modalRef, closeModal }) => {
   return (
     <CatalogUl
       modalType={modalType}
@@ -23,8 +23,12 @@ const Catalog = ({ catalog, modalType, modalRef }) => {
                         <a>{e.name}</a>
                         <ul className="level-three-ul">
                           {e.subCategories.map((elem, index) => (
-                            <li key={index} className={"level-three-li"}>
-                              <Link key={index} href={`catalogue/${e.id}`}>
+                            <li
+                              key={index}
+                              className={"level-three-li"}
+                              onClick={closeModal}
+                            >
+                              <Link key={index} href={`/catalogue/${e.id}`}>
                                 <a>{e.name}</a>
                               </Link>
                             </li>

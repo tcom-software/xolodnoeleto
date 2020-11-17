@@ -87,11 +87,13 @@ const CatalogUl = styled.ul`
           .level-one-li:hover > .level-two-ul {
             display: block;
             left: 100%;
+            height: 100%;
             .level-two-li:hover {
               .level-three-ul {
                 display: block;
                 width: max-content;
                 left: 100%;
+                height: 100%;
               }
             }
           }

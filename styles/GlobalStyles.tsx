@@ -18,6 +18,7 @@ const GlobalStyles = createGlobalStyle`
   body {
     background: ${theme.body.background};
     color: #202020;
+    overflow-x: hidden;
   }
   picture {
     display: contents;
