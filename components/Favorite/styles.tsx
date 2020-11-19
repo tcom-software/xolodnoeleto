@@ -3,6 +3,9 @@ import theme from "styles/theme";
 
 const FavoriteContainer = styled.div`
   & > div {
+    .product-image-table-and-mobile-case {
+      object-fit: cover;
+    }
     table {
       width: 100%;
       border-spacing: 0px 10px;

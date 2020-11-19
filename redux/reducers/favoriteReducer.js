@@ -1,58 +1,7 @@
 import * as types from "../actions/favoriteActions";
 
 const initialState = {
-  items: {
-    1: {
-      id: 1,
-      src: "/test-product.png",
-      manufacturer: "Dahatsu",
-      model: "COMFORT-ON-OFF-2019-DG-07",
-      vendorCode: "Артикул  | 7380",
-      price: 27129,
-      count: 5,
-      selectedStarsCount: 4,
-    },
-    2: {
-      id: 2,
-      src: "/test-product.png",
-      manufacturer: "Dahatsu",
-      model: "COMFORT-ON-OFF-2019-DG-07",
-      vendorCode: "Артикул  | 7480",
-      price: 7644,
-      count: 3,
-      selectedStarsCount: 3,
-    },
-    3: {
-      id: 3,
-      src: "/test-product.png",
-      manufacturer: "Dahatsu",
-      model: "COMFORT-ON-OFF-2019-DG-07",
-      vendorCode: "Артикул  | 7480",
-      price: 1000,
-      count: 3,
-      selectedStarsCount: 3,
-    },
-    4: {
-      id: 4,
-      src: "/test-product.png",
-      manufacturer: "Dahatsu",
-      model: "COMFORT-ON-OFF-2019-DG-07",
-      vendorCode: "Артикул  | 7480",
-      price: 1000,
-      count: 3,
-      selectedStarsCount: 3,
-    },
-    5: {
-      id: 5,
-      src: "/test-product.png",
-      manufacturer: "Dahatsu",
-      model: "COMFORT-ON-OFF-2019-DG-07",
-      vendorCode: "Артикул  | 7480",
-      price: 1000,
-      count: 3,
-      selectedStarsCount: 3,
-    },
-  },
+  items: {},
 };
 
 const favoriteReducer = (state = initialState, action) => {
@@ -92,9 +41,11 @@ const favoriteReducer = (state = initialState, action) => {
         return { ...state };
       } else {
         return {
-          ...state.items,
-          [action.payload.id]: {
-            ...action.payload,
+          ...state,
+          items: {
+            [action.payload.id]: {
+              ...action.payload,
+            },
           },
         };
       }

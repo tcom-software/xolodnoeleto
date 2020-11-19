@@ -3,9 +3,7 @@ import { connect } from "react-redux";
 import { closeModal } from "redux/actions/modalActions";
 
 const mapStateToProps = ({
-  general: {
-    header: { catalog },
-  },
+  catalogue: { catalogMenu: catalog },
   modal: { modalRef, modalType },
 }) => ({
   catalog,

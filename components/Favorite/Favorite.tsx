@@ -6,8 +6,20 @@ import { GlobalSection } from "@famous";
 import MobileCase from "../ProductListView/MobileCase";
 import WebCase from "../ProductListView/WebCase";
 import ProductList from "../ProductsList";
+import { DataEmpty } from "@famous";
 
 const Favorite = ({ isMobile, favoriteProducts, seenProducts }) => {
+  const itemsLength = Object.keys(favoriteProducts).length;
+
+  if (itemsLength === 0) {
+    return (
+      <>
+        <TitleNavigation title={"ИЗБРАННЫЕ"} currentPage={"Избранные"} />
+        <DataEmpty title={"У вас нет избранных продуктов"} />
+      </>
+    );
+  }
+
   return (
     <>
       <TitleNavigation title={"ИЗБРАННЫЕ"} currentPage={"Избранные"} />

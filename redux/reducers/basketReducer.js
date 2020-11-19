@@ -1,58 +1,7 @@
 import * as types from "../actions/basketActions";
 
 const initialState = {
-  items: {
-    1: {
-      id: 1,
-      src: "/test-product.png",
-      manufacturer: "Dahatsu",
-      model: "COMFORT-ON-OFF-2019-DG-07",
-      vendorCode: "Артикул  | 7380",
-      price: 27129,
-      count: 5,
-      selectedStarsCount: 4,
-    },
-    2: {
-      id: 2,
-      src: "/test-product.png",
-      manufacturer: "Dahatsu",
-      model: "COMFORT-ON-OFF-2019-DG-07",
-      vendorCode: "Артикул  | 7480",
-      price: 7644,
-      count: 3,
-      selectedStarsCount: 3,
-    },
-    3: {
-      id: 3,
-      src: "/test-product.png",
-      manufacturer: "Dahatsu",
-      model: "COMFORT-ON-OFF-2019-DG-07",
-      vendorCode: "Артикул  | 7480",
-      price: 1000,
-      count: 3,
-      selectedStarsCount: 3,
-    },
-    4: {
-      id: 4,
-      src: "/test-product.png",
-      manufacturer: "Dahatsu",
-      model: "COMFORT-ON-OFF-2019-DG-07",
-      vendorCode: "Артикул  | 7480",
-      price: 1000,
-      count: 3,
-      selectedStarsCount: 3,
-    },
-    5: {
-      id: 5,
-      src: "/test-product.png",
-      manufacturer: "Dahatsu",
-      model: "COMFORT-ON-OFF-2019-DG-07",
-      vendorCode: "Артикул  | 7480",
-      price: 1000,
-      count: 3,
-      selectedStarsCount: 3,
-    },
-  },
+  items: {},
   basketSteps: {
     stepOne: {
       top: [],
@@ -189,6 +138,10 @@ const initialState = {
 const basketReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.ADD_BASKET:
+      if (action.payload.count === undefined) {
+        action.payload.count = 1;
+      }
+
       const { count, price } = action.payload;
       const makePrice = count === undefined ? price : count * price;
 

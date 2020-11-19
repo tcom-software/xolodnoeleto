@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { connect } from "react-redux";
 import { Button, SvgIcon } from "@famous";
-import { IncDec, makePrice } from "@utils";
+import { IncDec, makeImagePath, makePrice } from "@utils";
 /**
  *  This Component give styled from parent component
  * */
@@ -60,15 +60,44 @@ const WebCase = ({
             </tr>
           ) : null}
 
-          {Object.values(basketItems).map((item, index) => {
-            const { id, src, model, price, count, manufacturer }: any = item;
+          {Object.values(basketItems).map((item: any, index) => {
+            const {
+              id,
+              count,
+              model,
+              brand,
+              price,
+              series_picture_folder,
+              series_picture_file_name,
+              series_picture_format,
+              product_picture_folder,
+              product_picture_file_name,
+              product_picture_format,
+            } = item;
+
+            const imagePath = makeImagePath({
+              series_picture_folder,
+              series_picture_file_name,
+              series_picture_format,
+              product_picture_folder,
+              product_picture_file_name,
+              product_picture_format,
+            });
+
             return (
               <tr key={id}>
                 {functionalType == "favorite" ? <td>{index + 1}</td> : null}
                 <td>
                   <Link href={`/product/${model}`}>
                     <a>
-                      <img src={src} width={57} height={57} />
+                      <img
+                        src={imagePath}
+                        width={70}
+                        height={70}
+                        alt={`${brand} ${model}`}
+                        title={`${brand} ${model}`}
+                        className="product-image-table-and-mobile-case"
+                      />
                     </a>
                   </Link>
                   {borderShow ? <span></span> : null}
@@ -77,7 +106,7 @@ const WebCase = ({
                   <div>
                     <Link href={`/product/${model}`}>
                       <a>
-                        <p>{manufacturer}</p>
+                        <p>{brand}</p>
                         <p>{model}</p>
                       </a>
                     </Link>

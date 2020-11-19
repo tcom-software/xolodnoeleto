@@ -4,6 +4,7 @@ import { SuperSaleContainer } from "./styles";
 import LikeStars from "./content/LikeStars";
 
 import { GlobalSection, Button, SvgIcon, SvgIconAnim } from "@famous";
+import SvgIconWaveAnim from "../../FamousComponents/SvgIconWaveAnim";
 
 const SuperSale = () => {
   const [open, setOpen] = useState(false);
@@ -33,7 +34,7 @@ const SuperSale = () => {
               height={20}
               className="super-sale-text"
             />
-            <SvgIcon
+            <SvgIconWaveAnim
               type="PointsGroup"
               width={150}
               height={150}
@@ -42,7 +43,7 @@ const SuperSale = () => {
               className="point-group-right"
               animationUniqId="PointsGroupFirst"
             />
-            <SvgIcon
+            <SvgIconWaveAnim
               type="PointsGroup"
               width={150}
               height={150}

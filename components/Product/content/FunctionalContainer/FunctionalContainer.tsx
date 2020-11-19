@@ -2,38 +2,30 @@ import { Button, Image, Star, SvgIcon } from "@famous";
 import React from "react";
 import { IncDec, makePrice } from "@utils";
 import { ProductInformationContainer } from "./styles";
+import getConfig from "next/config";
+
+const {
+  publicRuntimeConfig: { serverUrl, brandsUpload },
+} = getConfig();
 
 const FunctionalContainer = ({
   product,
-  isMobile,
   addBasket,
   addToFavorite,
   addCompareProduct,
   incrementProduct,
   decrementProduct,
 }: any) => {
-  const {
-    vendorCode,
-    selectedStarsCount,
-    manufacturer,
-    model,
-    price,
-    brand,
-  } = product;
+  const { id, count, model, price, brand, brand_logo, manufacturer } = product;
 
   return (
     <ProductInformationContainer>
       <div className="level-one">
         <div className="vendor-code-container">
-          Артикул | <span className="vendor-code">{vendorCode}</span>
+          Артикул | <span className="vendor-code">{id}</span>
         </div>
         <div className="calc">
-          {IncDec(
-            product.id,
-            product.count,
-            incrementProduct,
-            decrementProduct
-          )}
+          {IncDec(id, count, incrementProduct, decrementProduct)}
         </div>
         <div className="few-svg">
           <SvgIcon
@@ -55,12 +47,12 @@ const FunctionalContainer = ({
       <div className="level-two">
         <div className="stars-container">
           {Array.from(Array(5).keys()).map((e, i) => {
-            return <Star key={i} item={i} selected={selectedStarsCount} />;
+            return <Star key={i} item={i} selected={5} />;
           })}
         </div>
         <div className="title-and-price-container">
           <div className="title">
-            <p>{manufacturer}</p>
+            <p>{brand}</p>
             <p>{model}</p>
           </div>
           <p className="price">{makePrice(price)}</p>
@@ -68,15 +60,13 @@ const FunctionalContainer = ({
       </div>
       <div className="level-three">
         <div className="calc">
-          {IncDec(
-            product.id,
-            product.count,
-            incrementProduct,
-            decrementProduct
-          )}
+          {IncDec(id, count, incrementProduct, decrementProduct)}
         </div>
         <div className="add-basket-and-brand-container">
-          <Image simpleWeb={brand} webpWeb={""} />
+          <Image
+            simpleWeb={`${serverUrl}${brandsUpload}${brand_logo}`}
+            webpWeb={""}
+          />
           <Button
             type="primary"
             width="170px"

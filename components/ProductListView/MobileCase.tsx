@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { IncDec, makePrice } from "@utils";
+import { IncDec, makeImagePath, makePrice } from "@utils";
 import { connect } from "react-redux";
 import { Button, SvgIcon } from "@famous";
 import { CalculateCon, Img, ImgCon, MiniCon, Title, Container } from "./styles";
@@ -45,14 +45,40 @@ const MobileCase = ({
   return (
     <div>
       {Object.values(basketItems).map((item: any) => {
-        const { src, manufacturer, model, price, id, count } = item;
+        const {
+          id,
+          count,
+          model,
+          brand,
+          price,
+          series_picture_folder,
+          series_picture_file_name,
+          series_picture_format,
+          product_picture_folder,
+          product_picture_file_name,
+          product_picture_format,
+        } = item;
+
+        const imagePath = makeImagePath({
+          series_picture_folder,
+          series_picture_file_name,
+          series_picture_format,
+          product_picture_folder,
+          product_picture_file_name,
+          product_picture_format,
+        });
 
         return (
           <Container key={id}>
             <ImgCon>
               <Link href={`/product/${model}`}>
                 <a>
-                  <Img src={src} />
+                  <Img
+                    src={imagePath}
+                    alt={`${brand} ${model}`}
+                    title={`${brand} ${model}`}
+                    className="product-image-table-and-mobile-case"
+                  />
                 </a>
               </Link>
             </ImgCon>
@@ -60,7 +86,7 @@ const MobileCase = ({
               <Title>
                 <Link href={`/product/${model}`}>
                   <a>
-                    <p>{manufacturer}</p>
+                    <p>{brand}</p>
                     <p>{model}</p>
                   </a>
                 </Link>

@@ -1,27 +1,43 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import { PaginationContainer } from "./styles";
+import { useRouter } from "next/router";
 
-const Pagination = ({ isMobile }) => {
-  // const [currentPage, setCurrentPage] = useState(pageFromUrl ? pageFromUrl : 1);
+const Pagination = ({ isMobile, total, type }) => {
+  const router = useRouter();
+  const [currentPage, setCurrentPage] = useState(total ? total : 1);
+
+  useEffect(() => {
+    router.push(`/catalogue/${type}?page=${currentPage}`);
+  }, [currentPage, type]);
 
   return (
     <PaginationContainer>
       <ReactPaginate
-        pageCount={66}
+        pageCount={total >= 10 ? Math.floor(total / 10) : 1}
         pageRangeDisplayed={3}
         marginPagesDisplayed={3}
+        onPageChange={({ selected }) => setCurrentPage(selected + 1)}
         previousLabel={
-          <span className="arrow-icons" data-direction="left">
+          <span
+            className="arrow-icons"
+            data-direction="left"
+            onClick={() => total > 0 && setCurrentPage(currentPage - 1)}
+          >
             {isMobile ? `<<` : `предыдущий`}
           </span>
         }
         nextLabel={
-          <span className="arrow-icons" data-direction="right">
+          <span
+            className="arrow-icons"
+            data-direction="right"
+            onClick={() =>
+              total < currentPage && setCurrentPage(currentPage + 1)
+            }
+          >
             {isMobile ? `>>` : `следующий`}
           </span>
         }
-        // initialPage={currentPage - 1}
         disableInitialCallback={true}
       />
     </PaginationContainer>

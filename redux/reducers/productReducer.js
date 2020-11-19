@@ -3,20 +3,24 @@ import * as types from "../actions/productActions";
 const initialState = {
   product: {
     id: Math.floor(Math.random() * 5000),
-    src: "/test-product.png",
-    manufacturer: "Dahatsu",
-    model: "COMFORT-ON-OFF-2019-DG-07",
-    vendorCode: "7380",
-    price: 27129,
+    brand: "Abion",
+    brand_logo: "Abion.png",
+    model: "ASH-C187BE/ARH-C187BE",
+    price: 30000,
     count: 1,
-    superPrice: true,
-    selectedStarsCount: 4,
+    product_picture_file_name: null,
+    product_picture_folder: null,
+    product_picture_format: null,
+    series_name: "COMFORT-ON-OFF-2017",
+    series_picture_file_name: "5052850ddfe6b45e04d6e31b025324f7",
+    series_picture_folder: "product_series0",
+    series_picture_format: "jpg",
+    setup_price: 0,
     images: [
       "/test-product.png",
       "/test-two-product.jpg",
       "/test-three-product.jpg",
     ],
-    brand: "/images/brands/1.png",
     description: `Сплит-системы Bismark серии STARK объединили в себе высокое качество, эффективность и приемлемые цены.
           Сплит-системы Bismark серии STARK оснащены оптимальным набором функций, таких как I FEEL, I FAVOR, режим SLEEP и TURBO, а также таймером на включение и выключение. В
           Кондиционеры STARK представлены пятью классическими моделями от 07 до 24 kBTU. Сплит-системы STARK работают в режимах охлаждения, обогрева, вентиляции и осушения воздуха.

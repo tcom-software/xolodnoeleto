@@ -1,6 +1,6 @@
 import React from "react";
 import theme from "styles/theme";
-import { GlobalSection } from "@famous";
+import { DataEmpty, GlobalSection } from "@famous";
 import { Container, GridSection } from "./styles";
 import WebCase from "../ProductListView/WebCase";
 import MobileCase from "../ProductListView/MobileCase";
@@ -39,6 +39,21 @@ const Basket = ({
     }
   };
   const stepObject = customSwitch(stepState);
+
+  const itemsLength = Object.keys(basketItems).length;
+
+  if (itemsLength === 0) {
+    return (
+      <>
+        <TitleNavigation
+          title="Оформление заказа"
+          currentPage="Оформление Заказа"
+        />
+        <DataEmpty title={"У вас нет продуктов в корзине"} />
+      </>
+    );
+  }
+
   return (
     <Container>
       {stepState === 6 ? null : (

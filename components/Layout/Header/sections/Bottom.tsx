@@ -116,13 +116,15 @@ const Bottom = ({ modalType, openModal, closeModal, basketItemsCount }) => {
 const mapStateToProps = ({
   modal: { modalType, modalRef },
   basket: { items },
-}) => ({
-  modalRef,
-  modalType,
-  basketItemsCount: Object.values(items)
-    .map(({ count }) => count)
-    .reduce((acc, next) => (next += acc), 0),
-});
+}) => {
+  return {
+    modalRef,
+    modalType,
+    basketItemsCount: Object.values(items)
+      .map(({ count }) => (count ? count : 1))
+      .reduce((acc, next) => (next += acc), 0),
+  };
+};
 
 const mapDispatchToProps = (dispatch) => ({
   openModal: (type) => dispatch(openModal(type)),

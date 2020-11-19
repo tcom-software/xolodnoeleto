@@ -11,6 +11,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { openModal } from "redux/actions/modalActions";
 import theme from "styles/theme";
+import SvgIconWaveAnim from "../../../FamousComponents/SvgIconWaveAnim";
 
 const Middle = ({ phones, openModal, modalType }) => {
   const [open, setOpen] = useState(false);
@@ -31,7 +32,7 @@ const Middle = ({ phones, openModal, modalType }) => {
                 setOpen(!open);
               }}
             >
-              <SvgIcon
+              <SvgIconWaveAnim
                 type="logo"
                 width={150}
                 height={24}

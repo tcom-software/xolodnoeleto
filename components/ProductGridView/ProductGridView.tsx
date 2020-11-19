@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Button, Star } from "@famous";
+
 import {
   Image,
   Title,
@@ -9,7 +10,8 @@ import {
   VendorCod,
   ProductContainer,
 } from "./styles";
-import { makePrice } from "@utils";
+
+import { makeImagePath, makePrice } from "@utils";
 import { productInterface } from "interfaces";
 
 const ProductGridView = ({
@@ -18,28 +20,44 @@ const ProductGridView = ({
   buttonBorder,
 }: productInterface) => {
   const {
-    src,
-    manufacturer,
+    id,
     model,
+    brand,
+    series_picture_folder,
+    series_picture_file_name,
+    series_picture_format,
+    product_picture_folder,
+    product_picture_file_name,
+    product_picture_format,
     price,
-    vendorCode,
-    superPrice,
-    selectedStarsCount,
   } = product;
+
+  const imagePath = makeImagePath({
+    series_picture_folder,
+    series_picture_file_name,
+    series_picture_format,
+    product_picture_folder,
+    product_picture_file_name,
+    product_picture_format,
+  });
+
   return (
     <ProductContainer border={buttonBorder}>
       <Link href={`/product/${model}`}>
         <a>
-          {superPrice ? <div className="super-price">СУПЕРЦЕНА</div> : null}
-          <Image src={src} alt={manufacturer} />
+          <Image
+            src={imagePath}
+            alt={`${brand} ${model}`}
+            title={`${brand} ${model}`}
+          />
           <Title>
             <p>{model}</p>
-            <p>{manufacturer}</p>
+            <p>{brand}</p>
           </Title>
-          <VendorCod>{vendorCode}</VendorCod>
+          <VendorCod>Артикул | {id}</VendorCod>
           <Stars>
             {Array.from(Array(5).keys()).map((e, i) => {
-              return <Star key={i} item={i} selected={selectedStarsCount} />;
+              return <Star key={i} item={i} selected={5} />;
             })}
           </Stars>
           <Price>{makePrice(price)}</Price>

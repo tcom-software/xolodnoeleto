@@ -3,7 +3,12 @@ import { Spring } from "react-spring/renderprops.cjs";
 import SvgTypes from "../SvgIcon/svg-types";
 import { SvgIconAnimInterface } from "interfaces";
 
-const SvgIconAnim = ({
+/**
+ *  This component do only one style animation
+ *  like Filling
+ * */
+
+const SvgIconFillingAnim = ({
   type,
   width,
   height,
@@ -12,7 +17,6 @@ const SvgIconAnim = ({
 }: SvgIconAnimInterface) => {
   const {
     inSide,
-    animation,
     svgProps: { id, viewBox },
   } = SvgTypes[type];
 
@@ -84,4 +88,4 @@ const SvgIconAnim = ({
   );
 };
 
-export default SvgIconAnim;
+export default SvgIconFillingAnim;

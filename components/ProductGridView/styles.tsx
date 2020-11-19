@@ -12,6 +12,7 @@ const ProductContainer = styled.div`
     align-items: center;
     justify-content: center;
     width: 100%;
+    height: 100%;
     padding: 15px;
     border: 1px solid ${theme.product.borderColor};
 
@@ -63,6 +64,7 @@ const ProductContainer = styled.div`
 const Image = styled.img`
   width: 158px;
   height: 158px;
+  object-fit: contain;
   @media (max-width: ${theme.mobileMedia.size}) {
     height: auto;
   }

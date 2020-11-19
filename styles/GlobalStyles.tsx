@@ -42,6 +42,9 @@ const GlobalStyles = createGlobalStyle`
     appearance: none;
     border: 0;
   }
+  .product-image-table-and-mobile-case {
+    object-fit: contain;
+  }
 `;
 
 export default GlobalStyles;
