@@ -20,7 +20,6 @@ const Catalogue = ({
   const router = useRouter();
   const { catalogueId } = router.query;
   const [currentPage, setCurrentPage] = useState(total ? total : 1);
-  console.log(111111);
   useEffect(() => {
     if (catalogueId != undefined) {
       getCatalogueProductLoadingTrigger(true);
