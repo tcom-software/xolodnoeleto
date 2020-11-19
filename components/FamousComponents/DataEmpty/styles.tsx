@@ -5,6 +5,7 @@ const DataEmptyContainer = styled.div`
     width: 100%;
     font-size: 20px;
     margin: 20px 0;
+    display: block;
     text-align: center;
   }
 `;

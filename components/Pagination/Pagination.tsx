@@ -1,16 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ReactPaginate from "react-paginate";
 import { PaginationContainer } from "./styles";
-import { useRouter } from "next/router";
 
-const Pagination = ({ isMobile, total, type }) => {
-  const router = useRouter();
-  const [currentPage, setCurrentPage] = useState(total ? total : 1);
-
-  useEffect(() => {
-    router.push(`/catalogue/${type}?page=${currentPage}`);
-  }, [currentPage, type]);
-
+const Pagination = ({ isMobile, total, currentPage, setCurrentPage }) => {
   return (
     <PaginationContainer>
       <ReactPaginate

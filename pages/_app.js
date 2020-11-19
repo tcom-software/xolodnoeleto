@@ -6,7 +6,6 @@ import Layout from "../components/Layout";
 import withRedux from "next-redux-wrapper";
 import { ThemeProvider } from "styled-components";
 import GlobalStyles from "../styles/GlobalStyles";
-import { useSpring, animated } from "react-spring";
 import { setIsMobile } from "../redux/actions/generalActions";
 import BigImage from "../components/BigImage";
 
@@ -29,17 +28,14 @@ const useWidth = () => {
 
 function MyApp(props) {
   const { Component, pageProps } = props;
-  const animationProps = useSpring({ opacity: 1, from: { opacity: 0 } });
   useWidth();
   return (
     <ThemeProvider theme={theme}>
       <Provider store={store}>
-        <animated.div style={animationProps}>
-          <Layout>
-            <GlobalStyles />
-            <Component {...pageProps} />
-          </Layout>
-        </animated.div>
+        <Layout>
+          <GlobalStyles />
+          <Component {...pageProps} />
+        </Layout>
         <BigImage />
       </Provider>
     </ThemeProvider>

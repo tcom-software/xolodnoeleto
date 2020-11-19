@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Filters from "./Filters";
 import theme from "styles/theme";
 import { GlobalSection } from "@famous";
@@ -18,12 +18,15 @@ const Catalogue = ({
   getCatalogueProductLoadingTrigger,
 }) => {
   const router = useRouter();
-  const { type, page } = router.query;
-
+  const { catalogueId } = router.query;
+  const [currentPage, setCurrentPage] = useState(total ? total : 1);
+  console.log(111111);
   useEffect(() => {
-    getCatalogueProductLoadingTrigger(true);
-    getCatalogueProducts(type, page);
-  }, [type, page]);
+    if (catalogueId != undefined) {
+      getCatalogueProductLoadingTrigger(true);
+      getCatalogueProducts(catalogueId, currentPage);
+    }
+  }, [catalogueId, currentPage]);
 
   return (
     <>
@@ -63,7 +66,7 @@ const Catalogue = ({
             </div>
           )}
         </CatalogueContainer>
-        <Pagination type={type} />
+        <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} />
       </GlobalSection>
       <GlobalSection
         isWeb={true}

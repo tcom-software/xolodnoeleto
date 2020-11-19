@@ -17,7 +17,6 @@ export const getCatalogueProductLoadingTrigger = (boolean) => ({
 export const getCatalogueProducts = (type, page = 1) => {
   return (dispatch) => {
     dispatch(getCatalogueProductLoadingTrigger(true));
-    console.log(`${catalogueProducts}/${type}?page=${page}`);
     axiosInstance
       .get(`${catalogueProducts}/${type}?page=${page}`)
       .then(({ data }) => {
