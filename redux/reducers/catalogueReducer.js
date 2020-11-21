@@ -1,7 +1,7 @@
 import * as types from "../actions/catalogueActions";
 
 const initialState = {
-  productsLoading: false,
+  productsLoading: true,
   filters: {
     sortBy: {
       id: 59,

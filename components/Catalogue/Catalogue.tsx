@@ -38,7 +38,6 @@ const Catalogue = ({
       >
         <CatalogueContainer>
           <Filters />
-
           {productsLoading ? (
             <Loading />
           ) : (
