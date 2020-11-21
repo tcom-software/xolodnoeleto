@@ -18,10 +18,15 @@ const CatalogContainer = styled.ul`
     &:hover {
       transition: all 0.2s ease-in;
       background: #03a9f4;
-      & > a {
+      & > p {
         color: white;
       }
     }
+    p {
+      padding: 15px;
+      display: block;
+    }
+
     a {
       padding: 15px;
       display: block;
@@ -40,7 +45,8 @@ const CatalogContainer = styled.ul`
         &:hover {
           transition: all 0.2s ease-in;
           background: #03a9f4;
-          & > a {
+          & > a,
+          & > p {
             color: white;
           }
         }
