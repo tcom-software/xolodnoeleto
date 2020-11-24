@@ -6,6 +6,7 @@ const Catalog = ({ catalog, modalType, modalRef, closeModal }) => {
   return (
     <CatalogContainer
       modalType={modalType}
+      suppressHydrationWarning={true}
       ref={modalType === "catalog" ? modalRef : null}
     >
       {catalog.map((e, i) => {
@@ -25,7 +26,7 @@ const Catalog = ({ catalog, modalType, modalRef, closeModal }) => {
                           onClick={closeModal}
                         >
                           <Link href={`/catalogue/${element.id}`}>
-                            <a>{element.name}</a>
+                            <a className={"link-a-tag"}>{element.name}</a>
                           </Link>
                         </li>
                       );

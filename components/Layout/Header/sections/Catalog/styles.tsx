@@ -61,6 +61,9 @@ const CatalogContainer = styled.ul`
 
         li {
           background: #fff;
+          a {
+            color: #03a9f4;
+          }
         }
         li:hover {
           background: #03a9f4;
