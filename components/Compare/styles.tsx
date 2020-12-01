@@ -2,121 +2,171 @@ import styled, { css } from "styled-components";
 import theme from "styles/theme";
 
 const CompareContainer = styled.div`
-  display: grid;
-  grid-template-columns: 400px 1fr;
+  border: 1px solid ${theme.body.someBorder};
+  .top-section {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 350px 1fr;
+  }
 
-  grid-template-columns: 400px repeat(
-      ${({ productCounts }) => productCounts},
-      minmax(1fr, 400px)
-    );
-
-  & > div {
-    &:nth-of-type(1) {
-      width: 400px;
-      padding: 15px;
-      border: 1px solid ${theme.body.someBorder};
-      & > div {
-        margin: 7px 0;
-      }
-      & > div:last-of-type > div {
-        background: #fff;
-        padding: 7px 15px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        svg {
-          margin-left: 10px;
+  .bottom-section {
+    .titles {
+      .titles-sub-container {
+        h2 {
+          margin: 12px 0;
+          color: ${theme.body.primaryColor};
         }
-        img {
-          width: 57px;
-          height: 57px;
-          margin-right: 17px;
-          box-sizing: revert;
-          padding: 0px 16px 0px 0;
-          border-right: 1px solid ${theme.body.someBorder};
-        }
-      }
-    }
-    &:nth-of-type(2) {
-      display: grid;
-      grid-template-columns: repeat(
-        ${({ productCounts }) => productCounts},
-        minmax(200px, 400px)
-      );
-
-      & > a > div {
-        padding: 15px;
-        position: relative;
-        background: #fff;
-        border-right: 1px solid ${theme.body.someBorder};
-        & > p {
-          margin-top: 10px;
-        }
-        & > div {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          margin: 48px 0 25px;
+        .line {
+          display: grid;
+          grid-template-columns: 350px repeat(
+              ${({ productCounts }) => productCounts},
+              1fr
+            );
+          border-bottom: 1px solid ${theme.body.someBorder};
           p {
-            font-size: 20px;
+            font-weight: 700;
           }
-          button {
-            text-transform: uppercase;
-          }
-        }
-        & > svg {
-          position: absolute;
-          top: 15px;
-          right: 15px;
         }
       }
     }
   }
+  .top-section {
+    height: max-content;
 
-  @media (max-width: ${theme.mobileMedia.size}) {
-    grid-template-columns: 1fr;
+    .add-product-con {
+      .left-static-height {
+        height: 310px;
+        padding: 15px;
+        .added-products-con {
+          .item {
+            width: 100%;
+            margin: 5px 0;
+            background: #fff;
+            max-height: 80px;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            img {
+              width: 80px;
+              height: 65px;
+              object-fit: cover;
+            }
+            p {
+              width: 100%;
+              padding: 10px;
+              display: flex;
+              flex-direction: column;
 
-    & > div {
-      &:nth-of-type(1) {
-        width: 100%;
-        padding: 0;
-        border: none;
-        border-bottom: 1px solid ${theme.body.someBorder};
-
-        button {
-          width: 100%;
+              span {
+                font-size: 13px;
+              }
+            }
+          }
         }
       }
-      &:nth-of-type(2) {
-        display: grid;
-        grid-template-columns: repeat(
-          ${({ productCounts }) => productCounts},
-          1fr
-        );
-
-        ${({ productCounts }) => {
-          if (productCounts >= 3) {
-            return css`
-              overflow: scroll;
-            `;
+      .only-titles {
+        & > div {
+          * {
+            text-indent: 10px;
           }
-        }},
+          h3 {
+            color: ${theme.body.primaryColor};
+            padding: 10px 0;
+            border-bottom: 1px solid ${theme.body.someBorder};
+          }
+          p {
+            padding: 5px 0;
+            border-bottom: 1px solid ${theme.body.someBorder};
+          }
+        }
+      }
+    }
+    .products-con {
+      display: grid;
+      grid-template-columns: repeat(
+        ${({ productCounts }) => productCounts},
+        1fr
+      );
+      .product-container {
+        background: #fff;
 
-        & > a > div {
-          & > div {
+        .product-item {
+          height: 310px;
+          position: relative;
+          padding: 15px;
+          background: #fff;
+          border-right: 1px solid ${theme.body.someBorder};
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+
+          p {
+            margin-top: 10px;
+          }
+          img {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+          }
+          div {
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: space-between;
 
+            p {
+              font-size: 20px;
+            }
             button {
               text-transform: uppercase;
+            }
+          }
+          svg {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+          }
+          .price-and-add-basket {
+            display: flex;
+            flex-direction: column;
+            p {
+              margin: 10px 0;
+            }
+          }
+        }
+        .information {
+          width: 100%;
+          border-right: 1px solid ${theme.body.someBorder};
+
+          & > div {
+            & > * {
+              text-indent: 10px;
+            }
+            h3 {
+              color: ${theme.body.primaryColor};
+              padding: 10px 0;
+              color: transparent;
+              border-bottom: 1px solid ${theme.body.someBorder};
+            }
+            p {
+              padding: 5px 0;
+              border-bottom: 1px solid ${theme.body.someBorder};
             }
           }
         }
       }
     }
+  }
+  .bottom-section {
+    .titles {
+    }
+    .values {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+
+  @media (max-width: ${theme.mobileMedia.size}) {
   }
 `;
 

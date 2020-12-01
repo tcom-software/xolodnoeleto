@@ -15,14 +15,17 @@ const Catalogue = ({
   isMobile,
   productsLoading,
   getCatalogueProducts,
+  getCatalogueFilters,
   getCatalogueProductLoadingTrigger,
 }) => {
   const router = useRouter();
   const { catalogueId } = router.query;
   const [currentPage, setCurrentPage] = useState(total ? total : 1);
+
   useEffect(() => {
     if (catalogueId != undefined) {
       getCatalogueProductLoadingTrigger(true);
+      getCatalogueFilters(catalogueId);
       getCatalogueProducts(catalogueId, currentPage);
     }
   }, [catalogueId, currentPage]);

@@ -12,11 +12,15 @@ module.exports = {
     // Will be available on both server and client
 
     serverUrl: "http://projects-backend.ru",
+
     catalogueProducts: "/api/getProducts",
     catalogueCategories: "/api/getCategories",
+    getProduct: "/api/getProduct",
+    getFilters: "/api/getFilterData",
 
     productsUpload: "/public/uploads/products/",
     seriesUpload: "/public/uploads/product_series/",
+    brandsUpload: "/public/uploads/brands/",
     brandsUpload: "/public/uploads/brands/",
   },
 };

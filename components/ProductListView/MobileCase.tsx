@@ -71,7 +71,7 @@ const MobileCase = ({
         return (
           <Container key={id}>
             <ImgCon>
-              <Link href={`/product/${model}`}>
+              <Link href={`/product/${id}`}>
                 <a>
                   <Img
                     src={imagePath}
@@ -84,7 +84,7 @@ const MobileCase = ({
             </ImgCon>
             <MiniCon>
               <Title>
-                <Link href={`/product/${model}`}>
+                <Link href={`/product/${id}`}>
                   <a>
                     <p>{brand}</p>
                     <p>{model}</p>

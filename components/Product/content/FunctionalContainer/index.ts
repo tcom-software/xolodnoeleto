@@ -8,8 +8,11 @@ import {
   decrementProductCount,
 } from "redux/actions/productActions";
 
-const mapStateToProps = ({ general: { isMobile }, product: { product } }) => ({
-  product,
+const mapStateToProps = ({
+  general: { isMobile },
+  product: { productInfo },
+}) => ({
+  productInfo,
   isMobile,
 });
 

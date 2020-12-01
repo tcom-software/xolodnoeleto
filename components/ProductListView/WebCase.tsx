@@ -88,7 +88,7 @@ const WebCase = ({
               <tr key={id}>
                 {functionalType == "favorite" ? <td>{index + 1}</td> : null}
                 <td>
-                  <Link href={`/product/${model}`}>
+                  <Link href={`/product/${id}`}>
                     <a>
                       <img
                         src={imagePath}
@@ -104,7 +104,7 @@ const WebCase = ({
                 </td>
                 <td>
                   <div>
-                    <Link href={`/product/${model}`}>
+                    <Link href={`/product/${id}`}>
                       <a>
                         <p>{brand}</p>
                         <p>{model}</p>

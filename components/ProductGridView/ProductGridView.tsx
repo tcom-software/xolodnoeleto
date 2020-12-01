@@ -43,7 +43,7 @@ const ProductGridView = ({
 
   return (
     <ProductContainer border={buttonBorder}>
-      <Link href={`/product/${model}`}>
+      <Link href={`/product/${id}`}>
         <a>
           <Image
             src={imagePath}

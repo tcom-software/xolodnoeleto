@@ -1,35 +1,25 @@
 import React, { useState } from "react";
 import { Image, Star } from "@famous";
 import { ProductImageContainer } from "./styles";
-import { ProductTopContainer } from "../../styles";
 import Link from "next/link";
-import { makeImagePath } from "@utils";
+import getConfig from "next/config";
 
-const ImageContainer = ({ product, isMobile, productKey }) => {
+const {
+  publicRuntimeConfig: { productsUpload, serverUrl },
+} = getConfig();
+
+const ImageContainer = ({ productInfo, productKey, changeBigImage }) => {
   const {
-    id,
-    count,
-    model,
-    brand,
-    images,
-    price,
-    series_picture_folder,
-    series_picture_file_name,
-    series_picture_format,
-    product_picture_folder,
-    product_picture_file_name,
-    product_picture_format,
-  } = product;
+    product: { brand, model },
+    photos,
+  } = productInfo;
 
-  const imagePath = makeImagePath({
-    series_picture_folder,
-    series_picture_file_name,
-    series_picture_format,
-    product_picture_folder,
-    product_picture_file_name,
-    product_picture_format,
-  });
-  const [main, setMain] = useState(imagePath);
+  const imagesArray = photos.map(
+    ({ folder, file_name, file_format }) =>
+      `${serverUrl}${productsUpload}${folder}/size300/${file_name}.${file_format}`
+  );
+
+  const [main, setMain] = useState(imagesArray[0]);
 
   return (
     <ProductImageContainer>
@@ -37,11 +27,11 @@ const ImageContainer = ({ product, isMobile, productKey }) => {
         <Link href="/">
           <a>Главная</a>
         </Link>{" "}
-        / Кондиционеры... / {productKey}
+        / ... help me ... / {model}
       </div>
       <div className="mobile-container">
         <div className="mobile-vendor-code">
-          Артикул | <span className="vendor-code"> {id} </span>
+          Артикул | <span className="vendor-code"> {productKey} </span>
         </div>
         <div className="mobile-stars-container">
           {Array.from(Array(5).keys()).map((e, i) => {
@@ -51,17 +41,29 @@ const ImageContainer = ({ product, isMobile, productKey }) => {
       </div>
       <div className="images-container">
         <div className="small-images">
-          {images.map((e, i) => (
-            <Image
-              key={i}
-              simpleWeb={e}
-              webpWeb={""}
-              callback={() => setMain(e)}
-              customClass={main == e ? "selected" : ""}
-            />
-          ))}
+          {photos.length > 1 &&
+            photos.map((e, i) => {
+              const { file_format, file_name, folder } = e;
+              return (
+                <Image
+                  key={i}
+                  simpleWeb={`${serverUrl}${productsUpload}${folder}/size300/${file_name}.${file_format}`}
+                  webpWeb={""}
+                  callback={() =>
+                    setMain(
+                      `${serverUrl}${productsUpload}${folder}/size300/${file_name}.${file_format}`
+                    )
+                  }
+                  customClass={main == e ? "selected" : ""}
+                />
+              );
+            })}
         </div>
-        <div className="main-img">
+
+        <div
+          className="main-img"
+          onClick={() => changeBigImage(main.replace("/size300", ""))}
+        >
           {/*{superPrice ? <div className="super-price">СУПЕРЦЕНА</div> : null}*/}
           <img
             src={main}

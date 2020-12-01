@@ -37,10 +37,15 @@ const ProductImageContainer = styled.div`
       min-height: 450px;
       border: 1px solid ${theme.body.someBorder};
 
+      img {
+        max-width: 460px;
+      }
+
       & > div {
         width: 100%;
         img {
           width: 100%;
+          max-width: 460px;
         }
       }
       .super-price {
