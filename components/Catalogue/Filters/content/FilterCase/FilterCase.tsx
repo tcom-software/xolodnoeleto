@@ -11,12 +11,14 @@ const FilterCase = ({
   maxShowFive,
   isOpenFilters,
   firstLevelFiltersArray,
+  actionFirstFiltersLevelArray,
 }) => {
   const index = firstLevelFiltersArray.indexOf(title);
 
   const FilterSwitch = () => {
     switch (type) {
       case "file.select":
+      case "file.checkbox":
         return <MultipleSelectionCase array={array} title={title} />;
         break;
       case "between":
@@ -34,7 +36,10 @@ const FilterCase = ({
           maxShowFive < 5 ? "show" : isOpenFilters ? "show" : "hide"
         }`}
       >
-        <div className="only-title-section">
+        <div
+          className="only-title-section"
+          onClick={() => actionFirstFiltersLevelArray(title)}
+        >
           <span className="border-left-side"></span>
           <h3>{title}</h3>
           <ArrowRightSide title={title} />

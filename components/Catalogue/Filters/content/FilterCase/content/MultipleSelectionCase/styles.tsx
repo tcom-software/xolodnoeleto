@@ -6,6 +6,7 @@ const MultipleSelectionCaseContainer = styled.div`
     display: flex;
     align-items: center;
     margin: 10px 0px;
+    cursor: pointer;
     justify-content: flex-start;
     &.hide {
       display: none;

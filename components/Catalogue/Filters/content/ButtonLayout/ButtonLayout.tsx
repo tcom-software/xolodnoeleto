@@ -11,7 +11,6 @@ const ButtonLayout = ({ isOpenFilters, isMobile, children, filtersToggle }) => {
           color="#565656"
           width={"199px"}
           height={"47px"}
-          // onClick={() => setData({})}
         >
           Очистить фильтр
         </Button>
@@ -36,7 +35,6 @@ const ButtonLayout = ({ isOpenFilters, isMobile, children, filtersToggle }) => {
             color="#565656"
             width={"199px"}
             height={"47px"}
-            // onClick={() => setData({})}
           >
             Очистить фильтр
           </Button>

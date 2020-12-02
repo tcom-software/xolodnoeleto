@@ -5,6 +5,8 @@ export const CATALOGUE_LOADING_TRIGGER = "CATALOGUE_LOADING_TRIGGER";
 export const OPEN_FILTERS_TOGGLE = "OPEN_FILTERS_TOGGLE";
 export const FIRST_SECOND_LEVEL_ARRAY = "FIRST_SECOND_LEVEL_ARRAY";
 export const FIRST_FILTERS_LEVEL_ARRAY = "FIRST_FILTERS_LEVEL_ARRAY";
+export const MANIPULATION_BETWEEN_DATA = "MANIPULATION_BETWEEN_DATA";
+export const MANIPULATION_MULTIPLE_DATA = "MANIPULATION_MULTIPLE_DATA";
 
 import axiosInstance from "utils/axiosInstance";
 import getConfig from "next/config";
@@ -91,12 +93,20 @@ export const actionSecondFiltersLevelArray = (filter) => {
   };
 };
 
-export const actionFirstFiltersLevelArray = (filter) => {
-  return {
-    type: FIRST_FILTERS_LEVEL_ARRAY,
-    payload: filter,
-  };
-};
+export const actionFirstFiltersLevelArray = (filter) => ({
+  type: FIRST_FILTERS_LEVEL_ARRAY,
+  payload: filter,
+});
+
+export const actionManipulationMultiple = (data) => ({
+  type: MANIPULATION_MULTIPLE_DATA,
+  payload: data,
+});
+
+export const actionManipulationBetween = (data) => ({
+  type: MANIPULATION_BETWEEN_DATA,
+  payload: data,
+});
 
 export const filtersToggle = () => {
   return {

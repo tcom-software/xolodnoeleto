@@ -3,7 +3,7 @@ import * as types from "../actions/catalogueActions";
 const initialState = {
   productsLoading: true,
   filters: {
-    цена: [
+    Цена: [
       {
         id: 1,
         type: "",
@@ -36,6 +36,7 @@ const initialState = {
   isOpenFilters: false,
   firstLevelFiltersArray: [],
   secondLevelFiltersArray: [],
+  selectedData: {},
 };
 
 const catalogueReducer = (state = initialState, action) => {
@@ -103,6 +104,59 @@ const catalogueReducer = (state = initialState, action) => {
         ...state,
         secondLevelFiltersArray: [...array],
       };
+    case types.MANIPULATION_MULTIPLE_DATA:
+      const { id, parent_id } = action.payload;
+      if (state.selectedData[parent_id]) {
+        if (state.selectedData[parent_id].includes(id)) {
+          // Delete old item
+          const array = [
+            ...state.selectedData[parent_id].filter((e) => e != id),
+          ];
+          if (array.length === 0) {
+            delete state.selectedData[parent_id];
+          } else {
+            state.selectedData[parent_id] = array;
+          }
+
+          return {
+            ...state,
+            selectedData: { ...state.selectedData },
+          };
+        } else {
+          // add item
+          state.selectedData[parent_id].push(id);
+
+          return {
+            ...state,
+            selectedData: {
+              ...state.selectedData,
+              [parent_id]: [...state.selectedData[parent_id]],
+            },
+          };
+        }
+      } else {
+        return {
+          ...state,
+          selectedData: {
+            ...state.selectedData,
+            [parent_id]: [id],
+          },
+        };
+      }
+    case types.MANIPULATION_BETWEEN_DATA:
+      const { title, from, to } = action.payload;
+      console.log(action.payload, "--=-=-=-=-=-=-=-=-=");
+      return {
+        ...state,
+        selectedData: {
+          ...state.selectedData,
+          [title]: {
+            from,
+            to,
+          },
+        },
+      };
+
     default:
       return {
         ...state,

@@ -23,7 +23,8 @@ const FilterCaseContainer = styled.div`
       }
     }
     .selection-container {
-      padding: 15px;
+      padding: 0px 10px 10px 10px;
+
       overflow: hidden;
 
       &.show {
@@ -38,6 +39,21 @@ const FilterCaseContainer = styled.div`
     }
     &.hide {
       display: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .item-container {
+      .only-title-section {
+        padding: 6px 0px;
+        h3 {
+          font-size: 16px;
+          font-width: 700;
+        }
+        .border-left-side {
+          display: none;
+        }
+      }
     }
   }
 `;
