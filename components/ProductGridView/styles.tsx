@@ -62,7 +62,7 @@ const ProductContainer = styled.div`
 `;
 
 const Image = styled.img`
-  width: 158px;
+  width: 100%;
   height: 158px;
   object-fit: contain;
   @media (max-width: ${theme.mobileMedia.size}) {

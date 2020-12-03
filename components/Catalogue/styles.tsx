@@ -44,6 +44,7 @@ const CatalogueContainer = styled.div`
     grid-gap: 5px;
     grid-template-columns: 1fr;
     .catalogue {
+      margin-top: 20px;
       .products {
         grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
       }

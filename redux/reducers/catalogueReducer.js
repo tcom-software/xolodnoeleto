@@ -145,7 +145,6 @@ const catalogueReducer = (state = initialState, action) => {
       }
     case types.MANIPULATION_BETWEEN_DATA:
       const { title, from, to } = action.payload;
-      console.log(action.payload, "--=-=-=-=-=-=-=-=-=");
       return {
         ...state,
         selectedData: {

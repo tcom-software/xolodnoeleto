@@ -3,7 +3,6 @@ import theme from "styles/theme";
 import { GlobalSection, Image } from "@famous";
 import TitleNavigation from "../TitleNavigation";
 import { CertificatesContainer } from "./styles";
-import LazyLoad from "react-lazyload";
 
 const Certificates = ({ certificates, changeBigImage }) => {
   return (

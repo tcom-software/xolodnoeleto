@@ -24,7 +24,9 @@ export const getCatalogueProducts = (type, page = 1) => {
   return (dispatch) => {
     dispatch(getCatalogueProductLoadingTrigger(true));
     axiosInstance
-      .get(`${catalogueProducts}/${type}?page=${page}`)
+      .post(`${catalogueProducts}/${type}`, {
+        body: JSON.stringify({}),
+      })
       .then(({ data }) => {
         if (data) {
           dispatch({

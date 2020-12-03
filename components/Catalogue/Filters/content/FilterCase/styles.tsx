@@ -45,6 +45,7 @@ const FilterCaseContainer = styled.div`
   @media (max-width: 768px) {
     .item-container {
       .only-title-section {
+        cursor: pointer;
         padding: 6px 0px;
         h3 {
           font-size: 16px;

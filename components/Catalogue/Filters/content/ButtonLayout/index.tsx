@@ -3,7 +3,7 @@ import ButtonLayout from "./ButtonLayout";
 import { filtersToggle } from "redux/actions/catalogueActions";
 
 const mapStateToProps = ({
-  catalogue: { filters, isOpenFilters },
+  catalogue: { filters },
   general: { isMobile },
 }) => ({ filters, isMobile });
 

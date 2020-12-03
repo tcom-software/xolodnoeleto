@@ -12,6 +12,7 @@ const FilterCase = ({
   isOpenFilters,
   firstLevelFiltersArray,
   actionFirstFiltersLevelArray,
+  isMobile,
 }) => {
   const index = firstLevelFiltersArray.indexOf(title);
 
@@ -33,7 +34,13 @@ const FilterCase = ({
     <FilterCaseContainer>
       <div
         className={`item-container ${
-          maxShowFive < 5 ? "show" : isOpenFilters ? "show" : "hide"
+          maxShowFive < 5
+            ? "show"
+            : isOpenFilters
+            ? "show"
+            : isMobile
+            ? "show"
+            : "hide"
         }`}
       >
         <div
