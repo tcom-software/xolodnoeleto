@@ -1,12 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SvgIcon } from "@famous";
+import { useRouter } from "next/router";
 import { FiltersContainer } from "./styles";
 import FilterCase from "./content/FilterCase";
 import ButtonLayout from "./content/ButtonLayout";
 
-const Filters = ({ filters }) => {
-  const [isOpen, setOpen] = useState(false);
+const Filters = ({ filters, getCatalogueFilters }) => {
+  const router = useRouter();
+  const { catalogueId } = router.query;
 
+  useEffect(() => {
+    catalogueId && getCatalogueFilters(catalogueId);
+  }, [catalogueId]);
+
+  const [isOpen, setOpen] = useState(false);
   const MobileCloseFilters = () => (
     <div className="close-filters-mobile">
       <p>Очистить фильтр</p>

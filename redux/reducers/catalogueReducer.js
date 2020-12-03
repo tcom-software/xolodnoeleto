@@ -9,7 +9,7 @@ const initialState = {
         type: "",
         name: "between",
         name_ru: "Цена (Руб.)",
-        title: "Цена",
+        title: "Price",
         values: {
           from: 0,
           to: 0,
@@ -104,56 +104,83 @@ const catalogueReducer = (state = initialState, action) => {
       };
     case types.MANIPULATION_MULTIPLE_DATA:
       const { id, parent_id } = action.payload;
-      if (state.selectedData[parent_id]) {
-        if (state.selectedData[parent_id].includes(id)) {
-          // Delete old item
-          const array = [
-            ...state.selectedData[parent_id].filter((e) => e != id),
-          ];
-          if (array.length === 0) {
-            delete state.selectedData[parent_id];
-          } else {
-            state.selectedData[parent_id] = array;
-          }
-
-          return {
-            ...state,
-            selectedData: { ...state.selectedData },
-          };
-        } else {
-          // add item
-          state.selectedData[parent_id].push(id);
-
-          return {
-            ...state,
-            selectedData: {
-              ...state.selectedData,
-              [parent_id]: [...state.selectedData[parent_id]],
-            },
-          };
-        }
-      } else {
+      const { checkboxes } = state.selectedData;
+      if (!checkboxes) {
+        // there isn't checkboxes key in object
         return {
           ...state,
           selectedData: {
             ...state.selectedData,
-            [parent_id]: [id],
+            checkboxes: {
+              ...state.selectedData.checkboxes,
+              [parent_id]: [id],
+            },
           },
         };
+      } else {
+        // there is checkboxes key in object
+        if (checkboxes[parent_id]) {
+          // there is parent id of selected value
+
+          if (checkboxes[parent_id].includes(id)) {
+            // there is id of selected value
+
+            return {
+              ...state,
+              selectedData: {
+                ...state.selectedData,
+                checkboxes: {
+                  ...checkboxes,
+                  [parent_id]: [
+                    ...checkboxes[parent_id].filter((e) => e != id),
+                  ],
+                },
+              },
+            };
+          } else {
+            // there isn't id of selected value
+
+            checkboxes[parent_id].push(id);
+            return {
+              ...state,
+              selectedData: {
+                ...state.selectedData,
+                checkboxes: {
+                  ...checkboxes,
+                },
+              },
+            };
+          }
+        } else {
+          // there isn't parent id of selected value
+          return {
+            ...state,
+            selectedData: {
+              ...state.selectedData,
+              checkboxes: {
+                ...checkboxes,
+                [parent_id]: [id],
+              },
+            },
+          };
+        }
       }
     case types.MANIPULATION_BETWEEN_DATA:
       const { title, from, to } = action.payload;
+
       return {
         ...state,
         selectedData: {
           ...state.selectedData,
-          [title]: {
-            from,
-            to,
+          fromTo: {
+            ...state.selectedData.fromTo,
+            [title]: {
+              from,
+              to,
+            },
           },
         },
       };
-
     default:
       return {
         ...state,

@@ -2,25 +2,23 @@ import Catalogue from "./Catalogue";
 import { connect } from "react-redux";
 import {
   getCatalogueProducts,
-  getCatalogueFilters,
   getCatalogueProductLoadingTrigger,
 } from "redux/actions/catalogueActions";
 
 const mapStateToProps = ({
-  catalogue: { total, products, productsLoading },
+  catalogue: { total, products, productsLoading, selectedData },
   general: { isMobile },
 }) => ({
   total,
   products,
   isMobile,
   productsLoading,
+  selectedData,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   getCatalogueProducts: (type, page) =>
     dispatch(getCatalogueProducts(type, page)),
-  getCatalogueFilters: (catalogueId) =>
-    dispatch(getCatalogueFilters(catalogueId)),
   getCatalogueProductLoadingTrigger: (boolean) =>
     dispatch(getCatalogueProductLoadingTrigger(boolean)),
 });

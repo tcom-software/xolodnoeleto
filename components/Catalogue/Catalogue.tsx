@@ -15,7 +15,6 @@ const Catalogue = ({
   isMobile,
   productsLoading,
   getCatalogueProducts,
-  getCatalogueFilters,
   getCatalogueProductLoadingTrigger,
 }) => {
   const router = useRouter();
@@ -23,9 +22,8 @@ const Catalogue = ({
   const [currentPage, setCurrentPage] = useState(total ? total : 1);
 
   useEffect(() => {
-    if (catalogueId != undefined) {
+    if (catalogueId) {
       getCatalogueProductLoadingTrigger(true);
-      getCatalogueFilters(catalogueId);
       getCatalogueProducts(catalogueId, currentPage);
     }
   }, [catalogueId, currentPage]);

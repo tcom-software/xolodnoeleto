@@ -2,9 +2,13 @@ import React from "react";
 import { Range } from "rc-slider";
 import { BetweenSelectionCaseContainer } from "./styles";
 
-const Between = ({ title, selectedData, actionManipulationBetween }) => {
-  const from = selectedData[title] == undefined ? 0 : selectedData[title].from;
-  const to = selectedData[title] == undefined ? 0 : selectedData[title].to;
+const Between = ({
+  title,
+  selectedData: { fromTo },
+  actionManipulationBetween,
+}) => {
+  const from = fromTo && fromTo[title] ? fromTo[title].from : 0;
+  const to = fromTo && fromTo[title] ? fromTo[title].to : 0;
 
   return (
     <BetweenSelectionCaseContainer>
@@ -47,8 +51,8 @@ const Between = ({ title, selectedData, actionManipulationBetween }) => {
             max={2000000}
             allowCross={false}
             value={[
-              selectedData[title] === undefined ? 0 : selectedData[title].from,
-              selectedData[title] === undefined ? 0 : selectedData[title].to,
+              fromTo && fromTo[title] ? fromTo[title].from : 0,
+              fromTo && fromTo[title] ? fromTo[title].to : 0,
             ]}
             onChange={([from, to]) => {
               setTimeout(function () {

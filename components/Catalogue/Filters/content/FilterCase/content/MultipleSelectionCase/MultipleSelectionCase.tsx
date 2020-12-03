@@ -8,7 +8,7 @@ const MultipleSelectionCase = ({
   array,
   secondLevelFiltersArray,
   actionSecondFiltersLevelArray,
-  selectedData,
+  selectedData: { checkboxes },
   actionManipulationMultiple,
 }) => {
   const filterValues = secondLevelFiltersArray.indexOf(title);
@@ -19,8 +19,8 @@ const MultipleSelectionCase = ({
         const parent_id = e.characteristic_id;
         let selected;
 
-        if (selectedData[parent_id]) {
-          selected = selectedData[parent_id].includes(id) ? true : false;
+        if (checkboxes && checkboxes[parent_id]) {
+          selected = checkboxes[parent_id].includes(id) ? true : false;
         }
 
         return (
