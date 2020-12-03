@@ -59,8 +59,6 @@ const catalogueReducer = (state = initialState, action) => {
         productsLoading: false,
       };
     case types.GET_CATALOGUE_FILTERS:
-      console.log(action.payload);
-
       return {
         ...state,
         filters: {
