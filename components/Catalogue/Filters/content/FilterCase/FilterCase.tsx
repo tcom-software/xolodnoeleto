@@ -2,9 +2,11 @@ import React from "react";
 import { FilterCaseContainer } from "./styles";
 import ArrowRightSide from "./content/ArrowRightSide";
 import MultipleSelectionCase from "./content/MultipleSelectionCase";
+import RadioSelectionCase from "./content/RadioSelectionCase";
 import Between from "./content/Between";
 
 const FilterCase = ({
+  id,
   type,
   title,
   array,
@@ -15,14 +17,17 @@ const FilterCase = ({
   isMobile,
 }) => {
   const index = firstLevelFiltersArray.indexOf(title);
-
   const FilterSwitch = () => {
     switch (type) {
       case "file.select":
-      case "file.checkbox":
+        // Radio Checkbox
         return <MultipleSelectionCase array={array} title={title} />;
         break;
-      case "between":
+      case "file.checkbox":
+        // Radio Selection
+        return <RadioSelectionCase array={array} title={title} />;
+        break;
+      case "file.fromTo":
         return <Between array={array} title={title} />;
         break;
       default:

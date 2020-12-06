@@ -1,14 +1,17 @@
 import React from "react";
 import { Range } from "rc-slider";
+import { useRouter } from "next/router";
 import { BetweenSelectionCaseContainer } from "./styles";
 
-const Between = ({
-  title,
-  selectedData: { fromTo },
-  actionManipulationBetween,
-}) => {
-  const from = fromTo && fromTo[title] ? fromTo[title].from : 0;
-  const to = fromTo && fromTo[title] ? fromTo[title].to : 0;
+const Between = ({ title, array, selectedData, actionManipulationBetween }) => {
+  const { id } = array[0];
+  const router = useRouter();
+  const { fromTo } = selectedData;
+
+  const from =
+    fromTo && fromTo[id] ? (fromTo[id][0] !== null ? fromTo[id][0] : 0) : 0;
+  const to =
+    fromTo && fromTo[id] ? (fromTo[id][1] !== null ? fromTo[id][1] : 0) : 0;
 
   return (
     <BetweenSelectionCaseContainer>
@@ -25,7 +28,13 @@ const Between = ({
                 if (value) parsed = parseInt(value);
                 else parsed = 0;
 
-                actionManipulationBetween({ title, from: parsed, to });
+                actionManipulationBetween({
+                  id,
+                  from: parsed,
+                  to,
+                  router,
+                  selectedData,
+                });
               }}
             />
           </div>
@@ -40,7 +49,13 @@ const Between = ({
                 if (value) parsed = parseInt(value);
                 else parsed = 0;
 
-                actionManipulationBetween({ title, from, to: parsed });
+                actionManipulationBetween({
+                  id,
+                  from,
+                  to: parsed,
+                  router,
+                  selectedData,
+                });
               }}
             />
           </div>
@@ -50,13 +65,16 @@ const Between = ({
             min={0}
             max={2000000}
             allowCross={false}
-            value={[
-              fromTo && fromTo[title] ? fromTo[title].from : 0,
-              fromTo && fromTo[title] ? fromTo[title].to : 0,
-            ]}
+            value={[from, to]}
             onChange={([from, to]) => {
               setTimeout(function () {
-                actionManipulationBetween({ title, from, to });
+                actionManipulationBetween({
+                  id,
+                  from,
+                  to,
+                  router,
+                  selectedData,
+                });
               });
             }}
           />

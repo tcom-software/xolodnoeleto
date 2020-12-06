@@ -3,9 +3,9 @@ import { connect } from "react-redux";
 import { getCatalogueFilters } from "redux/actions/catalogueActions";
 
 const mapStateToProps = ({
-  catalogue: { filters },
+  catalogue: { filters, selectedData },
   general: { isMobile },
-}) => ({ filters, isMobile });
+}) => ({ filters, isMobile, selectedData });
 
 const mapDispatchToProps = (dispatch) => ({
   getCatalogueFilters: (catalogueId) =>

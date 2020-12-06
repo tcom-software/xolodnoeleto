@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import theme from "styles/theme";
 
 const FilterCaseContainer = styled.div`
@@ -54,6 +54,9 @@ const FilterCaseContainer = styled.div`
         .border-left-side {
           display: none;
         }
+      }
+      .selection-container {
+        padding: 10px 0;
       }
     }
   }

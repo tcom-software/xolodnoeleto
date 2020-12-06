@@ -4,16 +4,25 @@ import { useRouter } from "next/router";
 import { FiltersContainer } from "./styles";
 import FilterCase from "./content/FilterCase";
 import ButtonLayout from "./content/ButtonLayout";
+import { createUrlFromObject } from "@utils";
 
-const Filters = ({ filters, getCatalogueFilters }) => {
+const Filters = ({ filters, getCatalogueFilters, selectedData, isMobile }) => {
   const router = useRouter();
   const { catalogueId } = router.query;
+  useEffect(() => {
+    const url = createUrlFromObject(selectedData, catalogueId);
+
+    if (url.indexOf("?") != -1) {
+      router.push(url);
+    }
+  }, [selectedData]);
 
   useEffect(() => {
     catalogueId && getCatalogueFilters(catalogueId);
   }, [catalogueId]);
 
   const [isOpen, setOpen] = useState(false);
+
   const MobileCloseFilters = () => (
     <div className="close-filters-mobile">
       <p>Очистить фильтр</p>
@@ -49,15 +58,29 @@ const Filters = ({ filters, getCatalogueFilters }) => {
             <div className={`filters-section`}>
               {Object.entries(filters).map(([key, value], i) => {
                 const type = value[0].name;
-                return (
-                  <FilterCase
-                    key={i}
-                    type={type}
-                    title={key}
-                    array={value}
-                    maxShowFive={i}
-                  />
-                );
+                if (key === "Сортировка") {
+                  if (isMobile)
+                    return (
+                      <FilterCase
+                        key={i}
+                        type={type}
+                        title={key}
+                        array={value}
+                        maxShowFive={i}
+                      />
+                    );
+                  else return null;
+                } else {
+                  return (
+                    <FilterCase
+                      key={i}
+                      type={type}
+                      title={key}
+                      array={value}
+                      maxShowFive={i}
+                    />
+                  );
+                }
               })}
             </div>
             <MobileCloseFilters />

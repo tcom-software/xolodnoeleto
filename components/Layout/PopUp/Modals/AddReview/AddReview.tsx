@@ -25,7 +25,6 @@ const AddReview = ({ modalRef, closeModal }) => {
     if (array.length > 0) {
       setErrorState(array);
     } else {
-      console.log(11111);
     }
   };
 

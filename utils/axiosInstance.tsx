@@ -7,8 +7,8 @@ const {
 
 const axiosInstance = axios.create({
   baseURL: serverUrl,
-  // timeout: 1000,
   headers: {
+    "Content-Type": "application/json",
     projectId: 58,
   },
 });

@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import MultipleSelectionCase from "./MultipleSelectionCase";
+
 import {
   actionManipulationMultiple,
   actionSecondFiltersLevelArray,

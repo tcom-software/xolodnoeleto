@@ -2,6 +2,7 @@ import Catalogue from "./Catalogue";
 import { connect } from "react-redux";
 import {
   getCatalogueProducts,
+  updateSelectedDataFromUrl,
   getCatalogueProductLoadingTrigger,
 } from "redux/actions/catalogueActions";
 
@@ -17,9 +18,11 @@ const mapStateToProps = ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getCatalogueProducts: (type, page) =>
-    dispatch(getCatalogueProducts(type, page)),
+  getCatalogueProducts: (catalogueId, object) =>
+    dispatch(getCatalogueProducts(catalogueId, object)),
   getCatalogueProductLoadingTrigger: (boolean) =>
     dispatch(getCatalogueProductLoadingTrigger(boolean)),
+  updateSelectedDataFromUrl: (data) =>
+    dispatch(updateSelectedDataFromUrl(data)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Catalogue);

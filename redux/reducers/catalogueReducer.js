@@ -3,11 +3,33 @@ import * as types from "../actions/catalogueActions";
 const initialState = {
   productsLoading: true,
   filters: {
+    Сортировка: [
+      {
+        id: "по_популярности",
+        name: "file.checkbox",
+        characteristic_id: "sortBy",
+        name_ru: "по популярности",
+        title: "Сортировка",
+      },
+      {
+        id: "цена_низкая_высокая",
+        name: "file.checkbox",
+        characteristic_id: "sortBy",
+        name_ru: "Цена: низкая-высокая",
+        title: "Сортировка",
+      },
+      {
+        id: "цена_высокая_низкая",
+        name: "file.checkbox",
+        characteristic_id: "sortBy",
+        name_ru: "Цена: высокая-низкая",
+        title: "Сортировка",
+      },
+    ],
     Цена: [
       {
-        id: 1,
-        type: "",
-        name: "between",
+        id: "price",
+        name: "file.fromTo",
         name_ru: "Цена (Руб.)",
         title: "Price",
         values: {
@@ -16,19 +38,6 @@ const initialState = {
         },
       },
     ],
-    /*sortBy: {
-      id: 59,
-      type: "simpleCases",
-      ruTitle: "Сортировать",
-      enTitle: "sortBy",
-      values: [
-        { id: 60, name: "по популярности" },
-        { id: 61, name: "Цена: низкая-высокая" },
-        { id: 62, name: "Цена: высокая-низкая" },
-      ],
-    },
-    ,
-    */
   },
   total: 0,
   products: [],
@@ -54,10 +63,11 @@ const catalogueReducer = (state = initialState, action) => {
 
       return {
         ...state,
-        products,
+        products: [...products],
         total,
         productsLoading: false,
       };
+
     case types.GET_CATALOGUE_FILTERS:
       return {
         ...state,
@@ -105,6 +115,7 @@ const catalogueReducer = (state = initialState, action) => {
     case types.MANIPULATION_MULTIPLE_DATA:
       const { id, parent_id } = action.payload;
       const { checkboxes } = state.selectedData;
+
       if (!checkboxes) {
         // there isn't checkboxes key in object
         return {
@@ -124,17 +135,22 @@ const catalogueReducer = (state = initialState, action) => {
 
           if (checkboxes[parent_id].includes(id)) {
             // there is id of selected value
+            const object = {
+              ...checkboxes,
+              [parent_id]: [...checkboxes[parent_id].filter((e) => e != id)],
+            };
+
+            for (let key in object) {
+              if (object[key].length === 0) {
+                delete object[key];
+              }
+            }
 
             return {
               ...state,
               selectedData: {
                 ...state.selectedData,
-                checkboxes: {
-                  ...checkboxes,
-                  [parent_id]: [
-                    ...checkboxes[parent_id].filter((e) => e != id),
-                  ],
-                },
+                checkboxes: { ...object },
               },
             };
           } else {
@@ -166,7 +182,7 @@ const catalogueReducer = (state = initialState, action) => {
         }
       }
     case types.MANIPULATION_BETWEEN_DATA:
-      const { title, from, to } = action.payload;
+      const { id: betweenId, from, to } = action.payload;
 
       return {
         ...state,
@@ -174,12 +190,26 @@ const catalogueReducer = (state = initialState, action) => {
           ...state.selectedData,
           fromTo: {
             ...state.selectedData.fromTo,
-            [title]: {
-              from,
-              to,
-            },
+            [betweenId]: [from ? from : null, to ? to : null],
           },
         },
+      };
+    case types.MANIPULATION_RADIO_DATA:
+      const { characteristic_id, id: value } = action.payload;
+      return {
+        ...state,
+        selectedData: {
+          ...state.selectedData,
+          radio: {
+            ...state.selectedData.radio,
+            [characteristic_id]: [value],
+          },
+        },
+      };
+    case types.UPDATE_SELECTED_DATA_FROM_URL:
+      return {
+        ...state,
+        selectedData: action.payload,
       };
     default:
       return {

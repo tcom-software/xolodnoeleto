@@ -1,12 +1,14 @@
 export const CATALOG_LIST = "CATALOG_LIST";
+export const OPEN_FILTERS_TOGGLE = "OPEN_FILTERS_TOGGLE";
 export const GET_CATALOGUE_FILTERS = "GET_CATALOGUE_FILTERS";
 export const GET_CATALOGUE_PRODUCTS = "GET_CATALOGUE_PRODUCTS";
-export const CATALOGUE_LOADING_TRIGGER = "CATALOGUE_LOADING_TRIGGER";
-export const OPEN_FILTERS_TOGGLE = "OPEN_FILTERS_TOGGLE";
+export const MANIPULATION_RADIO_DATA = "MANIPULATION_RADIO_DATA";
 export const FIRST_SECOND_LEVEL_ARRAY = "FIRST_SECOND_LEVEL_ARRAY";
+export const CATALOGUE_LOADING_TRIGGER = "CATALOGUE_LOADING_TRIGGER";
 export const FIRST_FILTERS_LEVEL_ARRAY = "FIRST_FILTERS_LEVEL_ARRAY";
 export const MANIPULATION_BETWEEN_DATA = "MANIPULATION_BETWEEN_DATA";
 export const MANIPULATION_MULTIPLE_DATA = "MANIPULATION_MULTIPLE_DATA";
+export const UPDATE_SELECTED_DATA_FROM_URL = "UPDATE_SELECTED_DATA_FROM_URL";
 
 import axiosInstance from "utils/axiosInstance";
 import getConfig from "next/config";
@@ -20,12 +22,24 @@ export const getCatalogueProductLoadingTrigger = (boolean) => ({
   payload: boolean,
 });
 
-export const getCatalogueProducts = (type, page = 1) => {
+export const getCatalogueProducts = (catalogueId, object = {}) => {
   return (dispatch) => {
     dispatch(getCatalogueProductLoadingTrigger(true));
+    /*
+    * {
+          page: 2,
+          fromTo: {
+            price: [0, 150000],
+            1: [5, 7],
+          },
+          checkboxes: {
+            3: [3],
+            7: [12],
+          },
+        }*/
     axiosInstance
-      .post(`${catalogueProducts}/${type}`, {
-        body: JSON.stringify({}),
+      .post(`${catalogueProducts}/${catalogueId}`, {
+        body: JSON.stringify(object),
       })
       .then(({ data }) => {
         if (data) {
@@ -45,23 +59,27 @@ export const getCatalogueFilters = (catalogueId) => {
       .get(`${getFilters}/${catalogueId}`)
       .then(({ data }) => {
         if (data) {
-          const { characteristicAttributes } = data;
-          const sortedFilters = characteristicAttributes.reduce(
-            (acc, next, i) => {
-              const { title } = next;
-              if (title === null) {
-                return { ...acc };
-              }
+          const { characteristicAttributes, textFilters } = data;
+          const sortedFilters = [
+            ...textFilters,
+            ...characteristicAttributes,
+          ].reduce((acc, next, i) => {
+            if (next["name"] === undefined) {
+              next["name"] = "file.fromTo";
+            }
 
-              return {
-                ...acc,
-                [title]: acc[title]
-                  ? acc[title].concat([{ ...next }])
-                  : [{ ...next }],
-              };
-            },
-            {}
-          );
+            const { title } = next;
+            if (title === null) {
+              return { ...acc };
+            }
+            return {
+              ...acc,
+              [title]: acc[title]
+                ? acc[title].concat([{ ...next }])
+                : [{ ...next }],
+            };
+          }, {});
+
           dispatch({
             type: GET_CATALOGUE_FILTERS,
             payload: sortedFilters,
@@ -100,18 +118,34 @@ export const actionFirstFiltersLevelArray = (filter) => ({
   payload: filter,
 });
 
-export const actionManipulationMultiple = (data) => ({
-  type: MANIPULATION_MULTIPLE_DATA,
-  payload: data,
-});
-
-export const actionManipulationBetween = (data) => ({
-  type: MANIPULATION_BETWEEN_DATA,
-  payload: data,
-});
-
 export const filtersToggle = () => {
   return {
     type: OPEN_FILTERS_TOGGLE,
   };
 };
+
+export const actionManipulationMultiple = (data) => {
+  return {
+    type: MANIPULATION_MULTIPLE_DATA,
+    payload: data,
+  };
+};
+
+export const actionManipulationBetween = (data) => {
+  return {
+    type: MANIPULATION_BETWEEN_DATA,
+    payload: data,
+  };
+};
+
+export const actionManipulationRadio = (data) => {
+  return {
+    type: MANIPULATION_RADIO_DATA,
+    payload: data,
+  };
+};
+
+export const updateSelectedDataFromUrl = (data) => ({
+  type: UPDATE_SELECTED_DATA_FROM_URL,
+  payload: data,
+});

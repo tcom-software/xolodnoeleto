@@ -1,32 +1,46 @@
 import React, { useEffect, useState } from "react";
 import Filters from "./Filters";
 import theme from "styles/theme";
-import { GlobalSection } from "@famous";
-import { useRouter } from "next/router";
+import { Loading } from "@famous";
 import Pagination from "../Pagination";
+import { useRouter } from "next/router";
+import { GlobalSection } from "@famous";
 import ProductList from "../ProductsList";
 import { CatalogueContainer } from "./styles";
 import ProductGridView from "../ProductGridView";
-import { Loading } from "@famous";
+import { createObjectFromUrl } from "@utils";
 
 const Catalogue = ({
   total,
   products,
   isMobile,
+  selectedData,
   productsLoading,
   getCatalogueProducts,
+  updateSelectedDataFromUrl,
   getCatalogueProductLoadingTrigger,
 }) => {
   const router = useRouter();
-  const { catalogueId } = router.query;
   const [currentPage, setCurrentPage] = useState(total ? total : 1);
+  const { catalogueId } = router.query;
 
   useEffect(() => {
-    if (catalogueId) {
-      getCatalogueProductLoadingTrigger(true);
-      getCatalogueProducts(catalogueId, currentPage);
+    let object;
+
+    const selectedDataLength = Object.keys(selectedData).length;
+    if (selectedDataLength === 0) {
+      object = createObjectFromUrl(router.query);
+    } else {
+      object = selectedData;
     }
-  }, [catalogueId, currentPage]);
+
+    getCatalogueProductLoadingTrigger(true);
+    if (selectedDataLength === 0 && Object.keys(object).length > 0) {
+      updateSelectedDataFromUrl(object);
+    }
+
+    catalogueId && getCatalogueProducts(catalogueId, { ...object });
+  }, [router.query]);
 
   return (
     <>
@@ -83,4 +97,22 @@ const Catalogue = ({
   );
 };
 
-export default Catalogue;
+function areEqual(prevProps, nextProps) {
+  /**
+   *  возвращает true, если nextProps рендерит
+   *  тот же результат что и prevProps,
+   *  иначе возвращает false
+   * * * * */
+
+  if (
+    JSON.stringify(prevProps.selectedData) ===
+      JSON.stringify(nextProps.selectedData) &&
+    JSON.stringify(prevProps.products) === JSON.stringify(nextProps.products)
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+export default React.memo(Catalogue, areEqual);

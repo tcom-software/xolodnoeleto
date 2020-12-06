@@ -24,6 +24,7 @@ const BetweenSelectionCaseContainer = styled.div`
         display: flex;
         margin: 10px 0;
         justify-content: space-between;
+
         & > div {
           width: 47%;
           display: flex;
@@ -38,6 +39,9 @@ const BetweenSelectionCaseContainer = styled.div`
           span {
           }
         }
+      }
+      &__between-new-style {
+        padding: 0px 10px;
       }
     }
   }

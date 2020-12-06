@@ -6,19 +6,21 @@ import theme from "styles/theme";
 const MultipleSelectionCase = ({
   title,
   array,
+  selectedData,
   secondLevelFiltersArray,
   actionSecondFiltersLevelArray,
-  selectedData: { checkboxes },
   actionManipulationMultiple,
 }) => {
+  const { checkboxes } = selectedData;
   const filterValues = secondLevelFiltersArray.indexOf(title);
+
   return (
     <MultipleSelectionCaseContainer filterValues={filterValues}>
       {array.map((e, i) => {
         const id = e.id;
         const parent_id = e.characteristic_id;
-        let selected;
 
+        let selected;
         if (checkboxes && checkboxes[parent_id]) {
           selected = checkboxes[parent_id].includes(id) ? true : false;
         }
@@ -29,7 +31,12 @@ const MultipleSelectionCase = ({
             className={`each-value ${
               i < 7 ? "show" : filterValues === -1 ? "hide" : "show"
             }`}
-            onClick={() => actionManipulationMultiple({ id, parent_id })}
+            onClick={() =>
+              actionManipulationMultiple({
+                id,
+                parent_id,
+              })
+            }
           >
             <CheckBox
               width="15px"
