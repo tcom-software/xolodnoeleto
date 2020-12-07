@@ -3,7 +3,6 @@ const createObjectFromUrl = (urlObj) => {
     checkboxes: {},
     fromTo: {},
   };
-
   for (let key in urlObj) {
     switch (key) {
       case "1":
@@ -15,6 +14,9 @@ const createObjectFromUrl = (urlObj) => {
           ...newObject["fromTo"],
           [key]: urlObj[key].split(" "),
         };
+        break;
+      case "page":
+        newObject["page"] = urlObj[key];
         break;
       case "catalogueId":
         break;

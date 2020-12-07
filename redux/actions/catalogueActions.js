@@ -4,10 +4,12 @@ export const GET_CATALOGUE_FILTERS = "GET_CATALOGUE_FILTERS";
 export const GET_CATALOGUE_PRODUCTS = "GET_CATALOGUE_PRODUCTS";
 export const MANIPULATION_RADIO_DATA = "MANIPULATION_RADIO_DATA";
 export const FIRST_SECOND_LEVEL_ARRAY = "FIRST_SECOND_LEVEL_ARRAY";
+export const UPDATE_SELECTED_DATA_PAGE = "UPDATE_SELECTED_DATA_PAGE";
 export const CATALOGUE_LOADING_TRIGGER = "CATALOGUE_LOADING_TRIGGER";
 export const FIRST_FILTERS_LEVEL_ARRAY = "FIRST_FILTERS_LEVEL_ARRAY";
 export const MANIPULATION_BETWEEN_DATA = "MANIPULATION_BETWEEN_DATA";
 export const MANIPULATION_MULTIPLE_DATA = "MANIPULATION_MULTIPLE_DATA";
+export const CLEAR_SELECTED_FILTERS_DATA = "CLEAR_SELECTED_FILTERS_DATA";
 export const UPDATE_SELECTED_DATA_FROM_URL = "UPDATE_SELECTED_DATA_FROM_URL";
 
 import axiosInstance from "utils/axiosInstance";
@@ -25,22 +27,11 @@ export const getCatalogueProductLoadingTrigger = (boolean) => ({
 export const getCatalogueProducts = (catalogueId, object = {}) => {
   return (dispatch) => {
     dispatch(getCatalogueProductLoadingTrigger(true));
-    /*
-    * {
-          page: 2,
-          fromTo: {
-            price: [0, 150000],
-            1: [5, 7],
-          },
-          checkboxes: {
-            3: [3],
-            7: [12],
-          },
-        }*/
     axiosInstance
-      .post(`${catalogueProducts}/${catalogueId}`, {
-        body: JSON.stringify(object),
-      })
+      .post(
+        `${catalogueProducts}/${catalogueId}`,
+        JSON.stringify({ ...object })
+      )
       .then(({ data }) => {
         if (data) {
           dispatch({
@@ -148,4 +139,13 @@ export const actionManipulationRadio = (data) => {
 export const updateSelectedDataFromUrl = (data) => ({
   type: UPDATE_SELECTED_DATA_FROM_URL,
   payload: data,
+});
+
+export const updateSelectedDataPage = (page) => ({
+  type: UPDATE_SELECTED_DATA_PAGE,
+  payload: page,
+});
+
+export const clearFiltersSelectedData = () => ({
+  type: CLEAR_SELECTED_FILTERS_DATA,
 });

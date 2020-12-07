@@ -1,6 +1,9 @@
 import { connect } from "react-redux";
 import ButtonLayout from "./ButtonLayout";
-import { filtersToggle } from "redux/actions/catalogueActions";
+import {
+  clearFiltersSelectedData,
+  filtersToggle,
+} from "redux/actions/catalogueActions";
 
 const mapStateToProps = ({
   catalogue: { filters },
@@ -9,6 +12,7 @@ const mapStateToProps = ({
 
 const mapDispatchToProps = (dispatch) => ({
   filtersToggle: () => dispatch(filtersToggle()),
+  clearFiltersSelectedData: () => dispatch(clearFiltersSelectedData()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ButtonLayout);

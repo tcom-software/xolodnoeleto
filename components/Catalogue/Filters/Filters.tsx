@@ -9,13 +9,16 @@ import { createUrlFromObject } from "@utils";
 const Filters = ({ filters, getCatalogueFilters, selectedData, isMobile }) => {
   const router = useRouter();
   const { catalogueId } = router.query;
-  useEffect(() => {
-    const url = createUrlFromObject(selectedData, catalogueId);
 
-    if (url.indexOf("?") != -1) {
-      router.push(url);
+  useEffect(() => {
+    if (catalogueId !== undefined) {
+      const url = createUrlFromObject(selectedData, catalogueId);
+
+      if (url.indexOf("?") != -1) {
+        router.push(url);
+      }
     }
-  }, [selectedData]);
+  }, [selectedData, catalogueId]);
 
   useEffect(() => {
     catalogueId && getCatalogueFilters(catalogueId);
@@ -23,7 +26,7 @@ const Filters = ({ filters, getCatalogueFilters, selectedData, isMobile }) => {
 
   const [isOpen, setOpen] = useState(false);
 
-  const MobileCloseFilters = () => (
+  const MobileCloseFilters = (catalogueId) => (
     <div className="close-filters-mobile">
       <p>Очистить фильтр</p>
       <SvgIcon

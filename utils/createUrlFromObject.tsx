@@ -13,12 +13,13 @@ const createUrlFromObject = (selectedFiltersObject, catalogueId) => {
       url += `${key}=${merge[key].join("+")}&`;
     }
 
-    url = `?${url.slice(0, -1)}`;
+    url = `?${url.slice(0, -1)}&page=${selectedFiltersObject.page}`;
+    url = url.replace("?&", "?");
+
+    return `${catalogueId}${url}`;
   } else {
     return `${catalogueId}`;
   }
-
-  return `${catalogueId}${url}`;
 };
 
 export default createUrlFromObject;

@@ -126,6 +126,7 @@ const catalogueReducer = (state = initialState, action) => {
               ...state.selectedData.checkboxes,
               [parent_id]: [id],
             },
+            page: 1,
           },
         };
       } else {
@@ -151,6 +152,7 @@ const catalogueReducer = (state = initialState, action) => {
               selectedData: {
                 ...state.selectedData,
                 checkboxes: { ...object },
+                page: 1,
               },
             };
           } else {
@@ -164,6 +166,7 @@ const catalogueReducer = (state = initialState, action) => {
                 checkboxes: {
                   ...checkboxes,
                 },
+                page: 1,
               },
             };
           }
@@ -177,6 +180,7 @@ const catalogueReducer = (state = initialState, action) => {
                 ...checkboxes,
                 [parent_id]: [id],
               },
+              page: 1,
             },
           };
         }
@@ -204,12 +208,26 @@ const catalogueReducer = (state = initialState, action) => {
             ...state.selectedData.radio,
             [characteristic_id]: [value],
           },
+          page: 1,
         },
       };
     case types.UPDATE_SELECTED_DATA_FROM_URL:
       return {
         ...state,
         selectedData: action.payload,
+      };
+    case types.UPDATE_SELECTED_DATA_PAGE:
+      return {
+        ...state,
+        selectedData: {
+          ...state.selectedData,
+          page: action.payload,
+        },
+      };
+    case types.CLEAR_SELECTED_FILTERS_DATA:
+      return {
+        ...state,
+        selectedData: { page: 1 },
       };
     default:
       return {

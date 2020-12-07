@@ -1,46 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Filters from "./Filters";
 import theme from "styles/theme";
-import { Loading } from "@famous";
+import Products from "./Products";
 import Pagination from "../Pagination";
-import { useRouter } from "next/router";
 import { GlobalSection } from "@famous";
 import ProductList from "../ProductsList";
 import { CatalogueContainer } from "./styles";
-import ProductGridView from "../ProductGridView";
-import { createObjectFromUrl } from "@utils";
+import { useRouter } from "next/router";
 
-const Catalogue = ({
-  total,
-  products,
-  isMobile,
-  selectedData,
-  productsLoading,
-  getCatalogueProducts,
-  updateSelectedDataFromUrl,
-  getCatalogueProductLoadingTrigger,
-}) => {
+const Catalogue = ({ products }) => {
   const router = useRouter();
-  const [currentPage, setCurrentPage] = useState(total ? total : 1);
-  const { catalogueId } = router.query;
-
-  useEffect(() => {
-    let object;
-
-    const selectedDataLength = Object.keys(selectedData).length;
-    if (selectedDataLength === 0) {
-      object = createObjectFromUrl(router.query);
-    } else {
-      object = selectedData;
-    }
-
-    getCatalogueProductLoadingTrigger(true);
-    if (selectedDataLength === 0 && Object.keys(object).length > 0) {
-      updateSelectedDataFromUrl(object);
-    }
-
-    catalogueId && getCatalogueProducts(catalogueId, { ...object });
-  }, [router.query]);
 
   return (
     <>
@@ -53,33 +22,9 @@ const Catalogue = ({
       >
         <CatalogueContainer>
           <Filters />
-          {productsLoading ? (
-            <Loading />
-          ) : (
-            <div className="catalogue">
-              {isMobile ? (
-                <h1>ХИТЫ ПРОДАЖ</h1>
-              ) : (
-                <div className="title-section">
-                  <p>{total} Товаров</p>
-                  <select className="sort-by">
-                    Цена: высокая-низкая
-                    <option>Сортировать: по популярности</option>
-                    <option>Цена: низкая-высокая</option>
-                    <option>Цена: высокая-низкая</option>
-                  </select>
-                </div>
-              )}
-
-              <div className="products">
-                {Object.values(products).map((item, index) => {
-                  return <ProductGridView key={index} item={item} />;
-                })}
-              </div>
-            </div>
-          )}
+          <Products />
         </CatalogueContainer>
-        <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} />
+        <Pagination page={router.query.page} />
       </GlobalSection>
       <GlobalSection
         isWeb={true}

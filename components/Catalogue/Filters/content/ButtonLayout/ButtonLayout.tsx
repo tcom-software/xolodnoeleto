@@ -1,8 +1,18 @@
 import React from "react";
 import { Button } from "@famous";
+import { useRouter } from "next/router";
 import { ButtonLayoutContainer } from "./styles";
 
-const ButtonLayout = ({ isOpenFilters, isMobile, children, filtersToggle }) => {
+const ButtonLayout = ({
+  isOpenFilters,
+  isMobile,
+  children,
+  filtersToggle,
+  clearFiltersSelectedData,
+}) => {
+  const router = useRouter();
+  const { catalogueId } = router.query;
+
   return (
     <ButtonLayoutContainer>
       {!isMobile ? (
@@ -11,6 +21,10 @@ const ButtonLayout = ({ isOpenFilters, isMobile, children, filtersToggle }) => {
           color="#565656"
           width={"199px"}
           height={"47px"}
+          onClick={() => {
+            router.push(catalogueId);
+            clearFiltersSelectedData();
+          }}
         >
           Очистить фильтр
         </Button>
@@ -35,6 +49,10 @@ const ButtonLayout = ({ isOpenFilters, isMobile, children, filtersToggle }) => {
             color="#565656"
             width={"199px"}
             height={"47px"}
+            onClick={() => {
+              router.push(catalogueId);
+              clearFiltersSelectedData();
+            }}
           >
             Очистить фильтр
           </Button>
