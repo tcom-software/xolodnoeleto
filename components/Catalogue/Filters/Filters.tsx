@@ -26,7 +26,7 @@ const Filters = ({ filters, getCatalogueFilters, selectedData, isMobile }) => {
 
   const [isOpen, setOpen] = useState(false);
 
-  const MobileCloseFilters = (catalogueId) => (
+  const MobileCloseFilters = () => (
     <div className="close-filters-mobile">
       <p>Очистить фильтр</p>
       <SvgIcon
