@@ -1,17 +1,12 @@
-import {
-  LogoCon,
-  MainPanel,
-  PhonesCon,
-  SearchAndFavoriteCon,
-  SearchCon,
-} from "../styles";
-import Link from "next/link";
-import { GlobalSection, Input, SvgIcon } from "@famous";
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { openModal } from "redux/actions/modalActions";
+import Link from "next/link";
+import Search from "./Search";
 import theme from "styles/theme";
+import { GlobalSection, SvgIcon } from "@famous";
+import { openModal } from "redux/actions/modalActions";
 import SvgIconWaveAnim from "../../../FamousComponents/SvgIconWaveAnim";
+import { LogoCon, MainPanel, PhonesCon, SearchAndFavoriteCon } from "../styles";
 
 const Middle = ({ phones, openModal, modalType }) => {
   const [open, setOpen] = useState(false);
@@ -55,15 +50,7 @@ const Middle = ({ phones, openModal, modalType }) => {
             Заказать обратный звонок
           </p>
         </PhonesCon>
-        <SearchCon>
-          <Input
-            search={true}
-            placeholder={"search"}
-            svgSize={16}
-            width="100%"
-            height="35px"
-          />
-        </SearchCon>
+        <Search />
         <SearchAndFavoriteCon customMargin={true}>
           <Link href={"/compare"}>
             <a>

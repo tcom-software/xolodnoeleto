@@ -17,6 +17,7 @@ module.exports = {
     catalogueCategories: "/api/getCategories",
     getProduct: "/api/getProduct",
     getFilters: "/api/getFilterData",
+    searchProduct: "/api/searchProduct",
 
     productsUpload: "/public/uploads/products/",
     seriesUpload: "/public/uploads/product_series/",

@@ -36,12 +36,14 @@ export interface SvgIconAnimInterface {
 export interface InputInterface {
   labelTitle?: string;
   search?: boolean;
+  searchValue?: string;
   svgColor?: string;
   width: string;
   height: string;
   placeholder: string;
   svgSize: number;
   callback?: any;
+  handleChange?: any;
 }
 export interface ImageInterface {
   simpleWeb: string;

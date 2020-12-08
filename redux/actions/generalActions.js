@@ -1,3 +1,4 @@
+export const SEARCHED = "SEARCHED";
 export const IS_MOBILE = "IS_MOBILE";
 export const CATALOG_LIST = "CATALOG_LIST";
 export const INITIAL_STATE = "INITIAL_STATE";

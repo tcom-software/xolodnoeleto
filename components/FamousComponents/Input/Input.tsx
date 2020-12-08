@@ -6,10 +6,12 @@ import { Label, Input, Container, InputBorder } from "./styles";
 const InputCase = ({
   labelTitle,
   search,
+  searchValue,
   placeholder,
   svgSize,
   svgColor,
   callback,
+  handleChange,
   width,
   height,
 }: InputInterface) => {
@@ -19,7 +21,11 @@ const InputCase = ({
         <Label>
           {labelTitle}
           <InputBorder width={width} height={height}>
-            <Input placeholder={placeholder} />
+            <Input
+              placeholder={placeholder}
+              onChange={handleChange}
+              value={searchValue}
+            />
             {search ? (
               <SvgIcons
                 type="search"
@@ -38,7 +44,11 @@ const InputCase = ({
       <Container>
         <Label>
           <InputBorder width={width} height={height}>
-            <Input placeholder={placeholder} />
+            <Input
+              placeholder={placeholder}
+              onChange={handleChange}
+              value={searchValue}
+            />
             {search ? (
               <SvgIcons
                 type="search"
