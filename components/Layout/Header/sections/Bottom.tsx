@@ -5,12 +5,12 @@ import { connect } from "react-redux";
 import BasketMenu from "./BasketMenu";
 import { Button, GlobalSection, Input, SvgIcon } from "@famous";
 import { closeModal, openModal } from "redux/actions/modalActions";
-import { BottomPanel, SearchCon, Span, Ul } from "../styles";
+import { BottomPanel, Ul } from "../styles";
 import { useSpring, animated } from "react-spring";
 import Catalog from "./Catalog";
+import HeaderWebMobileSearch from "./HeaderWebMobileSearch";
 
 const Bottom = ({ modalType, openModal, closeModal, basketItemsCount }) => {
-  const [isOpenSearch, setIsOpenSearch] = useState(false);
   const spring: any = useSpring({
     from: { val: 0 },
     to: { val: basketItemsCount },
@@ -53,23 +53,7 @@ const Bottom = ({ modalType, openModal, closeModal, basketItemsCount }) => {
             </Link>
           </li>
           <li>
-            <SearchCon mobileDisableView={true} isOpenSearch={isOpenSearch}>
-              <Input
-                search={true}
-                svgSize={20}
-                width="350px"
-                height="35px"
-                placeholder={"search"}
-                callback={() => setIsOpenSearch(!isOpenSearch)}
-              />
-
-              <Span />
-              <Span />
-              <Span />
-              <Span />
-              <Span />
-              <Span />
-            </SearchCon>
+            <HeaderWebMobileSearch />
           </li>
           <li>
             <Link href={"/basket"}>

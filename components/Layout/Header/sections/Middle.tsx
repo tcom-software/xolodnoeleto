@@ -7,6 +7,7 @@ import { GlobalSection, SvgIcon } from "@famous";
 import { openModal } from "redux/actions/modalActions";
 import SvgIconWaveAnim from "../../../FamousComponents/SvgIconWaveAnim";
 import { LogoCon, MainPanel, PhonesCon, SearchAndFavoriteCon } from "../styles";
+import HeaderWebMobileSearch from "./HeaderWebMobileSearch";
 
 const Middle = ({ phones, openModal, modalType }) => {
   const [open, setOpen] = useState(false);
@@ -50,7 +51,7 @@ const Middle = ({ phones, openModal, modalType }) => {
             Заказать обратный звонок
           </p>
         </PhonesCon>
-        <Search />
+        <HeaderWebMobileSearch />
         <SearchAndFavoriteCon customMargin={true}>
           <Link href={"/compare"}>
             <a>
