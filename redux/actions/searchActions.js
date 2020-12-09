@@ -1,5 +1,7 @@
-export const SEARCHING = "SEARCHING";
-export const SEARCH_LOADING = "SEARCH_LOADING";
+export const LOADING = "LOADING";
+export const NEW_LOADING = "NEW_LOADING";
+export const SEARCH = "SEARCH";
+export const NEW_SEARCH = "NEW_SEARCH";
 
 import getConfig from "next/config";
 import axiosInstance from "../../utils/axiosInstance";
@@ -9,25 +11,49 @@ const {
 } = getConfig();
 
 export const searchLoading = (boolean) => ({
-  type: SEARCH_LOADING,
+  type: LOADING,
   payload: boolean,
 });
 
-export const actionSearch = (searchWord) => {
+export const searchNewLoading = (boolean) => ({
+  type: NEW_LOADING,
+  payload: boolean,
+});
+
+export const actionSearch = (searchWord, page = 1) => {
   return (dispatch) => {
-    dispatch(searchLoading(true));
     if (searchWord === "") {
       dispatch({
-        type: SEARCHING,
-        payload: [],
+        type: SEARCH,
+        payload: {
+          searchResponse: [],
+          total: 1,
+        },
       });
-    } else {
+      return false;
+    }
+
+    if (page === 1) {
+      dispatch(searchLoading(true));
       axiosInstance
-        .post(`${searchProduct}`, { search: searchWord })
+        .post(`${searchProduct}`, { search: searchWord, page })
         .then(({ data }) => {
           if (data) {
             dispatch({
-              type: SEARCHING,
+              type: SEARCH,
+              payload: data,
+            });
+          }
+        })
+        .catch((err) => console.log(err));
+    } else {
+      dispatch(searchNewLoading(true));
+      axiosInstance
+        .post(`${searchProduct}`, { search: searchWord, page })
+        .then(({ data }) => {
+          if (data) {
+            dispatch({
+              type: NEW_SEARCH,
               payload: data,
             });
           }
