@@ -9,7 +9,7 @@ import SvgIconWaveAnim from "../../../FamousComponents/SvgIconWaveAnim";
 import { LogoCon, MainPanel, PhonesCon, SearchAndFavoriteCon } from "../styles";
 import HeaderWebMobileSearch from "./HeaderWebMobileSearch";
 
-const Middle = ({ phones, openModal, modalType }) => {
+const Middle = ({ phones, openModal, modalType, isMobile }) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -51,7 +51,7 @@ const Middle = ({ phones, openModal, modalType }) => {
             Заказать обратный звонок
           </p>
         </PhonesCon>
-        <HeaderWebMobileSearch />
+        {!isMobile ? <HeaderWebMobileSearch /> : null}
         <SearchAndFavoriteCon customMargin={true}>
           <Link href={"/compare"}>
             <a>
@@ -73,9 +73,13 @@ const Middle = ({ phones, openModal, modalType }) => {
   );
 };
 
-const mapStateToProps = ({ general: { phones }, modal: { modalType } }) => ({
+const mapStateToProps = ({
+  general: { phones, isMobile },
+  modal: { modalType },
+}) => ({
   modalType,
   phones,
+  isMobile,
 });
 
 const mapDispatchToProps = (dispatch) => ({

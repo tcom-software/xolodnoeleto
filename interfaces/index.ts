@@ -89,6 +89,8 @@ export interface GlobalSectionInterface {
   height?: string;
   heightMobile?: string;
   widthMobile?: string;
+  webPosition?: string;
+  mobilePosition?: string;
 }
 export interface SelectInterface {
   title: string;

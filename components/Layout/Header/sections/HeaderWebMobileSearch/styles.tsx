@@ -14,8 +14,12 @@ const SearchContainer = styled.div`
     height: min-content;
     max-height: 200px;
     overflow-y: scroll;
-    padding: 15px;
-    border: 1px solid ${theme.body.someBorder};
+    padding: ${({ searchLength }) => (searchLength > 0 ? "15px" : "0")};
+    border: ${({ searchLength }) =>
+      searchLength > 0 ? `1px solid ${theme.body.someBorder}` : "none"};
+    display: ${({ searchLength }) => (searchLength > 0 ? `block` : "none")};
+    border-top: 0px;
+
     a {
       .item-container {
         padding: 10px 0;
@@ -28,6 +32,15 @@ const SearchContainer = styled.div`
         }
       }
     }
+
+    h2.title {
+      border-bottom: 1px solid #d8d8d8;
+      padding-bottom: 10px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    position: static;
   }
 `;
 

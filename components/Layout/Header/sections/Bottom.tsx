@@ -1,16 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import theme from "styles/theme";
 import { connect } from "react-redux";
 import BasketMenu from "./BasketMenu";
-import { Button, GlobalSection, Input, SvgIcon } from "@famous";
+import { Button, GlobalSection, SvgIcon } from "@famous";
 import { closeModal, openModal } from "redux/actions/modalActions";
 import { BottomPanel, Ul } from "../styles";
 import { useSpring, animated } from "react-spring";
 import Catalog from "./Catalog";
 import HeaderWebMobileSearch from "./HeaderWebMobileSearch";
 
-const Bottom = ({ modalType, openModal, closeModal, basketItemsCount }) => {
+const Bottom = ({
+  isMobile,
+  modalType,
+  openModal,
+  closeModal,
+  basketItemsCount,
+}) => {
   const spring: any = useSpring({
     from: { val: 0 },
     to: { val: basketItemsCount },
@@ -25,6 +31,7 @@ const Bottom = ({ modalType, openModal, closeModal, basketItemsCount }) => {
       borderTop={true}
       borderBottom={true}
       webBackground={theme.body.secondBackground}
+      mobilePosition={"relative"}
     >
       <BottomPanel modalType={modalType}>
         <Ul>
@@ -52,8 +59,8 @@ const Bottom = ({ modalType, openModal, closeModal, basketItemsCount }) => {
               <a>Бренды</a>
             </Link>
           </li>
-          <li>
-            <HeaderWebMobileSearch />
+          <li className="header-search-result-container">
+            {isMobile ? <HeaderWebMobileSearch /> : null}
           </li>
           <li>
             <Link href={"/basket"}>
@@ -100,15 +107,15 @@ const Bottom = ({ modalType, openModal, closeModal, basketItemsCount }) => {
 const mapStateToProps = ({
   modal: { modalType, modalRef },
   basket: { items },
-}) => {
-  return {
-    modalRef,
-    modalType,
-    basketItemsCount: Object.values(items)
-      .map(({ count }) => (count ? count : 1))
-      .reduce((acc, next) => (next += acc), 0),
-  };
-};
+  general: { isMobile },
+}) => ({
+  isMobile,
+  modalRef,
+  modalType,
+  basketItemsCount: Object.values(items)
+    .map(({ count }) => (count ? count : 1))
+    .reduce((acc, next) => (next += acc), 0),
+});
 
 const mapDispatchToProps = (dispatch) => ({
   openModal: (type) => dispatch(openModal(type)),

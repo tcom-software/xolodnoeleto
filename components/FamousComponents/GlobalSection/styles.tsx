@@ -46,6 +46,13 @@ export const Global = styled.section`
       `;
     }
   }}
+  ${({ webPosition }) => {
+    if (webPosition) {
+      return css`
+        position: ${webPosition};
+      `;
+    }
+  }}
   
   align-items: center;
 
@@ -54,6 +61,13 @@ export const Global = styled.section`
     width: ${({ widthMobile }) => widthMobile};
     height: ${({ heightMobile }) => heightMobile};
 
+    ${({ mobilePosition }) => {
+      if (mobilePosition) {
+        return css`
+          position: ${mobilePosition};
+        `;
+      }
+    }}
     ${({ isMobile }) => {
       if (isMobile) {
         return css`

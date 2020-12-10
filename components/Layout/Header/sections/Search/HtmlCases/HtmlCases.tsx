@@ -3,6 +3,7 @@ import Link from "next/link";
 import { makePrice } from "@utils";
 
 const HtmlCases = ({ search }) => {
+  console.log(search, "--------");
   return search.map((e, i) => {
     const { id, brand, model, price } = e;
     return (

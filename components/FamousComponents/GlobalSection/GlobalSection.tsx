@@ -17,6 +17,8 @@ const GlobalSection = ({
   height,
   widthMobile,
   heightMobile,
+  webPosition,
+  mobilePosition,
 }: GlobalSectionInterface) => {
   return (
     <Global
@@ -31,6 +33,8 @@ const GlobalSection = ({
       borderTop={borderTop}
       borderBottom={borderBottom}
       overflowStyle={overflowStyle}
+      webPosition={webPosition}
+      mobilePosition={mobilePosition}
     >
       <Section>
         <MiniDiv webPadding={webPadding} mobilePadding={mobilePadding}>

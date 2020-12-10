@@ -5,7 +5,7 @@ const initialState = {
   search: [],
   new_loading: false,
   new_search: [],
-  total: 0,
+  total: null,
 };
 
 const generalReducer = (state = initialState, action) => {
@@ -28,7 +28,7 @@ const generalReducer = (state = initialState, action) => {
         ...state,
         total: total ? total : 1,
         loading: false,
-        search: searchResponse ? searchResponse : [],
+        search: searchResponse ? searchResponse.reverse() : [],
       };
       break;
     case types.NEW_SEARCH:
@@ -36,7 +36,7 @@ const generalReducer = (state = initialState, action) => {
         ...state,
         new_loading: false,
         total: action.payload.total,
-        search: [...state.search, ...action.payload.searchResponse],
+        search: [...state.search, ...action.payload.searchResponse.reverse()],
       };
       break;
     default:

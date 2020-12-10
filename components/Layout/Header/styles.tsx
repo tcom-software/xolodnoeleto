@@ -199,6 +199,12 @@ const Ul = styled.ul`
   & > li {
     cursor: pointer;
   }
+
+  @media (max-width: 768px) {
+    .header-search-result-container {
+      position: static;
+    }
+  }
 `;
 
 const LogoCon = styled.div`
@@ -252,11 +258,13 @@ const SearchCon = styled.div`
         & > div > label > div {
           border: none;
           width: auto;
+          background: #e5e5e5;
 
           input {
             transition: 0.2s all ease-in;
             transition-delay: 0.2s;
             width: 0;
+            background: #e5e5e5;
           }
         }
       `
