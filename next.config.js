@@ -22,6 +22,5 @@ module.exports = {
     productsUpload: "/public/uploads/products/",
     seriesUpload: "/public/uploads/product_series/",
     brandsUpload: "/public/uploads/brands/",
-    brandsUpload: "/public/uploads/brands/",
   },
 };

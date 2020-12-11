@@ -32,33 +32,29 @@ export const actionSearch = (searchWord, page = 1) => {
       });
       return false;
     }
-
-    if (page === 1) {
-      dispatch(searchLoading(true));
-      axiosInstance
-        .post(`${searchProduct}`, { search: searchWord, page })
-        .then(({ data }) => {
-          if (data) {
-            dispatch({
-              type: SEARCH,
-              payload: data,
-            });
-          }
-        })
-        .catch((err) => console.log(err));
-    } else {
-      dispatch(searchNewLoading(true));
-      axiosInstance
-        .post(`${searchProduct}`, { search: searchWord, page })
-        .then(({ data }) => {
-          if (data) {
-            dispatch({
-              type: NEW_SEARCH,
-              payload: data,
-            });
-          }
-        })
-        .catch((err) => console.log(err));
+    {
+      page === 1
+        ? dispatch(searchLoading(true))
+        : dispatch(searchNewLoading(true));
     }
+
+    axiosInstance
+      .post(`${searchProduct}`, { search: searchWord, page })
+      .then(({ data }) => {
+        if (data) {
+          {
+            page === 1
+              ? dispatch({
+                  type: SEARCH,
+                  payload: data,
+                })
+              : dispatch({
+                  type: NEW_SEARCH,
+                  payload: data,
+                });
+          }
+        }
+      })
+      .catch((err) => console.log(err));
   };
 };
