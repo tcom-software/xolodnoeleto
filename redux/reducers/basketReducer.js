@@ -44,9 +44,14 @@ const initialState = {
   },
   basketBuyInputs: [
     {
-      name: "fullName",
+      name: "name",
       type: "input",
-      label: "Ф.И.О.",
+      label: "Имя",
+    },
+    {
+      name: "surname",
+      type: "input",
+      label: "Фамилия",
     },
     {
       name: "email",
@@ -59,7 +64,7 @@ const initialState = {
       label: "Телефон",
     },
     {
-      name: "addressDelivery",
+      name: "deliveryAddress",
       type: "input",
       label: "Адрес доставки",
     },
@@ -124,7 +129,7 @@ const initialState = {
     },
   },
   total_amount: 0,
-  stepState: 1,
+  stepState: 3,
   stepsResult: {
     stepOne: false,
     stepTwo: false,
@@ -132,6 +137,19 @@ const initialState = {
     stepTree: false,
     stepFour: false,
     stepSix: false,
+  },
+  selectedData: {
+    comment: "",
+    delivery_address: "",
+    delivery_type: "",
+    email: "",
+    last_name: "",
+    name: "",
+    payment_type: "",
+    phone_number: "",
+    products: {
+      14: "",
+    },
   },
 };
 
@@ -250,6 +268,14 @@ const basketReducer = (state = initialState, action) => {
       return {
         ...state,
         stepState: action.payload,
+      };
+    case types.SELECTED_DATA_MANIPULATION:
+      return {
+        ...state,
+        selectedData: {
+          ...state.selectedData,
+          ...action.payload,
+        },
       };
     default:
       return { ...state };

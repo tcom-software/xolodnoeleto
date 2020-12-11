@@ -125,7 +125,7 @@ const initialState = {
       validation: /^[a-zA-Z0-9 ]{2,30}$/,
       placeholder: "Адрес...",
     },
-    addressDelivery: {
+    deliveryAddress: {
       errorMessage: "Пожалуйста, напишите полный адрес",
       validation: /^[a-zA-Z0-9 ]{2,30}$/,
       placeholder: "Адрес...",

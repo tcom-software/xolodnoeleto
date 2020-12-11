@@ -10,6 +10,7 @@ const DeliveryOrPayment = ({
   changeOrderStep,
   updateStepsResult,
   makeInitialStepsResult,
+  manipulationSelectedData,
 }) => {
   const [typeId, setTypeId] = useState(1);
 
@@ -108,12 +109,15 @@ const DeliveryOrPayment = ({
           height="47px"
           onClick={() => {
             if (stepState === 4) {
+              manipulationSelectedData({
+                delivery_type: data[typeId].title,
+              });
               updateStepsResult({ step: "stepFour", value: typeId });
             } else if (stepState === 5) {
+              makeInitialStepsResult({
+                payment_type: data[typeId].title,
+              });
               updateStepsResult({ step: "stepFive", value: typeId });
-              // Here will be axios call for sending info to backend and update redux steps object
-
-              makeInitialStepsResult();
             }
             changeOrderStep(stepState + 1);
           }}

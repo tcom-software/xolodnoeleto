@@ -13,6 +13,7 @@ import {
   decrementBasketCount,
   deleteBasketItem,
   incrementBasketCount,
+  manipulationSelectedData,
   updateStepsResult,
 } from "redux/actions/basketActions";
 
@@ -42,6 +43,7 @@ const WebCase = ({
   incrementFavorite,
   decrementFavorite,
   deleteFavoriteItem,
+  manipulationSelectedData,
 }) => {
   return (
     <div>
@@ -172,6 +174,19 @@ const WebCase = ({
             onClick={() => {
               updateStepsResult({ step: "stepTwo", value: true });
               changeOrderStep(stepState + 1);
+              const newArray = Object.values(basketItems).reduce(
+                (acc: any, { id, count }) => {
+                  return {
+                    ...acc,
+                    products: {
+                      ...acc["products"],
+                      [id]: count,
+                    },
+                  };
+                },
+                {}
+              );
+              manipulationSelectedData(newArray);
             }}
           >
             ДАЛЕЕ
@@ -194,6 +209,7 @@ const mapDispatchToProps = (dispatch) => ({
   incrementFavorite: (data) => dispatch(incrementFavoriteCount(data)),
   decrementFavorite: (data) => dispatch(decrementFavoriteCount(data)),
   deleteFavoriteItem: (data) => dispatch(deleteFavoriteItem(data)),
+  manipulationSelectedData: (data) => dispatch(manipulationSelectedData(data)),
 });
 
 const mapStateToProps = ({ basket: { stepState } }) => ({

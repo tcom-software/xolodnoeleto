@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import {
   changeOrderStep,
   makeInitialStepsResult,
+  manipulationSelectedData,
   updateStepsResult,
 } from "redux/actions/basketActions";
 
@@ -14,6 +15,7 @@ const mapDispatchToProps = (dispatch) => ({
   changeOrderStep: (step) => dispatch(changeOrderStep(step)),
   updateStepsResult: (data) => dispatch(updateStepsResult(data)),
   makeInitialStepsResult: () => dispatch(makeInitialStepsResult()),
+  manipulationSelectedData: (data) => dispatch(manipulationSelectedData(data)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DeliveryOrPayment);

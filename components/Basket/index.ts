@@ -9,6 +9,7 @@ const mapStateToProps = ({
     basketBuyInputs,
     stepsContentData,
     stepsResult,
+    selectedData,
   },
   general: {
     isMobile,
@@ -25,6 +26,7 @@ const mapStateToProps = ({
   stepState,
   basketSteps,
   stepsResult,
+  selectedData,
   basketBuyInputs,
   stepsContentData,
   basketItems: items,

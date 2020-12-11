@@ -39,7 +39,7 @@ export const actionSearch = (searchWord, page = 1) => {
     }
 
     axiosInstance
-      .post(`${searchProduct}`, { search: searchWord, page })
+      .post(`${searchProduct}?page=${page}`, { search: searchWord, page })
       .then(({ data }) => {
         if (data) {
           {

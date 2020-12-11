@@ -6,6 +6,7 @@ export const DELETE_BASKET_ITEM = "DELETE_BASKET_ITEM";
 export const ADD_BASKET = "ADD_BASKET";
 export const UPDATE_STEPS_RESULT = "UPDATE_STEPS_RESULT";
 export const INITIAL_STEPS_RESULT = "INITIAL_STEPS_RESULT";
+export const SELECTED_DATA_MANIPULATION = "SELECTED_DATA_MANIPULATION";
 
 export const addBasket = (product) => ({
   type: ADD_BASKET,
@@ -43,4 +44,9 @@ export const basketInitialState = () => ({
 export const changeOrderStep = (step) => ({
   type: CHANGE_ORDER_STATE,
   payload: step,
+});
+
+export const manipulationSelectedData = (data) => ({
+  type: SELECTED_DATA_MANIPULATION,
+  payload: data,
 });

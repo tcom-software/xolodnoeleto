@@ -7,18 +7,19 @@ const BasketBuyForm = ({
   stepState,
   basketBuyInputs,
   updateStepsResult,
+  manipulationSelectedData,
 }) => {
   const [errorState, setErrorState] = useState([]);
   const [info, setInfo] = useState({
-    fullName: "",
+    name: "",
+    surname: "",
     email: "",
     phone: "",
-    addressDelivery: "",
+    deliveryAddress: "",
     commentByOrder: "",
   });
 
   const handleChange = (name) => (value) => setInfo({ ...info, [name]: value });
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -65,7 +66,30 @@ const BasketBuyForm = ({
           >
             НАЗАД
           </Button>
-          <Button type="primary" width="170px" height="47px">
+          <Button
+            type="primary"
+            width="170px"
+            height="47px"
+            onClick={() => {
+              const {
+                email,
+                name,
+                surname,
+                phone,
+                commentByOrder,
+                deliveryAddress,
+              } = info;
+
+              manipulationSelectedData({
+                email,
+                name: name,
+                last_name: surname,
+                phone_number: phone,
+                comment: commentByOrder,
+                delivery_address: deliveryAddress,
+              });
+            }}
+          >
             ДАЛЕЕ
           </Button>
         </div>
