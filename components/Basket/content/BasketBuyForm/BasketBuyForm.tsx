@@ -30,7 +30,7 @@ const BasketBuyForm = ({
     if (basketBuyInputs.length > 0) {
       setErrorState(basketBuyInputs);
     } else {
-      updateStepsResult({ step: "stepTree", value: info });
+      updateStepsResult({ step: "stepTree", value: true });
       changeOrderStep(stepState + 1);
     }
   };

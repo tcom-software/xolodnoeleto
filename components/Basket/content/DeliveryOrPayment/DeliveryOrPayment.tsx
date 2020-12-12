@@ -112,14 +112,15 @@ const DeliveryOrPayment = ({
               manipulationSelectedData({
                 delivery_type: data[typeId].title,
               });
-              updateStepsResult({ step: "stepFour", value: typeId });
+              updateStepsResult({ step: "stepFour", value: true });
+              changeOrderStep(stepState + 1);
             } else if (stepState === 5) {
-              makeInitialStepsResult({
+              manipulationSelectedData({
                 payment_type: data[typeId].title,
               });
-              updateStepsResult({ step: "stepFive", value: typeId });
+              updateStepsResult({ step: "stepFive", value: true });
+              // makeInitialStepsResult()
             }
-            changeOrderStep(stepState + 1);
           }}
         >
           {stepState !== 5 ? "ДАЛЕЕ" : "ОФОРМИТЬ ЗАКАЗ"}

@@ -147,9 +147,7 @@ const initialState = {
     name: "",
     payment_type: "",
     phone_number: "",
-    products: {
-      14: "",
-    },
+    products: {},
   },
 };
 

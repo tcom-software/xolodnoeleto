@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import theme from "styles/theme";
-import { DataEmpty, GlobalSection } from "@famous";
-import { Container, GridSection } from "./styles";
 import WebCase from "../ProductListView/WebCase";
-import MobileCase from "../ProductListView/MobileCase";
 import TitleNavigation from "../TitleNavigation";
+import { Container, GridSection } from "./styles";
+import getBasketStepInfo from "./getBasketStepInfo";
+import { DataEmpty, GlobalSection } from "@famous";
+import MobileCase from "../ProductListView/MobileCase";
+
 import {
   AboutOrder,
   StepInformation,
@@ -12,35 +14,50 @@ import {
   OrderDone,
   DeliveryOrPayment,
 } from "./content";
+import { object } from "prop-types";
 
 const Basket = ({
   basketItems,
   isMobile,
   stepState,
   basketSteps,
+  selectedData,
+  stepsResult,
   stepsContentData: { stepFour, stepFive },
 }) => {
-  const customSwitch = (stepState) => {
-    switch (stepState) {
-      case 1:
-        return basketSteps.stepOne;
-      case 2:
-        return basketSteps.stepTwo;
-      case 3:
-        return basketSteps.stepThree;
-      case 4:
-        return basketSteps.stepFour;
-      case 5:
-        return basketSteps.stepFive;
-      case 6:
-        return basketSteps.stepSix;
-      default:
-        return basketSteps.stepOne;
-    }
-  };
-  const stepObject = customSwitch(stepState);
-
   const itemsLength = Object.keys(basketItems).length;
+  const stepObject = getBasketStepInfo(stepState, basketSteps);
+
+  useEffect(() => {
+    let orderState = false;
+    for (let key in stepsResult) {
+      if (key == "stepSix") {
+        continue;
+      } else if (stepsResult[key]) {
+        orderState = true;
+      } else {
+        orderState = false;
+        break;
+      }
+    }
+
+    if (orderState) {
+      let checkSelectedData = false;
+      for (let key in selectedData) {
+        if (
+          (key == "products" && Object.keys(selectedData[key]).length > 0) ||
+          (typeof selectedData[key] === "string" && selectedData[key] != "")
+        ) {
+          checkSelectedData = true;
+        } else {
+          checkSelectedData = false;
+          break;
+        }
+      }
+      console.log(checkSelectedData, "-------checkSelectedData");
+      // here will be axios which direction to Arman backend
+    }
+  }, [stepsResult, selectedData]);
 
   if (itemsLength === 0) {
     return (
