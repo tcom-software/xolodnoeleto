@@ -38,8 +38,6 @@ const Products = ({
       object = selectedData;
     }
 
-    console.log(object);
-
     getCatalogueProductLoadingTrigger(true);
     if (selectedDataLength === 0 && Object.keys(object).length > 0) {
       updateSelectedDataFromUrl(object);
