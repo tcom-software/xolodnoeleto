@@ -4,8 +4,21 @@ import theme from "styles/theme";
 const DeliveryContainer = styled.div`
   display: grid !important;
   grid-template-columns: 1fr;
+  position: relative;
 
-  & > div:first-of-type {
+  .background-loading {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #d6d6d6db;
+    display: ${({ loading }) => (loading ? "flex" : "none")};
+    align-items: center;
+    justify-content: center;
+  }
+
+  & > div:nth-of-type(2) {
     display: grid !important;
     align-items: flex-start;
     grid-template-columns: 2fr 1fr;
@@ -40,7 +53,7 @@ const DeliveryContainer = styled.div`
       grid-template-columns: 1fr;
     }
   }
-  & > div:last-of-type {
+  & > div:nth-of-type(3) {
     display: flex;
     justify-content: space-between;
   }

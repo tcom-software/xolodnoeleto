@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import theme from "styles/theme";
 import { makePrice } from "@utils";
-import { Button, CheckBox, SvgIcon } from "@famous";
+import { Button, CheckBox, Loading, SvgIcon } from "@famous";
 import { DeliveryContainer, DeliveryItem, PriceSpan } from "./styles";
 
 const DeliveryOrPayment = ({
+  loading,
   data,
   stepState,
   changeOrderStep,
@@ -13,9 +14,11 @@ const DeliveryOrPayment = ({
   manipulationSelectedData,
 }) => {
   const [typeId, setTypeId] = useState(1);
-
   return (
-    <DeliveryContainer>
+    <DeliveryContainer loading={loading}>
+      <div className="background-loading">
+        <Loading />
+      </div>
       <div>
         <div>
           {Object.values(data).map(

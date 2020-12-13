@@ -18,6 +18,7 @@ module.exports = {
     getProduct: "/api/getProduct",
     getFilters: "/api/getFilterData",
     searchProduct: "/api/searchProduct",
+    makeOrder: "/api/checkout",
 
     productsUpload: "/public/uploads/products/",
     seriesUpload: "/public/uploads/product_series/",

@@ -2,6 +2,7 @@ import * as types from "../actions/basketActions";
 
 const initialState = {
   items: {},
+  loading: false,
   basketSteps: {
     stepOne: {
       top: [],
@@ -129,7 +130,7 @@ const initialState = {
     },
   },
   total_amount: 0,
-  stepState: 3,
+  stepState: 5,
   stepsResult: {
     stepOne: false,
     stepTwo: false,
@@ -195,6 +196,30 @@ const basketReducer = (state = initialState, action) => {
           stepFour: false,
           stepFive: false,
           stepSix: false,
+        },
+      };
+    case types.MAKE_ORDER:
+      return {
+        ...state,
+        stepState: 6,
+        stepsResult: {
+          stepOne: false,
+          stepTwo: false,
+          stepFive: false,
+          stepTree: false,
+          stepFour: false,
+          stepSix: false,
+        },
+        selectedData: {
+          comment: "",
+          delivery_address: "",
+          delivery_type: "",
+          email: "",
+          last_name: "",
+          name: "",
+          payment_type: "",
+          phone_number: "",
+          products: {},
         },
       };
     case types.UPDATE_STEPS_RESULT:
@@ -274,6 +299,11 @@ const basketReducer = (state = initialState, action) => {
           ...state.selectedData,
           ...action.payload,
         },
+      };
+    case types.BASKET_LOADING:
+      return {
+        ...state,
+        loading: !state.loading,
       };
     default:
       return { ...state };

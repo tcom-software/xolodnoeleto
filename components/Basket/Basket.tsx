@@ -1,20 +1,11 @@
 import React, { useEffect } from "react";
 import theme from "styles/theme";
-import WebCase from "../ProductListView/WebCase";
 import TitleNavigation from "../TitleNavigation";
 import { Container, GridSection } from "./styles";
-import getBasketStepInfo from "./getBasketStepInfo";
 import { DataEmpty, GlobalSection } from "@famous";
-import MobileCase from "../ProductListView/MobileCase";
-
-import {
-  AboutOrder,
-  StepInformation,
-  BasketBuyForm,
-  OrderDone,
-  DeliveryOrPayment,
-} from "./content";
-import { object } from "prop-types";
+import BasketStepsCases from "./BasketStepsCases";
+import getBasketStepInfo from "./getBasketStepInfo";
+import { AboutOrder, OrderDone, StepInformation } from "./content";
 
 const Basket = ({
   basketItems,
@@ -23,11 +14,21 @@ const Basket = ({
   basketSteps,
   selectedData,
   stepsResult,
-  stepsContentData: { stepFour, stepFive },
+  actionMakeOrder,
 }) => {
-  const itemsLength = Object.keys(basketItems).length;
   const stepObject = getBasketStepInfo(stepState, basketSteps);
-
+  const itemsLength = Object.keys(basketItems).length;
+  if (itemsLength === 0) {
+    return (
+      <>
+        <TitleNavigation
+          title="Оформление заказа"
+          currentPage="Оформление Заказа"
+        />
+        <DataEmpty title={"У вас нет продуктов в корзине"} />
+      </>
+    );
+  }
   useEffect(() => {
     let orderState = false;
     for (let key in stepsResult) {
@@ -54,31 +55,20 @@ const Basket = ({
           break;
         }
       }
-      console.log(checkSelectedData, "-------checkSelectedData");
-      // here will be axios which direction to Arman backend
+      if (checkSelectedData) {
+        actionMakeOrder(selectedData);
+      }
     }
   }, [stepsResult, selectedData]);
 
-  if (itemsLength === 0) {
-    return (
-      <>
-        <TitleNavigation
-          title="Оформление заказа"
-          currentPage="Оформление Заказа"
-        />
-        <DataEmpty title={"У вас нет продуктов в корзине"} />
-      </>
-    );
-  }
-
   return (
     <Container>
-      {stepState === 6 ? null : (
+      {stepState !== 6 ? (
         <TitleNavigation
           title="Оформление заказа"
           currentPage="Оформление Заказа"
         />
-      )}
+      ) : null}
 
       <GlobalSection
         isMobile={true}
@@ -92,58 +82,9 @@ const Basket = ({
           <OrderDone />
         ) : (
           <GridSection stepState={stepState} isMobile={isMobile}>
-            {stepState === 1 ? (
-              isMobile ? (
-                <MobileCase basketItems={basketItems} functionalType="basket" />
-              ) : (
-                <WebCase
-                  basketItems={basketItems}
-                  header={true}
-                  borderShow={true}
-                  functionalType="basket"
-                />
-              )
-            ) : null}
-
-            {stepState == 2 ? (
-              <StepInformation stepStructure={stepObject}>
-                {stepState == 2 ? (
-                  isMobile ? (
-                    <MobileCase
-                      basketItems={basketItems}
-                      functionalType="basket"
-                    />
-                  ) : (
-                    <WebCase
-                      basketItems={basketItems}
-                      borderShow={true}
-                      functionalType="basket"
-                    />
-                  )
-                ) : null}
-              </StepInformation>
-            ) : null}
-
-            {stepState == 3 ? (
-              <StepInformation stepStructure={stepObject}>
-                <BasketBuyForm />
-              </StepInformation>
-            ) : null}
-
-            {stepState == 4 ? (
-              <StepInformation stepStructure={stepObject}>
-                <DeliveryOrPayment data={stepFour} />
-              </StepInformation>
-            ) : null}
-
-            {stepState == 5 ? (
-              <StepInformation stepStructure={stepObject}>
-                <DeliveryOrPayment data={stepFive} />
-              </StepInformation>
-            ) : null}
+            <BasketStepsCases />
 
             <AboutOrder />
-
             {stepState === 1 ? (
               <StepInformation stepStructure={stepObject} />
             ) : null}

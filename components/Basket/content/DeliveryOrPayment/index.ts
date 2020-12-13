@@ -7,7 +7,8 @@ import {
   updateStepsResult,
 } from "redux/actions/basketActions";
 
-const mapStateToProps = ({ basket: { stepState } }) => ({
+const mapStateToProps = ({ basket: { stepState, loading } }) => ({
+  loading,
   stepState,
 });
 
