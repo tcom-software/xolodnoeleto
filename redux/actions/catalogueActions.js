@@ -3,6 +3,7 @@ export const OPEN_FILTERS_TOGGLE = "OPEN_FILTERS_TOGGLE";
 export const GET_CATALOGUE_FILTERS = "GET_CATALOGUE_FILTERS";
 export const GET_CATALOGUE_PRODUCTS = "GET_CATALOGUE_PRODUCTS";
 export const MANIPULATION_RADIO_DATA = "MANIPULATION_RADIO_DATA";
+export const UPDATE_SELECTED_ORDER_BY = "UPDATE_SELECTED_ORDER_BY";
 export const FIRST_SECOND_LEVEL_ARRAY = "FIRST_SECOND_LEVEL_ARRAY";
 export const UPDATE_SELECTED_DATA_PAGE = "UPDATE_SELECTED_DATA_PAGE";
 export const CATALOGUE_LOADING_TRIGGER = "CATALOGUE_LOADING_TRIGGER";
@@ -144,6 +145,11 @@ export const updateSelectedDataFromUrl = (data) => ({
 export const updateSelectedDataPage = (page) => ({
   type: UPDATE_SELECTED_DATA_PAGE,
   payload: page,
+});
+
+export const updateSelectedOrderBy = (type) => ({
+  type: UPDATE_SELECTED_ORDER_BY,
+  payload: type,
 });
 
 export const clearFiltersSelectedData = () => ({

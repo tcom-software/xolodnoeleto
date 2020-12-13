@@ -18,6 +18,10 @@ const createObjectFromUrl = (urlObj) => {
       case "page":
         newObject["page"] = urlObj[key];
         break;
+      case "orderBy":
+        if (urlObj[key] === "ASC" || urlObj[key] === "DESC")
+          newObject["orderBy"] = urlObj[key];
+        break;
       case "catalogueId":
         break;
       default:
@@ -29,7 +33,9 @@ const createObjectFromUrl = (urlObj) => {
   }
 
   for (let k in newObject) {
-    if (Object.keys(newObject[k]).length === 0) delete newObject[k];
+    if (Object.keys(newObject[k]).length === 0) {
+      delete newObject[k];
+    }
   }
 
   return newObject;

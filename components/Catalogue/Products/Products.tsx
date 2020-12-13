@@ -12,11 +12,13 @@ const Products = ({
   selectedData,
   getCatalogueProducts,
   updateSelectedDataFromUrl,
+  updateSelectedOrderBy,
   getCatalogueProductLoadingTrigger,
 }) => {
   const router = useRouter();
 
   const { catalogueId } = router.query;
+
   useEffect(() => {
     let object;
 
@@ -25,8 +27,18 @@ const Products = ({
     if (selectedDataLength === 0) {
       object = createObjectFromUrl(router.query);
     } else {
+      /**
+       *  there was only this piece code "object = selectedData"
+       *  but for orderBy I added this logic
+       * * */
+
+      for (let key in selectedData) {
+        if (selectedData[key] === "") delete selectedData[key];
+      }
       object = selectedData;
     }
+
+    console.log(object);
 
     getCatalogueProductLoadingTrigger(true);
     if (selectedDataLength === 0 && Object.keys(object).length > 0) {
@@ -46,11 +58,17 @@ const Products = ({
           ) : (
             <div className="title-section">
               <p>{total} Товаров</p>
-              <select className="sort-by">
+              <select
+                className="sort-by"
+                onChange={(event) => {
+                  updateSelectedOrderBy(event.target.value);
+                }}
+                value={selectedData.orderBy}
+              >
                 Цена: высокая-низкая
-                <option>Сортировать: по популярности</option>
-                <option>Цена: низкая-высокая</option>
-                <option>Цена: высокая-низкая</option>
+                <option value="">Сортировать: по популярности</option>
+                <option value="ASC">Цена: низкая-высокая</option>
+                <option value="DESC">Цена: высокая-низкая</option>
               </select>
             </div>
           )}

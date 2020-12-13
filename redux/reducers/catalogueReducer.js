@@ -5,21 +5,21 @@ const initialState = {
   filters: {
     Сортировка: [
       {
-        id: "по_популярности",
+        id: "DEFAULT",
         name: "file.checkbox",
         characteristic_id: "sortBy",
         name_ru: "по популярности",
         title: "Сортировка",
       },
       {
-        id: "цена_низкая_высокая",
+        id: "ASC",
         name: "file.checkbox",
         characteristic_id: "sortBy",
         name_ru: "Цена: низкая-высокая",
         title: "Сортировка",
       },
       {
-        id: "цена_высокая_низкая",
+        id: "DESC",
         name: "file.checkbox",
         characteristic_id: "sortBy",
         name_ru: "Цена: высокая-низкая",
@@ -67,7 +67,6 @@ const catalogueReducer = (state = initialState, action) => {
         total,
         productsLoading: false,
       };
-
     case types.GET_CATALOGUE_FILTERS:
       return {
         ...state,
@@ -222,6 +221,15 @@ const catalogueReducer = (state = initialState, action) => {
         selectedData: {
           ...state.selectedData,
           page: action.payload,
+        },
+      };
+    case types.UPDATE_SELECTED_ORDER_BY:
+      return {
+        ...state,
+        selectedData: {
+          ...state.selectedData,
+          orderBy: action.payload,
+          page: state.page ? state.page : 1,
         },
       };
     case types.CLEAR_SELECTED_FILTERS_DATA:
