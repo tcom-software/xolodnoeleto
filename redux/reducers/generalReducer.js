@@ -610,6 +610,8 @@ const initialState = {
       },
     },
   },
+  notificationMessage: "asdfadsf",
+  // notificationMessage: null,
 };
 
 const generalReducer = (state = initialState, action) => {
@@ -623,6 +625,11 @@ const generalReducer = (state = initialState, action) => {
       return {
         ...state,
         isMobile: action.payload <= 768 ? true : false,
+      };
+    case types.NOTIFICATION_MESSAGE:
+      return {
+        ...state,
+        notificationMessage: action.payload,
       };
     default:
       return { ...state };

@@ -14,6 +14,7 @@ import "slick-carousel/slick/slick.scss";
 import "slick-carousel/slick/slick-theme.scss";
 import "rc-slider/assets/index.css";
 import "react-datepicker/dist/react-datepicker.css";
+import { Notification } from "../components/FamousComponents";
 
 const useWidth = () => {
   const handleResize = () => {
@@ -37,6 +38,7 @@ function MyApp(props) {
           <Component {...pageProps} />
         </Layout>
         <BigImage />
+        <Notification />
       </Provider>
     </ThemeProvider>
   );

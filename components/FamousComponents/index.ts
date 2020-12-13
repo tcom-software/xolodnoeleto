@@ -11,3 +11,4 @@ export { default as GlobalSection } from "./GlobalSection";
 export { default as FillFormItem } from "./FillFormItem";
 export { default as Loading } from "./Loading";
 export { default as DataEmpty } from "./DataEmpty";
+export { default as Notification } from "./Notification";
