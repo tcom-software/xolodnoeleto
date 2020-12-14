@@ -12,10 +12,10 @@ const SelectTime = ({
 }) => {
   return (
     <Select
+      name={name}
       forHtml={forHtml}
       title={placeholder}
       data={data}
-      name={name}
       callback={callback}
       errorStyleCallback={() => setErrorStyle(false)}
     >

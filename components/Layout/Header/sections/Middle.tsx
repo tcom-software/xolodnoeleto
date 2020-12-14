@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import Link from "next/link";
-import Search from "./Search";
 import theme from "styles/theme";
 import { GlobalSection, SvgIcon } from "@famous";
 import { openModal } from "redux/actions/modalActions";
+import HeaderWebMobileSearch from "./HeaderWebMobileSearch";
 import SvgIconWaveAnim from "../../../FamousComponents/SvgIconWaveAnim";
 import { LogoCon, MainPanel, PhonesCon, SearchAndFavoriteCon } from "../styles";
-import HeaderWebMobileSearch from "./HeaderWebMobileSearch";
 
 const Middle = ({ phones, openModal, modalType, isMobile }) => {
   const [open, setOpen] = useState(false);

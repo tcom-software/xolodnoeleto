@@ -5,7 +5,16 @@ import ImageUploader from "./ImageUploader";
 import { Input, Textarea } from "../styles";
 
 const Case = ({
-  props: { data, callback, name, type, worksTime, forHtml, textareaHeight },
+  props: {
+    data,
+    callback,
+    name,
+    type,
+    worksTime,
+    forHtml,
+    textareaHeight,
+    required,
+  },
   placeholder,
   handleChange,
   errorStyle,
@@ -15,6 +24,7 @@ const Case = ({
     const [start, stop] = worksTime;
     const needsTime = stop - start;
     const newArray = Array.from(Array(needsTime).keys());
+
     return (
       <SelectTime
         data={data}
@@ -29,17 +39,16 @@ const Case = ({
   } else if (type === "textarea") {
     return (
       <Textarea
-        height={textareaHeight}
         id={forHtml}
         value={data[name]}
         onChange={handleChange}
-        placeholder={placeholder}
+        height={textareaHeight}
         errorStyle={errorStyle}
+        placeholder={placeholder}
       />
     );
   } else if (type === "uploadImages") {
     const { uploadImages }: any = data;
-
     return <ImageUploader callback={callback} uploadImages={uploadImages} />;
   } else if (type === "datepicker") {
     return (

@@ -1,9 +1,20 @@
 import React, { useState } from "react";
+import { array } from "./data";
+import getConfig from "next/config";
+import axiosInstance from "utils/axiosInstance";
 import { ModalContainer, Title, Body } from "./styles";
 import { FillFormItem, Button, SvgIcon } from "@famous";
-import { array } from "./data";
 
-const CallBack = ({ closeModal, worksTime, modalType, modalRef }) => {
+const {
+  publicRuntimeConfig: { makeCallbackRequest },
+} = getConfig();
+
+const CallBack = ({
+  closeModal,
+  worksTime,
+  modalRef,
+  setNotificationMessage,
+}) => {
   const [errorState, setErrorState] = useState([]);
   const [info, setInfo] = useState({
     name: "",
@@ -15,14 +26,36 @@ const CallBack = ({ closeModal, worksTime, modalType, modalRef }) => {
   const handleChange = (name) => (value) => setInfo({ ...info, [name]: value });
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const array = Object.entries(info)
-      .map((e) => (e[1] == "" ? e[0] : null))
+    const requiredInputs = Object.values(array)
+      .map((e) => (e.required === true ? e.name : null))
       .filter((e) => e !== null);
 
-    if (array.length > 0) {
-      setErrorState(array);
+    const checkedRequiredData = requiredInputs
+      .map((e) => (!info[e] ? e : null))
+      .filter((e) => e !== null);
+
+    if (checkedRequiredData.length > 0) {
+      setErrorState(checkedRequiredData);
     } else {
+      const { name, surname, phone, dateForCall, message } = info;
+      axiosInstance
+        .post(
+          makeCallbackRequest,
+          JSON.stringify({
+            name,
+            last_name: surname,
+            phone,
+            hour: dateForCall,
+            comment: message,
+          })
+        )
+        .then(({ data }) => {
+          if (data === "success") {
+            closeModal("");
+            setNotificationMessage("Мы вам перезвоним");
+          }
+        })
+        .catch(console.log);
     }
   };
 
@@ -39,15 +72,16 @@ const CallBack = ({ closeModal, worksTime, modalType, modalRef }) => {
           />
         </Title>
         <Body>
-          {array.map(({ name, type }: any, i: number) => (
+          {array.map(({ name, type, required }: any, i: number) => (
             <FillFormItem
               key={i}
               type={type}
               name={name}
               data={info}
-              initialErrorState={!!~errorState.indexOf(name)}
+              required={required}
               worksTime={worksTime}
               callback={handleChange(name)}
+              initialErrorState={!!~errorState.indexOf(name)}
             />
           ))}
           <Button type="primary" width="100%" height="47px">

@@ -4,9 +4,10 @@ export interface FormValidationInterface {
   name: string;
   type: string;
   worksTime?: any;
+  forHtml?: string;
+  required: boolean;
   initialErrorState: any;
   inputsValidationData: object;
-  forHtml?: string;
   textareaHeight: number | null;
 }
 

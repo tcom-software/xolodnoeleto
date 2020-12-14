@@ -19,6 +19,7 @@ module.exports = {
     getFilters: "/api/getFilterData",
     searchProduct: "/api/searchProduct",
     makeOrder: "/api/checkout",
+    makeCallbackRequest: "api/oneClickOrder",
 
     productsUpload: "/public/uploads/products/",
     seriesUpload: "/public/uploads/product_series/",

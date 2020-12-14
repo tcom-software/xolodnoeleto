@@ -8,8 +8,9 @@ import { FormValidationInterface } from "interfaces";
 const FillFormItem = (props: FormValidationInterface) => {
   const {
     data,
-    callback,
     name,
+    callback,
+    required,
     initialErrorState,
     inputsValidationData,
   } = props;
@@ -39,9 +40,10 @@ const FillFormItem = (props: FormValidationInterface) => {
   };
 
   return (
-    <InputContainer errorStyle={errorStyle}>
+    <InputContainer errorStyle={errorStyle} required={required}>
       <Cases
         props={props}
+        required={required}
         validation={validation}
         errorMessage={errorMessage}
         placeholder={placeholder}
@@ -49,7 +51,11 @@ const FillFormItem = (props: FormValidationInterface) => {
         errorStyle={errorStyle}
         setErrorStyle={setErrorStyle}
       />
-      <Message errorStyle={errorStyle}>{errorMessage}</Message>
+      {required ? (
+        <Message errorStyle={errorStyle}>{errorMessage}</Message>
+      ) : (
+        <Message>_</Message>
+      )}
     </InputContainer>
   );
 };
