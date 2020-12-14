@@ -73,6 +73,7 @@ export interface productInterface {
   buttonBorder?: boolean;
   addBasket: any;
   superPrice?: boolean;
+  setNotificationMessage?: any;
 }
 export interface GlobalSectionInterface {
   children?: any;

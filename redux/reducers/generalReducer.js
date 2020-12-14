@@ -610,8 +610,7 @@ const initialState = {
       },
     },
   },
-  notificationMessage: "asdfadsf",
-  // notificationMessage: null,
+  notificationMessage: null,
 };
 
 const generalReducer = (state = initialState, action) => {

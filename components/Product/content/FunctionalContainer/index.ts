@@ -7,6 +7,7 @@ import {
   incrementProductCount,
   decrementProductCount,
 } from "redux/actions/productActions";
+import { setNotificationMessage } from "../../../../redux/actions/generalActions";
 
 const mapStateToProps = ({
   general: { isMobile },
@@ -22,6 +23,8 @@ const mapDispatchToProps = (dispatch) => ({
   addBasket: (product) => dispatch(addBasket(product)),
   incrementProduct: () => dispatch(incrementProductCount()),
   decrementProduct: () => dispatch(decrementProductCount()),
+  setNotificationMessage: (message) =>
+    dispatch(setNotificationMessage(message)),
 });
 
 export default connect(

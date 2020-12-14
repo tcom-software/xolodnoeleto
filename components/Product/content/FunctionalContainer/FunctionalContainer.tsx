@@ -15,6 +15,7 @@ const FunctionalContainer = ({
   addCompareProduct,
   incrementProduct,
   decrementProduct,
+  setNotificationMessage,
 }: any) => {
   const { product, photos } = productInfo;
   const { brand, model, price, count, articule, manufacturer_logo } = product;
@@ -36,7 +37,7 @@ const FunctionalContainer = ({
             width={20}
             height={20}
             color={"#202020"}
-            callback={() =>
+            callback={() => {
               addCompareProduct({
                 product: {
                   ...productInfo.product,
@@ -44,20 +45,22 @@ const FunctionalContainer = ({
                 },
                 photo: mainImages,
                 characteristics: productInfo.characteristics,
-              })
-            }
+              });
+              setNotificationMessage("Товар добавлен в список для сравнение");
+            }}
           />
           <SvgIcon
             type={"favorite"}
             width={20}
             height={20}
             color={"#202020"}
-            callback={() =>
+            callback={() => {
               addToFavorite({
                 ...product,
                 ...getImages(photos, articule),
-              })
-            }
+              });
+              setNotificationMessage("Товар добавлен в избранное");
+            }}
           />
         </div>
       </div>
@@ -88,12 +91,13 @@ const FunctionalContainer = ({
             type="primary"
             width="170px"
             height="50px"
-            onClick={() =>
+            onClick={() => {
               addBasket({
                 ...product,
                 ...getImages(photos, articule),
-              })
-            }
+              });
+              setNotificationMessage("Товар добавлен в корзину");
+            }}
           >
             В корзину
           </Button>
@@ -120,12 +124,13 @@ const FunctionalContainer = ({
           type="primary"
           width="100%"
           height="50px"
-          onClick={() =>
+          onClick={() => {
             addBasket({
               ...product,
               ...getImages(photos, articule),
-            })
-          }
+            });
+            setNotificationMessage("Товар добавлен в корзину");
+          }}
         >
           В корзину
         </Button>

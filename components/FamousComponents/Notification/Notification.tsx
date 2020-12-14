@@ -2,30 +2,29 @@ import React, { useEffect } from "react";
 import { NotificationContainer } from "./styles";
 import { useSpring, animated } from "react-spring";
 
-const Notification = ({ notificationMessage, setNotificationMessage }) => {
+const Notification = ({ notificationMessage: msg, setNotificationMessage }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (notificationMessage != null) {
+      if (msg != null) {
         setNotificationMessage(null);
       }
     }, 5000);
     return () => clearTimeout(timer);
-  }, [notificationMessage]);
+  }, [msg]);
 
   const props = useSpring({
-    to: { transform: `translateX(0px)` },
-    from: { transform: `translateX(300px)` },
+    to: {
+      transform: `translateX(${msg ? "-200px" : 0})`,
+      opacity: msg ? 1 : 0,
+    },
+    from: { transform: `translateX(0px)`, opacity: 0 },
   });
 
-  if (notificationMessage) {
-    return (
-      <NotificationContainer>
-        <animated.div style={props}>i will fade</animated.div>
-      </NotificationContainer>
-    );
-  } else {
-    return null;
-  }
+  return (
+    <NotificationContainer>
+      <animated.div style={props}>{msg}</animated.div>
+    </NotificationContainer>
+  );
 };
 
 export default Notification;

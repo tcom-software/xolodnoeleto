@@ -18,6 +18,7 @@ const ProductGridView = ({
   item: product,
   addBasket,
   buttonBorder,
+  setNotificationMessage,
 }: productInterface) => {
   const {
     id,
@@ -69,6 +70,8 @@ const ProductGridView = ({
             onClick={(e) => {
               e.preventDefault();
               addBasket(product);
+              console.log(111111);
+              setNotificationMessage("Товар добавлен в корзину");
             }}
           >
             В корзину
