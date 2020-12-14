@@ -60,8 +60,8 @@ const Input = styled.input`
   border: 1px solid ${theme.input.borderColor};
   color: ${theme.body.color};
 
-  ${({ errorStyle, required }) => {
-    if (errorStyle && required) {
+  ${({ errorStyle }) => {
+    if (errorStyle) {
       return css`
         transition: 0.5s all ease-in;
         border: 1px solid ${theme.error.color};

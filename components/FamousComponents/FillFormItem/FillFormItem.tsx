@@ -40,7 +40,7 @@ const FillFormItem = (props: FormValidationInterface) => {
   };
 
   return (
-    <InputContainer errorStyle={errorStyle} required={required}>
+    <InputContainer errorStyle={errorStyle}>
       <Cases
         props={props}
         required={required}
@@ -51,11 +51,7 @@ const FillFormItem = (props: FormValidationInterface) => {
         errorStyle={errorStyle}
         setErrorStyle={setErrorStyle}
       />
-      {required ? (
-        <Message errorStyle={errorStyle}>{errorMessage}</Message>
-      ) : (
-        <Message>_</Message>
-      )}
+      <Message errorStyle={errorStyle}>{errorMessage}</Message>
     </InputContainer>
   );
 };

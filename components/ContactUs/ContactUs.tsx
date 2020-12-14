@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import theme from "styles/theme";
-import { GlobalSection } from "@famous";
-import TitleNavigation from "../TitleNavigation";
-import { ContactUsContainer } from "./styles";
-import ProductList from "../ProductsList";
 import { array } from "./data";
 import Form from "./Form";
+import theme from "styles/theme";
+import { ContactUsContainer } from "./styles";
+import ProductList from "../ProductsList";
+import { GlobalSection } from "@famous";
 import Information from "./Information";
+import TitleNavigation from "../TitleNavigation";
+import { formValidation } from "@utils";
 
 const ContactUs = ({ seenProducts }) => {
   const [info, setInfo] = useState({
@@ -23,14 +24,11 @@ const ContactUs = ({ seenProducts }) => {
   const handleChange = (name) => (value) => setInfo({ ...info, [name]: value });
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const array = Object.entries(info)
-      .map((e) => (e[1] == "" ? e[0] : null))
-      .filter((e) => e !== null);
-
-    if (array.length > 0) {
-      setErrorState(array);
+    const checkedInfo = formValidation(array, info);
+    if (checkedInfo.length > 0) {
+      setErrorState(checkedInfo);
     } else {
+      setErrorState([]);
     }
   };
 

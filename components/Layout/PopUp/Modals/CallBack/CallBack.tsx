@@ -4,6 +4,7 @@ import getConfig from "next/config";
 import axiosInstance from "utils/axiosInstance";
 import { ModalContainer, Title, Body } from "./styles";
 import { FillFormItem, Button, SvgIcon } from "@famous";
+import { formValidation } from "@utils";
 
 const {
   publicRuntimeConfig: { makeCallbackRequest },
@@ -26,17 +27,13 @@ const CallBack = ({
   const handleChange = (name) => (value) => setInfo({ ...info, [name]: value });
   const handleSubmit = (e) => {
     e.preventDefault();
-    const requiredInputs = Object.values(array)
-      .map((e) => (e.required === true ? e.name : null))
-      .filter((e) => e !== null);
+    const checkedInfo = formValidation(array, info);
+    console.log(checkedInfo);
 
-    const checkedRequiredData = requiredInputs
-      .map((e) => (!info[e] ? e : null))
-      .filter((e) => e !== null);
-
-    if (checkedRequiredData.length > 0) {
-      setErrorState(checkedRequiredData);
+    if (checkedInfo.length > 0) {
+      setErrorState(checkedInfo);
     } else {
+      setErrorState([]);
       const { name, surname, phone, dateForCall, message } = info;
       axiosInstance
         .post(
