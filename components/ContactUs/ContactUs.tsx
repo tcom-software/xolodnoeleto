@@ -16,10 +16,12 @@ const ContactUs = ({ seenProducts }) => {
     phone: "",
     comment: "",
   });
-  const [errorState, setErrorState] = useState([]);
 
-  const firstPiece = [array[0], array[1], array[2]];
-  const secondPiece = [array[3]];
+  const [errorState, setErrorState] = useState([]);
+  const willChangeArray = [...array];
+  const secondPiece = [willChangeArray[willChangeArray.length - 1]];
+  willChangeArray.pop();
+  const firstPiece = [...willChangeArray];
 
   const handleChange = (name) => (value) => setInfo({ ...info, [name]: value });
   const handleSubmit = (e) => {

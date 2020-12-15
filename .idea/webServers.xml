@@ -3,14 +3,14 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="d1d29362-45a7-4edf-a9f7-a788c1a281c2" name="hosting" url="http://116.202.217.26">
-        <fileTransfer accessType="SFTP" host="116.202.217.26" port="22" sshConfigId="2a320519-94ec-4008-b479-36c95612e05e" sshConfig="root@116.202.217.26:22 password">
+        <fileTransfer accessType="SFTP" host="116.202.217.17" port="22" sshConfigId="2a320519-94ec-4008-b479-36c95612e05e" sshConfig="root@116.202.217.17:22 password">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
         </fileTransfer>
       </webServer>
-      <webServer id="6ef86b22-8380-4140-b991-6ab1076fc1e2" name="Zovani">
-        <fileTransfer accessType="SFTP" host="116.202.217.26" port="22" sshConfigId="2a320519-94ec-4008-b479-36c95612e05e" sshConfig="root@116.202.217.26:22 password">
+      <webServer id="fad84190-2aeb-4126-b2eb-216c4e72c982" name="Zovani">
+        <fileTransfer accessType="SFTP" host="116.202.217.17" port="22" sshConfigId="2a320519-94ec-4008-b479-36c95612e05e" sshConfig="root@116.202.217.17:22 password">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
