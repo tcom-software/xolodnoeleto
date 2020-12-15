@@ -10,6 +10,10 @@ const SelectTime = ({
   placeholder,
   setErrorStyle,
 }) => {
+  const timesZone = newArray.map((e) =>
+    start + e < 10 ? `0${start + e}:00` : `${start + e}:00`
+  );
+
   return (
     <Select
       name={name}
@@ -20,12 +24,13 @@ const SelectTime = ({
       errorStyleCallback={() => setErrorStyle(false)}
     >
       {newArray.map((e: number, i: number) => {
-        const format = start + e < 10 ? `0${start + e}:00` : `${start + e}:00`;
-        return (
-          <option key={i} value={format}>
-            {format}
-          </option>
-        );
+        if (timesZone[i + 1]) {
+          return (
+            <option key={i} value={`${timesZone[i]} - ${timesZone[i + 1]}`}>
+              {timesZone[i]} - {timesZone[i + 1]}
+            </option>
+          );
+        }
       })}
     </Select>
   );

@@ -23,7 +23,7 @@ const Case = ({
   if (type === "select" && worksTime) {
     const [start, stop] = worksTime;
     const needsTime = stop - start;
-    const newArray = Array.from(Array(needsTime).keys());
+    const newArray = Array.from(Array(needsTime + 1).keys()); // + 1 add 22:00
 
     return (
       <SelectTime
