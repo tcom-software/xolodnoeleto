@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import { ModalContainer, Title, Body } from "./styles";
 import { FillFormItem, Button, SvgIcon } from "@famous";
 import { array } from "./data";
-import { formValidation } from "@utils";
+import { formValidation, axiosInstance } from "@utils";
+import getConfig from "next/config";
+
+const {
+  publicRuntimeConfig: { addReview },
+} = getConfig();
 
 const AddReview = ({ modalRef, closeModal, setNotificationMessage }) => {
   const [errorState, setErrorState] = useState([]);
@@ -20,13 +25,33 @@ const AddReview = ({ modalRef, closeModal, setNotificationMessage }) => {
     e.preventDefault();
     const checkedInfo = formValidation(array, info);
 
-    console.log(checkedInfo, "------------checkedInf");
-
-    // uploadImages
     if (checkedInfo.length > 0) {
       setErrorState([...checkedInfo]);
     } else {
+      const { fullName, address, date, message, rating, uploadImages } = info;
       setErrorState([]);
+
+      const formData = new FormData();
+      const day = info.date.getUTCDate();
+      const month = info.date.getUTCMonth();
+      const year = info.date.getUTCFullYear();
+
+      formData.append("rating", rating);
+      formData.append("address", address);
+      formData.append("comment", message);
+      formData.append("full_name", fullName);
+      formData.append("date", `${year}-${month + 1}-${day + 1}`);
+      uploadImages.forEach((e) => formData.append("file[]", e.file));
+
+      axiosInstance
+        .post(addReview, formData)
+        .then(({ data }) => {
+          if (data === "success") {
+            closeModal("");
+            setNotificationMessage("ваш отзыв в обработке");
+          }
+        })
+        .catch(console.log);
     }
   };
 

@@ -9,13 +9,13 @@ const Datepicker = ({ name, data, callback, errorStyle, placeholder }) => {
     >
       <DatePicker
         selected={data[name]}
-        onChange={(data) => {
+        onChange={(data) =>
           callback({
             target: {
               value: data,
             },
-          });
-        }}
+          })
+        }
         placeholderText={placeholder}
       />
       <SvgIcon type={"arrowUp"} width={10} height={10} />

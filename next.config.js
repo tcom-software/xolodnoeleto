@@ -21,6 +21,7 @@ module.exports = {
     makeOrder: "/api/checkout",
     callbackRequest: "api/oneClickOrder",
     contactUs: "/api/contactUs",
+    addReview: "/api/review",
 
     productsUpload: "/public/uploads/products/",
     seriesUpload: "/public/uploads/product_series/",
