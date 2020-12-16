@@ -167,6 +167,11 @@ const initialState = {
       validation: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
       placeholder: "@gmail.com",
     },
+    rating: {
+      errorMessage: "",
+      validation: /^[0-9]{0,1}$/,
+      placeholder: "",
+    },
   },
   aboutUsCards: [
     {

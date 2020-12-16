@@ -1,6 +1,7 @@
 import React from "react";
 import Datepicker from "./Datepicker";
 import SelectTime from "./SelectTime";
+import Rating from "./Rating";
 import ImageUploader from "./ImageUploader";
 import { Input, Textarea } from "../styles";
 
@@ -27,17 +28,6 @@ const Case = ({
         setErrorStyle={setErrorStyle}
       />
     );
-  } else if (type === "textarea") {
-    return (
-      <Textarea
-        id={forHtml}
-        value={data[name]}
-        onChange={handleChange}
-        height={textareaHeight}
-        errorStyle={errorStyle}
-        placeholder={placeholder}
-      />
-    );
   } else if (type === "uploadImages") {
     const { uploadImages }: any = data;
     return (
@@ -53,6 +43,21 @@ const Case = ({
         name={name}
         data={data}
         callback={handleChange}
+        errorStyle={errorStyle}
+        placeholder={placeholder}
+      />
+    );
+  } else if (type === "rating") {
+    return (
+      <Rating data={data} errorStyle={errorStyle} handleChange={handleChange} />
+    );
+  } else if (type === "textarea") {
+    return (
+      <Textarea
+        id={forHtml}
+        value={data[name]}
+        onChange={handleChange}
+        height={textareaHeight}
         errorStyle={errorStyle}
         placeholder={placeholder}
       />

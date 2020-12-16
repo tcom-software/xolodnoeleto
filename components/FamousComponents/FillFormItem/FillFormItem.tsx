@@ -44,6 +44,7 @@ const FillFormItem = (props: FormValidationInterface) => {
         callback(value);
       }
     }
+
     if (!result) {
       setErrorStyle(true);
     } else {
@@ -56,11 +57,11 @@ const FillFormItem = (props: FormValidationInterface) => {
       <Cases
         props={props}
         required={required}
+        placeholder={placeholder}
         validation={validation}
         errorMessage={errorMessage}
-        placeholder={placeholder}
-        handleChange={handleChange}
         errorStyle={errorStyle}
+        handleChange={handleChange}
         setErrorStyle={setErrorStyle}
       />
       <Message errorStyle={errorStyle}>{errorMessage}</Message>

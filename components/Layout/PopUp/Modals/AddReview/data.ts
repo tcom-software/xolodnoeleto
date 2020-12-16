@@ -24,6 +24,11 @@ const array = [
     type: "textarea",
     required: true,
   },
+  {
+    name: "rating",
+    type: "rating",
+    required: true,
+  },
 ];
 
 export { array };

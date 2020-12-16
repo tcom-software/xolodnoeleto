@@ -31,12 +31,6 @@ const InputContainer = styled.div`
       }
     }
   }
-  .datepicker-error {
-    transition: 0.5s all ease-in;
-    white-space: nowrap;
-    color: ${theme.error.color};
-    border: 1px solid ${theme.error.color};
-  }
 
   .upload-image-container {
     display: flex;
@@ -50,11 +44,19 @@ const InputContainer = styled.div`
     color: ${theme.body.primaryColor};
     border: 1px solid ${theme.body.someBorder};
   }
-  .review-upload-error {
+
+  .review-upload-error,
+  .datepicker-error {
     transition: 0.5s all ease-in;
     white-space: nowrap;
     color: ${theme.error.color};
     border: 1px solid ${theme.error.color};
+  }
+
+  .add-review-rating.add-review-rating > p {
+    transition: 0.5s all ease-in;
+    white-space: nowrap;
+    color: ${theme.error.color};
   }
 `;
 

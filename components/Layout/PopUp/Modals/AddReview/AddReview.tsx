@@ -20,6 +20,8 @@ const AddReview = ({ modalRef, closeModal, setNotificationMessage }) => {
     e.preventDefault();
     const checkedInfo = formValidation(array, info);
 
+    console.log(checkedInfo, "------------checkedInf");
+
     // uploadImages
     if (checkedInfo.length > 0) {
       setErrorState([...checkedInfo]);
@@ -52,34 +54,6 @@ const AddReview = ({ modalRef, closeModal, setNotificationMessage }) => {
               initialErrorState={!!~errorState.indexOf(name)}
             />
           ))}
-          <div className="rating-container">
-            <p className={errorState.indexOf("rating") === -1 ? "" : "error"}>
-              Оценка a
-            </p>
-            <div className="rating">
-              {Array.from(Array(5).keys()).map((e) => {
-                const newE = e + 1;
-                const { rating } = info;
-
-                return (
-                  <span
-                    key={newE}
-                    onClick={() => {
-                      setInfo({ ...info, rating: newE });
-                      const index = errorState.indexOf("rating");
-                      if (index !== -1) {
-                        errorState.splice(index, 1);
-                        setErrorState([...errorState]);
-                      }
-                    }}
-                    className={newE == rating ? "active" : ""}
-                  >
-                    {newE}
-                  </span>
-                );
-              })}
-            </div>
-          </div>
           <Button
             type="default"
             width="100%"
