@@ -28,7 +28,6 @@ const CallBack = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     const checkedInfo = formValidation(array, info);
-    console.log(checkedInfo);
 
     if (checkedInfo.length > 0) {
       setErrorState(checkedInfo);

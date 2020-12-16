@@ -9,6 +9,7 @@ import { GlobalSection } from "@famous";
 import ProductList from "../ProductsList";
 import ShowMoreWrapper from "../ShowMoreWrapper";
 import SubScriptionEmail from "./SubScriptionEmail";
+import ReviewList from "../ReviewList";
 
 const Index = ({ newProducts, superPriceProducts, landing }) => {
   return (
@@ -68,6 +69,17 @@ const Index = ({ newProducts, superPriceProducts, landing }) => {
             buttonTextAlign="center"
             buttonText={[`Показать больше`, `Показать меньше`]}
           />
+        </GlobalSection>
+      </LazyLoad>
+      <LazyLoad>
+        <GlobalSection
+          isWeb={true}
+          isMobile={true}
+          webBackground={theme.body.background}
+          webPadding={"30px 0 30px 0"}
+          mobilePadding={"0"}
+        >
+          <ReviewList />
         </GlobalSection>
       </LazyLoad>
     </>

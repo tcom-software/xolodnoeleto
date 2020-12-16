@@ -9,7 +9,7 @@ const PopUpContainer = styled.div`
   margin: 0 auto;
   background: #fff;
   width: max-content;
-
+  z-index: 9;
   & > div {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
     overflow: hidden;

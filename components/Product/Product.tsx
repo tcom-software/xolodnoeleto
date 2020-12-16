@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { GlobalSection, Loading } from "@famous";
 import theme from "styles/theme";
 import { useRouter } from "next/router";
-import ReviewList from "../ReviewList";
 import ProductList from "../ProductsList";
 import ImageContainer from "./content/ImageContainer";
 import FunctionalContainer from "./content/FunctionalContainer";
@@ -35,15 +34,6 @@ const Product = ({ productInfo, seenProducts, getProductInfo }) => {
         </ProductTopContainer>
       </GlobalSection>
       <Characteristics />
-      <GlobalSection
-        isWeb={true}
-        isMobile={true}
-        webBackground={theme.body.background}
-        webPadding={"30px 0 0 0"}
-        mobilePadding={"0"}
-      >
-        <ReviewList />
-      </GlobalSection>
       <GlobalSection
         isWeb={true}
         isMobile={true}

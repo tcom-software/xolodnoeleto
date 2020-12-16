@@ -2,7 +2,7 @@ import { SvgIcon } from "@famous";
 import React from "react";
 import DatePicker from "react-datepicker";
 
-const Datepicker = ({ data, callback, errorStyle, placeholder }) => {
+const Datepicker = ({ name, data, callback, errorStyle, placeholder }) => {
   return (
     <div
       className={`datepicker-container ${errorStyle ? "datepicker-error" : ""}`}
@@ -10,7 +10,11 @@ const Datepicker = ({ data, callback, errorStyle, placeholder }) => {
       <DatePicker
         selected={data[name]}
         onChange={(data) => {
-          callback(data);
+          callback({
+            target: {
+              value: data,
+            },
+          });
         }}
         placeholderText={placeholder}
       />

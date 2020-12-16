@@ -2,35 +2,55 @@ import React, { useState } from "react";
 import { array } from "./data";
 import Form from "./Form";
 import theme from "styles/theme";
-import { ContactUsContainer } from "./styles";
-import ProductList from "../ProductsList";
+import getConfig from "next/config";
 import { GlobalSection } from "@famous";
 import Information from "./Information";
-import TitleNavigation from "../TitleNavigation";
 import { formValidation } from "@utils";
+import ProductList from "../ProductsList";
+import { ContactUsContainer } from "./styles";
+import TitleNavigation from "../TitleNavigation";
+import axiosInstance from "../../utils/axiosInstance";
 
-const ContactUs = ({ seenProducts }) => {
-  const [info, setInfo] = useState({
-    fullName: "",
-    email: "",
-    phone: "",
-    comment: "",
-  });
-
+const ContactUs = ({ seenProducts, setNotificationMessage }) => {
+  const initialState = { fullName: "", email: "", phone: "", comment: "" };
+  const [info, setInfo] = useState({ ...initialState });
   const [errorState, setErrorState] = useState([]);
   const willChangeArray = [...array];
   const secondPiece = [willChangeArray[willChangeArray.length - 1]];
   willChangeArray.pop();
   const firstPiece = [...willChangeArray];
 
+  const {
+    publicRuntimeConfig: { contactUs },
+  } = getConfig();
+
   const handleChange = (name) => (value) => setInfo({ ...info, [name]: value });
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const checkedInfo = formValidation(array, info);
     if (checkedInfo.length > 0) {
       setErrorState(checkedInfo);
     } else {
-      setErrorState([]);
+      const { fullName, email, phone, comment } = info;
+      axiosInstance
+        .post(
+          contactUs,
+          JSON.stringify({
+            full_name: fullName,
+            phone,
+            email,
+            comment,
+          })
+        )
+        .then(({ data }) => {
+          if (data === "success") {
+            setErrorState([]);
+            setInfo({ ...initialState });
+            setNotificationMessage("Мы свяжемся с вами");
+          }
+        })
+        .catch(console.log);
     }
   };
 

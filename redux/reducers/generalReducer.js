@@ -141,13 +141,15 @@ const initialState = {
       placeholder: "без...",
     },
     uploadImages: {
-      errorMessage: "",
+      errorMessage: "Пожалуйста, выберите фото",
       validation: "",
       placeholder: "",
     },
     date: {
-      errorMessage: "Выбранная дата монтажа",
-      validation: "",
+      errorMessage: "Пожалуйста, выберите дата монтажа",
+      // validation: /^((0?[1-9]|1[012])[- /.](0?[1-9]|[12][0-9]|3[01])[- /.](19|20)?[0-9]{2})*$/,
+      // validation: /^(\w+\S+)$/,
+      validation: /[a-zA-Z0-9-,+()]+/,
       placeholder: "Дата Монтажа _ _/ _ _/_ _ _ _",
     },
     dateForCall: {

@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { ModalContainer, Title, Body } from "./styles";
 import { FillFormItem, Button, SvgIcon } from "@famous";
 import { array } from "./data";
+import { formValidation } from "@utils";
 
-const AddReview = ({ modalRef, closeModal }) => {
+const AddReview = ({ modalRef, closeModal, setNotificationMessage }) => {
   const [errorState, setErrorState] = useState([]);
   const [info, setInfo] = useState({
     fullName: "",
@@ -17,14 +18,13 @@ const AddReview = ({ modalRef, closeModal }) => {
   const handleChange = (name) => (value) => setInfo({ ...info, [name]: value });
   const handleSubmit = (e) => {
     e.preventDefault();
+    const checkedInfo = formValidation(array, info);
 
-    const array = Object.entries(info)
-      .map((e) => (e[1] == "" ? e[0] : null))
-      .filter((e) => e !== null && e !== "uploadImages");
-
-    if (array.length > 0) {
-      setErrorState(array);
+    // uploadImages
+    if (checkedInfo.length > 0) {
+      setErrorState([...checkedInfo]);
     } else {
+      setErrorState([]);
     }
   };
 
@@ -47,14 +47,14 @@ const AddReview = ({ modalRef, closeModal }) => {
               type={type}
               name={name}
               data={info}
+              textareaHeight={160}
               callback={handleChange(name)}
               initialErrorState={!!~errorState.indexOf(name)}
-              textareaHeight={160}
             />
           ))}
           <div className="rating-container">
             <p className={errorState.indexOf("rating") === -1 ? "" : "error"}>
-              Оценка
+              Оценка a
             </p>
             <div className="rating">
               {Array.from(Array(5).keys()).map((e) => {
@@ -64,7 +64,14 @@ const AddReview = ({ modalRef, closeModal }) => {
                 return (
                   <span
                     key={newE}
-                    onClick={() => setInfo({ ...info, rating: newE })}
+                    onClick={() => {
+                      setInfo({ ...info, rating: newE });
+                      const index = errorState.indexOf("rating");
+                      if (index !== -1) {
+                        errorState.splice(index, 1);
+                        setErrorState([...errorState]);
+                      }
+                    }}
                     className={newE == rating ? "active" : ""}
                   >
                     {newE}

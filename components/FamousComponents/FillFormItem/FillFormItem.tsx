@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Cases from "./cases";
-import { Message, InputContainer } from "./styles";
 import { connect } from "react-redux";
 import { phoneNumberFormat } from "@utils";
+import { Message, InputContainer } from "./styles";
 import { FormValidationInterface } from "interfaces";
 
 const FillFormItem = (props: FormValidationInterface) => {
@@ -23,15 +23,27 @@ const FillFormItem = (props: FormValidationInterface) => {
 
   const handleChange = ({ target: { value } }) => {
     let result;
-    if (name == "phone") {
+
+    if (name === "phone") {
       const { errorStatus, phone } = phoneNumberFormat(value, data, name);
       callback(phone);
       result = errorStatus;
-    } else {
-      result = validation.test(value);
+    } else if (name === "uploadImages") {
+      if (value.length > 0) {
+        result = true;
+      } else {
+        result = false;
+      }
       callback(value);
+    } else {
+      if (!required && value === "") {
+        result = true;
+        callback(value);
+      } else {
+        result = validation.test(value);
+        callback(value);
+      }
     }
-
     if (!result) {
       setErrorStyle(true);
     } else {

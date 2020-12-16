@@ -1,6 +1,9 @@
 import ContactUs from "./ContactUs";
 import { connect } from "react-redux";
-import { changeBigImage } from "redux/actions/generalActions";
+import {
+  changeBigImage,
+  setNotificationMessage,
+} from "redux/actions/generalActions";
 
 const mapStateToProps = ({ products: { seenProducts } }) => ({
   seenProducts,
@@ -8,5 +11,6 @@ const mapStateToProps = ({ products: { seenProducts } }) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   changeBigImage: (src) => dispatch(changeBigImage(src)),
+  setNotificationMessage: (src) => dispatch(setNotificationMessage(src)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(ContactUs);
