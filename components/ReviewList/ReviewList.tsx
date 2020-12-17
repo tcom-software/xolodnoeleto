@@ -1,10 +1,11 @@
 import { ReviewListContainer } from "./styles";
 import React from "react";
+import Link from "next/link";
 import Review from "../Review";
 import Slider from "react-slick";
 import { Button, SvgIcon } from "@famous";
 
-const ReviewList = ({ reviewItems, isMobile, openModal }) => {
+const ReviewList = ({ initialReviews, isMobile, openModal }) => {
   const NextSlick = ({ onClick }) => (
     <span onClick={onClick}>
       <SvgIcon type={"arrowRight"} width={20} height={20} color="black" />
@@ -19,7 +20,11 @@ const ReviewList = ({ reviewItems, isMobile, openModal }) => {
 
   return (
     <ReviewListContainer>
-      <h2 className="header">ОСТАВИТЬ ОТЗЫВ</h2>
+      <Link href="/reviews">
+        <a>
+          <h2 className="header">Отзывы</h2>
+        </a>
+      </Link>
       <p className="title">
         Бригада монтажников молодцы,монтаж за час! Менеджерам тоже
         спасибо,всегда на связи и очень лояльны к клиенту. Считаю на сегодня.
@@ -31,19 +36,16 @@ const ReviewList = ({ reviewItems, isMobile, openModal }) => {
         prevArrow={isMobile ? null : <PrevSlick onClick />}
         nextArrow={isMobile ? null : <NextSlick onClick />}
       >
-        {reviewItems.map(
-          ({ id, avatarPath, fullName, starCount, description }) => {
-            return (
-              <Review
-                key={id}
-                avatarPath={avatarPath}
-                fullName={fullName}
-                starCount={starCount}
-                description={description}
-              />
-            );
-          }
-        )}
+        {initialReviews.map(({ id, full_name, rating, comment }) => {
+          return (
+            <Review
+              key={id}
+              fullName={full_name}
+              starCount={rating}
+              description={comment}
+            />
+          );
+        })}
       </Slider>
       <Button
         type={"default"}

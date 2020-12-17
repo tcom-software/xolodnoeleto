@@ -13,10 +13,14 @@ const ReviewContainer = styled.div`
 
   .avatar {
     img {
-      width: 96px;
+      width: 93px;
+      padding: 8px;
       border-radius: 50%;
       border: 1px solid #08da08;
     }
+  }
+  .stars {
+    margin-top: 15px;
   }
   .full-name {
     font-weight: 800;

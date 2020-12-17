@@ -8,7 +8,7 @@ import ProductList from "../ProductsList";
 import { CatalogueContainer } from "./styles";
 import { useRouter } from "next/router";
 
-const Catalogue = ({ products }) => {
+const Catalogue = ({ products, total, updateSelectedDataPage }) => {
   const router = useRouter();
 
   return (
@@ -24,7 +24,11 @@ const Catalogue = ({ products }) => {
           <Filters />
           <Products />
         </CatalogueContainer>
-        <Pagination page={router.query.page} />
+        <Pagination
+          total={total}
+          page={router.query.page}
+          callback={updateSelectedDataPage}
+        />
       </GlobalSection>
       <GlobalSection
         isWeb={true}

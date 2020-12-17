@@ -4,6 +4,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import rootReducer from "./reducers/rootReducer";
 import { basketInitialState } from "./actions/basketActions";
 import { loadCatalogList } from "./actions/catalogueActions";
+import { getInitialReview } from "./actions/reviewActions";
 
 /** window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ **/
 
@@ -13,6 +14,7 @@ const store = createStore(
 );
 
 store.dispatch(loadCatalogList());
+store.dispatch(getInitialReview());
 store.dispatch(basketInitialState());
 
 export default store;

@@ -28,13 +28,20 @@ const AddReview = ({ modalRef, closeModal, setNotificationMessage }) => {
     if (checkedInfo.length > 0) {
       setErrorState([...checkedInfo]);
     } else {
-      const { fullName, address, date, message, rating, uploadImages } = info;
+      const {
+        fullName,
+        address,
+        date,
+        message,
+        rating,
+        uploadImages,
+      }: any = info;
       setErrorState([]);
 
       const formData = new FormData();
-      const day = info.date.getUTCDate();
-      const month = info.date.getUTCMonth();
-      const year = info.date.getUTCFullYear();
+      const day = date.getUTCDate();
+      const month = date.getUTCMonth();
+      const year = date.getUTCFullYear();
 
       formData.append("rating", rating);
       formData.append("address", address);

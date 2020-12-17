@@ -1,16 +1,17 @@
 import { ReviewContainer } from "./styles";
-import { Star } from "@famous";
+import { Star, SvgIcon } from "@famous";
 import { Stars } from "../ProductGridView/styles";
 import React, { useState } from "react";
 import ShowMoreWrapper from "../ShowMoreWrapper";
 
-const Review = ({ avatarPath, fullName, starCount, description }) => {
+const Review = ({ fullName, starCount, description }) => {
   const [showMore, setMore] = useState(false);
 
   return (
     <ReviewContainer>
       <div className="avatar">
-        <img src={`/images/review/${avatarPath}`} alt={fullName} />
+        {/*<img src={`/images/review/${avatarPath}`} alt={fullName} />*/}
+        <img src={`/images/no_found/user.png`} alt={fullName} />
       </div>
       <div className="stars">
         <Stars>

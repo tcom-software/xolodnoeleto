@@ -3,14 +3,14 @@ import { connect } from "react-redux";
 import { openModal } from "redux/actions/modalActions";
 
 const mapStateToProps = ({
-  review: { items: reviewItems },
+  review: { initialReviews },
   general: { isMobile },
   modal: { modalType, modalRef },
 }) => ({
   isMobile,
-  reviewItems,
   modalType,
   modalRef,
+  initialReviews,
 });
 
 const mapDispatchToProps = (dispatch) => ({
