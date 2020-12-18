@@ -21,13 +21,13 @@ const Reviews = ({
   const router = useRouter();
 
   useEffect(() => {
-    callbacks(router.query.page);
+    callbacks(router.query.page || 1);
   }, [router.query.page]);
 
   function callbacks(page) {
-    if (router.query.page !== page) {
-      router.push(`?page=${page ? page : 1}`);
-      getReviewByPage(page ? page : 1);
+    if (page) {
+      router.push(`?page=${page}`);
+      getReviewByPage(page);
     }
   }
 
