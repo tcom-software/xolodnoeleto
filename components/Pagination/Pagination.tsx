@@ -5,6 +5,10 @@ import { PaginationContainer } from "./styles";
 
 const Pagination = ({ page: fromUrl, isMobile, total, callback }) => {
   const [currentPage, setCurrentPage] = useState(fromUrl);
+  useEffect(() => {
+    setCurrentPage(fromUrl);
+  }, [fromUrl]);
+
   const { To } = Scroll;
   // callback update catalogue selected page
   const setPageToSelectedData = (page) => callback && callback(page);
@@ -17,7 +21,7 @@ const Pagination = ({ page: fromUrl, isMobile, total, callback }) => {
 
   return (
     <PaginationContainer>
-      <div onClick={(event) => handleClick(event)}>
+      <div onClick={(event: any) => handleClick(event)}>
         <ReactPaginate
           pageCount={total >= 10 ? Math.floor(total / 10) : 1}
           pageRangeDisplayed={3}
@@ -30,7 +34,6 @@ const Pagination = ({ page: fromUrl, isMobile, total, callback }) => {
             setCurrentPage(selected + 1);
             setPageToSelectedData(selected + 1);
           }}
-          breakLabel={<span>adsfasdfa</span>}
           previousLabel={
             <span
               className="arrow-icons"
