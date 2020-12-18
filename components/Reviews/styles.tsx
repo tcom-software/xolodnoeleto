@@ -38,6 +38,10 @@ const ReviewContainer = styled.div`
         object-fit: contain;
         border: 1px solid #d8d8d8;
         padding: 15px;
+        cursor: pointer;
+        &:hover {
+          transform: scale(1.07);
+        }
       }
     }
   }

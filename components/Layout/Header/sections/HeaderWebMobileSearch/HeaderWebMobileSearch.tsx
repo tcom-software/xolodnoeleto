@@ -50,7 +50,8 @@ const HeaderWebMobileSearch = ({
       return null;
     }
   };
-  const handleScroll = (event) => {
+
+  const handleScroll = () => {
     const { clientHeight, scrollHeight, scrollTop } = heightRef.current;
     const result = scrollHeight - scrollTop === clientHeight;
     if (result) {

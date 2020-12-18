@@ -26,7 +26,7 @@ const BigImageContainer = styled.div`
 
     img {
       pointer-events: none;
-      width: 40%;
+      width: 55%;
       max-height: 95vh;
       object-fit: cover;
       animation: ${rotate} 0.5s ease forwards;

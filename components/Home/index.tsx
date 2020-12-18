@@ -39,6 +39,7 @@ const Index = ({ newProducts, superPriceProducts, landing }) => {
         >
           <ProductList
             title={"СУПЕРЦЕНЫ УСПЕЙ КУПИТЬ!"}
+            superPrice={true}
             mobileType={"scroll"}
             products={superPriceProducts}
           />

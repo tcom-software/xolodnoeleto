@@ -81,7 +81,7 @@ const AddReview = ({ modalRef, closeModal, setNotificationMessage }) => {
               type={type}
               name={name}
               data={info}
-              textareaHeight={160}
+              textareaHeight={100}
               callback={handleChange(name)}
               initialErrorState={!!~errorState.indexOf(name)}
             />

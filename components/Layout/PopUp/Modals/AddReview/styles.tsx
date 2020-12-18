@@ -43,7 +43,7 @@ const Body = styled.div`
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin: 20px 0;
+      margin: 10px 0;
       .active {
         border: 1px solid #ffd600;
         background: #ffd600;
