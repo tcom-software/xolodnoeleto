@@ -4,7 +4,7 @@ import ArrowRightSide from "./content/ArrowRightSide";
 import MultipleSelectionCase from "./content/MultipleSelectionCase";
 import RadioSelectionCase from "./content/RadioSelectionCase";
 import Between from "./content/Between";
-import { ScrollLink } from "@utils";
+import { Scroll } from "@utils";
 
 const FilterCase = ({
   id,
@@ -17,6 +17,7 @@ const FilterCase = ({
   actionFirstFiltersLevelArray,
   isMobile,
 }) => {
+  const { Link } = Scroll;
   const index = firstLevelFiltersArray.indexOf(title);
   const FilterSwitch = () => {
     switch (type) {
@@ -60,9 +61,9 @@ const FilterCase = ({
         <div
           className={`selection-container ${index === -1 ? "hide" : "show"}`}
         >
-          <ScrollLink to="default">
+          <Link to="default">
             <FilterSwitch />
-          </ScrollLink>
+          </Link>
         </div>
       </div>
     </FilterCaseContainer>

@@ -1,7 +1,7 @@
 export { default as IncDec } from "./IncDec";
 export { default as makePrice } from "./makePrice";
 export { default as getImages } from "./getImages";
-export { default as ScrollLink } from "./ScrollLink";
+export { default as Scroll } from "./Scroll";
 export { default as axiosInstance } from "./axiosInstance";
 export { default as makeImagePath } from "./makeImagePath";
 export { default as formValidation } from "./formValidation";

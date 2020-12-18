@@ -28,6 +28,20 @@ const useWidth = () => {
 };
 
 function MyApp(props) {
+  // useEffect(() => {
+  //   window.onbeforeunload = function (event) {
+  //     const message =
+  //       "Important: Please click on 'Save' button to leave this page.";
+  //     if (typeof event == "undefined") {
+  //       event = window.event;
+  //       localStorage.clear();
+  //     }
+  //     if (event) {
+  //       event.returnValue = message;
+  //     }
+  //     return message;
+  //   };
+  // }, []);
   const { Component, pageProps } = props;
   useWidth();
   return (

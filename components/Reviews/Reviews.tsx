@@ -21,12 +21,14 @@ const Reviews = ({
   const router = useRouter();
 
   useEffect(() => {
-    router.query.page && callbacks(router.query.page);
+    callbacks(router.query.page);
   }, [router.query.page]);
 
   function callbacks(page) {
-    router.push(`?page=${page ? page : 1}`);
-    getReviewByPage(page);
+    if (router.query.page !== page) {
+      router.push(`?page=${page ? page : 1}`);
+      getReviewByPage(page ? page : 1);
+    }
   }
 
   return (
@@ -93,4 +95,4 @@ const Reviews = ({
   );
 };
 
-export default Reviews;
+export default React.memo(Reviews);

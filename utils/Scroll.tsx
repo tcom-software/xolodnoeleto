@@ -1,7 +1,7 @@
 import React from "react";
 import { scroller } from "react-scroll";
 
-const scrollTo = (to) => {
+export const To = (to) => {
   setTimeout(() => {
     scroller.scrollTo(to, {
       duration: 500,
@@ -11,10 +11,10 @@ const scrollTo = (to) => {
   }, 300);
 };
 
-const ScrollLink = ({ children, to }) => (
-  <div onClick={() => scrollTo(to)} className="r-elem">
+const Link = ({ children, to }) => (
+  <div onClick={() => To(to)} className="r-elem">
     {children}
   </div>
 );
 
-export default ScrollLink;
+export default { To, Link };
