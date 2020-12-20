@@ -6,8 +6,12 @@ import {
 } from "redux/actions/compareActions";
 import { addBasket } from "redux/actions/basketActions";
 
-const mapStateToProps = ({ compare: { compareProducts } }) => ({
+const mapStateToProps = ({
+  compare: { compareProducts },
+  products: { seenProducts },
+}) => ({
   compareProducts,
+  seenProducts,
 });
 
 const mapDispatchToProps = (dispatch) => ({

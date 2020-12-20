@@ -6,7 +6,7 @@ const Index = () => {
   return (
     <>
       <Head>
-        <title>Хolodnoeleto Сертификаты</title>
+        <title>Сертификаты</title>
       </Head>
       <Certificates />
     </>

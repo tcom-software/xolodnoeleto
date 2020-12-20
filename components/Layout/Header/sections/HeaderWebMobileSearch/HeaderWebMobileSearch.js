@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Input, Loading } from "@famous";
 import { SearchCon, Span } from "../../styles";
-import HtmlCases from "../Search/HtmlCases";
+import HtmlCases from "../Search/HtmlCases/index";
 import { SearchContainer } from "./styles";
 
 const HeaderWebMobileSearch = ({

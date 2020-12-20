@@ -1,6 +1,6 @@
 const CreateCompareInformation = (compareProducts) => {
   const result = Object.values(compareProducts).map((e, index) => {
-    const { characteristics }: any = e;
+    const { characteristics } = e;
 
     return characteristics.reduce(
       (

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Loading } from "@famous";
 import { useRouter } from "next/router";
 import { createObjectFromUrl } from "@utils";
-import ProductGridView from "../../ProductGridView";
+import ProductGridView from "../../ProductGridView/index";
 
 const Products = ({
   productsLoading,

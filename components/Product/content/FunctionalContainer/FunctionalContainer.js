@@ -16,7 +16,7 @@ const FunctionalContainer = ({
   incrementProduct,
   decrementProduct,
   setNotificationMessage,
-}: any) => {
+}) => {
   const { product, photos } = productInfo;
   const { brand, model, price, count, articule, manufacturer_logo } = product;
 

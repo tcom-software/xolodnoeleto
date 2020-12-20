@@ -22,6 +22,7 @@ const Index = ({ newProducts, superPriceProducts, landing }) => {
         webPadding="40px 0"
       >
         <ProductList
+          superPrice={false}
           title={"НОВЫЕ ПРОДУКТЫ"}
           mobileType={"scroll"}
           products={newProducts}

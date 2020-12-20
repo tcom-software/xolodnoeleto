@@ -17,7 +17,7 @@ const Bottom = ({
   closeModal,
   basketItemsCount,
 }) => {
-  const spring: any = useSpring({
+  const spring = useSpring({
     from: { val: 0 },
     to: { val: basketItemsCount },
     config: { duration: 500 },

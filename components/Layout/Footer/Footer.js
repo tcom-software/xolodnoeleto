@@ -7,7 +7,7 @@ import { Ul, Nav, UlsCon, Section, Copyright, FooterContainer } from "./styles";
 
 const Footer = ({ menu, copyright, socialNetworks }) => {
   const [isOpen, setIsOpen] = useState("");
-  const handleOpen = (title: string) => {
+  const handleOpen = (title) => {
     if (isOpen == title) {
       setIsOpen("");
     } else {
@@ -23,7 +23,7 @@ const Footer = ({ menu, copyright, socialNetworks }) => {
         mobilePadding={"0"}
       >
         <Nav>
-          {menu.map(({ items, sideItems, title }: any, i: number) => {
+          {menu.map(({ items, sideItems, title }, i) => {
             return (
               <Ul key={i}>
                 <li onClick={() => handleOpen(title)}>
@@ -38,7 +38,7 @@ const Footer = ({ menu, copyright, socialNetworks }) => {
                   {title === "Компания" ? (
                     <>
                       <Ul>
-                        {items.map(({ title, url }: any, index: number) => {
+                        {items.map(({ title, url }, index) => {
                           return (
                             <li key={index}>
                               <Link href={url}>
@@ -51,10 +51,7 @@ const Footer = ({ menu, copyright, socialNetworks }) => {
                       {sideItems != undefined ? (
                         <Ul elseCase={true}>
                           {sideItems.map(
-                            (
-                              { title: sideTitle, url: sideUrl }: any,
-                              index: number
-                            ) => {
+                            ({ title: sideTitle, url: sideUrl }, index) => {
                               return (
                                 <li key={index}>
                                   <Link href={sideUrl}>
@@ -70,13 +67,13 @@ const Footer = ({ menu, copyright, socialNetworks }) => {
                   ) : (
                     <>
                       <Ul>
-                        {items.map((value: any, index: number) => {
+                        {items.map((value, index) => {
                           return <li key={index}>{value}</li>;
                         })}
                       </Ul>
                       {sideItems != undefined ? (
                         <Ul elseCase={true}>
-                          {sideItems.map((value: any, index: number) => {
+                          {sideItems.map((value, index) => {
                             return <li key={index}>{value}</li>;
                           })}
                         </Ul>
@@ -97,12 +94,12 @@ const Footer = ({ menu, copyright, socialNetworks }) => {
         webPadding={"0"}
       >
         <Section>
-          {socialNetworks.map(({ title, items }: any, i: number) => {
+          {socialNetworks.map(({ title, items }, i) => {
             return (
               <div key={i}>
                 <h2>{title}</h2>
                 <div>
-                  {items.map(({ img, link, width, height }: any, i: number) => {
+                  {items.map(({ img, link, width, height }, i) => {
                     return (
                       <Image
                         key={i}

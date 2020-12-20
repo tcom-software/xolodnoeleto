@@ -11,7 +11,7 @@ const Case = ({
   handleChange,
   errorStyle,
   setErrorStyle,
-}: any) => {
+}) => {
   if (type === "select" && worksTime) {
     const [start, stop] = worksTime;
     const needsTime = stop - start;
@@ -29,7 +29,7 @@ const Case = ({
       />
     );
   } else if (type === "uploadImages") {
-    const { uploadImages }: any = data;
+    const { uploadImages } = data;
     return (
       <ImageUploader
         callback={handleChange}

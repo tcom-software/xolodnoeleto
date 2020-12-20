@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Cases from "./cases";
+import Cases from "./cases/index";
 import { connect } from "react-redux";
 import { phoneNumberFormat } from "@utils";
 import { Message, InputContainer } from "./styles";

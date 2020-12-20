@@ -1,8 +1,8 @@
 import React from "react";
 import Link from "next/link";
-import { IncDec, makeImagePath, makePrice } from "@utils";
 import { connect } from "react-redux";
 import { Button, SvgIcon } from "@famous";
+import { IncDec, makeImagePath, makePrice } from "@utils";
 import { CalculateCon, Img, ImgCon, MiniCon, Title, Container } from "./styles";
 
 /**
@@ -47,7 +47,7 @@ const MobileCase = ({
 }) => {
   return (
     <div>
-      {Object.values(basketItems).map((item: any) => {
+      {Object.values(basketItems).map((item) => {
         const {
           id,
           count,
@@ -140,7 +140,7 @@ const MobileCase = ({
               updateStepsResult({ step: "stepTwo", value: true });
               changeOrderStep(stepState + 1);
               const newArray = Object.values(basketItems).reduce(
-                (acc: any, { id, count }) => {
+                (acc, { id, count }) => {
                   return {
                     ...acc,
                     [id]: count,

@@ -2,7 +2,7 @@ import React from "react";
 import Filters from "./Filters";
 import theme from "styles/theme";
 import Products from "./Products";
-import Pagination from "../Pagination";
+import Pagination from "../Pagination/index";
 import { GlobalSection } from "@famous";
 import ProductList from "../ProductsList";
 import { CatalogueContainer } from "./styles";

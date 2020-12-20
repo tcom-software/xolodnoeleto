@@ -146,3 +146,12 @@ export interface ShowMoreWrapperInterface {
   buttonTextAlign: string;
   children?: any;
 }
+export interface NavigationTitleInterface {
+  title: string;
+  currentPage: string;
+}
+export interface ReviewInterface {
+  fullName: string;
+  starCount: number;
+  description: string;
+}

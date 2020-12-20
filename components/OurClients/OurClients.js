@@ -1,9 +1,9 @@
 import React from "react";
 import theme from "styles/theme";
-import { GlobalSection, Image } from "@famous";
+import { GlobalSection } from "@famous";
+import ProductList from "../ProductsList";
 import TitleNavigation from "../TitleNavigation";
 import { OurClientsContainer, Titleh3, Item } from "./styles";
-import ProductList from "../ProductsList";
 
 const OurClients = ({ ourClients, seenProducts, changeBigImage }) => {
   return (
@@ -50,6 +50,7 @@ const OurClients = ({ ourClients, seenProducts, changeBigImage }) => {
         webPadding={"20px"}
       >
         <ProductList
+          superPrice={false}
           title={"ВЫ НЕДАВНО СМОТРЕЛИ"}
           mobileType={"scroll"}
           products={seenProducts}

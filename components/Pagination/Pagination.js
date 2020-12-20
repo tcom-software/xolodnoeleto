@@ -21,7 +21,7 @@ const Pagination = ({ page: fromUrl, isMobile, total, callback }) => {
 
   return (
     <PaginationContainer>
-      <div onClick={(event: any) => handleClick(event)}>
+      <div onClick={(event) => handleClick(event)}>
         <ReactPaginate
           pageCount={total >= 10 ? Math.floor(total / 10) : 1}
           pageRangeDisplayed={3}

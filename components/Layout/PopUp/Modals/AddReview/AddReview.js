@@ -1,54 +1,54 @@
 import React, { useState } from "react";
 import { array } from "./data";
 import getConfig from "next/config";
-import axiosInstance from "utils/axiosInstance";
 import { ModalContainer, Title, Body } from "./styles";
 import { FillFormItem, Button, SvgIcon } from "@famous";
-import { formValidation } from "@utils";
+import { formValidation, axiosInstance } from "@utils";
 
 const {
-  publicRuntimeConfig: { makeCallbackRequest },
+  publicRuntimeConfig: { addReview },
 } = getConfig();
 
-const CallBack = ({
-  closeModal,
-  worksTime,
-  modalRef,
-  setNotificationMessage,
-}) => {
+const AddReview = ({ modalRef, closeModal, setNotificationMessage }) => {
   const [errorState, setErrorState] = useState([]);
   const [info, setInfo] = useState({
-    name: "",
-    surname: "",
-    phone: "",
-    dateForCall: "",
+    fullName: "",
+    address: "",
+    date: "",
     message: "",
+    rating: 0,
+    uploadImages: [],
   });
+
   const handleChange = (name) => (value) => setInfo({ ...info, [name]: value });
   const handleSubmit = (e) => {
     e.preventDefault();
     const checkedInfo = formValidation(array, info);
 
     if (checkedInfo.length > 0) {
-      setErrorState(checkedInfo);
+      setErrorState([...checkedInfo]);
     } else {
+      const { fullName, address, date, message, rating, uploadImages } = info;
       setErrorState([]);
-      const { name, surname, phone, dateForCall, message } = info;
+
+      const formData = new FormData();
+      const day = date.getUTCDate();
+      const month = date.getUTCMonth();
+      const year = date.getUTCFullYear();
+
+      formData.append("rating", rating);
+      formData.append("address", address);
+      formData.append("comment", message);
+      formData.append("full_name", fullName);
+      formData.append("date", `${year}-${month + 1}-${day + 1}`);
+      uploadImages.forEach((e) => formData.append("file[]", e.file));
+
       axiosInstance
-        .post(
-          makeCallbackRequest,
-          JSON.stringify({
-            name,
-            last_name: surname,
-            phone,
-            hour: dateForCall,
-            comment: message,
-          })
-        )
+        .post(addReview, formData)
         .then(({ data }) => {
           if (data === "success") {
             closeModal("");
-            setNotificationMessage("Мы вам перезвоним");
+            setNotificationMessage("ваш отзыв в обработке");
           }
         })
         .catch(console.log);
@@ -59,7 +59,7 @@ const CallBack = ({
     <ModalContainer ref={modalRef}>
       <form onSubmit={handleSubmit}>
         <Title>
-          Заказ обратново званка
+          ДОБАВИТЬ КОММЕНТАРИЙ
           <SvgIcon
             type="close"
             width={20}
@@ -68,20 +68,24 @@ const CallBack = ({
           />
         </Title>
         <Body>
-          {array.map(({ name, type, required }: any, i: number) => (
+          {array.map(({ name, type }, i) => (
             <FillFormItem
               key={i}
               type={type}
               name={name}
               data={info}
-              required={required}
-              worksTime={worksTime}
+              textareaHeight={100}
               callback={handleChange(name)}
               initialErrorState={!!~errorState.indexOf(name)}
             />
           ))}
-          <Button type="primary" width="100%" height="47px">
-            ЗАКАЗАТЬ
+          <Button
+            type="default"
+            width="100%"
+            height="47px"
+            background={"#FFD600"}
+          >
+            Отправить
           </Button>
         </Body>
       </form>
@@ -89,4 +93,4 @@ const CallBack = ({
   );
 };
 
-export default CallBack;
+export default AddReview;

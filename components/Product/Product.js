@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { GlobalSection, Loading } from "@famous";
 import theme from "styles/theme";
 import { useRouter } from "next/router";
 import ProductList from "../ProductsList";
-import ImageContainer from "./content/ImageContainer";
-import FunctionalContainer from "./content/FunctionalContainer";
 import { ProductTopContainer } from "./styles";
+import ImageContainer from "./content/ImageContainer";
 import Characteristics from "./content/Characteristics";
+import FunctionalContainer from "./content/FunctionalContainer";
 
 const Product = ({ productInfo, seenProducts, getProductInfo }) => {
   const router = useRouter();
@@ -42,9 +42,10 @@ const Product = ({ productInfo, seenProducts, getProductInfo }) => {
         mobilePadding={"0"}
       >
         <ProductList
-          title={"ВЫ НЕДАВНО СМОТРЕЛИ"}
+          superPrice={false}
           mobileType={"scroll"}
           products={seenProducts}
+          title={"ВЫ НЕДАВНО СМОТРЕЛИ"}
         />
       </GlobalSection>
     </>

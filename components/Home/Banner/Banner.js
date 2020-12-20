@@ -3,7 +3,7 @@ import data from "./data";
 import theme from "styles/theme";
 import Slider from "react-slick";
 import { Container } from "./styles";
-import CardsAboutUs from "../CardsAboutUs";
+import CardsAboutUs from "../CardsAboutUs/index";
 import { GlobalSection, Image, SvgIcon } from "@famous";
 
 const Banner = () => {

@@ -1,5 +1,5 @@
 import React from "react";
-import SvgIcons from "../SvgIcon";
+import SvgIcons from "../SvgIcon/index";
 import { InputInterface } from "interfaces";
 import { Label, Input, Container, InputBorder } from "./styles";
 

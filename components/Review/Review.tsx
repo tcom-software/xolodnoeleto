@@ -1,16 +1,14 @@
+import React from "react";
+import { Star } from "@famous";
 import { ReviewContainer } from "./styles";
-import { Star, SvgIcon } from "@famous";
+import { ReviewInterface } from "interfaces";
 import { Stars } from "../ProductGridView/styles";
-import React, { useState } from "react";
 import ShowMoreWrapper from "../ShowMoreWrapper";
 
-const Review = ({ fullName, starCount, description }) => {
-  const [showMore, setMore] = useState(false);
-
+const Review = ({ fullName, starCount, description }: ReviewInterface) => {
   return (
     <ReviewContainer>
       <div className="avatar">
-        {/*<img src={`/images/review/${avatarPath}`} alt={fullName} />*/}
         <img src={`/images/no_found/user.png`} alt={fullName} />
       </div>
       <div className="stars">

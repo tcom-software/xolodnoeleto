@@ -62,7 +62,7 @@ const WebCase = ({
             </tr>
           ) : null}
 
-          {Object.values(basketItems).map((item: any, index) => {
+          {Object.values(basketItems).map((item, index) => {
             const {
               id,
               count,
@@ -175,7 +175,7 @@ const WebCase = ({
               updateStepsResult({ step: "stepTwo", value: true });
               changeOrderStep(stepState + 1);
               const newArray = Object.values(basketItems).reduce(
-                (acc: any, { id, count }) => {
+                (acc, { id, count }) => {
                   return {
                     ...acc,
                     products: {

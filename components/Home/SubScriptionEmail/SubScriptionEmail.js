@@ -3,7 +3,7 @@ import theme from "styles/theme";
 import { Button, GlobalSection, Image, FillFormItem } from "@famous";
 import { Container, SubScriptionForm, Label, ImgContainer } from "./styles";
 
-const SubScriptionEmail = () => {
+const g = () => {
   const [info, setInfo] = useState({ email: "" });
   const [errorState, setErrorState] = useState([]);
 

@@ -13,7 +13,7 @@ const BasketMenu = ({
   basketItems,
   total_amount,
   changeOrderStep,
-}: any) => {
+}) => {
   return (
     <Container
       modalType={modalType}

@@ -23,7 +23,7 @@ const SelectTime = ({
       callback={callback}
       errorStyleCallback={() => setErrorStyle(false)}
     >
-      {newArray.map((e: number, i: number) => {
+      {newArray.map((e, i) => {
         if (timesZone[i + 1]) {
           return (
             <option key={i} value={`${timesZone[i]} - ${timesZone[i + 1]}`}>

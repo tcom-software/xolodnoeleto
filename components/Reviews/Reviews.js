@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import theme from "styles/theme";
 import { GlobalSection } from "@famous";
 import { ReviewContainer } from "./styles";
