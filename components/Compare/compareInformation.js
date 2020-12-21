@@ -2,42 +2,24 @@ const CreateCompareInformation = (compareProducts) => {
   const result = Object.values(compareProducts).map((e, index) => {
     const { characteristics } = e;
 
-    return characteristics.reduce(
-      (
-        acc,
-        {
-          title,
-          characteristic_name,
-          characteristic_value,
-          characteristic_attribute_name,
-        },
-        i
-      ) => {
-        const value =
-          characteristic_value !== null
-            ? characteristic_value
-            : characteristic_attribute_name;
+    if (characteristics.length !== 0) {
+      return characteristics.reduce(
+        (
+          acc,
+          {
+            title,
+            characteristic_name,
+            characteristic_value,
+            characteristic_attribute_name,
+          },
+          i
+        ) => {
+          const value =
+            characteristic_value !== null
+              ? characteristic_value
+              : characteristic_attribute_name;
 
-        if (acc[title]) {
-          return {
-            ...acc,
-            [title]: {
-              ...acc[title],
-              [characteristic_name]: [value],
-            },
-          };
-        } else {
-          if (title === null)
-            return {
-              ...acc,
-            };
-          else if (i === 1)
-            return {
-              [title]: {
-                [characteristic_name]: [value],
-              },
-            };
-          else
+          if (acc[title]) {
             return {
               ...acc,
               [title]: {
@@ -45,9 +27,29 @@ const CreateCompareInformation = (compareProducts) => {
                 [characteristic_name]: [value],
               },
             };
+          } else {
+            if (title === null)
+              return {
+                ...acc,
+              };
+            else if (i === 1)
+              return {
+                [title]: {
+                  [characteristic_name]: [value],
+                },
+              };
+            else
+              return {
+                ...acc,
+                [title]: {
+                  ...acc[title],
+                  [characteristic_name]: [value],
+                },
+              };
+          }
         }
-      }
-    );
+      );
+    }
   }, {});
 
   const first = result[0];
