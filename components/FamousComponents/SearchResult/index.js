@@ -1,4 +1,4 @@
-import HeaderWebMobileSearch from "./SearchResult";
+import SearchResult from "./SearchResult";
 import { connect } from "react-redux";
 import { actionSearch } from "redux/actions/searchActions";
 import { whereWasSearchAction } from "redux/actions/generalActions";
@@ -18,7 +18,4 @@ const mapDispatchToProps = (dispatch) => ({
   actionSearch: (searchWord, page) => dispatch(actionSearch(searchWord, page)),
   whereWasSearchAction: (where) => dispatch(whereWasSearchAction(where)),
 });
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(HeaderWebMobileSearch);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchResult);

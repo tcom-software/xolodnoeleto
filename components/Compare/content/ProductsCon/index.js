@@ -9,7 +9,7 @@ import { connect } from "react-redux";
 const mapDispatchToProps = (dispatch) => ({
   addBasket: (product) => dispatch(addBasket(product)),
   addCompareProduct: (data) => dispatch(addCompareProduct(data)),
-  removeCompareProduct: (data) => dispatch(removeCompareProduct(data)),
+  removeCompareProduct: (id) => dispatch(removeCompareProduct(id)),
 });
 
 export default connect(null, mapDispatchToProps)(ProductsCon);

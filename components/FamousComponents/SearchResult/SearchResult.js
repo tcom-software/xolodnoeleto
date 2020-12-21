@@ -10,6 +10,7 @@ const SearchResult = ({
   search,
   new_loading,
   actionSearch,
+
   where,
   whereWasSearch,
   whereWasSearchAction,
@@ -41,12 +42,12 @@ const SearchResult = ({
     } else if (new_loading) {
       return (
         <>
-          <HtmlCases search={search} />
+          <HtmlCases search={search} type={where} />
           <Loading />
         </>
       );
     } else if (!loading && !new_loading && search.length > 0) {
-      return <HtmlCases search={search} />;
+      return <HtmlCases search={search} type={where} />;
     } else {
       return null;
     }

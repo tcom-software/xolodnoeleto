@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import Link from "next/link";
 import theme from "styles/theme";
-import { GlobalSection, SvgIcon } from "@famous";
+import { GlobalSection, SvgIcon, SearchResult } from "@famous";
 import { openModal } from "redux/actions/modalActions";
-import HeaderWebMobileSearch from "../../../FamousComponents/SearchResult";
 import SvgIconWaveAnim from "../../../FamousComponents/SvgIconWaveAnim";
 import { LogoCon, MainPanel, PhonesCon, SearchAndFavoriteCon } from "../styles";
 
@@ -50,7 +49,7 @@ const Middle = ({ phones, openModal, modalType, isMobile }) => {
             Заказать обратный звонок
           </p>
         </PhonesCon>
-        {!isMobile ? <HeaderWebMobileSearch where={"header-middle"} /> : null}
+        <SearchResult where={"header-middle"} />
         <SearchAndFavoriteCon customMargin={true}>
           <Link href={"/compare"}>
             <a>

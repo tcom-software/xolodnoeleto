@@ -1,14 +1,13 @@
 import React from "react";
 import Link from "next/link";
+import Catalog from "./Catalog";
 import theme from "styles/theme";
 import { connect } from "react-redux";
 import BasketMenu from "./BasketMenu";
-import { Button, GlobalSection, SvgIcon } from "@famous";
-import { closeModal, openModal } from "redux/actions/modalActions";
 import { BottomPanel, Ul } from "../styles";
 import { useSpring, animated } from "react-spring";
-import Catalog from "./Catalog";
-import HeaderWebMobileSearch from "../../../FamousComponents/SearchResult";
+import { closeModal, openModal } from "redux/actions/modalActions";
+import { Button, GlobalSection, SvgIcon, SearchResult } from "@famous";
 
 const Bottom = ({
   isMobile,
@@ -60,9 +59,7 @@ const Bottom = ({
             </Link>
           </li>
           <li className="header-search-result-container">
-            {isMobile ? (
-              <HeaderWebMobileSearch where={"header-bottom"} />
-            ) : null}
+            {<SearchResult where={"header-bottom"} />}
           </li>
           <li>
             <Link href={"/basket"}>

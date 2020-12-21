@@ -1,3 +1,8 @@
 import HtmlCases from "./HtmlCases";
+import { connect } from "react-redux";
+import { addCompareProduct } from "redux/actions/compareActions";
 
-export default HtmlCases;
+const mapDispatchToProps = (dispatch) => ({
+  addCompareProduct: (id) => dispatch(addCompareProduct(id)),
+});
+export default connect(null, mapDispatchToProps)(HtmlCases);

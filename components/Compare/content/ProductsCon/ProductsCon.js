@@ -10,20 +10,26 @@ const ProductsCon = ({
   removeCompareProduct,
 }) => {
   const {
-    publicRuntimeConfig: { productsUpload, serverUrl },
+    publicRuntimeConfig: { productsUpload, serverUrl, seriesUpload },
   } = getConfig();
 
   return (
     <div className="products-con">
       {products.map(({ product, photo }, index) => {
         const { folder, file_name, file_format } = photo;
-        const { id, brand, model, price, articule } = product;
+        const { articule: id, brand, model, price } = product;
         return (
           <div key={id} className="product-container">
             <div className="product-item">
-              <img
-                src={`${serverUrl}${productsUpload}${folder}/size300/${file_name}.${file_format}`}
-              />
+              {folder === "product_series0" ? (
+                <img
+                  src={`${serverUrl}${seriesUpload}/size300/${file_name}.${file_format}`}
+                />
+              ) : (
+                <img
+                  src={`${serverUrl}${productsUpload}/size300/${file_name}.${file_format}`}
+                />
+              )}
               <p>
                 {brand} {model}
               </p>
@@ -43,7 +49,7 @@ const ProductsCon = ({
                     e.preventDefault();
                     addBasket({
                       ...product,
-                      ...getImages([photo], articule),
+                      ...getImages([photo], id),
                     });
                   }}
                 >

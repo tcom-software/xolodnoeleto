@@ -7,14 +7,14 @@ const initialState = {
 const compareReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.ADD_COMPARE_PRODUCT:
-      if (state.compareProducts[action.payload.id]) {
+      if (state.compareProducts[action.payload.product.articule]) {
         return { ...state };
       } else {
         return {
           ...state,
           compareProducts: {
             ...state.compareProducts,
-            [action.payload.product.id]: {
+            [action.payload.product.articule]: {
               ...action.payload,
             },
           },
@@ -22,11 +22,17 @@ const compareReducer = (state = initialState, action) => {
       }
 
     case types.REMOVE_COMPARE_PRODUCT:
+      const newArray = Object.values(state.compareProducts)
+        .filter(({ product }) => product.articule !== action.payload)
+        .reduce((acc, next) => {
+          return {
+            ...acc,
+            [next.product.articule]: next,
+          };
+        }, {});
       return {
         ...state,
-        compareProducts: Object.values(state.compareProducts).filter(
-          ({ product }) => product.id !== action.payload
-        ),
+        compareProducts: newArray,
       };
     default:
       return { ...state };

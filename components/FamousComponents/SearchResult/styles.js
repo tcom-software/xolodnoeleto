@@ -20,16 +20,15 @@ const SearchContainer = styled.div`
     display: ${({ searchLength }) => (searchLength > 0 ? `block` : "none")};
     border-top: 0px;
 
-    a {
-      .item-container {
-        padding: 10px 0;
-        border-bottom: 1px solid ${theme.body.someBorder};
+    .item-container {
+      cursor: pointer;
+      padding: 10px 0;
+      border-bottom: 1px solid ${theme.body.someBorder};
 
-        .title {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-        }
+      .title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
       }
     }
 
