@@ -63,28 +63,23 @@ const WebCase = ({
           ) : null}
 
           {Object.values(basketItems).map((item, index) => {
-            const {
-              id,
-              count,
-              model,
-              brand,
-              price,
-              series_picture_folder,
-              series_picture_file_name,
-              series_picture_format,
-              product_picture_folder,
-              product_picture_file_name,
-              product_picture_format,
-            } = item;
+            const { id, count, model, brand, price } = item;
 
-            const imagePath = makeImagePath({
-              series_picture_folder,
-              series_picture_file_name,
-              series_picture_format,
-              product_picture_folder,
-              product_picture_file_name,
-              product_picture_format,
-            });
+            let imgInfo;
+            if (item.product_picture_folder) {
+              imgInfo = {
+                folder: item.product_picture_folder,
+                file_name: item.product_picture_file_name,
+                file_format: item.product_picture_format,
+              };
+            } else {
+              imgInfo = {
+                folder: item.series_picture_folder,
+                file_name: item.series_picture_file_name,
+                file_format: item.series_picture_format,
+              };
+            }
+            const imagePath = makeImagePath(imgInfo);
 
             return (
               <tr key={id}>
@@ -99,6 +94,9 @@ const WebCase = ({
                         alt={`${brand} ${model}`}
                         title={`${brand} ${model}`}
                         className="product-image-table-and-mobile-case"
+                        onError={(error) => {
+                          error.target.src = "images/no_found/broken-image.png";
+                        }}
                       />
                     </a>
                   </Link>

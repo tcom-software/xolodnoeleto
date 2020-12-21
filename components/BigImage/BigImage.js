@@ -11,7 +11,7 @@ const BigImage = ({ isOpenBigImg, changeBigImage }) => {
           webBackground={"transparent"}
         >
           <div className="content">
-            <img src={isOpenBigImg} />
+            <img src={isOpenBigImg} alt="Ac ХолодноеЛето" />
           </div>
         </GlobalSection>
       </BigImageContainer>

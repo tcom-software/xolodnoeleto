@@ -22,9 +22,10 @@ module.exports = {
     callbackRequest: "api/oneClickOrder",
     contactUs: "/api/contactUs",
     addReview: "/api/review",
+    getNewProducts: "/api/newProducts",
 
-    productsUpload: "/public/uploads/products/",
-    seriesUpload: "/public/uploads/product_series/",
+    productsUpload: "/public/uploads/products/products0",
+    seriesUpload: "/public/uploads/product_series/product_series0",
     brandsUpload: "/public/uploads/brands/",
   },
 };

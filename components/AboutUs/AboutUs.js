@@ -7,7 +7,6 @@ import TitleNavigation from "../TitleNavigation";
 
 const AboutUs = ({ seenProducts }) => {
   const title = `УСТАНОВКА КОНДИЦИОНЕРОВ ЦЕНЫ УСТАНОВКА\n КОНДИЦИОНЕРОВ В МОСКВЕ И МОСКОВСКОЙ ОБЛАСТИ`;
-  console.log(seenProducts, "-------seenProducts--------AboutUs");
   return (
     <>
       <TitleNavigation title="О нас" currentPage="О нас" />

@@ -5,6 +5,7 @@ import rootReducer from "./reducers/rootReducer";
 import { basketInitialState } from "./actions/basketActions";
 import { loadCatalogList } from "./actions/catalogueActions";
 import { getInitialReview } from "./actions/reviewActions";
+import { newProducts } from "./actions/productListAction";
 
 /** window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ **/
 
@@ -33,6 +34,7 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(thunkMiddleware))
 );
 
+store.dispatch(newProducts());
 store.dispatch(loadCatalogList());
 store.dispatch(getInitialReview());
 store.dispatch(basketInitialState());

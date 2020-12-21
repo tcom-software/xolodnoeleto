@@ -20,17 +20,13 @@ export const getProductInfo = (id) => {
           const imgObj = data.photos
             .filter((e) => e.cover_photo === 1)
             .reduce((acc, next) => next, {});
-
           dispatch(
             addSeenProduct({
               ...data.product,
               id: data.product.articule,
-              series_picture_folder: imgObj.folder,
-              series_picture_file_name: imgObj.file_name,
-              series_picture_format: imgObj.file_format,
-              product_picture_folder: imgObj.folder,
-              product_picture_file_name: imgObj.file_name,
-              product_picture_format: imgObj.file_format,
+              folder: imgObj.folder,
+              file_name: imgObj.file_name,
+              file_format: imgObj.file_format,
             })
           );
           dispatch({
