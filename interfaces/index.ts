@@ -45,6 +45,7 @@ export interface InputInterface {
   svgSize: number;
   callback?: any;
   handleChange?: any;
+  onFocus?: any;
 }
 export interface ImageInterface {
   simpleWeb: string;

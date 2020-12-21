@@ -2,6 +2,7 @@ export const SEARCHED = "SEARCHED";
 export const IS_MOBILE = "IS_MOBILE";
 export const CATALOG_LIST = "CATALOG_LIST";
 export const INITIAL_STATE = "INITIAL_STATE";
+export const WHERE_WAS_SEARCH = "WHERE_WAS_SEARCH";
 export const IS_OPEN_BIG_IMAGE = "IS_OPEN_BIG_IMAGE";
 export const NOTIFICATION_MESSAGE = "NOTIFICATION_MESSAGE";
 
@@ -18,4 +19,9 @@ export const setIsMobile = (isMobile) => ({
 export const setNotificationMessage = (message) => ({
   type: NOTIFICATION_MESSAGE,
   payload: message,
+});
+
+export const whereWasSearchAction = (where) => ({
+  type: WHERE_WAS_SEARCH,
+  payload: where,
 });

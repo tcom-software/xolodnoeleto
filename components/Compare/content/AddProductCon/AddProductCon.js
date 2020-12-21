@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import getConfig from "next/config";
-import { Button, Input, SvgIcon } from "@famous";
+import { Button, SvgIcon } from "@famous";
+
+import HeaderWebMobileSearch from "../../../FamousComponents/SearchResult";
 
 const AddProductCon = ({
-  type,
   array,
-  setType,
   products,
   addCompareProduct,
   removeCompareProduct,
   compareInformation,
 }) => {
+  const [type, setType] = useState(1);
   const {
     publicRuntimeConfig: { productsUpload, serverUrl },
   } = getConfig();
@@ -32,19 +33,11 @@ const AddProductCon = ({
               </Button>
             );
           } else {
-            return (
-              <Input
-                key={i}
-                svgSize={29}
-                width="100%"
-                height="47px"
-                search={true}
-                callback={() => {
-                  setType(1), addCompareProduct();
-                }}
-                placeholder={"Ищите среди миллиона товаров..."}
-              />
-            );
+            return <HeaderWebMobileSearch key={i} where={"compare"} />;
+
+            // setType(1),
+            // addCompareProduct()
+            // placeholder={"Ищите среди миллиона товаров..."}
           }
         })}
         <div className="added-products-con">

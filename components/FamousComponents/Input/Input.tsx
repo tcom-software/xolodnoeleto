@@ -14,6 +14,7 @@ const InputCase = ({
   handleChange,
   width,
   height,
+  onFocus,
 }: InputInterface) => {
   if (!!labelTitle) {
     return (
@@ -25,6 +26,7 @@ const InputCase = ({
               placeholder={placeholder}
               onChange={handleChange}
               value={searchValue}
+              onFocus={onFocus}
             />
             {search ? (
               <SvgIcons
@@ -48,6 +50,7 @@ const InputCase = ({
               placeholder={placeholder}
               onChange={handleChange}
               value={searchValue}
+              onFocus={onFocus}
             />
             {search ? (
               <SvgIcons

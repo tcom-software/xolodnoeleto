@@ -8,7 +8,7 @@ import { closeModal, openModal } from "redux/actions/modalActions";
 import { BottomPanel, Ul } from "../styles";
 import { useSpring, animated } from "react-spring";
 import Catalog from "./Catalog";
-import HeaderWebMobileSearch from "./HeaderWebMobileSearch";
+import HeaderWebMobileSearch from "../../../FamousComponents/SearchResult";
 
 const Bottom = ({
   isMobile,
@@ -60,7 +60,9 @@ const Bottom = ({
             </Link>
           </li>
           <li className="header-search-result-container">
-            {isMobile ? <HeaderWebMobileSearch /> : null}
+            {isMobile ? (
+              <HeaderWebMobileSearch where={"header-bottom"} />
+            ) : null}
           </li>
           <li>
             <Link href={"/basket"}>

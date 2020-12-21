@@ -4,7 +4,7 @@ import Link from "next/link";
 import theme from "styles/theme";
 import { GlobalSection, SvgIcon } from "@famous";
 import { openModal } from "redux/actions/modalActions";
-import HeaderWebMobileSearch from "./HeaderWebMobileSearch";
+import HeaderWebMobileSearch from "../../../FamousComponents/SearchResult";
 import SvgIconWaveAnim from "../../../FamousComponents/SvgIconWaveAnim";
 import { LogoCon, MainPanel, PhonesCon, SearchAndFavoriteCon } from "../styles";
 
@@ -50,7 +50,7 @@ const Middle = ({ phones, openModal, modalType, isMobile }) => {
             Заказать обратный звонок
           </p>
         </PhonesCon>
-        {!isMobile ? <HeaderWebMobileSearch /> : null}
+        {!isMobile ? <HeaderWebMobileSearch where={"header-middle"} /> : null}
         <SearchAndFavoriteCon customMargin={true}>
           <Link href={"/compare"}>
             <a>

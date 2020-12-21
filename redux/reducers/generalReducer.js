@@ -1,4 +1,5 @@
 import * as types from "../actions/generalActions";
+import { WHERE_WAS_SEARCH } from "../actions/generalActions";
 
 const initialState = {
   header: {
@@ -512,6 +513,7 @@ const initialState = {
     },
   },
   notificationMessage: null,
+  whereWasSearch: null,
 };
 
 const generalReducer = (state = initialState, action) => {
@@ -530,6 +532,11 @@ const generalReducer = (state = initialState, action) => {
       return {
         ...state,
         notificationMessage: action.payload,
+      };
+    case types.WHERE_WAS_SEARCH:
+      return {
+        ...state,
+        whereWasSearch: action.payload,
       };
     default:
       return { ...state };
