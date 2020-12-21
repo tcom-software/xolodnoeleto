@@ -6,6 +6,8 @@ const initialState = {
   new_loading: false,
   new_search: [],
   total: null,
+  whereWasSearch: null,
+  searchInputValue: "",
 };
 
 const generalReducer = (state = initialState, action) => {
@@ -41,6 +43,16 @@ const generalReducer = (state = initialState, action) => {
         search: [...state.search, ...action.payload.searchResponse],
       };
       break;
+    case types.WHERE_WAS_SEARCH:
+      return {
+        ...state,
+        whereWasSearch: action.payload,
+      };
+    case types.SET_SEARCH_INPUT_VALUE:
+      return {
+        ...state,
+        searchInputValue: action.payload,
+      };
     default:
       return { ...state };
   }

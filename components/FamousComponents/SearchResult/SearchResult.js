@@ -14,10 +14,12 @@ const SearchResult = ({
   where,
   whereWasSearch,
   whereWasSearchAction,
+
+  searchInputValue,
+  searchInputValueAction,
 }) => {
   const heightRef = useRef(null);
   const [page, setPage] = useState(1);
-  const [searchWord, setWord] = useState("");
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -27,7 +29,7 @@ const SearchResult = ({
         !containerRef.current.contains(event.target)
       ) {
         actionSearch("");
-        setWord("");
+        searchInputValueAction("");
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
@@ -58,7 +60,7 @@ const SearchResult = ({
     const result = scrollHeight - scrollTop === clientHeight;
     if (result) {
       if (total > page * 15) {
-        actionSearch(searchWord, page + 1);
+        actionSearch(searchInputValue, page + 1);
         setPage(page + 1);
       }
     }
@@ -76,10 +78,10 @@ const SearchResult = ({
           height="35px"
           search={true}
           placeholder={"search"}
-          searchValue={searchWord}
+          searchValue={where === whereWasSearch ? searchInputValue : ""}
           handleChange={(e) => {
             actionSearch(e.target.value);
-            setWord(e.target.value);
+            searchInputValueAction(e.target.value);
           }}
           onFocus={() => whereWasSearchAction(where)}
         />
