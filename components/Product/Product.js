@@ -1,19 +1,25 @@
 import React, { useEffect } from "react";
-import { GlobalSection, Loading } from "@famous";
 import theme from "styles/theme";
 import { useRouter } from "next/router";
 import ProductList from "../ProductsList";
 import { ProductTopContainer } from "./styles";
+import { GlobalSection, Loading } from "@famous";
 import ImageContainer from "./content/ImageContainer";
 import Characteristics from "./content/Characteristics";
 import FunctionalContainer from "./content/FunctionalContainer";
 
-const Product = ({ productInfo, seenProducts, getProductInfo }) => {
+const Product = ({
+  productInfo,
+  seenProducts,
+  getProductInfo,
+  clearProductInfo,
+}) => {
   const router = useRouter();
   const { id } = router.query;
 
   useEffect(() => {
     id && getProductInfo(id);
+    return () => clearProductInfo();
   }, [id]);
 
   if (Object.keys(productInfo).length === 0) {

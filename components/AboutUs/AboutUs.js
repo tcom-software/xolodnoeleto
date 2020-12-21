@@ -7,7 +7,7 @@ import TitleNavigation from "../TitleNavigation";
 
 const AboutUs = ({ seenProducts }) => {
   const title = `УСТАНОВКА КОНДИЦИОНЕРОВ ЦЕНЫ УСТАНОВКА\n КОНДИЦИОНЕРОВ В МОСКВЕ И МОСКОВСКОЙ ОБЛАСТИ`;
-
+  console.log(seenProducts, "-------seenProducts--------AboutUs");
   return (
     <>
       <TitleNavigation title="О нас" currentPage="О нас" />
@@ -43,10 +43,11 @@ const AboutUs = ({ seenProducts }) => {
         </AboutUsContainer>
       </GlobalSection>
       <GlobalSection
-        isWeb={false}
+        isWeb={true}
         isMobile={true}
         webBackground={theme.body.background}
         webPadding={"20px"}
+        mobilePadding={"20px"}
       >
         <ProductList
           title={"ВЫ НЕДАВНО СМОТРЕЛИ"}

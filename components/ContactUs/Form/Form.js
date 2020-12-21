@@ -16,7 +16,7 @@ const Form = ({
       </div>
       <div className="inputs-container">
         <div className="first">
-          {firstPiece.map(({ name, type, label, required }: any, i: number) => {
+          {firstPiece.map(({ name, type, label, required }, i) => {
             return (
               <div key={i} className={`item${i + 1}`}>
                 <label htmlFor={name}> {label} </label>
@@ -34,30 +34,28 @@ const Form = ({
           })}
         </div>
         <div className="second">
-          {secondPiece.map(
-            ({ name, type, label, required }: any, i: number) => {
-              return (
-                <div key={i}>
-                  <div>
-                    <label htmlFor={name}> {label} </label>
-                    <FillFormItem
-                      key={i}
-                      type={type}
-                      name={name}
-                      data={info}
-                      required={required}
-                      textareaHeight={144}
-                      callback={handleChange(name)}
-                      initialErrorState={!!~errorState.indexOf(name)}
-                    />
-                  </div>
-                  <Button type="primary" width="165px" height="47px">
-                    ОТПРАВИТЬ
-                  </Button>
+          {secondPiece.map(({ name, type, label, required }, i) => {
+            return (
+              <div key={i}>
+                <div>
+                  <label htmlFor={name}> {label} </label>
+                  <FillFormItem
+                    key={i}
+                    type={type}
+                    name={name}
+                    data={info}
+                    required={required}
+                    textareaHeight={144}
+                    callback={handleChange(name)}
+                    initialErrorState={!!~errorState.indexOf(name)}
+                  />
                 </div>
-              );
-            }
-          )}
+                <Button type="primary" width="165px" height="47px">
+                  ОТПРАВИТЬ
+                </Button>
+              </div>
+            );
+          })}
         </div>
       </div>
     </form>

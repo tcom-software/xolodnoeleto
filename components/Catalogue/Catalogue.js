@@ -3,12 +3,17 @@ import Filters from "./Filters";
 import theme from "styles/theme";
 import Products from "./Products";
 import Pagination from "../Pagination/index";
-import { GlobalSection } from "@famous";
+import { GlobalSection, SeenProductWrapper } from "@famous";
 import ProductList from "../ProductsList";
 import { CatalogueContainer } from "./styles";
 import { useRouter } from "next/router";
 
-const Catalogue = ({ products, total, updateSelectedDataPage }) => {
+const Catalogue = ({
+  products,
+  total,
+  updateSelectedDataPage,
+  seenProducts,
+}) => {
   const router = useRouter();
 
   return (
@@ -30,18 +35,20 @@ const Catalogue = ({ products, total, updateSelectedDataPage }) => {
           callback={updateSelectedDataPage}
         />
       </GlobalSection>
-      <GlobalSection
-        isWeb={true}
-        isMobile={true}
-        webBackground={theme.body.background}
-        webPadding={"35px 0px"}
-      >
-        <ProductList
-          title={"ВЫ НЕДАВНО СМОТРЕЛИ"}
-          mobileType={"scroll"}
-          products={products.slice(0, 3)}
-        />
-      </GlobalSection>
+      <SeenProductWrapper seenProducts={seenProducts}>
+        <GlobalSection
+          isWeb={true}
+          isMobile={true}
+          webBackground={theme.body.background}
+          webPadding={"35px 0px"}
+        >
+          <ProductList
+            title={"ВЫ НЕДАВНО СМОТРЕЛИ"}
+            mobileType={"scroll"}
+            products={seenProducts}
+          />
+        </GlobalSection>
+      </SeenProductWrapper>
     </>
   );
 };

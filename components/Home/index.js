@@ -22,7 +22,6 @@ const Index = ({ newProducts, superPriceProducts, landing }) => {
         webPadding="40px 0"
       >
         <ProductList
-          superPrice={false}
           title={"НОВЫЕ ПРОДУКТЫ"}
           mobileType={"scroll"}
           products={newProducts}
@@ -49,9 +48,9 @@ const Index = ({ newProducts, superPriceProducts, landing }) => {
       <LazyLoad>
         <Brands />
       </LazyLoad>
-      <LazyLoad>
+      {/* <LazyLoad>
         <SubScriptionEmail />
-      </LazyLoad>
+      </LazyLoad>*/}
       <LazyLoad>
         <GlobalSection
           isWeb={true}

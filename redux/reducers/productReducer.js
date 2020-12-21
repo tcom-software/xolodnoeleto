@@ -14,6 +14,11 @@ const favoriteReducer = (state = initialState, action) => {
         productInfo: action.payload,
         productLoading: false,
       };
+    case types.CLEAR_PRODUCT_INFO:
+      return {
+        ...state,
+        productInfo: {},
+      };
     case types.INCREMENT_PRODUCT:
       return {
         ...state,

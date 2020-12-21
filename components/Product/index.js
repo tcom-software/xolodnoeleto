@@ -1,6 +1,6 @@
 import Product from "./Product";
 import { connect } from "react-redux";
-import { getProductInfo } from "redux/actions/productActions";
+import { clearProductInfo, getProductInfo } from "redux/actions/productActions";
 
 const mapStateToProps = ({
   product: { productInfo },
@@ -12,5 +12,6 @@ const mapStateToProps = ({
 
 const mapDispatchToProps = (dispatch) => ({
   getProductInfo: (id) => dispatch(getProductInfo(id)),
+  clearProductInfo: () => dispatch(clearProductInfo()),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Product);

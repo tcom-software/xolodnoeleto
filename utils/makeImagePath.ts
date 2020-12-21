@@ -17,7 +17,7 @@ const makeImagePath = ({
       ? `${product_picture_folder}/size300/${product_picture_file_name}.${product_picture_format}`
       : `${series_picture_folder}/size300/${series_picture_file_name}.${series_picture_format}`;
 
-  const imagePath = picture.indexOf("null")
+  const imagePath = picture.indexOf("undefined")
     ? `${serverUrl}${
         product_picture_file_name == null ? seriesUpload : productsUpload
       }${picture}`
