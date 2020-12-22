@@ -12,8 +12,8 @@ const initialState = {
       { title: "Контакты", url: "/contact-us" },
     ],
     elseRefs: [
-      { title: "% Акции", url: "" },
-      { title: "Бренды", url: "/brands" },
+      // { title: "% Акции", url: "" },
+      // { title: "Бренды", url: "/brands" },
       { title: "Сравнить", url: "" },
       { title: "Избранные", url: "" },
     ],
@@ -78,7 +78,7 @@ const initialState = {
     {
       title: "Компания",
       items: [
-        { title: "Бренды", url: "/brands" },
+        // { title: "Бренды", url: "/brands" },
         { title: "Категории", url: "" },
         { title: "Оплата и Доставка", url: "/payment-and-delivery" },
         { title: "Установка Кондиционеров", url: "/ac-installation" },

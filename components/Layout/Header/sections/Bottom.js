@@ -52,12 +52,14 @@ const Bottom = ({
               callback={() => {}}
             />
           </li>
-          <li>% Акции</li>
+          <li></li>
+          <li></li>
+          {/*<li>% Акции</li>
           <li>
             <Link href="/brands">
               <a>Бренды</a>
             </Link>
-          </li>
+          </li>*/}
           <li className="header-search-result-container">
             {<SearchResult where={"header-bottom"} />}
           </li>

@@ -6,6 +6,7 @@ import { ShowMoreContainer, ShowMoreText } from "./styles";
 import { ShowMoreWrapperInterface } from "interfaces";
 
 const ShowMoreWrapper = ({
+  line,
   text,
   border,
   color,

@@ -4,12 +4,12 @@ import Brands from "./Brands";
 import SuperSale from "./SuperSale";
 import { connect } from "react-redux";
 import LazyLoad from "react-lazyload";
+import ReviewList from "../ReviewList";
 import theme from "../../styles/theme";
 import { GlobalSection } from "@famous";
 import ProductList from "../ProductsList";
 import ShowMoreWrapper from "../ShowMoreWrapper";
-import SubScriptionEmail from "./SubScriptionEmail";
-import ReviewList from "../ReviewList";
+// import SubScriptionEmail from "./SubScriptionEmail";
 
 const Index = ({ newProducts, superPriceProducts, landing }) => {
   return (
@@ -27,7 +27,7 @@ const Index = ({ newProducts, superPriceProducts, landing }) => {
           products={newProducts}
         />
       </GlobalSection>
-      <LazyLoad>
+      {/*<LazyLoad>
         <SuperSale />
       </LazyLoad>
       <LazyLoad>
@@ -44,7 +44,7 @@ const Index = ({ newProducts, superPriceProducts, landing }) => {
             products={superPriceProducts}
           />
         </GlobalSection>
-      </LazyLoad>
+      </LazyLoad>*/}
       <LazyLoad>
         <Brands />
       </LazyLoad>
@@ -60,6 +60,7 @@ const Index = ({ newProducts, superPriceProducts, landing }) => {
           webPadding="50px 0 20px"
         >
           <ShowMoreWrapper
+            line={5}
             color="#5B5B5B"
             text={landing}
             fromHeight={90}
