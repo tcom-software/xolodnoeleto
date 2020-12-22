@@ -8,6 +8,7 @@ const ProductsCon = ({
   addBasket,
   compareInformation,
   removeCompareProduct,
+  setNotificationMessage,
 }) => {
   const {
     publicRuntimeConfig: { productsUpload, serverUrl, seriesUpload },
@@ -51,6 +52,7 @@ const ProductsCon = ({
                       ...product,
                       ...getImages([photo], id),
                     });
+                    setNotificationMessage("Товар добавлен в корзину");
                   }}
                 >
                   В корзину

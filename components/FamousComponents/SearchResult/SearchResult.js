@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import HtmlCases from "./HtmlCases";
 import { Input, Loading } from "@famous";
 import { SearchContainer } from "./styles";
@@ -17,27 +17,12 @@ const SearchResult = ({
 
   searchInputValue,
   searchInputValueAction,
+
+  refForSearch,
+  setNewRefForSearch,
 }) => {
   const heightRef = useRef(null);
   const [page, setPage] = useState(1);
-  const containerRef = useRef(null);
-
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (
-        containerRef.current &&
-        !containerRef.current.contains(event.target)
-      ) {
-        actionSearch("");
-        searchInputValueAction("");
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
   const CustomCases = () => {
     if (loading) {
       return <Loading />;
@@ -54,7 +39,6 @@ const SearchResult = ({
       return null;
     }
   };
-
   const handleScroll = () => {
     const { clientHeight, scrollHeight, scrollTop } = heightRef.current;
     const result = scrollHeight - scrollTop === clientHeight;
@@ -68,8 +52,11 @@ const SearchResult = ({
 
   return (
     <SearchContainer
-      ref={containerRef}
+      ref={whereWasSearch === where ? refForSearch : null}
       searchLength={search.length > 0 || loading || new_loading}
+      onClick={(event) => {
+        setNewRefForSearch({ current: event.currentTarget });
+      }}
     >
       <SearchCon>
         <Input
@@ -78,7 +65,7 @@ const SearchResult = ({
           height="35px"
           search={true}
           placeholder={"search"}
-          searchValue={where === whereWasSearch ? searchInputValue : ""}
+          searchValue={whereWasSearch === where ? searchInputValue : ""}
           handleChange={(e) => {
             actionSearch(e.target.value);
             searchInputValueAction(e.target.value);

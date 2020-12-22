@@ -8,6 +8,7 @@ const initialState = {
   total: null,
   whereWasSearch: null,
   searchInputValue: "",
+  refForSearch: null,
 };
 
 const generalReducer = (state = initialState, action) => {
@@ -52,6 +53,11 @@ const generalReducer = (state = initialState, action) => {
       return {
         ...state,
         searchInputValue: action.payload,
+      };
+    case types.SET_NEW_REF_FOR_SEARCH:
+      return {
+        ...state,
+        refForSearch: { ...action.payload },
       };
     default:
       return { ...state };
