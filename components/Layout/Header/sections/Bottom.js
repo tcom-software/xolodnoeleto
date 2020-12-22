@@ -21,7 +21,6 @@ const Bottom = ({
     to: { val: basketItemsCount },
     config: { duration: 500 },
   });
-
   return (
     <GlobalSection
       isWeb={true}

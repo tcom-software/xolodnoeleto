@@ -57,7 +57,7 @@ const Top = ({
       </TopPanel>
       <TopPanel
         modalType={modalType}
-        ref={modalType === "catalog" ? modalRef : null}
+        ref={modalType === "navigation" ? modalRef : null}
       >
         <Ul>
           {[...elseRefs, ...navigation].map(({ title, url }, i) => {
