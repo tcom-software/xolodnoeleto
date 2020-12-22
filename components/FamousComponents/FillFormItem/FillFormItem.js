@@ -5,7 +5,8 @@ import { phoneNumberFormat } from "@utils";
 import { Message, InputContainer } from "./styles";
 import { FormValidationInterface } from "interfaces";
 
-const FillFormItem = (props: FormValidationInterface) => {
+// FormValidationInterface
+const FillFormItem = (props) => {
   const {
     data,
     name,

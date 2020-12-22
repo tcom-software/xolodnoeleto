@@ -136,7 +136,6 @@ export interface checkBoxInterface {
   callback?: any;
 }
 export interface ShowMoreWrapperInterface {
-  line: number;
   text: string;
   border: string;
   color: string;

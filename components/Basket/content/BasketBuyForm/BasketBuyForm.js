@@ -39,7 +39,7 @@ const BasketBuyForm = ({
     <ByFormContainer>
       <form onSubmit={handleSubmit}>
         <div>
-          {basketBuyInputs.map(({ name, type, label }: any, i: number) => (
+          {basketBuyInputs.map(({ name, type, label }, i) => (
             <div key={i}>
               <label htmlFor={name}> {label} </label>
               <FillFormItem
