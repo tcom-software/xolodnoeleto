@@ -1,6 +1,6 @@
 import React from "react";
-import { ImageInterface } from "interfaces";
 import LazyLoad from "react-lazyload";
+import { ImageInterface } from "interfaces";
 import { Img } from "./styles";
 
 const Image = (props: ImageInterface) => {

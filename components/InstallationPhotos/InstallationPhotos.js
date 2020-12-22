@@ -1,9 +1,9 @@
-import { InstallationPhotoContainer } from "./styles";
-import { GlobalSection, Image } from "@famous";
-import theme from "../../styles/theme";
-import TitleNavigation from "../TitleNavigation";
 import React from "react";
+import theme from "styles/theme";
 import ProductList from "../ProductsList";
+import TitleNavigation from "../TitleNavigation";
+import { GlobalSection, Image } from "@famous";
+import { InstallationPhotoContainer } from "./styles";
 
 const InstallationPhotos = ({
   seenProducts,
@@ -28,7 +28,7 @@ const InstallationPhotos = ({
           {InstallationPhotos.map((e, i) => {
             return (
               <div className="item" key={i}>
-                <Image simpleWeb={e} webpWeb={""} />
+                <Image simpleWeb={e.jpg} webpWeb={e.webP} />
               </div>
             );
           })}

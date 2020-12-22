@@ -10,7 +10,7 @@ const Banner = () => {
   const images = data.map((e, i) => (
     <Image
       key={i}
-      simpleWeb="https://www.nastol.com.ua/pic/202009/1280x800/nastol.com.ua-423922.jpg"
+      simpleWeb={`/images/slider_images/${i + 1}.png`}
       webpWeb={""}
     />
   ));

@@ -7,15 +7,18 @@ const InstallationPhotoContainer = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
 
   .item {
-    transition: all 0.4s ease-in;
-    background: #fff;
-    border: 1px solid ${theme.body.someBorder};
     width: 100%;
+    cursor: pointer;
+    background: #fff;
+    padding: 7px 15px;
+    transition: all 0.4s ease-in;
+    border: 1px solid ${theme.body.someBorder};
     .lazyload-wrapper {
       width: 100%;
       img {
         width: 100%;
-        object-fit: cover;
+        object-fit: contain;
+        height: 200px;
       }
     }
 
