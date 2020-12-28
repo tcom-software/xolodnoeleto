@@ -29,11 +29,12 @@ const Middle = ({ phones, openModal, modalType }) => {
               <SvgIconWaveAnim
                 type="logo"
                 width={150}
-                height={24}
+                height={44}
                 animation={true}
                 reverse={open}
                 animationUniqId="logo"
               />
+
               <img src="/images/logo/logo.png" alt="sun" />
               <h1>XOLODNOELETO</h1>
             </a>

@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import theme from "styles/theme";
 import { connect } from "react-redux";
-import { GlobalSection, SvgIcon, SvgIconAnim } from "@famous";
+import { GlobalSection, SvgIcon, SvgIconFillingAnim } from "@famous";
 import { LogoCon, Ul, TopPanel } from "../styles";
 import { openModal, closeModal } from "redux/actions/modalActions";
 
@@ -34,12 +34,11 @@ const Top = ({
           <Link href={"/"}>
             <a>
               {isMobile ? (
-                <SvgIconAnim
-                  type="logo"
+                <SvgIconFillingAnim
+                  type="logoMobile"
                   width={150}
-                  height={24}
-                  color="black"
-                  duration={20000}
+                  height={44}
+                  duration={2000}
                 />
               ) : null}
 

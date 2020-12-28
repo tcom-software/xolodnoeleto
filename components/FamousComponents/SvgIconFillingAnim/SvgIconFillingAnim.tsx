@@ -19,7 +19,6 @@ const SvgIconFillingAnim = ({
     inSide,
     svgProps: { id, viewBox },
   } = SvgTypes[type];
-
   const pathRef: any = useRef();
   const [offset, setOffset] = useState(null);
 
@@ -51,9 +50,7 @@ const SvgIconFillingAnim = ({
                     {...e.props}
                     strokeDashoffset={props.x}
                     strokeDasharray={offset}
-                    strokeWidth="1"
-                    stroke={color}
-                    fill="transparent"
+                    strokeWidth=".2"
                     ref={pathRef}
                   />
                 );

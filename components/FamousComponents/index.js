@@ -3,7 +3,7 @@ export { default as ProductImage } from "./ProductImage";
 export { default as Input } from "./Input";
 export { default as MetaTags } from "./MetaTags";
 export { default as SvgIcon } from "./SvgIcon";
-export { default as SvgIconAnim } from "./SvgIconFillingAnim";
+export { default as SvgIconFillingAnim } from "./SvgIconFillingAnim";
 export { default as CheckBox } from "./Checkbox";
 export { default as Select } from "./Select";
 export { default as Star } from "./Star";

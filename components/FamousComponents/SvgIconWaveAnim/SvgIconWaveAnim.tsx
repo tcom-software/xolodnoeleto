@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import SvgTypes from "../SvgIcon/svg-types";
 import { useSpring, animated } from "react-spring";
 import Svg from "../SvgIcon/styles";
