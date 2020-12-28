@@ -1,5 +1,5 @@
 import React from "react";
-import { SvgIcon } from "@famous";
+import { SvgIcon, OurPhones } from "@famous";
 
 const Information = ({ phones }) => {
   return (
@@ -32,9 +32,7 @@ const Information = ({ phones }) => {
       <div>
         <SvgIcon type={"phone"} width={20} height={20} />
         <div>
-          {phones.map((e, i) => (
-            <p key={i}>{e}</p>
-          ))}
+          <OurPhones phones={phones} />
         </div>
       </div>
     </div>
