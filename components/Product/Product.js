@@ -16,6 +16,7 @@ const Product = ({
 }) => {
   const router = useRouter();
   const { id } = router.query;
+
   useEffect(() => {
     id && getProductInfo(id);
     return () => clearProductInfo();

@@ -1,7 +1,7 @@
 import React from "react";
 import getConfig from "next/config";
 import { Button, SvgIcon } from "@famous";
-import { makePrice, getImages } from "@utils";
+import { makePrice, adsImgCollection } from "@utils";
 
 const ProductsCon = ({
   products,
@@ -50,7 +50,7 @@ const ProductsCon = ({
                     e.preventDefault();
                     addBasket({
                       ...product,
-                      ...getImages([photo], id),
+                      ...adsImgCollection([photo]),
                     });
                     setNotificationMessage("Товар добавлен в корзину");
                   }}

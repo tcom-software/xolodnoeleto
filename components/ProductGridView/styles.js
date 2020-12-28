@@ -16,6 +16,14 @@ const ProductContainer = styled.div`
     padding: 15px;
     border: 1px solid ${theme.product.borderColor};
 
+    .grid-view-product-image {
+      width: 100%;
+      height: 158px;
+      object-fit: contain;
+      @media (max-width: ${theme.mobileMedia.size}) {
+        height: auto;
+      }
+    }
     .super-price {
       position: absolute;
       top: 15px;
@@ -61,14 +69,7 @@ const ProductContainer = styled.div`
   }
 `;
 
-const Image = styled.img`
-  width: 100%;
-  height: 158px;
-  object-fit: contain;
-  @media (max-width: ${theme.mobileMedia.size}) {
-    height: auto;
-  }
-`;
+const Image = styled.img``;
 const Title = styled.div`
   text-align: center;
 `;

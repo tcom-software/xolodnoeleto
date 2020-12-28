@@ -18,8 +18,8 @@ const mapStateToProps = ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  addCompareProduct: (data) => dispatch(addCompareProduct(data)),
-  addToFavorite: (data) => dispatch(addToFavorite(data)),
+  addCompareProduct: (id) => dispatch(addCompareProduct(id)),
+  addToFavorite: (product) => dispatch(addToFavorite(product)),
   addBasket: (product) => dispatch(addBasket(product)),
   incrementProduct: () => dispatch(incrementProductCount()),
   decrementProduct: () => dispatch(decrementProductCount()),

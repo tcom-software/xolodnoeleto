@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { connect } from "react-redux";
-import { Button, SvgIcon } from "@famous";
+import { Button, SvgIcon, ProductImage } from "@famous";
 import { IncDec, makeImagePath, makePrice } from "@utils";
 import { CalculateCon, Img, ImgCon, MiniCon, Title, Container } from "./styles";
 
@@ -49,36 +49,18 @@ const MobileCase = ({
     <div>
       {Object.values(basketItems).map((item) => {
         const { id, count, model, brand, price } = item;
+        const imagePath = makeImagePath(item);
 
-        let imgInfo;
-        if (item.product_picture_folder) {
-          imgInfo = {
-            folder: item.product_picture_folder,
-            file_name: item.product_picture_file_name,
-            file_format: item.product_picture_format,
-          };
-        } else {
-          imgInfo = {
-            folder: item.series_picture_folder,
-            file_name: item.series_picture_file_name,
-            file_format: item.series_picture_format,
-          };
-        }
-
-        const imagePath = makeImagePath(imgInfo);
         return (
           <Container key={id}>
             <ImgCon>
               <Link href={`/product/${id}`}>
                 <a>
-                  <Img
+                  <ProductImage
                     src={imagePath}
                     alt={`${brand} ${model}`}
                     title={`${brand} ${model}`}
                     className="product-image-table-and-mobile-case"
-                    onError={(error) => {
-                      error.target.src = "images/no_found/broken-image.png";
-                    }}
                   />
                 </a>
               </Link>
@@ -166,9 +148,9 @@ const mapDispatchToProps = (dispatch) => ({
   changeOrderStep: (step) => dispatch(changeOrderStep(step)),
   updateStepsResult: (step) => dispatch(updateStepsResult(step)),
 
-  incrementFavorite: (data) => dispatch(incrementFavoriteCount(data)),
-  decrementFavorite: (data) => dispatch(decrementFavoriteCount(data)),
-  deleteFavoriteItem: (data) => dispatch(deleteFavoriteItem(data)),
+  incrementFavorite: (id) => dispatch(incrementFavoriteCount(id)),
+  decrementFavorite: (id) => dispatch(decrementFavoriteCount(id)),
+  deleteFavoriteItem: (id) => dispatch(deleteFavoriteItem(id)),
   manipulationSelectedData: (data) => dispatch(manipulationSelectedData(data)),
 });
 

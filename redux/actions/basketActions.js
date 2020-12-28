@@ -1,16 +1,17 @@
 import getConfig from "next/config";
 
-export const BASKET_INITIAL_STATE = "BASKET_INITIAL_STATE";
+export const ADD_BASKET = "ADD_BASKET";
+export const MAKE_ORDER = "MAKE_ORDER";
+export const BASKET_LOADING = "BASKET_LOADING";
 export const INCREMENT_BASKET = "INCREMENT_BASKET";
 export const DECREMENT_BASKET = "DECREMENT_BASKET";
 export const CHANGE_ORDER_STATE = "CHANGE_ORDER_STATE";
 export const DELETE_BASKET_ITEM = "DELETE_BASKET_ITEM";
-export const ADD_BASKET = "ADD_BASKET";
-export const MAKE_ORDER = "MAKE_ORDER";
-export const BASKET_LOADING = "BASKET_LOADING";
 export const UPDATE_STEPS_RESULT = "UPDATE_STEPS_RESULT";
+export const BASKET_INITIAL_STATE = "BASKET_INITIAL_STATE";
 export const INITIAL_STEPS_RESULT = "INITIAL_STEPS_RESULT";
 export const SELECTED_DATA_MANIPULATION = "SELECTED_DATA_MANIPULATION";
+
 import axiosInstance from "../../utils/axiosInstance";
 
 const {
@@ -28,7 +29,7 @@ export const addBasket = (product) => ({
 
 export const incrementBasketCount = (id) => ({
   type: INCREMENT_BASKET,
-  payload: { id },
+  payload: id,
 });
 
 export const makeInitialStepsResult = () => ({
@@ -42,12 +43,12 @@ export const updateStepsResult = (stepData) => ({
 
 export const decrementBasketCount = (id) => ({
   type: DECREMENT_BASKET,
-  payload: { id },
+  payload: id,
 });
 
 export const deleteBasketItem = (id) => ({
   type: DELETE_BASKET_ITEM,
-  payload: { id },
+  payload: id,
 });
 
 export const basketInitialState = () => ({

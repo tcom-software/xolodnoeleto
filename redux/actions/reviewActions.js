@@ -2,10 +2,16 @@ import { axiosInstance } from "@utils";
 export const GET_INITIAL_REVIEWS = "GET_INITIAL_REVIEWS";
 export const GET_REVIEWS_BY_PAGE = "GET_REVIEWS_BY_PAGE";
 
+import getConfig from "next/config";
+
+const {
+  publicRuntimeConfig: { getReviews, serverUrl },
+} = getConfig();
+
 export const getInitialReview = () => {
   return (dispatch) => {
     axiosInstance
-      .get(`http://projects-backend.ru/api/getReviews`)
+      .get(`${serverUrl}${getReviews}`)
       .then(({ data }) => {
         if (data) {
           dispatch({

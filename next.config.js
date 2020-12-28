@@ -23,6 +23,7 @@ module.exports = {
     contactUs: "/api/contactUs",
     addReview: "/api/review",
     getNewProducts: "/api/newProducts",
+    getReviews: "/api/getReviews",
 
     productsUpload: "/public/uploads/products/products0",
     seriesUpload: "/public/uploads/product_series/product_series0",

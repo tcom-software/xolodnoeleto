@@ -10,7 +10,6 @@ import { DataEmpty } from "@famous";
 
 const Favorite = ({ isMobile, favoriteProducts, seenProducts }) => {
   const itemsLength = Object.keys(favoriteProducts).length;
-
   if (itemsLength === 0) {
     return (
       <>

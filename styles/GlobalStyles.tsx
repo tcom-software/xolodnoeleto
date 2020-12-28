@@ -44,6 +44,8 @@ const GlobalStyles = createGlobalStyle`
   }
   .product-image-table-and-mobile-case {
     object-fit: contain;
+    width: 70px;
+    height: 70px;
   }
 `;
 

@@ -1,17 +1,35 @@
 import getConfig from "next/config";
 
-const makeImagePath = ({ folder, file_name, file_format }) => {
+const makeImagePath = (product) => {
+  const {
+    cover_photo,
+    product_picture_folder: PPFol,
+    product_picture_format: PPFor,
+    product_picture_file_name: PPFN,
+  } = product;
+
   const {
     publicRuntimeConfig: { productsUpload, seriesUpload, serverUrl },
   } = getConfig();
 
-  const picture =
-    folder === "products0"
-      ? `${productsUpload}/size300/${file_name}.${file_format}`
-      : `${seriesUpload}/size300/${file_name}.${file_format}`;
+  if (PPFol !== null && PPFor !== null && PPFN !== null) {
+    return `${serverUrl}${productsUpload}/size300/${PPFN}.${PPFor}`;
+  } else {
+    const mainPicture = JSON.parse(cover_photo)
+      .filter(({ cover_photo }) => cover_photo === 1)
+      .reduce((acc, next) => {
+        return {
+          ...next,
+        };
+      }, {});
 
-  const imagePath = `${serverUrl}${picture}`;
-  return imagePath;
+    const {
+      series_picture_format: SPFor,
+      series_picture_file_name: SPFN,
+    } = mainPicture;
+
+    return `${serverUrl}${seriesUpload}/size300/${SPFN}.${SPFor}`;
+  }
 };
 
 export default makeImagePath;

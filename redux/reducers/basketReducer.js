@@ -130,7 +130,7 @@ const initialState = {
     },
   },
   total_amount: 0,
-  stepState: 5,
+  stepState: 1,
   stepsResult: {
     stepOne: false,
     stepTwo: false,
@@ -238,41 +238,44 @@ const basketReducer = (state = initialState, action) => {
           .reduce((acc, next) => acc + next, 0),
       };
     case types.INCREMENT_BASKET:
+      const incBaskId = action.payload;
       return {
         ...state,
         items: {
           ...state.items,
-          [action.payload.id]: {
-            ...state.items[action.payload.id],
-            count: state.items[action.payload.id].count + 1,
+          [incBaskId]: {
+            ...state.items[incBaskId],
+            count: state.items[incBaskId].count + 1,
           },
         },
-        total_amount: state.total_amount + state.items[action.payload.id].price,
+        total_amount: state.total_amount + state.items[incBaskId].price,
       };
     case types.DECREMENT_BASKET:
+      const decBaskId = action.payload;
       return {
         ...state,
         items: {
           ...state.items,
-          [action.payload.id]: {
-            ...state.items[action.payload.id],
+          [decBaskId]: {
+            ...state.items[decBaskId],
             count:
-              state.items[action.payload.id].count === 1
+              state.items[decBaskId].count === 1
                 ? 1
-                : state.items[action.payload.id].count - 1,
+                : state.items[decBaskId].count - 1,
           },
         },
         total_amount:
-          state.items[action.payload.id].count === 1
+          state.items[decBaskId].count === 1
             ? state.total_amount
-            : state.total_amount - state.items[action.payload.id].price,
+            : state.total_amount - state.items[decBaskId].price,
       };
     case types.DELETE_BASKET_ITEM:
+      const delBaskId = action.payload;
       return {
         ...state,
         items: {
           ...Object.values(state.items)
-            .filter((e) => e.id != action.payload.id)
+            .filter((e) => e.id != delBaskId)
             .reduce((acc, next) => {
               return {
                 ...acc,
@@ -284,8 +287,7 @@ const basketReducer = (state = initialState, action) => {
         },
         total_amount:
           state.total_amount -
-          state.items[action.payload.id].price *
-            state.items[action.payload.id].count,
+          state.items[delBaskId].price * state.items[delBaskId].count,
       };
     case types.CHANGE_ORDER_STATE:
       return {

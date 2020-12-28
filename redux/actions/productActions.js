@@ -17,16 +17,45 @@ export const getProductInfo = (id) => {
       .get(`${getProduct}/${id}`)
       .then(({ data }) => {
         if (data) {
-          const imgObj = data.photos
+          const { folder, file_name, file_format } = data.photos
             .filter((e) => e.cover_photo === 1)
             .reduce((acc, next) => next, {});
+
+          let img = {
+            cover_photo: JSON.stringify([{}]),
+            product_picture_folder: null,
+            product_picture_format: null,
+            product_picture_file_name: null,
+          };
+
+          if (folder === "products0") {
+            img = {
+              ...img,
+              product_picture_folder: folder,
+              product_picture_format: file_name,
+              product_picture_file_name: file_format,
+            };
+          }
+
+          if (folder === "product_series0") {
+            img = {
+              ...img,
+              cover_photo: JSON.stringify([
+                {
+                  cover_photo: 1,
+                  series_picture_folder: folder,
+                  series_picture_format: file_format,
+                  series_picture_file_name: file_name,
+                },
+              ]),
+            };
+          }
+
           dispatch(
             addSeenProduct({
               ...data.product,
               id: data.product.articule,
-              folder: imgObj.folder,
-              file_name: imgObj.file_name,
-              file_format: imgObj.file_format,
+              ...img,
             })
           );
           dispatch({

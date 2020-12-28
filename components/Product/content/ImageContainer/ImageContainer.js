@@ -53,9 +53,6 @@ const ImageContainer = ({ productInfo, productKey, changeBigImage }) => {
                   webpWeb={""}
                   callback={() => setMain(e)}
                   customClass={main == e ? "selected" : ""}
-                  onError={(error) => {
-                    error.target.src = "/images/no_found/broken-image.png";
-                  }}
                 />
               );
             })}
@@ -70,9 +67,6 @@ const ImageContainer = ({ productInfo, productKey, changeBigImage }) => {
             src={main}
             alt={`${brand} ${model}`}
             title={`${brand} ${model}`}
-            onError={(error) => {
-              error.target.src = "/images/no_found/broken-image.png";
-            }}
           />
         </div>
       </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Button, Star } from "@famous";
+import { Button, Star, ProductImage } from "@famous";
 
 import {
   Image,
@@ -25,52 +25,18 @@ const ProductGridView = ({
    * There are two case data from the backend about products
    *
    * */
-  const {
-    id,
-    model,
-    brand,
-    price,
-
-    folder,
-    file_name,
-    file_format,
-  } = product;
-
-  let image;
-
-  if (!product.product_picture_folder && !product.series_picture_folder) {
-    image = { folder, file_name, file_format };
-  } else {
-    if (
-      product.product_picture_folder &&
-      product.product_picture_folder === "products0"
-    ) {
-      image = {
-        folder: product.product_picture_folder,
-        file_name: product.product_picture_file_name,
-        file_format: product.product_picture_format,
-      };
-    } else {
-      image = {
-        folder: product.series_picture_folder,
-        file_name: product.series_picture_file_name,
-        file_format: product.series_picture_format,
-      };
-    }
-  }
-  const imagePath = makeImagePath(image);
+  const { id, model, brand, price } = product;
+  const imagePath = makeImagePath(product);
 
   return (
     <ProductContainer border={buttonBorder}>
       <Link href={`/product/${id}`}>
         <a>
-          <Image
+          <ProductImage
             src={imagePath}
             alt={`${brand} ${model}`}
             title={`${brand} ${model}`}
-            onError={(error) => {
-              error.target.src = "/images/no_found/broken-image.png";
-            }}
+            className="grid-view-product-image"
           />
           <Title>
             <p>{model}</p>
