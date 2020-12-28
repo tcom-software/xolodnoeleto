@@ -375,7 +375,7 @@ const initialState = {
               "Установка внутреннего блока кондиционера на левой стене, наружный под окном (с наименьшей трассой внутри квартиры).",
           },
           {
-            src: "3.png",
+            src: "2.png",
             title:
               "Установка внутреннего блока кондиционера на левой стене, наружный под окном (с наименьшей трассой внутри квартиры).",
           },
@@ -401,7 +401,7 @@ const initialState = {
   InstallationPhotos: [
     { jpg: "images/done_job/1.jpg", webP: "images/done_job/1.webp" },
     { jpg: "images/done_job/2.jpg", webP: "images/done_job/2.webp" },
-    { jpg: "images/done_job/3.JPEG", webP: "images/done_job/3.webp" },
+    { jpg: "images/done_job/3.JPEG", webP: "images/done_job/2.webp" },
     { jpg: "images/done_job/4.JPEG", webP: "images/done_job/4.webp" },
     { jpg: "images/done_job/5.JPEG", webP: "images/done_job/5.webp" },
     { jpg: "images/done_job/6.JPEG", webP: "images/done_job/6.webp" },
@@ -470,7 +470,7 @@ const initialState = {
     },
     { srcOne: "1.png" },
     { srcOne: "2.png" },
-    { srcOne: "3.png" },
+    { srcOne: "2.png" },
     { srcOne: "4.png" },
     { srcOne: "5.png" },
     { srcOne: "6.png" },

@@ -9,11 +9,6 @@ const data = [
     webP: "2.webp",
     png: "2.png",
   },
-  {
-    jpg: "3.jpg",
-    webP: "3.webp",
-    png: "3.png",
-  },
 ];
 
 export default data;
