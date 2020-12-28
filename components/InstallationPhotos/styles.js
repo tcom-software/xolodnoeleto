@@ -27,7 +27,7 @@ const InstallationPhotoContainer = styled.div`
       transform: scale(1.07);
     }
   }
-  @media (max-width: 768px) {
+  @media (max-width: ${theme.mobileMedia.size}) {
     grid-gap: 15px;
     .item {
       .lazyload-wrapper {

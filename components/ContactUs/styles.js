@@ -54,7 +54,7 @@ const ContactUsContainer = styled.div`
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: ${theme.mobileMedia.size}) {
     grid-template-columns: 1fr !important;
 
     .information,

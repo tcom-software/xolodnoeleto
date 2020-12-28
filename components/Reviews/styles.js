@@ -49,7 +49,7 @@ const ReviewContainer = styled.div`
   @media (max-width: 991px) {
     grid-template-columns: 1fr;
   }
-  @media (max-width: 768px) {
+  @media (max-width: ${theme.mobileMedia.size}) {
     .review-item {
       grid-template-columns: 1fr;
       .uploaded-images {

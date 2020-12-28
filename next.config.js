@@ -11,7 +11,7 @@ module.exports = {
   publicRuntimeConfig: {
     // Will be available on both server and client
 
-    serverUrl: "http://projects-backend.ru",
+    serverUrl: "http://back.projects-backend.ru",
 
     catalogueProducts: "/api/getProducts",
     catalogueCategories: "/api/getCategories",

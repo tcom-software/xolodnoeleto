@@ -20,33 +20,38 @@ const ReviewList = ({ initialReviews, isMobile, openModal }) => {
 
   return (
     <ReviewListContainer>
-      <Link href="/reviews">
-        <a>
-          <h2 className="header">Отзывы</h2>
-        </a>
-      </Link>
-      <p className="title">
-        Бригада монтажников молодцы,монтаж за час! Менеджерам тоже
-        спасибо,всегда на связи и очень лояльны к клиенту. Считаю на сегодня.
-      </p>
-      <Slider
-        arrows={true}
-        dots={false}
-        slidesToShow={isMobile ? 1.1 : 3}
-        prevArrow={isMobile ? null : <PrevSlick onClick />}
-        nextArrow={isMobile ? null : <NextSlick onClick />}
-      >
-        {initialReviews.map(({ id, full_name, rating, comment }) => {
-          return (
-            <Review
-              key={id}
-              fullName={full_name}
-              starCount={rating}
-              description={comment}
-            />
-          );
-        })}
-      </Slider>
+      {initialReviews.length > 0 ? (
+        <>
+          <Link href="/reviews">
+            <a>
+              <h2 className="header">Отзывы</h2>
+            </a>
+          </Link>
+          <p className="title">
+            Бригада монтажников молодцы,монтаж за час! Менеджерам тоже
+            спасибо,всегда на связи и очень лояльны к клиенту. Считаю на
+            сегодня.
+          </p>
+          <Slider
+            arrows={true}
+            dots={false}
+            slidesToShow={isMobile ? 1.1 : 3}
+            prevArrow={isMobile ? null : <PrevSlick onClick />}
+            nextArrow={isMobile ? null : <NextSlick onClick />}
+          >
+            {initialReviews.map(({ id, full_name, rating, comment }) => {
+              return (
+                <Review
+                  key={id}
+                  fullName={full_name}
+                  starCount={rating}
+                  description={comment}
+                />
+              );
+            })}
+          </Slider>
+        </>
+      ) : null}
       <Button
         type={"default"}
         width={"260px"}

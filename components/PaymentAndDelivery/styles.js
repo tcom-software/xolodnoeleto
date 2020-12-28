@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import theme from "styles/theme";
 
 const PaymentAndDeliveryContainer = styled.div`
   display: grid;
@@ -35,7 +36,7 @@ const PaymentAndDeliveryContainer = styled.div`
     display: grid;
     grid-template-columns: 3fr 2fr;
   }
-  @media (max-width: 768px) {
+  @media (max-width: ${theme.mobileMedia.size}) {
     grid-gap: 20px;
 
     .first-con {

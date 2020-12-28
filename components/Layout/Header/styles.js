@@ -53,8 +53,13 @@ const MainPanel = styled.section`
   background: ${theme.body.background};
   display: grid;
   align-items: center;
-  grid-template-columns: 1fr 2fr 2fr 120px 120px;
+  grid-template-columns: 2fr 2fr 3fr 120px 120px;
 
+  @media (max-width: 991px) {
+    grid-template-columns: 2fr 2fr 2fr 120px 120px;
+
+  }
+  
   @media (max-width: ${theme.mobileMedia.size}) {
     ${({ isMobileHidden }) => {
       return (

@@ -3,7 +3,7 @@ import store from "../redux/store";
 import theme from "../styles/theme";
 import { Provider } from "react-redux";
 import Layout from "../components/Layout";
-// import withRedux from "next-redux-wrapper";
+import withRedux from "next-redux-wrapper";
 import { ThemeProvider } from "styled-components";
 import GlobalStyles from "../styles/GlobalStyles";
 import { setIsMobile } from "../redux/actions/generalActions";
@@ -30,6 +30,11 @@ const useWidth = () => {
 function MyApp(props) {
   const { Component, pageProps } = props;
   useWidth();
+
+  // fetch("api/hello")
+  //   .then((res) => res.json())
+  //   .then((ress) => console.log(ress));
+
   return (
     <ThemeProvider theme={theme}>
       <Provider store={store}>
