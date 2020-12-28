@@ -57,7 +57,7 @@ const Nav = styled.nav`
   }
 `;
 
-const UlsCon = styled.div`
+const UlsCon = styled.ul`
   display: flex;
   justify-content: space-between;
 

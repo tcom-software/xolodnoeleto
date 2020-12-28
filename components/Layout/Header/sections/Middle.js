@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
 import Link from "next/link";
 import theme from "styles/theme";
-import { GlobalSection, SvgIcon, SearchResult } from "@famous";
+import { connect } from "react-redux";
 import { openModal } from "redux/actions/modalActions";
 import SvgIconWaveAnim from "../../../FamousComponents/SvgIconWaveAnim";
+import { GlobalSection, SvgIcon, SearchResult, OurPhones } from "@famous";
 import { LogoCon, MainPanel, PhonesCon, SearchAndFavoriteCon } from "../styles";
 
-const Middle = ({ phones, openModal, modalType, isMobile }) => {
+const Middle = ({ phones, openModal, modalType }) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -40,11 +40,7 @@ const Middle = ({ phones, openModal, modalType, isMobile }) => {
           </Link>
         </LogoCon>
         <PhonesCon>
-          <hgroup>
-            {phones.map((e, i) => (
-              <h2 key={i}>{e}</h2>
-            ))}
-          </hgroup>
+          <OurPhones phones={phones} />
           <p onClick={() => (modalType !== "" ? null : openModal("CallBack"))}>
             Заказать обратный звонок
           </p>

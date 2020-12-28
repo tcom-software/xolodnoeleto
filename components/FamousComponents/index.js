@@ -7,6 +7,7 @@ export { default as SvgIconAnim } from "./SvgIconFillingAnim";
 export { default as CheckBox } from "./Checkbox";
 export { default as Select } from "./Select";
 export { default as Star } from "./Star";
+export { default as OurPhones } from "./OurPhones";
 export { default as Button } from "./Button";
 export { default as GlobalSection } from "./GlobalSection";
 export { default as FillFormItem } from "./FillFormItem";

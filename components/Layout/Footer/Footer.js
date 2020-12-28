@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import theme from "styles/theme";
-import Link from "next/link";
 import { connect } from "react-redux";
+import ContentSwitch from "./content/ContentSwitch";
 import { GlobalSection, Image, SvgIcon } from "@famous";
 import { Ul, Nav, UlsCon, Section, Copyright, FooterContainer } from "./styles";
 
@@ -14,6 +14,7 @@ const Footer = ({ menu, copyright, socialNetworks }) => {
       setIsOpen(title);
     }
   };
+
   return (
     <FooterContainer>
       <GlobalSection
@@ -35,51 +36,11 @@ const Footer = ({ menu, copyright, socialNetworks }) => {
                   />
                 </li>
                 <UlsCon title={title} isOpen={isOpen}>
-                  {title === "Компания" ? (
-                    <>
-                      <Ul>
-                        {items.map(({ title, url }, index) => {
-                          return (
-                            <li key={index}>
-                              <Link href={url}>
-                                <a>{title}</a>
-                              </Link>
-                            </li>
-                          );
-                        })}
-                      </Ul>
-                      {sideItems != undefined ? (
-                        <Ul elseCase={true}>
-                          {sideItems.map(
-                            ({ title: sideTitle, url: sideUrl }, index) => {
-                              return (
-                                <li key={index}>
-                                  <Link href={sideUrl}>
-                                    <a>{sideTitle}</a>
-                                  </Link>
-                                </li>
-                              );
-                            }
-                          )}
-                        </Ul>
-                      ) : null}
-                    </>
-                  ) : (
-                    <>
-                      <Ul>
-                        {items.map((value, index) => {
-                          return <li key={index}>{value}</li>;
-                        })}
-                      </Ul>
-                      {sideItems != undefined ? (
-                        <Ul elseCase={true}>
-                          {sideItems.map((value, index) => {
-                            return <li key={index}>{value}</li>;
-                          })}
-                        </Ul>
-                      ) : null}
-                    </>
-                  )}
+                  <ContentSwitch
+                    title={title}
+                    items={items}
+                    sideItems={sideItems}
+                  />
                 </UlsCon>
               </Ul>
             );
