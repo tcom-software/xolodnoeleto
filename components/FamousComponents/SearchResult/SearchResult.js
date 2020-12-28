@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import HtmlCases from "./HtmlCases";
 import { Input, Loading } from "@famous";
 import { SearchContainer } from "./styles";
@@ -50,6 +50,16 @@ const SearchResult = ({
     }
   };
 
+  useEffect(() => {
+    const time = setTimeout(() => {
+      searchInputValue && actionSearch(searchInputValue);
+    }, 500);
+
+    return () => {
+      clearTimeout(time);
+      actionSearch("");
+    };
+  }, [searchInputValue]);
   return (
     <SearchContainer
       ref={whereWasSearch === where ? refForSearch : null}
@@ -67,7 +77,6 @@ const SearchResult = ({
           placeholder={"search"}
           searchValue={whereWasSearch === where ? searchInputValue : ""}
           handleChange={(e) => {
-            actionSearch(e.target.value);
             searchInputValueAction(e.target.value);
           }}
           onFocus={() => whereWasSearchAction(where)}
