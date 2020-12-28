@@ -12,12 +12,14 @@ const Container = styled.div`
     height: 100%;
   }
   img {
-    height: 100%;
     width: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    // min-height: 315px;
+    // height: 100%;
+    // max-height: 415px;
   }
   .slick-slider {
-    height: 415px;
+    max-height: 415px;
     span {
       position: absolute;
       z-index: 1;
@@ -33,6 +35,10 @@ const Container = styled.div`
       }
       &:last-of-type {
         right: 15px;
+      }
+    }
+    .slick-list {
+      .slick-track {
       }
     }
   }
@@ -53,7 +59,7 @@ const Container = styled.div`
   @media (max-width: ${theme.mobileMedia.size}) {
     width: 100%;
     .slick-slider {
-      height: 363px;
+      //height: 363px;
     }
   }
 `;
