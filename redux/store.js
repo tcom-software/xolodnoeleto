@@ -3,7 +3,7 @@ import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import rootReducer from "./reducers/rootReducer";
 import { basketInitialState } from "./actions/basketActions";
-import { loadCatalogList } from "./actions/catalogueActions";
+import { loadCatalogList } from "./actions/catalogActions";
 import { getInitialReview } from "./actions/reviewActions";
 import { newProducts } from "./actions/productListAction";
 

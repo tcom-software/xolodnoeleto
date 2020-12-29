@@ -1,10 +1,10 @@
 import { connect } from "react-redux";
 import RadioSelectionCase from "./RadioSelectionCase";
-import { actionManipulationRadio } from "redux/actions/catalogueActions";
+import { actionManipulationRadio } from "redux/actions/catalogActions";
 
 const mapStateToProps = ({
   general: { isMobile },
-  catalogue: { secondLevelFiltersArray, selectedData },
+  catalog: { secondLevelFiltersArray, selectedData },
 }) => ({ isMobile, selectedData, secondLevelFiltersArray });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -1,15 +1,14 @@
 import Filters from "./Filters";
 import { connect } from "react-redux";
-import { getCatalogueFilters } from "redux/actions/catalogueActions";
+import { getCatalogFilters } from "redux/actions/catalogActions";
 
 const mapStateToProps = ({
-  catalogue: { filters, selectedData },
+  catalog: { filters, selectedData },
   general: { isMobile },
 }) => ({ filters, isMobile, selectedData });
 
 const mapDispatchToProps = (dispatch) => ({
-  getCatalogueFilters: (catalogueId) =>
-    dispatch(getCatalogueFilters(catalogueId)),
+  getCatalogFilters: (catalogId) => dispatch(getCatalogFilters(catalogId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filters);

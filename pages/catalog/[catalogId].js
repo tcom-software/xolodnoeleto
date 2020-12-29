@@ -1,5 +1,5 @@
 import React from "react";
-import Catalogue from "../../components/Catalogue";
+import Catalog from "../../components/Catalog";
 import Head from "next/head";
 
 const Index = () => {
@@ -8,7 +8,7 @@ const Index = () => {
       <Head>
         <title>Каталог продуктов</title>
       </Head>
-      <Catalogue />
+      <Catalog />
     </>
   );
 };

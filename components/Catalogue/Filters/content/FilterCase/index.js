@@ -1,10 +1,10 @@
 import FilterCase from "./FilterCase";
 import { connect } from "react-redux";
-import { actionFirstFiltersLevelArray } from "redux/actions/catalogueActions";
+import { actionFirstFiltersLevelArray } from "redux/actions/catalogActions";
 
 const mapStateToProps = ({
   general: { isMobile },
-  catalogue: { isOpenFilters, firstLevelFiltersArray },
+  catalog: { isOpenFilters, firstLevelFiltersArray },
 }) => ({ isMobile, isOpenFilters, firstLevelFiltersArray });
 
 const mapDispatchToProps = (dispatch) => ({

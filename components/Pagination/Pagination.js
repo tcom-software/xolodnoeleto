@@ -10,7 +10,7 @@ const Pagination = ({ page: fromUrl, isMobile, total, callback }) => {
   }, [fromUrl]);
 
   const { To } = Scroll;
-  // callback update catalogue selected page
+  // callback update catalog selected page
   const setPageToSelectedData = (page) => callback && callback(page);
 
   const handleClick = ({ target: { tagName } }) => {

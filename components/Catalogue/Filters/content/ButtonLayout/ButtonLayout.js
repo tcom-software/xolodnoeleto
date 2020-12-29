@@ -11,7 +11,7 @@ const ButtonLayout = ({
   clearFiltersSelectedData,
 }) => {
   const router = useRouter();
-  const { catalogueId } = router.query;
+  const { catalogId } = router.query;
 
   return (
     <ButtonLayoutContainer>
@@ -22,7 +22,7 @@ const ButtonLayout = ({
           width={"199px"}
           height={"47px"}
           onClick={() => {
-            router.push(catalogueId);
+            router.push(catalogId);
             clearFiltersSelectedData();
           }}
         >
@@ -50,7 +50,7 @@ const ButtonLayout = ({
             width={"199px"}
             height={"47px"}
             onClick={() => {
-              router.push(catalogueId);
+              router.push(catalogId);
               clearFiltersSelectedData();
             }}
           >

@@ -6,23 +6,23 @@ import FilterCase from "./content/FilterCase";
 import ButtonLayout from "./content/ButtonLayout";
 import { createUrlFromObject } from "@utils";
 
-const Filters = ({ filters, getCatalogueFilters, selectedData, isMobile }) => {
+const Filters = ({ filters, getCatalogFilters, selectedData, isMobile }) => {
   const router = useRouter();
-  const { catalogueId } = router.query;
+  const { catalogId } = router.query;
 
   useEffect(() => {
-    if (catalogueId !== undefined) {
-      const url = createUrlFromObject(selectedData, catalogueId);
+    if (catalogId !== undefined) {
+      const url = createUrlFromObject(selectedData, catalogId);
 
       if (url.indexOf("?") != -1) {
         router.push(url);
       }
     }
-  }, [selectedData, catalogueId]);
+  }, [selectedData, catalogId]);
 
   useEffect(() => {
-    catalogueId && getCatalogueFilters(catalogueId);
-  }, [catalogueId]);
+    catalogId && getCatalogFilters(catalogId);
+  }, [catalogId]);
 
   const [isOpen, setOpen] = useState(false);
 

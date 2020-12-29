@@ -22,7 +22,7 @@ const createObjectFromUrl = (urlObj) => {
         if (urlObj[key] === "ASC" || urlObj[key] === "DESC")
           newObject["orderBy"] = urlObj[key];
         break;
-      case "catalogueId":
+      case "catalogId":
         break;
       default:
         newObject["checkboxes"] = {

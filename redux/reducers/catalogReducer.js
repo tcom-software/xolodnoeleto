@@ -1,4 +1,4 @@
-import * as types from "../actions/catalogueActions";
+import * as types from "../actions/catalogActions";
 
 const initialState = {
   productsLoading: true,
@@ -48,14 +48,14 @@ const initialState = {
   selectedData: {},
 };
 
-const catalogueReducer = (state = initialState, action) => {
+const catalogReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.CATALOG_LIST:
       return {
         ...state,
         catalogMenu: action.payload,
       };
-    case types.GET_CATALOGUE_PRODUCTS:
+    case types.GET_CATALOG_PRODUCTS:
       const {
         products,
         products_info: { total },
@@ -67,7 +67,7 @@ const catalogueReducer = (state = initialState, action) => {
         total,
         productsLoading: false,
       };
-    case types.GET_CATALOGUE_FILTERS:
+    case types.GET_CATALOG_FILTERS:
       return {
         ...state,
         filters: {
@@ -75,7 +75,7 @@ const catalogueReducer = (state = initialState, action) => {
           ...action.payload,
         },
       };
-    case types.CATALOGUE_LOADING_TRIGGER:
+    case types.CATALOG_LOADING_TRIGGER:
       return {
         ...state,
         productsLoading: action.payload,
@@ -244,4 +244,4 @@ const catalogueReducer = (state = initialState, action) => {
   }
 };
 
-export default catalogueReducer;
+export default catalogReducer;

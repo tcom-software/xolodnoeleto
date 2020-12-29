@@ -1,14 +1,14 @@
 import Products from "./Products";
 import { connect } from "react-redux";
 import {
-  getCatalogueProducts,
+  getCatalogProducts,
   updateSelectedDataFromUrl,
-  getCatalogueProductLoadingTrigger,
+  getCatalogProductLoadingTrigger,
   updateSelectedOrderBy,
-} from "redux/actions/catalogueActions";
+} from "redux/actions/catalogActions";
 
 const mapStateToProps = ({
-  catalogue: { total, products, productsLoading, selectedData },
+  catalog: { total, products, productsLoading, selectedData },
   general: { isMobile },
 }) => ({
   total,
@@ -19,10 +19,10 @@ const mapStateToProps = ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getCatalogueProducts: (catalogueId, object) =>
-    dispatch(getCatalogueProducts(catalogueId, object)),
-  getCatalogueProductLoadingTrigger: (boolean) =>
-    dispatch(getCatalogueProductLoadingTrigger(boolean)),
+  getCatalogProducts: (catalogId, object) =>
+    dispatch(getCatalogProducts(catalogId, object)),
+  getCatalogProductLoadingTrigger: (boolean) =>
+    dispatch(getCatalogProductLoadingTrigger(boolean)),
   updateSelectedDataFromUrl: (data) =>
     dispatch(updateSelectedDataFromUrl(data)),
   updateSelectedOrderBy: (type) => dispatch(updateSelectedOrderBy(type)),

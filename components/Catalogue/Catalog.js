@@ -2,18 +2,13 @@ import React from "react";
 import Filters from "./Filters";
 import theme from "styles/theme";
 import Products from "./Products";
+import { useRouter } from "next/router";
+import ProductList from "../ProductsList";
+import { CatalogContainer } from "./styles";
 import Pagination from "../Pagination/index";
 import { GlobalSection, SeenProductWrapper } from "@famous";
-import ProductList from "../ProductsList";
-import { CatalogueContainer } from "./styles";
-import { useRouter } from "next/router";
 
-const Catalogue = ({
-  products,
-  total,
-  updateSelectedDataPage,
-  seenProducts,
-}) => {
+const Catalog = ({ products, total, updateSelectedDataPage, seenProducts }) => {
   const router = useRouter();
 
   return (
@@ -25,10 +20,10 @@ const Catalogue = ({
         mobileBackground={theme.body.background}
         mobilePadding={"10px 20px"}
       >
-        <CatalogueContainer>
+        <CatalogContainer>
           <Filters />
           <Products />
-        </CatalogueContainer>
+        </CatalogContainer>
         <Pagination
           total={total}
           page={router.query.page}
@@ -71,4 +66,4 @@ function areEqual(prevProps, nextProps) {
   }
 }
 
-export default React.memo(Catalogue, areEqual);
+export default React.memo(Catalog, areEqual);

@@ -10,14 +10,14 @@ const Products = ({
   total,
   products,
   selectedData,
-  getCatalogueProducts,
+  getCatalogProducts,
   updateSelectedDataFromUrl,
   updateSelectedOrderBy,
-  getCatalogueProductLoadingTrigger,
+  getCatalogProductLoadingTrigger,
 }) => {
   const router = useRouter();
 
-  const { catalogueId } = router.query;
+  const { catalogId } = router.query;
 
   useEffect(() => {
     let object;
@@ -38,11 +38,11 @@ const Products = ({
       object = selectedData;
     }
 
-    getCatalogueProductLoadingTrigger(true);
+    getCatalogProductLoadingTrigger(true);
     if (selectedDataLength === 0 && Object.keys(object).length > 0) {
       updateSelectedDataFromUrl(object);
     }
-    catalogueId && getCatalogueProducts(catalogueId, { ...object });
+    catalogId && getCatalogProducts(catalogId, { ...object });
   }, [router.query]);
 
   return (
@@ -50,7 +50,7 @@ const Products = ({
       {productsLoading ? (
         <Loading />
       ) : (
-        <div className="catalogue">
+        <div className="catalog">
           {isMobile ? (
             <h1>ХИТЫ ПРОДАЖ</h1>
           ) : (
