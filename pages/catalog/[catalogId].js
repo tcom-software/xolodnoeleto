@@ -1,6 +1,6 @@
 import React from "react";
-import Catalog from "../../components/Catalog";
 import Head from "next/head";
+import Catalog from "../../components/Catalog";
 
 const Index = () => {
   return (
