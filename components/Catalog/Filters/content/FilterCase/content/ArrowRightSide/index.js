@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 const mapStateToProps = ({
   general: { isMobile },
-  catalogue: { firstLevelFiltersArray },
+  catalog: { firstLevelFiltersArray },
 }) => ({ isMobile, firstLevelFiltersArray });
 
 export default connect(mapStateToProps)(ArrowRightSide);

@@ -1,9 +1,9 @@
-import Catalogue from "./Catalogue";
+import Catalog from "./Catalog";
 import { connect } from "react-redux";
-import { updateSelectedDataPage } from "../../redux/actions/catalogueActions";
+import { updateSelectedDataPage } from "redux/actions/catalogActions";
 
 const mapStateToProps = ({
-  catalogue: { products, total },
+  catalog: { products, total },
   products: { seenProducts },
 }) => ({
   total,
@@ -14,4 +14,4 @@ const mapDispatchToProps = (dispatch) => ({
   updateSelectedDataPage: (page) => dispatch(updateSelectedDataPage(page)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Catalogue);
+export default connect(mapStateToProps, mapDispatchToProps)(Catalog);

@@ -25,7 +25,7 @@ const Catalog = ({ catalog, modalType, modalRef, closeModal }) => {
                           className={"level-three-li"}
                           onClick={closeModal}
                         >
-                          <Link href={`/catalogue/${element.id}`}>
+                          <Link href={`/catalog/${element.id}`}>
                             <a className={"link-a-tag"}>{element.name}</a>
                           </Link>
                         </li>

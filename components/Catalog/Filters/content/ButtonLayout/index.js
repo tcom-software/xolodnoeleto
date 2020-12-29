@@ -3,12 +3,12 @@ import ButtonLayout from "./ButtonLayout";
 import {
   clearFiltersSelectedData,
   filtersToggle,
-} from "redux/actions/catalogueActions";
+} from "redux/actions/catalogActions";
 
-const mapStateToProps = ({
-  catalogue: { filters },
-  general: { isMobile },
-}) => ({ filters, isMobile });
+const mapStateToProps = ({ catalog: { filters }, general: { isMobile } }) => ({
+  filters,
+  isMobile,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   filtersToggle: () => dispatch(filtersToggle()),

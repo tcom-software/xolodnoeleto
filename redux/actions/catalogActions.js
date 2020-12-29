@@ -1,12 +1,12 @@
 export const CATALOG_LIST = "CATALOG_LIST";
 export const OPEN_FILTERS_TOGGLE = "OPEN_FILTERS_TOGGLE";
-export const GET_CATALOGUE_FILTERS = "GET_CATALOGUE_FILTERS";
-export const GET_CATALOGUE_PRODUCTS = "GET_CATALOGUE_PRODUCTS";
+export const GET_CATALOG_FILTERS = "GET_CATALOG_FILTERS";
+export const GET_CATALOG_PRODUCTS = "GET_CATALOG_PRODUCTS";
 export const MANIPULATION_RADIO_DATA = "MANIPULATION_RADIO_DATA";
 export const UPDATE_SELECTED_ORDER_BY = "UPDATE_SELECTED_ORDER_BY";
 export const FIRST_SECOND_LEVEL_ARRAY = "FIRST_SECOND_LEVEL_ARRAY";
 export const UPDATE_SELECTED_DATA_PAGE = "UPDATE_SELECTED_DATA_PAGE";
-export const CATALOGUE_LOADING_TRIGGER = "CATALOGUE_LOADING_TRIGGER";
+export const CATALOG_LOADING_TRIGGER = "CATALOG_LOADING_TRIGGER";
 export const FIRST_FILTERS_LEVEL_ARRAY = "FIRST_FILTERS_LEVEL_ARRAY";
 export const MANIPULATION_BETWEEN_DATA = "MANIPULATION_BETWEEN_DATA";
 export const MANIPULATION_MULTIPLE_DATA = "MANIPULATION_MULTIPLE_DATA";
@@ -17,26 +17,23 @@ import axiosInstance from "utils/axiosInstance";
 import getConfig from "next/config";
 
 const {
-  publicRuntimeConfig: { catalogueProducts, catalogueCategories, getFilters },
+  publicRuntimeConfig: { catalogProducts, catalogCategories, getFilters },
 } = getConfig();
 
-export const getCatalogueProductLoadingTrigger = (boolean) => ({
-  type: CATALOGUE_LOADING_TRIGGER,
+export const getCatalogProductLoadingTrigger = (boolean) => ({
+  type: CATALOG_LOADING_TRIGGER,
   payload: boolean,
 });
 
-export const getCatalogueProducts = (catalogueId, object = {}) => {
+export const getCatalogProducts = (catalogId, object = {}) => {
   return (dispatch) => {
-    dispatch(getCatalogueProductLoadingTrigger(true));
+    dispatch(getCatalogProductLoadingTrigger(true));
     axiosInstance
-      .post(
-        `${catalogueProducts}/${catalogueId}`,
-        JSON.stringify({ ...object })
-      )
+      .post(`${catalogProducts}/${catalogId}`, JSON.stringify({ ...object }))
       .then(({ data }) => {
         if (data) {
           dispatch({
-            type: GET_CATALOGUE_PRODUCTS,
+            type: GET_CATALOG_PRODUCTS,
             payload: data,
           });
         }
@@ -45,10 +42,10 @@ export const getCatalogueProducts = (catalogueId, object = {}) => {
   };
 };
 
-export const getCatalogueFilters = (catalogueId) => {
+export const getCatalogFilters = (catalogId) => {
   return (dispatch) => {
     axiosInstance
-      .get(`${getFilters}/${catalogueId}`)
+      .get(`${getFilters}/${catalogId}`)
       .then(({ data }) => {
         if (data) {
           const { characteristicAttributes, textFilters } = data;
@@ -73,7 +70,7 @@ export const getCatalogueFilters = (catalogueId) => {
           }, {});
 
           dispatch({
-            type: GET_CATALOGUE_FILTERS,
+            type: GET_CATALOG_FILTERS,
             payload: sortedFilters,
           });
         }
@@ -85,7 +82,7 @@ export const getCatalogueFilters = (catalogueId) => {
 export const loadCatalogList = () => {
   return (dispatch) => {
     axiosInstance
-      .get(catalogueCategories)
+      .get(catalogCategories)
       .then(({ data }) => {
         if (data.length > 0) {
           dispatch({

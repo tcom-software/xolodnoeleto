@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import theme from "styles/theme";
 
-const CatalogueContainer = styled.div`
+const CatalogContainer = styled.div`
   display: grid;
   grid-gap: 32px;
   grid-template-columns: 220px 1fr;
 
-  .catalogue {
+  .catalog {
     .title-section {
       background: #fff;
       display: flex;
@@ -43,7 +43,7 @@ const CatalogueContainer = styled.div`
   @media (max-width: 768px) {
     grid-gap: 5px;
     grid-template-columns: 1fr;
-    .catalogue {
+    .catalog {
       margin-top: 20px;
       .products {
         grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -52,4 +52,4 @@ const CatalogueContainer = styled.div`
   }
 `;
 
-export { CatalogueContainer };
+export { CatalogContainer };

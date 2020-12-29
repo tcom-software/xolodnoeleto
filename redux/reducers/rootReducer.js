@@ -5,7 +5,7 @@ import brandsReducer from "./brandsReducer";
 import basketReducer from "./basketReducer";
 import compareReducer from "./compareReducer";
 import favoriteReducer from "./favoriteReducer";
-import catalogueReducer from "./catalogueReducer";
+import catalogReducer from "./catalogReducer";
 import reviewReducer from "./reviewReducer";
 import productReducer from "./productReducer";
 import searchReducer from "./searchReducer";
@@ -20,7 +20,7 @@ const rootReducer = combineReducers({
   basket: basketReducer,
   compare: compareReducer,
   favorite: favoriteReducer,
-  catalogue: catalogueReducer,
+  catalog: catalogReducer,
   review: reviewReducer,
   product: productReducer,
   search: searchReducer,

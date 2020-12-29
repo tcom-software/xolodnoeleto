@@ -1,11 +1,11 @@
 import { connect } from "react-redux";
 import Between from "./Between";
 
-import { actionManipulationBetween } from "redux/actions/catalogueActions";
+import { actionManipulationBetween } from "redux/actions/catalogActions";
 
 const mapStateToProps = ({
   general: { isMobile },
-  catalogue: { selectedData, secondLevelFiltersArray },
+  catalog: { selectedData, secondLevelFiltersArray },
 }) => ({ isMobile, selectedData, secondLevelFiltersArray });
 
 const mapDispatchToProps = (dispatch) => ({

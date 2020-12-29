@@ -4,11 +4,11 @@ import MultipleSelectionCase from "./MultipleSelectionCase";
 import {
   actionManipulationMultiple,
   actionSecondFiltersLevelArray,
-} from "redux/actions/catalogueActions";
+} from "redux/actions/catalogActions";
 
 const mapStateToProps = ({
   general: { isMobile },
-  catalogue: { secondLevelFiltersArray, selectedData },
+  catalog: { secondLevelFiltersArray, selectedData },
 }) => ({ isMobile, selectedData, secondLevelFiltersArray });
 
 const mapDispatchToProps = (dispatch) => ({

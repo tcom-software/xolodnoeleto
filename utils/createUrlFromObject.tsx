@@ -1,8 +1,8 @@
-const createUrlFromObject = (selectedFiltersObject, catalogueId) => {
+const createUrlFromObject = (selectedFiltersObject, catalogId) => {
   let url = ``;
   const tookFiltersObject = Object.keys(selectedFiltersObject);
 
-  if (tookFiltersObject.length > 0 && catalogueId !== undefined) {
+  if (tookFiltersObject.length > 0 && catalogId !== undefined) {
     const merge = {
       ...selectedFiltersObject.checkboxes,
       ...selectedFiltersObject.fromTo,
@@ -26,9 +26,9 @@ const createUrlFromObject = (selectedFiltersObject, catalogueId) => {
     url = `?${url.slice(0, -1)}${manualParams}`;
     url = url.replace("?&", "?");
 
-    return `${catalogueId}${url}`;
+    return `${catalogId}${url}`;
   } else {
-    return `${catalogueId}`;
+    return `${catalogId}`;
   }
 };
 

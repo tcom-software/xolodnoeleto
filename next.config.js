@@ -13,8 +13,8 @@ module.exports = {
 
     serverUrl: "http://back.projects-backend.ru",
 
-    catalogueProducts: "/api/getProducts",
-    catalogueCategories: "/api/getCategories",
+    catalogProducts: "/api/getProducts",
+    catalogCategories: "/api/getCategories",
     getProduct: "/api/getProduct",
     getFilters: "/api/getFilterData",
     searchProduct: "/api/searchProduct",
