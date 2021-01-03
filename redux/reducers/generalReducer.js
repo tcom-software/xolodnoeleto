@@ -14,8 +14,8 @@ const initialState = {
     elseRefs: [
       // { title: "% Акции", url: "" },
       // { title: "Бренды", url: "/brands" },
-      { title: "Сравнить", url: "" },
-      { title: "Избранные", url: "" },
+      { title: "Сравнить", url: "/compare" },
+      { title: "Избранные", url: "/favorites" },
     ],
   },
   phones: [

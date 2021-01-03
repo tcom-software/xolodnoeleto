@@ -14,10 +14,10 @@ const Notification = ({ notificationMessage: msg, setNotificationMessage }) => {
 
   const props = useSpring({
     to: {
-      transform: `translateX(${msg ? "-200px" : 0})`,
+      transform: `translateX(${msg ? "0%" : "110%"})`,
       opacity: msg ? 1 : 0,
     },
-    from: { transform: `translateX(0px)`, opacity: 0 },
+    from: { transform: `translateX(110%)`, opacity: 0 },
   });
 
   return (

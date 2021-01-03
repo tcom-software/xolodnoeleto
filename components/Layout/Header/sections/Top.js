@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { Scroll } from "@utils";
 import theme from "styles/theme";
 import { connect } from "react-redux";
 import { GlobalSection, SvgIcon, SvgIconFillingAnim } from "@famous";
@@ -14,6 +15,8 @@ const Top = ({
   modalRef,
   isMobile,
 }) => {
+  const { To } = Scroll;
+
   return (
     <GlobalSection
       isWeb={true}
@@ -61,7 +64,13 @@ const Top = ({
         <Ul>
           {[...elseRefs, ...navigation].map(({ title, url }, i) => {
             return (
-              <li key={i}>
+              <li
+                key={i}
+                onClick={() => {
+                  openModal("");
+                  To("Default");
+                }}
+              >
                 <Link href={url}>
                   <a>{title}</a>
                 </Link>

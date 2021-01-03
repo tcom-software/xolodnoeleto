@@ -14,7 +14,13 @@ const NotificationContainer = styled.div`
   }
 
   @media (max-width: 768px) {
-    width: 100vw;
+    div {
+      width: 90vw;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      border: 1px solid #fff;
+    }
   }
 `;
 
