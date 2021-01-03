@@ -14,7 +14,7 @@ const CatalogContainer = styled.ul`
 
   .level-one-li {
     transition: all 0.2s ease-in;
-
+    position: relative;
     &:hover {
       transition: all 0.2s ease-in;
       background: #03a9f4;
@@ -41,7 +41,7 @@ const CatalogContainer = styled.ul`
       .level-two-li {
         width: 100%;
         background: #fff;
-
+        position: relative;
         &:hover {
           transition: all 0.2s ease-in;
           background: #03a9f4;
