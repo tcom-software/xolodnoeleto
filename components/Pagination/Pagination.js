@@ -1,71 +1,34 @@
 import React, { useEffect, useState } from "react";
 import { Scroll } from "@utils";
-import ReactPaginate from "react-paginate";
+import Paginationa from "rc-pagination";
 import { PaginationContainer } from "./styles";
 
 const Pagination = ({ page: fromUrl, isMobile, total, callback }) => {
   const [currentPage, setCurrentPage] = useState(fromUrl);
+  const { To } = Scroll;
+
+  const setPageToSelectedData = (page) => callback && callback(page);
   useEffect(() => {
     setCurrentPage(fromUrl);
   }, [fromUrl]);
 
-  const { To } = Scroll;
-  // callback update catalog selected page
-  const setPageToSelectedData = (page) => callback && callback(page);
-
-  const handleClick = ({ target: { tagName } }) => {
-    if (tagName === "A" || tagName === "SPAN") {
-      To("default");
-    }
-  };
-
   return (
     <PaginationContainer>
-      <div onClick={(event) => handleClick(event)}>
-        <ReactPaginate
-          pageCount={total >= 10 ? Math.floor(total / 10) : 1}
-          pageRangeDisplayed={3}
-          marginPagesDisplayed={3}
-          initialPage={
-            currentPage !== undefined ? parseInt(currentPage) - 1 : 0
-          }
-          forcePage={currentPage !== undefined ? parseInt(currentPage) - 1 : 0}
-          onPageChange={({ selected }) => {
-            setCurrentPage(selected + 1);
-            setPageToSelectedData(selected + 1);
-          }}
-          previousLabel={
-            <span
-              className="arrow-icons"
-              data-direction="left"
-              onClick={() => {
-                if (total > 0) {
-                  setCurrentPage(currentPage - 1);
-                  setPageToSelectedData(currentPage + 1);
-                }
-              }}
-            >
-              {isMobile ? `<<` : `предыдущий`}
-            </span>
-          }
-          nextLabel={
-            <span
-              className="arrow-icons"
-              data-direction="right"
-              onClick={() => {
-                if (total < currentPage) {
-                  setCurrentPage(currentPage + 1);
-                  setPageToSelectedData(currentPage - 1);
-                }
-              }}
-            >
-              {isMobile ? `>>` : `следующий`}
-            </span>
-          }
-          disableInitialCallback={true}
-        />
-      </div>
+      <Paginationa
+        total={total}
+        defaultCurrent={currentPage === undefined ? 1 : parseInt(currentPage)}
+        current={currentPage === undefined ? 1 : parseInt(currentPage)}
+        prevIcon={<span>{isMobile ? `<<` : `предыдущий`}</span>}
+        nextIcon={<span>{isMobile ? `>>` : `следующий`}</span>}
+        jumpNextIcon={<span>...</span>}
+        jumpPrevIcon={<span>...</span>}
+        onChange={(selected) => {
+          To("default");
+          setCurrentPage(selected);
+          setPageToSelectedData(selected);
+        }}
+      />
     </PaginationContainer>
   );
 };
-export default React.memo(Pagination);
+export default Pagination;

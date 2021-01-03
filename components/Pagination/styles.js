@@ -17,40 +17,27 @@ const PaginationContainer = styled.div`
       align-items: center;
       justify-content: center;
 
+      cursor: pointer;
       margin: 5px;
       list-style: none;
       text-align: center;
       border: 1px solid ${theme.body.someBorder};
 
-      &.selected {
-        background: ${theme.body.primaryColor};
-        color: white !important;
-        a {
-          color: white;
-        }
-      }
-      a {
-        cursor: pointer;
-        display: block;
-        padding: 4px 9px;
-        &:focus {
-          outline: none !important;
-          display: none !important;
-        }
-        .arrow-icons {
-          font-weight: bold;
-          text-decoration: underline;
-        }
-      }
-      &:first-of-type {
-        width: auto;
-        height: auto;
-        border: none;
-      }
       &:last-of-type {
         width: auto;
         height: auto;
         border: none;
+      }
+    }
+    .rc-pagination-next,
+    .rc-pagination-prev {
+      width: max-content;
+      border: none;
+    }
+    .rc-pagination-item-active {
+      background: ${theme.body.primaryColor};
+      a {
+        color: white;
       }
     }
   }
