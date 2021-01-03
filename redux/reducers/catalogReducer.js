@@ -46,6 +46,7 @@ const initialState = {
   firstLevelFiltersArray: [],
   secondLevelFiltersArray: [],
   selectedData: {},
+  mobileFiltersStatus: false,
 };
 
 const catalogReducer = (state = initialState, action) => {
@@ -236,6 +237,11 @@ const catalogReducer = (state = initialState, action) => {
       return {
         ...state,
         selectedData: { page: 1 },
+      };
+    case types.CHANGE_MOBILE_FILTERS_STATUS:
+      return {
+        ...state,
+        mobileFiltersStatus: !state.mobileFiltersStatus,
       };
     default:
       return {

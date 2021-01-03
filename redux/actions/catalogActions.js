@@ -11,6 +11,7 @@ export const FIRST_FILTERS_LEVEL_ARRAY = "FIRST_FILTERS_LEVEL_ARRAY";
 export const MANIPULATION_BETWEEN_DATA = "MANIPULATION_BETWEEN_DATA";
 export const MANIPULATION_MULTIPLE_DATA = "MANIPULATION_MULTIPLE_DATA";
 export const CLEAR_SELECTED_FILTERS_DATA = "CLEAR_SELECTED_FILTERS_DATA";
+export const CHANGE_MOBILE_FILTERS_STATUS = "CHANGE_MOBILE_FILTERS_STATUS";
 export const UPDATE_SELECTED_DATA_FROM_URL = "UPDATE_SELECTED_DATA_FROM_URL";
 
 import axiosInstance from "utils/axiosInstance";
@@ -151,4 +152,8 @@ export const updateSelectedOrderBy = (type) => ({
 
 export const clearFiltersSelectedData = () => ({
   type: CLEAR_SELECTED_FILTERS_DATA,
+});
+
+export const changeMobileFiltersStatus = () => ({
+  type: CHANGE_MOBILE_FILTERS_STATUS,
 });

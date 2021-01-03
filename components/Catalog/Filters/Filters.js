@@ -5,8 +5,9 @@ import { FiltersContainer } from "./styles";
 import FilterCase from "./content/FilterCase";
 import ButtonLayout from "./content/ButtonLayout";
 import { createUrlFromObject } from "@utils";
+import MobileFiltersToggleButton from "./content/MobileFiltersToggleButton";
 
-const Filters = ({ filters, getCatalogFilters, selectedData, isMobile }) => {
+const Filters = ({ isMobile, filters, selectedData, getCatalogFilters }) => {
   const router = useRouter();
   const { catalogId } = router.query;
 
@@ -26,20 +27,6 @@ const Filters = ({ filters, getCatalogFilters, selectedData, isMobile }) => {
 
   const [isOpen, setOpen] = useState(false);
 
-  const MobileCloseFilters = () => (
-    <div className="close-filters-mobile">
-      <p>Очистить фильтр</p>
-      <SvgIcon
-        type="close"
-        width={20}
-        height={20}
-        callback={() => {
-          setOpen(!isOpen);
-        }}
-      />
-    </div>
-  );
-
   const handleSubmit = (event) => {
     event.preventDefault();
   };
@@ -49,20 +36,31 @@ const Filters = ({ filters, getCatalogFilters, selectedData, isMobile }) => {
       <form onSubmit={handleSubmit}>
         <ButtonLayout>
           <div className="filters-info-container">
-            <MobileCloseFilters />
-            <div
-              className={`mobile-trigger-button-container`}
-              onClick={() => setOpen(!isOpen)}
-            >
-              <SvgIcon type="openFiltersMobile" width={25} height={25} />
-              <p>Фильтры</p>
-            </div>
+            <MobileFiltersToggleButton isOpen={isOpen} setOpen={setOpen}>
+              <div
+                className={`mobile-trigger-button-container`}
+                onClick={() => setOpen(!isOpen)}
+              >
+                <SvgIcon type="openFiltersMobile" width={25} height={25} />
+                <p>Фильтры</p>
+              </div>
 
-            <div className={`filters-section`}>
-              {Object.entries(filters).map(([key, value], i) => {
-                const type = value[0].name;
-                if (key === "Сортировка") {
-                  if (isMobile)
+              <div className={`filters-section`}>
+                {Object.entries(filters).map(([key, value], i) => {
+                  const type = value[0].name;
+                  if (key === "Сортировка") {
+                    if (isMobile)
+                      return (
+                        <FilterCase
+                          key={i}
+                          type={type}
+                          title={key}
+                          array={value}
+                          maxShowFive={i}
+                        />
+                      );
+                    else return null;
+                  } else {
                     return (
                       <FilterCase
                         key={i}
@@ -72,21 +70,10 @@ const Filters = ({ filters, getCatalogFilters, selectedData, isMobile }) => {
                         maxShowFive={i}
                       />
                     );
-                  else return null;
-                } else {
-                  return (
-                    <FilterCase
-                      key={i}
-                      type={type}
-                      title={key}
-                      array={value}
-                      maxShowFive={i}
-                    />
-                  );
-                }
-              })}
-            </div>
-            <MobileCloseFilters />
+                  }
+                })}
+              </div>
+            </MobileFiltersToggleButton>
           </div>
         </ButtonLayout>
       </form>

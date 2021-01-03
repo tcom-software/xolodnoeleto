@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FilterCaseContainer } from "./styles";
 import ArrowRightSide from "./content/ArrowRightSide";
 import MultipleSelectionCase from "./content/MultipleSelectionCase";
@@ -7,15 +7,15 @@ import Between from "./content/Between";
 import { Scroll } from "@utils";
 
 const FilterCase = ({
-  id,
   type,
   title,
   array,
+  isMobile,
   maxShowFive,
   isOpenFilters,
+  mobileFiltersStatus,
   firstLevelFiltersArray,
   actionFirstFiltersLevelArray,
-  isMobile,
 }) => {
   const { Link } = Scroll;
   const index = firstLevelFiltersArray.indexOf(title);
@@ -46,8 +46,10 @@ const FilterCase = ({
             : isOpenFilters
             ? "show"
             : isMobile
-            ? "show"
-            : "hide"
+            ? mobileFiltersStatus
+              ? "show"
+              : "hide"
+            : "show"
         }`}
       >
         <div
@@ -61,9 +63,9 @@ const FilterCase = ({
         <div
           className={`selection-container ${index === -1 ? "hide" : "show"}`}
         >
-          <Link to="default">
-            <FilterSwitch />
-          </Link>
+          {/*<Link to="default">*/}
+          <FilterSwitch />
+          {/*</Link>*/}
         </div>
       </div>
     </FilterCaseContainer>
