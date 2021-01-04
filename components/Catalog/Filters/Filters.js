@@ -7,7 +7,14 @@ import ButtonLayout from "./content/ButtonLayout";
 import { createUrlFromObject } from "@utils";
 import MobileFiltersToggleButton from "./content/MobileFiltersToggleButton";
 
-const Filters = ({ isMobile, filters, selectedData, getCatalogFilters }) => {
+const Filters = ({
+  isMobile,
+  filters,
+  selectedData,
+  getCatalogFilters,
+  isOpenFilters,
+  filtersToggle,
+}) => {
   const router = useRouter();
   const { catalogId } = router.query;
 
@@ -25,26 +32,23 @@ const Filters = ({ isMobile, filters, selectedData, getCatalogFilters }) => {
     catalogId && getCatalogFilters(catalogId);
   }, [catalogId]);
 
-  const [isOpen, setOpen] = useState(false);
-
   const handleSubmit = (event) => {
     event.preventDefault();
   };
 
   return (
-    <FiltersContainer isOpen={isOpen}>
+    <FiltersContainer isOpen={isOpenFilters}>
       <form onSubmit={handleSubmit}>
         <ButtonLayout>
           <div className="filters-info-container">
-            <MobileFiltersToggleButton isOpen={isOpen} setOpen={setOpen}>
+            <MobileFiltersToggleButton>
               <div
                 className={`mobile-trigger-button-container`}
-                onClick={() => setOpen(!isOpen)}
+                onClick={() => filtersToggle()}
               >
                 <SvgIcon type="openFiltersMobile" width={25} height={25} />
                 <p>Фильтры</p>
               </div>
-
               <div className={`filters-section`}>
                 {Object.entries(filters).map(([key, value], i) => {
                   const type = value[0].name;

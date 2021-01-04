@@ -3,6 +3,7 @@ import { Loading } from "@famous";
 import { useRouter } from "next/router";
 import { createObjectFromUrl } from "@utils";
 import ProductGridView from "../../ProductGridView/index";
+import Pagination from "../../Pagination";
 
 const Products = ({
   productsLoading,
@@ -11,8 +12,9 @@ const Products = ({
   products,
   selectedData,
   getCatalogProducts,
-  updateSelectedDataFromUrl,
   updateSelectedOrderBy,
+  updateSelectedDataPage,
+  updateSelectedDataFromUrl,
   getCatalogProductLoadingTrigger,
 }) => {
   const router = useRouter();
@@ -44,7 +46,6 @@ const Products = ({
     }
     catalogId && getCatalogProducts(catalogId, { ...object });
   }, [router.query]);
-
   return (
     <>
       {productsLoading ? (
@@ -70,12 +71,21 @@ const Products = ({
               </select>
             </div>
           )}
-
+          <Pagination
+            total={total}
+            page={router.query.page}
+            callback={updateSelectedDataPage}
+          />
           <div className="products">
             {Object.values(products).map((item, index) => {
               return <ProductGridView key={index} item={item} />;
             })}
           </div>
+          <Pagination
+            total={total}
+            page={router.query.page}
+            callback={updateSelectedDataPage}
+          />
         </div>
       )}
     </>

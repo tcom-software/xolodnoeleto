@@ -3,12 +3,13 @@ import { SvgIcon } from "@famous";
 import { Scroll } from "@utils";
 
 const MobileCloseFilters = ({
-  setOpen,
-  isOpen,
   children,
   isMobile,
+  isOpenFilters,
+  filtersToggle,
   mobileFiltersStatus,
   changeMobileFiltersStatus,
+  clearFiltersSelectedData,
 }) => {
   const { To } = Scroll;
   if (!isMobile) {
@@ -16,35 +17,51 @@ const MobileCloseFilters = ({
   } else {
     return (
       <>
-        <div
-          className="close-filters-mobile"
-          onClick={() => {
-            setOpen(!isOpen);
-            changeMobileFiltersStatus();
-          }}
-        >
-          <p>Очистить фильтр</p>
-          <SvgIcon type="close" width={20} height={20} />
+        <div className="close-filters-mobile">
+          <p
+            onClick={() => {
+              clearFiltersSelectedData();
+            }}
+          >
+            Очистить фильтр
+          </p>
+          <p
+            onClick={() => {
+              filtersToggle();
+              changeMobileFiltersStatus();
+            }}
+          >
+            Закрыть
+          </p>
         </div>
         {children}
-        <div
-          className="close-filters-mobile"
-          onClick={() => {
-            if (mobileFiltersStatus) {
-              To("default");
-              setOpen(!isOpen);
-              changeMobileFiltersStatus();
-            } else {
-              changeMobileFiltersStatus();
-            }
-          }}
-        >
+        <div className="close-filters-mobile">
           {!mobileFiltersStatus ? (
-            <p>Показать больше фильтров</p>
+            <p
+              onClick={() => {
+                changeMobileFiltersStatus();
+              }}
+            >
+              Показать больше фильтров
+            </p>
           ) : (
             <>
-              <p>Очистить фильтр</p>
-              <SvgIcon type="close" width={20} height={20} />
+              <p
+                onClick={() => {
+                  clearFiltersSelectedData();
+                }}
+              >
+                Очистить фильтр
+              </p>
+              <p
+                onClick={() => {
+                  To("default");
+                  filtersToggle();
+                  changeMobileFiltersStatus();
+                }}
+              >
+                Закрыть
+              </p>
             </>
           )}
         </div>

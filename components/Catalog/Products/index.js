@@ -5,6 +5,7 @@ import {
   updateSelectedDataFromUrl,
   getCatalogProductLoadingTrigger,
   updateSelectedOrderBy,
+  updateSelectedDataPage,
 } from "redux/actions/catalogActions";
 
 const mapStateToProps = ({
@@ -25,6 +26,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(getCatalogProductLoadingTrigger(boolean)),
   updateSelectedDataFromUrl: (data) =>
     dispatch(updateSelectedDataFromUrl(data)),
+  updateSelectedDataPage: (page) => dispatch(updateSelectedDataPage(page)),
   updateSelectedOrderBy: (type) => dispatch(updateSelectedOrderBy(type)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Products);

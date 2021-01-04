@@ -8,7 +8,7 @@ import { CatalogContainer } from "./styles";
 import Pagination from "../Pagination/index";
 import { GlobalSection, SeenProductWrapper } from "@famous";
 
-const Catalog = ({ products, total, updateSelectedDataPage, seenProducts }) => {
+const Catalog = ({ total, updateSelectedDataPage, seenProducts }) => {
   const router = useRouter();
 
   return (
@@ -22,13 +22,15 @@ const Catalog = ({ products, total, updateSelectedDataPage, seenProducts }) => {
       >
         <CatalogContainer>
           <Filters />
-          <Products />
+          <Products page={router.query.page} />
         </CatalogContainer>
+        {/*
+        //// Old place for pagination
         <Pagination
           total={total}
           page={router.query.page}
           callback={updateSelectedDataPage}
-        />
+        />*/}
       </GlobalSection>
       <SeenProductWrapper seenProducts={seenProducts}>
         <GlobalSection

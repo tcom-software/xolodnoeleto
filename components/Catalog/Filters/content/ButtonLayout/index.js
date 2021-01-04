@@ -5,9 +5,13 @@ import {
   filtersToggle,
 } from "redux/actions/catalogActions";
 
-const mapStateToProps = ({ catalog: { filters }, general: { isMobile } }) => ({
+const mapStateToProps = ({
+  catalog: { filters, isOpenFilters },
+  general: { isMobile },
+}) => ({
   filters,
   isMobile,
+  isOpenFilters,
 });
 
 const mapDispatchToProps = (dispatch) => ({

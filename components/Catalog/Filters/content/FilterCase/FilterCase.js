@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
+import Between from "./content/Between";
 import { FilterCaseContainer } from "./styles";
 import ArrowRightSide from "./content/ArrowRightSide";
 import MultipleSelectionCase from "./content/MultipleSelectionCase";
 import RadioSelectionCase from "./content/RadioSelectionCase";
-import Between from "./content/Between";
-import { Scroll } from "@utils";
 
 const FilterCase = ({
   type,
@@ -17,7 +16,6 @@ const FilterCase = ({
   firstLevelFiltersArray,
   actionFirstFiltersLevelArray,
 }) => {
-  const { Link } = Scroll;
   const index = firstLevelFiltersArray.indexOf(title);
   const FilterSwitch = () => {
     switch (type) {
@@ -37,21 +35,28 @@ const FilterCase = ({
     }
   };
 
+  let className = "";
+  if (isMobile) {
+    if (mobileFiltersStatus) {
+      className = "show";
+    } else if (maxShowFive < 5 && isOpenFilters) {
+      className = "show";
+    } else {
+      className = "hide";
+    }
+  } else {
+    if (isOpenFilters) {
+      className = "show";
+    } else if (maxShowFive < 5 && !isOpenFilters) {
+      className = "show";
+    } else {
+      className = "hide";
+    }
+  }
+
   return (
     <FilterCaseContainer>
-      <div
-        className={`item-container ${
-          maxShowFive < 5
-            ? "show"
-            : isOpenFilters
-            ? "show"
-            : isMobile
-            ? mobileFiltersStatus
-              ? "show"
-              : "hide"
-            : "show"
-        }`}
-      >
+      <div className={`item-container ${className}`}>
         <div
           className="only-title-section"
           onClick={() => actionFirstFiltersLevelArray(title)}
@@ -63,9 +68,7 @@ const FilterCase = ({
         <div
           className={`selection-container ${index === -1 ? "hide" : "show"}`}
         >
-          {/*<Link to="default">*/}
           <FilterSwitch />
-          {/*</Link>*/}
         </div>
       </div>
     </FilterCaseContainer>

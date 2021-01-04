@@ -5,9 +5,9 @@ import { ButtonLayoutContainer } from "./styles";
 
 const ButtonLayout = ({
   isOpenFilters,
+  filtersToggle,
   isMobile,
   children,
-  filtersToggle,
   clearFiltersSelectedData,
 }) => {
   const router = useRouter();
