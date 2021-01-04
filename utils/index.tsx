@@ -4,6 +4,7 @@ export { default as makePrice } from "./makePrice";
 export { default as axiosInstance } from "./axiosInstance";
 export { default as makeImagePath } from "./makeImagePath";
 export { default as formValidation } from "./formValidation";
+export { default as sortCatalogMenu } from "./sortCatalogMenu";
 export { default as adsImgCollection } from "./adsImgCollection";
 export { default as phoneNumberFormat } from "./phoneNumberFormat";
 export { default as createUrlFromObject } from "./createUrlFromObject";
