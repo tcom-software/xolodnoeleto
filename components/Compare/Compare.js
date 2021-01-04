@@ -12,7 +12,6 @@ const Compare = ({ seenProducts, compareProducts }) => {
   const products = Object.values(compareProducts);
   const array = [...Array(3 - products.length == 0 ? 0 : 1)];
   const compareInformation = CreateCompareInformation(compareProducts);
-
   return (
     <>
       <TitleNavigation
@@ -24,8 +23,9 @@ const Compare = ({ seenProducts, compareProducts }) => {
         isMobile={true}
         webBackground={theme.body.secondBackground}
         mobileBackground={theme.body.background}
+        mobilePadding={"0px"}
       >
-        <CompareContainer productCounts={products.length}>
+        <CompareContainer>
           <div className="top-section">
             <AddProductCon
               array={array}

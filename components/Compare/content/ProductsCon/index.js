@@ -7,6 +7,9 @@ import {
 import { connect } from "react-redux";
 import { setNotificationMessage } from "redux/actions/generalActions";
 
+const mapStateToProps = ({ general: { isMobile } }) => ({
+  isMobile,
+});
 const mapDispatchToProps = (dispatch) => ({
   addBasket: (product) => dispatch(addBasket(product)),
   addCompareProduct: (data) => dispatch(addCompareProduct(data)),
@@ -15,4 +18,4 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(setNotificationMessage(message)),
 });
 
-export default connect(null, mapDispatchToProps)(ProductsCon);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductsCon);

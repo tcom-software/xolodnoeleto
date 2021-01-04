@@ -44,8 +44,6 @@ const ProductsCon = ({
                 <p>{makePrice(price)}</p>
                 <Button
                   type="secondary"
-                  width={"156px"}
-                  height={"45px"}
                   onClick={(e) => {
                     e.preventDefault();
                     addBasket({
