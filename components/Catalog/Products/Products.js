@@ -76,6 +76,7 @@ const Products = ({
             page={router.query.page}
             callback={updateSelectedDataPage}
           />
+
           <div className="products">
             {Object.values(products).map((item, index) => {
               return <ProductGridView key={index} item={item} />;
