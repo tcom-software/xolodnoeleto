@@ -3,22 +3,30 @@ import { Global, Section, MiniDiv } from "./styles";
 import { GlobalSectionInterface } from "interfaces";
 
 const GlobalSection = ({
-  isWeb,
-  webPadding,
-  mobilePadding,
   children,
-  overflowStyle,
+
+  isWeb,
   isMobile,
+
+  webPadding,
   borderTop,
+
   borderBottom,
+  mobilePadding,
+
   webBackground,
   mobileBackground,
+
   width,
   height,
+
   widthMobile,
   heightMobile,
+
   webPosition,
   mobilePosition,
+
+  overflowStyle,
 }: GlobalSectionInterface) => {
   return (
     <Global

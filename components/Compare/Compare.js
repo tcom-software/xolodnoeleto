@@ -7,6 +7,7 @@ import ProductsCon from "./content/ProductsCon";
 import TitleNavigation from "../TitleNavigation";
 import AddProductCon from "./content/AddProductCon";
 import CreateCompareInformation from "./compareInformation";
+import { SeenProductWrapper } from "../FamousComponents";
 
 const Compare = ({ seenProducts, compareProducts }) => {
   const products = Object.values(compareProducts);
@@ -39,19 +40,21 @@ const Compare = ({ seenProducts, compareProducts }) => {
           </div>
         </CompareContainer>
       </GlobalSection>
-      <GlobalSection
-        isWeb={true}
-        isMobile={true}
-        webBackground={theme.body.background}
-        webPadding="40px 0"
-      >
-        <ProductList
-          superPrice={false}
-          title={"Вы недавно смотрели"}
-          mobileType={"scroll"}
-          products={seenProducts}
-        />
-      </GlobalSection>
+      <SeenProductWrapper seenProducts={seenProducts}>
+        <GlobalSection
+          isWeb={true}
+          isMobile={true}
+          webBackground={theme.body.background}
+          webPadding="40px 0"
+        >
+          <ProductList
+            superPrice={false}
+            title={"Вы недавно смотрели"}
+            mobileType={"scroll"}
+            products={seenProducts}
+          />
+        </GlobalSection>
+      </SeenProductWrapper>
     </>
   );
 };

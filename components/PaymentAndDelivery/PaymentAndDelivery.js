@@ -4,6 +4,7 @@ import { GlobalSection, Image } from "@famous";
 import theme from "styles/theme";
 import { PaymentAndDeliveryContainer } from "./styles";
 import TitleNavigation from "../TitleNavigation";
+import { SeenProductWrapper } from "../FamousComponents";
 
 const PaymentAndDelivery = ({ seenProducts, paymentAndDelivery: cxt }) => {
   return (
@@ -42,18 +43,20 @@ const PaymentAndDelivery = ({ seenProducts, paymentAndDelivery: cxt }) => {
           </div>
         </PaymentAndDeliveryContainer>
       </GlobalSection>
-      <GlobalSection
-        isWeb={true}
-        isMobile={true}
-        webBackground={theme.body.background}
-        webPadding={"30px 0"}
-      >
-        <ProductList
-          title={"ВЫ НЕДАВНО СМОТРЕЛИ"}
-          mobileType={"scroll"}
-          products={seenProducts}
-        />
-      </GlobalSection>
+      <SeenProductWrapper seenProducts={seenProducts}>
+        <GlobalSection
+          isWeb={true}
+          isMobile={true}
+          webBackground={theme.body.background}
+          webPadding={"30px 0"}
+        >
+          <ProductList
+            title={"ВЫ НЕДАВНО СМОТРЕЛИ"}
+            mobileType={"scroll"}
+            products={seenProducts}
+          />
+        </GlobalSection>
+      </SeenProductWrapper>
     </>
   );
 };

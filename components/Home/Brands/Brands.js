@@ -1,5 +1,6 @@
 import theme from "styles/theme";
-import { Image, GlobalSection } from "@famous";
+import Item from "./Item";
+import { GlobalSection } from "@famous";
 import { BrandsContainer } from "./styles";
 
 const Brands = ({ brands }) => {
@@ -14,11 +15,7 @@ const Brands = ({ brands }) => {
         <h3>Бренды</h3>
         <div className="brands-list">
           {brands.map(({ src }, i) => {
-            return (
-              <div className="brand" key={i}>
-                <Image simpleWeb={src} webpWeb={""} />
-              </div>
-            );
+            return <Item key={i} src={src} />;
           })}
         </div>
       </BrandsContainer>

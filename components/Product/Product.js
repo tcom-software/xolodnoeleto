@@ -7,6 +7,7 @@ import { GlobalSection, Loading } from "@famous";
 import ImageContainer from "./content/ImageContainer";
 import Characteristics from "./content/Characteristics";
 import FunctionalContainer from "./content/FunctionalContainer";
+import { SeenProductWrapper } from "../FamousComponents";
 
 const Product = ({
   productInfo,
@@ -39,20 +40,22 @@ const Product = ({
         </ProductTopContainer>
       </GlobalSection>
       <Characteristics />
-      <GlobalSection
-        isWeb={true}
-        isMobile={true}
-        webBackground={theme.body.background}
-        webPadding={"60px 0"}
-        mobilePadding={"0"}
-      >
-        <ProductList
-          superPrice={false}
-          mobileType={"scroll"}
-          products={seenProducts}
-          title={"ВЫ НЕДАВНО СМОТРЕЛИ"}
-        />
-      </GlobalSection>
+      <SeenProductWrapper seenProducts={seenProducts}>
+        <GlobalSection
+          isWeb={true}
+          isMobile={true}
+          webBackground={theme.body.background}
+          webPadding={"60px 0"}
+          mobilePadding={"0"}
+        >
+          <ProductList
+            superPrice={false}
+            mobileType={"scroll"}
+            products={seenProducts}
+            title={"ВЫ НЕДАВНО СМОТРЕЛИ"}
+          />
+        </GlobalSection>
+      </SeenProductWrapper>
     </>
   );
 };

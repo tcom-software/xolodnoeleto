@@ -10,6 +10,7 @@ import ProductList from "../ProductsList";
 import { ContactUsContainer } from "./styles";
 import TitleNavigation from "../TitleNavigation";
 import axiosInstance from "../../utils/axiosInstance";
+import { SeenProductWrapper } from "../FamousComponents";
 
 const ContactUs = ({ seenProducts, setNotificationMessage }) => {
   const initialState = { fullName: "", email: "", phone: "", comment: "" };
@@ -53,7 +54,6 @@ const ContactUs = ({ seenProducts, setNotificationMessage }) => {
         .catch(console.log);
     }
   };
-
   return (
     <>
       <TitleNavigation title="Контакты" currentPage="Контакты" />
@@ -76,18 +76,20 @@ const ContactUs = ({ seenProducts, setNotificationMessage }) => {
           />
         </ContactUsContainer>
       </GlobalSection>
-      <GlobalSection
-        isWeb={true}
-        isMobile={true}
-        webBackground={theme.body.background}
-        webPadding={"20px"}
-      >
-        <ProductList
-          title={"ВЫ НЕДАВНО СМОТРЕЛИ"}
-          mobileType={"scroll"}
-          products={seenProducts}
-        />
-      </GlobalSection>
+      <SeenProductWrapper seenProducts={seenProducts}>
+        <GlobalSection
+          isWeb={true}
+          isMobile={true}
+          webBackground={theme.body.background}
+          webPadding={"20px"}
+        >
+          <ProductList
+            title={"ВЫ НЕДАВНО СМОТРЕЛИ"}
+            mobileType={"scroll"}
+            products={seenProducts}
+          />
+        </GlobalSection>
+      </SeenProductWrapper>
     </>
   );
 };

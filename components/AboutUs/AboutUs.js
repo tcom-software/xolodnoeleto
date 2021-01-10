@@ -4,6 +4,7 @@ import { GlobalSection, Image } from "@famous";
 import ProductList from "../ProductsList";
 import { AboutUsContainer } from "./styles";
 import TitleNavigation from "../TitleNavigation";
+import { SeenProductWrapper } from "../FamousComponents";
 
 const AboutUs = ({ seenProducts }) => {
   const title = `УСТАНОВКА КОНДИЦИОНЕРОВ ЦЕНЫ УСТАНОВКА\n КОНДИЦИОНЕРОВ В МОСКВЕ И МОСКОВСКОЙ ОБЛАСТИ`;
@@ -41,19 +42,21 @@ const AboutUs = ({ seenProducts }) => {
           </div>
         </AboutUsContainer>
       </GlobalSection>
-      <GlobalSection
-        isWeb={true}
-        isMobile={true}
-        webBackground={theme.body.background}
-        webPadding={"20px"}
-        mobilePadding={"20px"}
-      >
-        <ProductList
-          title={"ВЫ НЕДАВНО СМОТРЕЛИ"}
-          mobileType={"scroll"}
-          products={seenProducts}
-        />
-      </GlobalSection>
+      <SeenProductWrapper seenProducts={seenProducts}>
+        <GlobalSection
+          isWeb={true}
+          isMobile={true}
+          webBackground={theme.body.background}
+          webPadding={"20px"}
+          mobilePadding={"20px"}
+        >
+          <ProductList
+            title={"ВЫ НЕДАВНО СМОТРЕЛИ"}
+            mobileType={"scroll"}
+            products={seenProducts}
+          />
+        </GlobalSection>
+      </SeenProductWrapper>
     </>
   );
 };

@@ -5,6 +5,7 @@ import TitleNavigation from "../TitleNavigation";
 import { BrandsContainer } from "./styles";
 import Letters from "./content/Letters";
 import ProductList from "../ProductsList";
+import { SeenProductWrapper } from "../FamousComponents";
 
 const Brands = ({ brandItems, seenProducts }) => {
   const [selected, setSelected] = useState([]);
@@ -57,19 +58,21 @@ const Brands = ({ brandItems, seenProducts }) => {
           </div>
         </BrandsContainer>
       </GlobalSection>
-      <GlobalSection
-        isWeb={true}
-        isMobile={true}
-        webBackground={theme.body.background}
-        webPadding={"60px 0"}
-        mobilePadding={"20px 0"}
-      >
-        <ProductList
-          title={"ВЫ НЕДАВНО СМОТРЕЛИ"}
-          mobileType={"scroll"}
-          products={seenProducts}
-        />
-      </GlobalSection>
+      <SeenProductWrapper seenProducts={seenProducts}>
+        <GlobalSection
+          isWeb={true}
+          isMobile={true}
+          webBackground={theme.body.background}
+          webPadding={"60px 0"}
+          mobilePadding={"20px 0"}
+        >
+          <ProductList
+            title={"ВЫ НЕДАВНО СМОТРЕЛИ"}
+            mobileType={"scroll"}
+            products={seenProducts}
+          />
+        </GlobalSection>
+      </SeenProductWrapper>
     </>
   );
 };
