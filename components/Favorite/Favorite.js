@@ -7,6 +7,7 @@ import MobileCase from "../ProductListView/MobileCase";
 import WebCase from "../ProductListView/WebCase";
 import ProductList from "../ProductsList";
 import { DataEmpty } from "@famous";
+import { SeenProductWrapper } from "../FamousComponents";
 
 const Favorite = ({ isMobile, favoriteProducts, seenProducts }) => {
   const itemsLength = Object.keys(favoriteProducts).length;
@@ -45,17 +46,19 @@ const Favorite = ({ isMobile, favoriteProducts, seenProducts }) => {
           )}
         </FavoriteContainer>
       </GlobalSection>
-      <GlobalSection
-        isWeb={false}
-        isMobile={true}
-        webBackground={theme.body.background}
-      >
-        <ProductList
-          title={"ВЫ НЕДАВНО СМОТРЕЛИ"}
-          mobileType={"scroll"}
-          products={seenProducts}
-        />
-      </GlobalSection>
+      <SeenProductWrapper seenProducts={seenProducts}>
+        <GlobalSection
+          isWeb={false}
+          isMobile={true}
+          webBackground={theme.body.background}
+        >
+          <ProductList
+            title={"ВЫ НЕДАВНО СМОТРЕЛИ"}
+            mobileType={"scroll"}
+            products={seenProducts}
+          />
+        </GlobalSection>
+      </SeenProductWrapper>
     </>
   );
 };

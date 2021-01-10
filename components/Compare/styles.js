@@ -131,8 +131,11 @@ const CompareContainer = styled.div`
               border-bottom: 1px solid ${theme.body.someBorder};
             }
             p {
-              padding: 5px 0;
+              padding: 5px 6px;
               border-bottom: 1px solid ${theme.body.someBorder};
+              .mobile-element {
+                display: none;
+              }
             }
           }
         }
@@ -212,6 +215,18 @@ const CompareContainer = styled.div`
                 position: relative;
                 color: transparent;
               }
+              p {
+                .mobile-element {
+                  display: block;
+                  color: transparent;
+                  white-space: nowrap;
+                  position: relative;
+                  margin-bottom: 12px;
+                  text-indent: 0px;
+                  font-weight: bold;
+                  font-size: 15px;
+                }
+              }
             }
           }
           &:nth-of-type(1) {
@@ -219,6 +234,12 @@ const CompareContainer = styled.div`
               div {
                 h3 {
                   color: ${theme.body.primaryColor};
+                }
+                p {
+                  .mobile-element {
+                    display: block;
+                    color: #111;
+                  }
                 }
               }
             }

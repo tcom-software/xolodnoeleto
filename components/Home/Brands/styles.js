@@ -20,10 +20,11 @@ const BrandsContainer = styled.div`
 `;
 
 const BrandItem = styled.div`
-  transition: transform 0.2s;
+  transition: transform, box-shadow 0.2s;
   transform: rotateX(0deg);
   will-change: transform;
 
+  cursor: pointer;
   height: 100px;
   display: flex;
   justify-content: center;
@@ -32,5 +33,8 @@ const BrandItem = styled.div`
   border: 1px solid #d8d8d8;
   box-sizing: border-box;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.11);
+  &:hover {
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.11);
+  }
 `;
 export { BrandsContainer, BrandItem };

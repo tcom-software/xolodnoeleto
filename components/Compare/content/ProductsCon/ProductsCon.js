@@ -13,7 +13,6 @@ const ProductsCon = ({
   const {
     publicRuntimeConfig: { productsUpload, serverUrl, seriesUpload },
   } = getConfig();
-
   return (
     <div className="products-con">
       {products.map(({ product, photo }, index) => {
@@ -68,9 +67,12 @@ const ProductsCon = ({
                           (_, valueIndex) => {
                             return (
                               <p key={valueIndex}>
-                                {compareInformation[e][ele][index] != null
-                                  ? compareInformation[e][ele][index]
-                                  : "_"}
+                                <span className={"mobile-element"}>{ele}</span>
+                                <span className={"desktop-element"}>
+                                  {compareInformation[e][ele][index] != null
+                                    ? compareInformation[e][ele][index]
+                                    : "_"}
+                                </span>
                               </p>
                             );
                           }

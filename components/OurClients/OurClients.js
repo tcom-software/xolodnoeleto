@@ -4,6 +4,7 @@ import { GlobalSection } from "@famous";
 import ProductList from "../ProductsList";
 import TitleNavigation from "../TitleNavigation";
 import { OurClientsContainer, Titleh3, Item } from "./styles";
+import { SeenProductWrapper } from "../FamousComponents";
 
 const OurClients = ({ ourClients, seenProducts, changeBigImage }) => {
   return (
@@ -43,19 +44,21 @@ const OurClients = ({ ourClients, seenProducts, changeBigImage }) => {
           })}
         </OurClientsContainer>
       </GlobalSection>
-      <GlobalSection
-        isWeb={true}
-        isMobile={true}
-        webBackground={theme.body.background}
-        webPadding={"20px"}
-      >
-        <ProductList
-          superPrice={false}
-          title={"ВЫ НЕДАВНО СМОТРЕЛИ"}
-          mobileType={"scroll"}
-          products={seenProducts}
-        />
-      </GlobalSection>
+      <SeenProductWrapper seenProducts={seenProducts}>
+        <GlobalSection
+          isWeb={true}
+          isMobile={true}
+          webBackground={theme.body.background}
+          webPadding={"20px"}
+        >
+          <ProductList
+            superPrice={false}
+            title={"ВЫ НЕДАВНО СМОТРЕЛИ"}
+            mobileType={"scroll"}
+            products={seenProducts}
+          />
+        </GlobalSection>
+      </SeenProductWrapper>
     </>
   );
 };

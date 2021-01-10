@@ -4,6 +4,7 @@ import ProductList from "../ProductsList";
 import TitleNavigation from "../TitleNavigation";
 import { GlobalSection, Image } from "@famous";
 import { InstallationPhotoContainer } from "./styles";
+import { SeenProductWrapper } from "../FamousComponents";
 
 const InstallationPhotos = ({
   seenProducts,
@@ -34,18 +35,20 @@ const InstallationPhotos = ({
           })}
         </InstallationPhotoContainer>
       </GlobalSection>
-      <GlobalSection
-        isWeb={true}
-        isMobile={true}
-        webBackground={theme.body.background}
-        webPadding={"30px 0"}
-      >
-        <ProductList
-          title={"ВЫ НЕДАВНО СМОТРЕЛИ"}
-          mobileType={"scroll"}
-          products={seenProducts}
-        />
-      </GlobalSection>
+      <SeenProductWrapper seenProducts={seenProducts}>
+        <GlobalSection
+          isWeb={true}
+          isMobile={true}
+          webBackground={theme.body.background}
+          webPadding={"30px 0"}
+        >
+          <ProductList
+            title={"ВЫ НЕДАВНО СМОТРЕЛИ"}
+            mobileType={"scroll"}
+            products={seenProducts}
+          />
+        </GlobalSection>
+      </SeenProductWrapper>
     </>
   );
 };

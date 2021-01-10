@@ -13,15 +13,12 @@ const Item = ({ src }) => {
       hw: e.currentTarget.offsetWidth / 2,
     };
     e.currentTarget.style = `transform: rotateX(${
-      -(xx.y - xx.hh) / 1.4
-    }deg) rotateY(${(xx.x - xx.hw) / 5}deg)`;
+      -(xx.y - xx.hh) / 5
+    }deg) rotateY(${(xx.x - xx.hw) / 8}deg)`;
   };
 
   return (
-    <BrandItem
-    // onMouseMove={handleMouseMove}
-    // onMouseLeave={onMouseLeave}
-    >
+    <BrandItem onMouseMove={handleMouseMove} onMouseLeave={onMouseLeave}>
       <Image simpleWeb={src} webpWeb={""} />
     </BrandItem>
   );

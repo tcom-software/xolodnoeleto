@@ -57,7 +57,7 @@ const ReviewList = ({ initialReviews, isMobile, openModal }) => {
         width={"260px"}
         height={"56px"}
         color={"black"}
-        boxShadow={"0px 0px 20px rgba(0, 0, 0, 0.15)"}
+        boxShadow={"0px 0px 5px rgba(0, 0, 0, 0.15)"}
         background="#FFD600"
         onClick={() => openModal("AddReview")}
       >
