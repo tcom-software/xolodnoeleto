@@ -13,6 +13,7 @@ const ProductsCon = ({
   const {
     publicRuntimeConfig: { productsUpload, serverUrl, seriesUpload },
   } = getConfig();
+
   return (
     <div className="products-con">
       {products.map(({ product, photo }, index) => {
