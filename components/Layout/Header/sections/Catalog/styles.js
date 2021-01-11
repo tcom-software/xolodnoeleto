@@ -124,13 +124,22 @@ const CatalogContainer = styled.ul`
     border-top: 0 solid ${theme.body.primaryColor};
 
     .level-one-li {
+      &:hover > p {
+        border-bottom: 1px solid white;
+      }
       .level-two-ul {
         position: unset;
         border: none;
         width: 100%;
         border-bottom: 1px solid ${theme.body.someBorder};
         .level-two-li {
+          &:hover > p {
+            border-bottom: 1px solid white;
+          }
           width: 100% !important;
+          p {
+            padding: 15px 30px;
+          }
           & > a {
             padding: 15px 30px;
           }

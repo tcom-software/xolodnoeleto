@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import { sortCatalogMenu } from "@utils";
 import { CatalogContainer } from "./styles";
 
 const Catalog = ({ catalog, modalType, modalRef, closeModal }) => {
+  useEffect(() => {
+    return () => {
+      closeModal("");
+    };
+  }, []);
+
   return (
     <CatalogContainer
       modalType={modalType}
@@ -36,7 +42,7 @@ const Catalog = ({ catalog, modalType, modalRef, closeModal }) => {
                   const sortedSubSub = sortCatalogMenu(id, subCategories);
 
                   return (
-                    <li key={index} className={"level-two-li aa"}>
+                    <li key={index} className={"level-two-li"}>
                       <p>{name}</p>
                       <ul className="level-three-ul">
                         {sortedSubSub.map((element, indexTwo) => {
