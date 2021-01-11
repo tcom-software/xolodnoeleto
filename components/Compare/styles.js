@@ -6,7 +6,7 @@ const CompareContainer = styled.div`
 
   .top-section {
     display: grid;
-    grid-gap: 20px;
+    grid-gap: 0px;
     grid-template-columns: 350px 1fr;
     height: max-content;
 
@@ -41,6 +41,9 @@ const CompareContainer = styled.div`
             }
           }
         }
+        .wrapper-for-mobile-search {
+          position: relative;
+        }
       }
       .only-titles {
         & > div {
@@ -55,6 +58,10 @@ const CompareContainer = styled.div`
           p {
             padding: 5px 0;
             border-bottom: 1px solid ${theme.body.someBorder};
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
           }
         }
       }

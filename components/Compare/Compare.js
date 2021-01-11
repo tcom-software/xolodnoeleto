@@ -12,7 +12,9 @@ import { SeenProductWrapper } from "../FamousComponents";
 const Compare = ({ seenProducts, compareProducts }) => {
   const products = Object.values(compareProducts);
   const array = [...Array(3 - products.length == 0 ? 0 : 1)];
+
   const compareInformation = CreateCompareInformation(compareProducts);
+
   return (
     <>
       <TitleNavigation

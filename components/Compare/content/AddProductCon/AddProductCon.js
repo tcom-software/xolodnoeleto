@@ -30,7 +30,11 @@ const AddProductCon = ({
               </Button>
             );
           } else {
-            return <SearchResult key={i} where={"compare"} />;
+            return (
+              <div className="wrapper-for-mobile-search">
+                <SearchResult key={i} where={"compare"} />
+              </div>
+            );
             // placeholder={"Ищите среди миллиона товаров..."
           }
         })}
@@ -73,7 +77,11 @@ const AddProductCon = ({
               <div key={i}>
                 <h3>{e}</h3>
                 {Object.keys(compareInformation[e]).map((ele, ind) => {
-                  return <p key={ind}> {ele} </p>;
+                  return (
+                    <p key={ind} title={ele}>
+                      {ele}
+                    </p>
+                  );
                 })}
               </div>
             );

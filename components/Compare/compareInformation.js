@@ -1,5 +1,5 @@
 const CreateCompareInformation = (compareProducts) => {
-  const result = Object.values(compareProducts).map((e, index) => {
+  let result = Object.values(compareProducts).map((e, index) => {
     const { characteristics } = e;
 
     if (characteristics.length !== 0) {
@@ -52,8 +52,8 @@ const CreateCompareInformation = (compareProducts) => {
     }
   }, {});
 
+  result = result.filter((e) => e != undefined);
   const first = result[0];
-
   for (let i = 1; i < result.length; i++) {
     const keys = Object.keys(result[i]);
 

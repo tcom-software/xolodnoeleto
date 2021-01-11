@@ -25,8 +25,8 @@ module.exports = {
     getNewProducts: "/api/newProducts",
     getReviews: "/api/getReviews",
 
-    productsUpload: "/public/uploads/products/products0",
-    seriesUpload: "/public/uploads/product_series/product_series0",
-    brandsUpload: "/public/uploads/brands/",
+    productsUpload: "/uploads/products/products0",
+    seriesUpload: "/uploads/product_series/product_series0",
+    brandsUpload: "/uploads/brands/",
   },
 };
