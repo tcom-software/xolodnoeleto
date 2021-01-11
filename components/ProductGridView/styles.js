@@ -77,8 +77,13 @@ const VendorCod = styled.div`
   font-weight: ${theme.body.fontBolder};
 `;
 const Stars = styled.div`
+  white-space: nowrap;
+
   & > svg {
     margin: 0 4px;
+    @media (max-width: 768px) {
+      width: 15px;
+    }
   }
 `;
 const Price = styled.div`
