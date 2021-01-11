@@ -18,7 +18,6 @@ const Products = ({
   getCatalogProductLoadingTrigger,
 }) => {
   const router = useRouter();
-
   const { catalogId } = router.query;
 
   useEffect(() => {

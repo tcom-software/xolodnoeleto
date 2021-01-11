@@ -35,7 +35,6 @@ const Filters = ({
   const handleSubmit = (event) => {
     event.preventDefault();
   };
-
   return (
     <FiltersContainer isOpen={isOpenFilters}>
       <form onSubmit={handleSubmit}>

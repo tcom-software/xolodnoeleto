@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { SvgIcon } from "@famous";
 import { Scroll } from "@utils";
 
@@ -12,7 +12,7 @@ const MobileCloseFilters = ({
   clearFiltersSelectedData,
 }) => {
   const { To } = Scroll;
-  if (!isMobile) {
+  if (!isOpenFilters && !mobileFiltersStatus) {
     return children;
   } else {
     return (
