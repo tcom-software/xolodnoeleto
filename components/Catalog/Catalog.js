@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Filters from "./Filters";
 import theme from "styles/theme";
 import Products from "./Products";
 import { useRouter } from "next/router";
 import ProductList from "../ProductsList";
 import { CatalogContainer } from "./styles";
-import Pagination from "../Pagination/index";
 import { GlobalSection, SeenProductWrapper } from "@famous";
 
-const Catalog = ({ total, updateSelectedDataPage, seenProducts }) => {
+const Catalog = ({ seenProducts, updateSelectedDataPage }) => {
   const router = useRouter();
+
+  useEffect(() => {
+    return () => {
+      router.query.catalogId && updateSelectedDataPage(1);
+    };
+  }, [router.query.catalogId]);
 
   return (
     <>
@@ -24,13 +29,6 @@ const Catalog = ({ total, updateSelectedDataPage, seenProducts }) => {
           <Filters />
           <Products page={router.query.page} />
         </CatalogContainer>
-        {/*
-        //// Old place for pagination
-        <Pagination
-          total={total}
-          page={router.query.page}
-          callback={updateSelectedDataPage}
-        />*/}
       </GlobalSection>
       <SeenProductWrapper seenProducts={seenProducts}>
         <GlobalSection
@@ -56,7 +54,6 @@ function areEqual(prevProps, nextProps) {
    *  тот же результат что и prevProps,
    *  иначе возвращает false
    * * * * */
-
   if (
     JSON.stringify(prevProps.selectedData) ===
       JSON.stringify(nextProps.selectedData) &&

@@ -8,6 +8,7 @@ const Pagination = ({ page: fromUrl, isMobile, total, callback }) => {
   const { To } = Scroll;
 
   const setPageToSelectedData = (page) => callback && callback(page);
+
   useEffect(() => {
     setCurrentPage(fromUrl);
   }, [fromUrl]);
