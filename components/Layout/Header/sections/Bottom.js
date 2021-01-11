@@ -62,10 +62,13 @@ const Bottom = ({
           <li className="header-search-result-container">
             {<SearchResult where={"header-bottom"} />}
           </li>
-          <li>
+          <li className="mobile-basket">
             <Link href={"/basket"}>
               <a>
                 <SvgIcon type="basket" width={20} height={20} />
+                <animated.span>
+                  {spring.val.interpolate((val) => Math.floor(val))}
+                </animated.span>
               </a>
             </Link>
           </li>

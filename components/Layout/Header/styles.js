@@ -109,6 +109,22 @@ const BottomPanel = styled.section`
         display: none;
       }
     }
+    .mobile-basket {
+      position: relative;
+      a {
+        span {
+          position: absolute;
+          line-height: 1;
+          right: -3px;
+          top: -7px;
+          padding: 3px;
+          background: #e5e5e5;
+          border-radius: 50%;
+          color: ${theme.body.primaryColor};
+        }
+      }
+    }
+
     @media (max-width: ${theme.mobileMedia.size}) {
       display: grid;
       grid-template-columns: 3fr 2fr 1fr;
