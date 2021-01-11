@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import theme from "styles/theme";
-import { GlobalSection, Image } from "@famous";
+import { GlobalSection, Image, SeenProductWrapper } from "@famous";
 import TitleNavigation from "../TitleNavigation";
 import { BrandsContainer } from "./styles";
 import Letters from "./content/Letters";
 import ProductList from "../ProductsList";
-import { SeenProductWrapper } from "../FamousComponents";
 
 const Brands = ({ brandItems, seenProducts }) => {
   const [selected, setSelected] = useState([]);

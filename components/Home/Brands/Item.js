@@ -18,7 +18,8 @@ const Item = ({ src }) => {
   };
 
   return (
-    <BrandItem onMouseMove={handleMouseMove} onMouseLeave={onMouseLeave}>
+    <BrandItem onMouseLeave={onMouseLeave} onMouseMove={handleMouseMove}>
+      <div className="layer"></div>
       <Image simpleWeb={src} webpWeb={""} />
     </BrandItem>
   );
