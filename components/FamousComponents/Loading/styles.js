@@ -22,7 +22,7 @@ const LoadingContainer = styled.div`
       margin: 0 auto;
       width: 40px;
       height: 40px;
-      animation: loop 0.001s linear infinite;
+      animation: loop 5s linear infinite;
     }
   }
 

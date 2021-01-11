@@ -1,20 +1,26 @@
 import { Image } from "@famous";
 import { BrandItem } from "./styles";
+import { connect } from "react-redux";
 
-const Item = ({ src }) => {
+const Item = ({ src, isMobile }) => {
   const onMouseLeave = (e) => {
-    e.currentTarget.style = `transform: rotateX(0deg) rotateY(0deg);`;
+    if (!isMobile) {
+      e.currentTarget.style = `transform: rotateX(0deg) rotateY(0deg);`;
+    }
   };
+
   const handleMouseMove = (e) => {
-    const xx = {
-      x: e.nativeEvent.offsetX,
-      y: e.nativeEvent.offsetY,
-      hh: e.currentTarget.offsetHeight / 2,
-      hw: e.currentTarget.offsetWidth / 2,
-    };
-    e.currentTarget.style = `transform: rotateX(${
-      -(xx.y - xx.hh) / 5
-    }deg) rotateY(${(xx.x - xx.hw) / 8}deg)`;
+    if (!isMobile) {
+      const xx = {
+        x: e.nativeEvent.offsetX,
+        y: e.nativeEvent.offsetY,
+        hh: e.currentTarget.offsetHeight / 2,
+        hw: e.currentTarget.offsetWidth / 2,
+      };
+      e.currentTarget.style = `transform: rotateX(${
+        -(xx.y - xx.hh) / 5
+      }deg) rotateY(${(xx.x - xx.hw) / 8}deg)`;
+    }
   };
 
   return (
@@ -25,4 +31,8 @@ const Item = ({ src }) => {
   );
 };
 
-export default Item;
+const mapStateToProps = ({ general: { isMobile }, brands: { items } }) => ({
+  isMobile,
+});
+
+export default connect(mapStateToProps)(Item);
