@@ -11,6 +11,7 @@ const Catalog = ({ seenProducts, updateSelectedDataPage }) => {
   const router = useRouter();
 
   useEffect(() => {
+    router.query.page && updateSelectedDataPage(router.query.page);
     return () => {
       router.query.catalogId && updateSelectedDataPage(1);
     };
