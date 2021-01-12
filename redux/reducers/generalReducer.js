@@ -111,17 +111,17 @@ const initialState = {
   inputsValidationData: {
     fullName: {
       errorMessage: "Пожалуйста заполните полное имя",
-      validation: /^[a-zA-Zа-яА-яа-яА-я ]{2,15}$/,
+      validation: "^[a-zA-Zа-яА-яа-яА-я ]{2,15}$",
       placeholder: "Иванович Иван Иванов",
     },
     name: {
       errorMessage: "Пожалуйста заполните имя",
-      validation: /^[a-zA-Zа-яА-я]{2,15}$/,
+      validation: "^[a-zA-Zа-яА-я]{2,15}$",
       placeholder: "Имя",
     },
     surname: {
       errorMessage: "Пожалуйста заполните фамилию",
-      validation: /^[a-zA-Zа-яА-я]{2,20}$/,
+      validation: "^[a-zA-Zа-яА-я]{2,20}$",
       placeholder: "Фамилия",
     },
     phone: {
@@ -131,22 +131,22 @@ const initialState = {
     },
     address: {
       errorMessage: "Полный Адрес, Город, Улица",
-      validation: /^[a-zA-Zа-яА-я0-9 ]{2,30}$/,
+      validation: "^[a-zA-Zа-яА-я0-9 ]{2,30}$",
       placeholder: "Адрес...",
     },
     deliveryAddress: {
       errorMessage: "Пожалуйста, напишите полный адрес",
-      validation: /^[a-zA-Zа-яА-я0-9 ]{2,30}$/,
+      validation: "^[a-zA-Zа-яА-я0-9 ]{2,30}$",
       placeholder: "Адрес...",
     },
     commentByOrder: {
       errorMessage: "Пожалуйста, напишите комментарии",
-      validation: /^[a-zA-Zа-яА-я0-9 ]{2,30}$/,
+      validation: "^[a-zA-Zа-яА-я0-9 ]{2,30}$",
       placeholder: "без...",
     },
     comment: {
       errorMessage: "Пожалуйста, напишите комментарии",
-      validation: /^[a-zA-Zа-яА-я0-9 ]{2,30}$/,
+      validation: "^[a-zA-Zа-яА-я0-9 ]{2,30}$",
       placeholder: "без...",
     },
     uploadImages: {
@@ -158,7 +158,7 @@ const initialState = {
       errorMessage: "Пожалуйста, выберите дата монтажа",
       // validation: /^((0?[1-9]|1[012])[- /.](0?[1-9]|[12][0-9]|3[01])[- /.](19|20)?[0-9]{2})*$/,
       // validation: /^(\w+\S+)$/,
-      validation: /[a-zA-Z0-9-,+()]+/,
+      validation: "[a-zA-Z0-9-,+()]+",
       placeholder: "Дата Монтажа _ _/ _ _/_ _ _ _",
     },
     dateForCall: {
@@ -168,17 +168,17 @@ const initialState = {
     },
     message: {
       errorMessage: "Пожалуйста заполните Сообщение",
-      validation: /^[a-zA-Zа-яА-я0-9 ]*$/,
+      validation: "^[a-zA-Zа-яА-я0-9 ]*$",
       placeholder: "Сообщение",
     },
     email: {
       errorMessage: "Incorrect email",
-      validation: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+      validation: "^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$",
       placeholder: "@gmail.com",
     },
     rating: {
       errorMessage: "",
-      validation: /^[0-9]{0,1}$/,
+      validation: "^[0-9]{0,1}$",
       placeholder: "",
     },
   },

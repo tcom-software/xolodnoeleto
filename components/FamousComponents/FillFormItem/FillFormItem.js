@@ -41,7 +41,8 @@ const FillFormItem = (props) => {
         result = true;
         callback(value);
       } else {
-        result = validation.test(value);
+        const regex = new RegExp(validation);
+        result = regex.test(value);
         callback(value);
       }
     }

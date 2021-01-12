@@ -41,12 +41,6 @@ export default class MyDocument extends Document {
           <meta charSet="utf-8" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <meta property="og:url" content="https://www.laitklimat.ru/" />
-          {/*<meta name="theme-color" content={theme.colors.secondary} />*/}
-          {/*<link
-            rel="shortcut icon"
-            href="https://www.nastol.com.ua/large/202010/434244.jpg"
-            type="image/x-icon"
-          />*/}
           <link
             rel="stylesheet"
             type="text/css"
@@ -64,11 +58,24 @@ export default class MyDocument extends Document {
             nema="keywords"
             content="Кондиционирование, Вентиляция, Холодильное оборудование, Обогреватели и камины, Отопление и водоснабжение, Расходные материалы"
           />
+          <script src="/yandex.js"></script>
         </Head>
         <body>
           <Main />
           <div id="portal"></div>
           <NextScript />
+          <noscript>
+            <div>
+              <img
+                src="https://mc.yandex.ru/watch/44761834"
+                style={{
+                  position: "absolute",
+                  left: "-9999px",
+                }}
+                alt=""
+              />
+            </div>
+          </noscript>
         </body>
       </Html>
     );
