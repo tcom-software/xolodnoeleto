@@ -76,9 +76,9 @@ const GridSection = styled.div`
             margin: 10px 0;
             border: 1px solid ${theme.body.someBorder};
 
-            &:last-of-type {
-              display: none;
-            }
+            // &:last-of-type {
+            //   display: none;
+            // }
           }
         `}
     }
