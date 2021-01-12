@@ -7,7 +7,7 @@ import { FillFormItem, Button, SvgIcon } from "@famous";
 import { formValidation } from "@utils";
 
 const {
-  publicRuntimeConfig: { makeCallbackRequest },
+  publicRuntimeConfig: { callbackRequest },
 } = getConfig();
 
 const CallBack = ({
@@ -24,6 +24,7 @@ const CallBack = ({
     dateForCall: "",
     message: "",
   });
+
   const handleChange = (name) => (value) => setInfo({ ...info, [name]: value });
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,7 +37,7 @@ const CallBack = ({
       const { name, surname, phone, dateForCall, message } = info;
       axiosInstance
         .post(
-          makeCallbackRequest,
+          callbackRequest,
           JSON.stringify({
             name,
             last_name: surname,
@@ -49,6 +50,13 @@ const CallBack = ({
           if (data === "success") {
             closeModal("");
             setNotificationMessage("Мы вам перезвоним");
+            setInfo({
+              name: "",
+              surname: "",
+              phone: "",
+              dateForCall: "",
+              message: "",
+            });
           }
         })
         .catch(console.log);

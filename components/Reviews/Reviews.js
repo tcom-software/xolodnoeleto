@@ -71,10 +71,10 @@ const Reviews = ({
                       <img
                         key={i}
                         alt={file_name}
-                        src={`${serverUrl}/public/${folder}${file_name}.${file_format}`}
+                        src={`${serverUrl}/${folder}${file_name}.${file_format}`}
                         onClick={() =>
                           changeBigImage(
-                            `${serverUrl}/public/${folder}${file_name}.${file_format}`
+                            `${serverUrl}/${folder}${file_name}.${file_format}`
                           )
                         }
                       />
