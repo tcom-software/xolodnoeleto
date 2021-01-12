@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<yml_catalog date="2021-01-12 11:06">
+    <shop>
+        <name>ЛАЙТ КЛИМАТ</name>
+        <company>ООО "Русстроймонтаж"</company>
+        <url>https://laitklimat.ru/</url>
+        <currencies>
+            <currency id="RUR" rate="1"/>
+            <currency id="USD" rate="74.52"/>
+        </currencies>
+        <categories>
+            <category id="1">Кондиционеры и увлажнители</category>
+            <category id="3" parentId="1">Мультисплит-системы</category>
+            <category id="5" parentId="3">Мультисплит-системы (наружные блоки)</category>
+            <category id="6" parentId="3">Мультисплит-системы (внутренние блоки)</category>
+            <category id="4" parentId="3">Мультисплит-системы (комплект настенного типа)</category>
+            <category id="125" parentId="123">Вакуумные насосы</category>
+            <category id="126" parentId="123">Вальцовка</category>
+            <category id="128" parentId="123">Газосварочное оборудование</category>
+            <category id="129" parentId="123">Редукторы</category>
+            <category id="130" parentId="123">Измерительные приборы</category>
+            <category id="131" parentId="123">Заправочные шланги</category>
+            <category id="132" parentId="123">Маномерты, коллекторы</category>
+            <category id="133" parentId="123">Сервисные спец. инструменты (CPS)</category>
+            <category id="134" parentId="123">Течеискатель фреона</category>
+            <category id="7" parentId="1">Полупромышленные кондиционеры</category>
+            <category id="8" parentId="7">Кассетные кондиционеры</category>
+            <category id="9" parentId="7">Канальные кондиционеры</category>
+            <category id="10" parentId="7">Колонные кондиционеры</category>
+            <category id="11" parentId="7">Напольно-потолочные кондиционеры</category>
+            <category id="12" parentId="1">VRV и VRF Мультизональные кондиционеры</category>
+            <category id="13" parentId="12">Наружные блоки VRV и VRF системы</category>
+            <category id="14" parentId="12">Внутренние блоки VRV и VRF системы</category>
+            <category id="15" parentId="1">Чиллеры и Фанкойлы</category>
+            <category id="16" parentId="15">Чиллеры</category>
+            <category id="159" parentId="16">Гидромодуль</category>
+            <category id="17" parentId="15">Фанкойлы</category>
+            <category id="26" parentId="1">Бытовые кондиционеры и увлажнители воздуха</category>
+            <category id="2" parentId="26">Настенные кондиционеры (сплит-системы)</category>
+            <category id="27" parentId="26">Оконные кондиционеры</category>
+            <category id="28" parentId="26">Мобильные Кондиционеры</category>
+            <category id="33" parentId="26">Увлажнители и очистители воздуха</category>
+            <category id="29" parentId="1">Другие системы и аксессуары</category>
+            <category id="18" parentId="29">Аксессуары</category>
+            <category id="30" parentId="29">Компрессорно - конденсаторные блоки</category>
+            <category id="31" parentId="29">Крышные кондиционеры</category>
+            <category id="157" parentId="1">Хит продаж</category>
+            <category id="19">Системы вентиляции</category>
+            <category id="34" parentId="19">Вентиляционные установки</category>
+            <category id="36" parentId="34">Приточно-вытяжная система вентиляции</category>
+            <category id="38" parentId="34">Приточные клапана</category>
+            <category id="35" parentId="34">Приточные системы вентиляции</category>
+            <category id="135" parentId="124">Помпа дренажная</category>
+            <category id="136" parentId="124">Дренажные шланги и сифоны</category>
+            <category id="137" parentId="124">Зимний комплект (УЗП)</category>
+            <category id="138" parentId="124">Крепеж, метизы</category>
+            <category id="139" parentId="124">Кронштейны, козырьки, защиты</category>
+            <category id="140" parentId="124">Ленты</category>
+            <category id="141" parentId="124">Медные трубы</category>
+            <category id="142" parentId="124">Припой</category>
+            <category id="143" parentId="124">Пульты ДУ</category>
+            <category id="144" parentId="124">Согласователи (СРК)</category>
+            <category id="124" parentId="156">Расходные материалы</category>
+            <category id="123" parentId="156">Инструменты</category>
+            <category id="145" parentId="124">Трубная изоляция</category>
+            <category id="158" parentId="157">Хит</category>
+            <category id="146" parentId="124">Изоляция для труб</category>
+            <category id="147" parentId="124">Фреон</category>
+            <category id="148" parentId="124">Химические средства</category>
+            <category id="149" parentId="124">Экраны</category>
+            <category id="150" parentId="124">Вилки, разъемы</category>
+            <category id="151" parentId="124">Термоусадка</category>
+            <category id="152" parentId="124">Кабель-канал, гофра ПВХ</category>
+            <category id="153" parentId="124">Электроустановочный крепеж</category>
+            <category id="154" parentId="124">Гибкие воздуховоды</category>
+            <category id="155" parentId="124">Диффузоры, решетки</category>
+            <category id="37" parentId="34">Компактные приточные системы вентиляции</category>
+            <category id="39" parentId="19">Вентиляторы</category>
+            <category id="40" parentId="39">Бытовые вентиляторы</category>
+            <category id="41" parentId="39">Канальные вентиляторы</category>
+            <category id="42" parentId="39">Вентиляторы радиальные</category>
+            <category id="43" parentId="39">Крышные вентиляторы</category>
+            <category id="44" parentId="19">Воздуховоды</category>
+            <category id="45" parentId="44">Гибкие воздуховоды</category>
+            <category id="46" parentId="44">Круглые воздуховоды из оцинкованной стали</category>
+            <category id="47" parentId="44">Прямоугольные воздуховоды из оцинкованной стали</category>
+            <category id="48" parentId="44">Фасонные части из оцинкованной стали</category>
+            <category id="49" parentId="19">Решетки вентиляционные</category>
+            <category id="50" parentId="49">Решетки прямоугольные</category>
+            <category id="51" parentId="49">Решетки круглые</category>
+            <category id="52" parentId="49">Адаптеры для вентиляционных решеток</category>
+            <category id="53" parentId="19">Канальные нагреватели</category>
+            <category id="54" parentId="53">Канальные нагреватели электрические</category>
+            <category id="55" parentId="53">Канальные нагреватели водяные</category>
+            <category id="56" parentId="19">Комплектующие для вентиляции</category>
+            <category id="57" parentId="56">Воздушные фильтры</category>
+            <category id="58" parentId="56">Шумоглушители</category>
+            <category id="59" parentId="56">Гибкие вставки</category>
+            <category id="60" parentId="56">Обратные клапана</category>
+            <category id="61" parentId="56">Дроссель-клапана</category>
+            <category id="62" parentId="56">Противопожарные клапана</category>
+            <category id="63" parentId="56">Люки</category>
+            <category id="64" parentId="19">Автоматика для вентиляции</category>
+            <category id="65" parentId="64">Регуляторы скорости для вентиляторов</category>
+            <category id="66" parentId="64">Трансформаторные регуляторы скорости</category>
+            <category id="67" parentId="64">Регуляторы температуры</category>
+            <category id="68" parentId="64">Частотные преобразователи</category>
+            <category id="69" parentId="64">Готовые шкафы и щиты автоматики вентиляции</category>
+            <category id="70" parentId="64">Датчики</category>
+            <category id="71" parentId="64">Электроприводы</category>
+            <category id="23">Холодильное оборудование</category>
+            <category id="72" parentId="23">Промышленный холод</category>
+            <category id="73" parentId="72">Камеры холодильные</category>
+            <category id="74" parentId="72">Холодильные моноблоки</category>
+            <category id="75" parentId="72">Холодильные сплит-системы</category>
+            <category id="76" parentId="72">Холодильный воздухоохладитель</category>
+            <category id="77" parentId="72">Конденсатор для холодильного оборудования</category>
+            <category id="78" parentId="72">Холодильные компрессоры</category>
+            <category id="79" parentId="72">Холодильные агрегаты</category>
+            <category id="80" parentId="72">Вентиляторы промышленные</category>
+            <category id="81" parentId="72">Щиты управления</category>
+            <category id="122" parentId="72">Камеры газации бананов</category>
+            <category id="82" parentId="23">Холодильные витрины с выносным агрегатом</category>
+            <category id="83" parentId="82">Витрины холодильные</category>
+            <category id="84" parentId="82">Пристенные горки</category>
+            <category id="85" parentId="82">Бонеты</category>
+            <category id="86" parentId="23">Холодильные витрины</category>
+            <category id="87" parentId="86">Витрины холодильные</category>
+            <category id="88" parentId="86">Пристенные горки</category>
+            <category id="89" parentId="86">Бонеты</category>
+            <category id="90" parentId="86">Холодильные шкафы</category>
+            <category id="24">Обогреватели и камины</category>
+            <category id="91" parentId="24">Масляные радиаторы и конвекторы</category>
+            <category id="92" parentId="91">Масляные радиаторы</category>
+            <category id="93" parentId="91">Конвекторы электрические</category>
+            <category id="94" parentId="24">Инфракрасные обогреватели и камины</category>
+            <category id="95" parentId="94">Инфракрасные обогреватели</category>
+            <category id="96" parentId="94">Газовые инфракрасные обогреватели</category>
+            <category id="97" parentId="94">Камины и печи</category>
+            <category id="160" parentId="94">Порталы</category>
+            <category id="98" parentId="24">Тепловентилаторы и Тепловые пушки</category>
+            <category id="99" parentId="98">Тепловентиляторы</category>
+            <category id="100" parentId="98">Тепловые завесы</category>
+            <category id="101" parentId="98">Водяные тепловентиляторы</category>
+            <category id="102" parentId="98">Тепловые пушки</category>
+            <category id="103" parentId="24">Теплые полы и сушилки</category>
+            <category id="104" parentId="103">Теплые полы</category>
+            <category id="105" parentId="103">Регуляторы и датчики</category>
+            <category id="106" parentId="103">Сушилки для рук</category>
+            <category id="32">Отопление и водоснабжение</category>
+            <category id="107" parentId="32">Водонагреватели и котлы</category>
+            <category id="108" parentId="107">Водонагреватели и колонки</category>
+            <category id="109" parentId="107">Бойлеры косвенного нагрева</category>
+            <category id="110" parentId="107">Котлы отопления</category>
+            <category id="111" parentId="32">Насосы и расширительные баки</category>
+            <category id="112" parentId="111">Насосы</category>
+            <category id="113" parentId="111">Гидроаккумуляторы</category>
+            <category id="114" parentId="111">Расширительные баки</category>
+            <category id="115" parentId="32">Радиаторы и солнечные коллекторы</category>
+            <category id="116" parentId="115">Радиаторы отопления</category>
+            <category id="117" parentId="115">Солнечные коллекторы</category>
+            <category id="118" parentId="32">Монтажные принадлежности</category>
+            <category id="119" parentId="118">Трубы</category>
+            <category id="120" parentId="118">Узлы и коллекторы</category>
+            <category id="121" parentId="118">Шкафы коллекторные</category>
+            <category id="156">Расходные материалы и Инструменты</category>
+        </categories>
+        <delivery-options>
+            <option cost="0" days="1-3"/>
+        </delivery-options>
+        <offers>
+            <offer id="9140" available="true" bid="750">
+                <url>https://laitklimat.ru/MitsubishiElectric-DESIGN-INVERTER-BLACK-R32-MSZ-EF25VGKB</url>
+                <price>30790</price>
+                <currencyId>RUR</currencyId>
+                <categoryId>6</categoryId>
+                <picture>https://laitklimat.ru/public/image_from_root_seria/original/f442daf36922b349dc6bdc7abff1b3dd.jpg</picture>
+                <store>false</store>
+                <delivery>true</delivery>
+                <pickup>false</pickup>
+                <name>Мультисплит-системы (внутренние блоки) Mitsubishi Electric MSZ-EF25VGKB</name>
+                <description>
+                    <![CDATA[
+С антибактериальным фильтром; Внутренние блоки MSZ-EF VGK комплектуются бактерицидным фильтром с ионами серебра,
+пультом управления с подсветкой экрана, а также оснащены встроенным Wi-Fi
+интерфейсом.
+
+]]>
+                </description>
+                <vendor>Mitsubishi Electric</vendor>
+                <model>MSZ-EF25VGKB</model>
+                <sales_notes>Предоплата 3%</sales_notes>
+                <manufacturer_warranty>true</manufacturer_warranty>
+                <delivery-options>
+                    <option cost="0" days="1-3"/>
+                </delivery-options>
+                <param name="Мощность в режиме охлаждения">2.5</param>
+                <param name="Мощность в режиме обогрева">3.2</param>
+                <param name="21-25м&lt;sup&gt;2&lt;/sup&gt;">on</param>
+                <param name="Инверторный">on</param>
+                <param name="Тайланд">on</param>
+                <param name="Япония">on</param>
+                <param name="настенного">on</param>
+                <param name="самодиагностика неисправностей">on</param>
+                <param name="ночной режим">on</param>
+                <param name="Пульт дистанционного управления">1</param>
+                <param name="Таймер включения/выключения">1</param>
+                <param name="Уровень шума внутреннего блока (мин)">19</param>
+                <param name="Уровень шума внутреннего блока (макс)">42</param>
+                <param name="Тип хладагента">R-32</param>
+                <param name="функция запоминания настроек">on</param>
+                <param name="Внутреннего блока  кондиционера (Ш)">885</param>
+                <param name="Внутреннего блока кондиционера (В)">299</param>
+                <param name="Внутреннего блока кондиционера (Г)">195</param>
+                <param name="Вес внутреннего блока">11.5</param>
+            </offer>
+        </offers>
+    </shop>
+</yml_catalog>

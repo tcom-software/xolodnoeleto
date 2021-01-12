@@ -115,7 +115,7 @@ const BottomPanel = styled.section`
         span {
           position: absolute;
           line-height: 1;
-          right: -3px;
+          right: -6px;
           top: -7px;
           padding: 3px;
           background: #e5e5e5;
