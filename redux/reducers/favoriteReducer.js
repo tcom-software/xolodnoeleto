@@ -24,6 +24,7 @@ const favoriteReducer = (state = initialState, action) => {
         return {
           ...state,
           favoriteProducts: {
+            ...state.favoriteProducts,
             [addAdsId]: {
               ...action.payload,
               id: addAdsId,

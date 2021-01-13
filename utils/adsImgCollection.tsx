@@ -6,7 +6,6 @@ const adsImgCollection = (photos) => {
    *  @params product images in array
    *  @return Collection for Ads image
    * */
-
   const { folder, file_name, file_format } = photos
     .filter((e) => e.cover_photo === 1)
     .reduce((acc, next) => next, {});
@@ -22,8 +21,8 @@ const adsImgCollection = (photos) => {
     img = {
       ...img,
       product_picture_folder: folder,
-      product_picture_format: file_name,
-      product_picture_file_name: file_format,
+      product_picture_format: file_format,
+      product_picture_file_name: file_name,
     };
   }
 
@@ -40,7 +39,7 @@ const adsImgCollection = (photos) => {
       ]),
     };
   }
-
+  console.log(img, "------img");
   return img;
 };
 
