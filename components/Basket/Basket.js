@@ -18,17 +18,7 @@ const Basket = ({
 }) => {
   const stepObject = getBasketStepInfo(stepState, basketSteps);
   const itemsLength = Object.keys(basketItems).length;
-  if (itemsLength === 0) {
-    return (
-      <>
-        <TitleNavigation
-          title="Оформление заказа"
-          currentPage="Оформление Заказа"
-        />
-        <DataEmpty title={"У вас нет продуктов в корзине"} />
-      </>
-    );
-  }
+
   useEffect(() => {
     let orderState = false;
     for (let key in stepsResult) {
@@ -76,19 +66,25 @@ const Basket = ({
         webBackground={theme.body.secondBackground}
         mobileBackground={theme.body.secondBackground}
         webPadding="50px 0"
-        mobilePadding="0 0"
+        mobilePadding="50px 0"
       >
-        {stepState === 6 ? (
-          <OrderDone />
+        {itemsLength.length === 0 ? (
+          <DataEmpty title={"У вас нет продуктов в корзине"} />
         ) : (
-          <GridSection stepState={stepState} isMobile={isMobile}>
-            <BasketStepsCases />
+          <>
+            {stepState === 6 ? (
+              <OrderDone />
+            ) : (
+              <GridSection stepState={stepState} isMobile={isMobile}>
+                <BasketStepsCases />
 
-            <AboutOrder />
-            {stepState === 1 ? (
-              <StepInformation stepStructure={stepObject} />
-            ) : null}
-          </GridSection>
+                <AboutOrder />
+                {stepState === 1 ? (
+                  <StepInformation stepStructure={stepObject} />
+                ) : null}
+              </GridSection>
+            )}
+          </>
         )}
       </GlobalSection>
     </Container>

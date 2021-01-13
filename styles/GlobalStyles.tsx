@@ -5,9 +5,6 @@ import { hidden } from "ansi-colors";
 
 const GlobalStyles = createGlobalStyle`
   ${fontfaces()}
-  ${({ modalType }) => {
-    console.log(modalType);
-  }};
   
   * {
     margin: 0;

@@ -172,9 +172,10 @@ const initialState = {
       placeholder: "Сообщение",
     },
     email: {
-      errorMessage: "Incorrect email",
-      validation: "^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$",
-      placeholder: "@gmail.com",
+      errorMessage: "Неверный почтовый ящик\n",
+      validation: "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$",
+
+      placeholder: "IvanIvanov@mail.ru",
     },
     rating: {
       errorMessage: "",
