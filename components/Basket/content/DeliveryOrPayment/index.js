@@ -15,7 +15,7 @@ const mapStateToProps = ({ basket: { stepState, loading } }) => ({
 const mapDispatchToProps = (dispatch) => ({
   changeOrderStep: (step) => dispatch(changeOrderStep(step)),
   updateStepsResult: (data) => dispatch(updateStepsResult(data)),
-  makeInitialStepsResult: () => dispatch(makeInitialStepsResult()),
+  makeInitialStepsResult: (step) => dispatch(makeInitialStepsResult(step)),
   manipulationSelectedData: (data) => dispatch(manipulationSelectedData(data)),
 });
 

@@ -5,6 +5,7 @@ import { Element as ScrollPosition } from "react-scroll";
 const Header = () => {
   return (
     <header>
+      <ScrollPosition name="start" />
       <Banner />
       <Top />
       <Middle />

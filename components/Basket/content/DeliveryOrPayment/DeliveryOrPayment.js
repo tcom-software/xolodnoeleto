@@ -3,6 +3,7 @@ import theme from "styles/theme";
 import { makePrice } from "@utils";
 import { Button, CheckBox, Loading, SvgIcon } from "@famous";
 import { DeliveryContainer, DeliveryItem, PriceSpan } from "./styles";
+import { Scroll } from "@utils";
 
 const DeliveryOrPayment = ({
   loading,
@@ -14,6 +15,8 @@ const DeliveryOrPayment = ({
   manipulationSelectedData,
 }) => {
   const [typeId, setTypeId] = useState(1);
+  const { To } = Scroll;
+
   return (
     <DeliveryContainer loading={loading}>
       <div className="background-loading">
@@ -122,7 +125,8 @@ const DeliveryOrPayment = ({
                 payment_type: data[typeId].title,
               });
               updateStepsResult({ step: "stepFive", value: true });
-              // makeInitialStepsResult()
+              To("start");
+              makeInitialStepsResult(6);
             }
           }}
         >

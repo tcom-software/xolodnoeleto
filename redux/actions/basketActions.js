@@ -12,7 +12,7 @@ export const BASKET_INITIAL_STATE = "BASKET_INITIAL_STATE";
 export const INITIAL_STEPS_RESULT = "INITIAL_STEPS_RESULT";
 export const SELECTED_DATA_MANIPULATION = "SELECTED_DATA_MANIPULATION";
 
-import axiosInstance from "../../utils/axiosInstance";
+import { axiosInstance } from "@utils";
 
 const {
   publicRuntimeConfig: { makeOrder },
@@ -32,8 +32,9 @@ export const incrementBasketCount = (id) => ({
   payload: id,
 });
 
-export const makeInitialStepsResult = () => ({
+export const makeInitialStepsResult = (step) => ({
   type: INITIAL_STEPS_RESULT,
+  payload: step,
 });
 
 export const updateStepsResult = (stepData) => ({

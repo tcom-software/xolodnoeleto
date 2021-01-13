@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import theme from "styles/theme";
 import { Button, SvgIcon } from "@famous";
 import { OrderDoneContainer } from "./styles";
 
-const OrderDone = ({ text }) => {
+const OrderDone = ({ text, makeInitialStepsResult }) => {
+  useEffect(() => {
+    return () => {
+      makeInitialStepsResult(1);
+    };
+  }, []);
+
   return (
     <OrderDoneContainer>
       <SvgIcon

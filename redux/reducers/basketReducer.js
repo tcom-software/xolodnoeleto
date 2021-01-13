@@ -79,7 +79,7 @@ const initialState = {
     stepFour: {
       1: {
         id: 1,
-        title: "Доставка курьером",
+        title: "Доставка в пределах МКАД",
         price: 0,
         svg: "delivery",
         width: "35px",
@@ -87,7 +87,7 @@ const initialState = {
       },
       2: {
         id: 2,
-        title: "Доставка транспортной \n" + "компанией",
+        title: "Доставка за пределами МКАД (1км - 30руб.)",
         price: 500,
         svg: "delivery",
         width: "35px",
@@ -111,16 +111,16 @@ const initialState = {
         width: "32px",
         height: "32px",
       },
+      // 2: {
+      //   id: 2,
+      //   title: "Онлайн оплата",
+      //   price: 500,
+      //   svg: "CardWithCoin",
+      //   width: "32px",
+      //   height: "32px",
+      // },
       2: {
         id: 2,
-        title: "Онлайн оплата",
-        price: 500,
-        svg: "CardWithCoin",
-        width: "32px",
-        height: "32px",
-      },
-      3: {
-        id: 3,
         title: "Оплата картой при получении",
         price: 0,
         svg: "handWithCoin",
@@ -187,16 +187,13 @@ const basketReducer = (state = initialState, action) => {
         };
       }
     case types.INITIAL_STEPS_RESULT:
+      const { total_amount, stepsResult } = initialState;
       return {
         ...state,
-        stepsResult: {
-          stepOne: false,
-          stepTwo: false,
-          stepTree: false,
-          stepFour: false,
-          stepFive: false,
-          stepSix: false,
-        },
+        items: {},
+        total_amount,
+        stepsResult,
+        stepState: action.payload,
       };
     case types.MAKE_ORDER:
       return {
