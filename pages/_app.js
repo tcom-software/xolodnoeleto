@@ -31,10 +31,6 @@ function MyApp(props) {
   const { Component, pageProps } = props;
   useWidth();
 
-  // fetch("api/hello")
-  //   .then((res) => res.json())
-  //   .then((ress) => console.log(ress));
-
   return (
     <ThemeProvider theme={theme}>
       <Provider store={store}>
