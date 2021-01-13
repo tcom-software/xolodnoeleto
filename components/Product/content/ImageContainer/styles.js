@@ -16,8 +16,9 @@ const ProductImageContainer = styled.div`
     .small-images {
       img {
         transition: all 0.3s ease-in;
-        width: 100px;
-        height: 100px;
+        width: 100%;
+        height: 100%;
+        max-width: 100px;
         border: 1px solid ${theme.body.someBorder};
         cursor: pointer;
         &:hover {

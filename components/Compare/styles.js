@@ -12,7 +12,7 @@ const CompareContainer = styled.div`
 
     .add-product-con {
       .left-static-height {
-        height: 310px;
+        height: 340px;
         padding: 15px;
         .added-products-con {
           .item {
@@ -75,7 +75,8 @@ const CompareContainer = styled.div`
         background: #fff;
 
         .product-item {
-          height: 310px;
+          height: max-content;
+          min-height: 340px;
           position: relative;
           padding: 15px;
           background: #fff;
@@ -190,19 +191,26 @@ const CompareContainer = styled.div`
           padding: 0;
           .added-products-con {
             .item {
+              max-height: 130px;
+
               border: 1px solid ${theme.body.someBorder};
               p {
                 margin-left: 10px;
-                border-left: 0.5px solid ${theme.body.someBorder};
               }
             }
           }
         }
       }
       .products-con {
-        overflow-x: scroll;
-
-        .product-container {
+        grid-template-columns:
+          ${({ ComparePL }) => {
+            if (ComparePL === 2) {
+              return `minmax(160px, 1fr) minmax(160px, 1fr);`;
+            } else {
+              return `minmax(160px, 1fr);`;
+            }
+          }}
+          .product-container {
           .product-item {
             border-right: 0;
             .price-and-add-basket {
@@ -217,18 +225,19 @@ const CompareContainer = styled.div`
           .information {
             background: ${theme.body.secondBackground} !important;
             border-right: 0;
+            overflow: hidden;
             div {
               h3 {
                 position: relative;
                 color: transparent;
               }
               p {
+                position: relative;
                 .mobile-element {
                   display: block;
                   color: transparent;
                   white-space: nowrap;
-                  position: relative;
-                  margin-bottom: 12px;
+                  margin-bottom: 26px;
                   text-indent: 0px;
                   font-weight: bold;
                   font-size: 15px;
@@ -238,14 +247,26 @@ const CompareContainer = styled.div`
           }
           &:nth-of-type(1) {
             .information {
+              overflow: unset;
+              position: relative;
+              z-index: 99999999;
+              width: 101%;
               div {
                 h3 {
                   color: ${theme.body.primaryColor};
+                  position: relative;
+                  width: 97vw;
+                  margin: 0 auto;
+                  text-align: center;
                 }
                 p {
                   .mobile-element {
                     display: block;
                     color: #111;
+                    width: 97vw;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
                   }
                 }
               }

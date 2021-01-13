@@ -16,9 +16,9 @@ export const setIsMobile = (isMobile) => ({
   payload: isMobile,
 });
 
-export const setNotificationMessage = (message) => ({
+export const setNotificationMessage = (message, type = "default") => ({
   type: NOTIFICATION_MESSAGE,
-  payload: message,
+  payload: { message, type },
 });
 export const showOurPhonesAction = () => ({
   type: SHOW_ORU_PHONES,

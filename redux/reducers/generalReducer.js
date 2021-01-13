@@ -517,7 +517,10 @@ const initialState = {
       },
     },
   },
-  notificationMessage: null,
+  notification: {
+    message: "",
+    type: "default",
+  },
   showOurPhones: false,
 };
 
@@ -536,7 +539,10 @@ const generalReducer = (state = initialState, action) => {
     case types.NOTIFICATION_MESSAGE:
       return {
         ...state,
-        notificationMessage: action.payload,
+        notification: {
+          message: action.payload.message,
+          type: action.payload.type === "warning" ? "warning" : "default",
+        },
       };
     case types.SHOW_ORU_PHONES:
       return {

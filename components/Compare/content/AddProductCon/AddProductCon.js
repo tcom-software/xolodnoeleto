@@ -7,7 +7,10 @@ const AddProductCon = ({
   products,
   removeCompareProduct,
   compareInformation,
+  compareProducts,
+  isMobile,
 }) => {
+  const itemsLength = Object.keys(compareProducts).length;
   const [type, setType] = useState(1);
   const {
     publicRuntimeConfig: { productsUpload, serverUrl, seriesUpload },
@@ -18,6 +21,7 @@ const AddProductCon = ({
       <div className="left-static-height">
         {array.map((_, i) => {
           if (type == 1) {
+            if (isMobile && itemsLength == 2) return null;
             return (
               <Button
                 key={i}
@@ -30,18 +34,21 @@ const AddProductCon = ({
               </Button>
             );
           } else {
+            if (isMobile && itemsLength == 2) return null;
             return (
-              <div className="wrapper-for-mobile-search">
-                <SearchResult key={i} where={"compare"} />
+              <div className="wrapper-for-mobile-search" key={i}>
+                <SearchResult where={"compare"} />
               </div>
             );
-            // placeholder={"Ищите среди миллиона товаров..."
           }
         })}
         <div className="added-products-con">
           {products.map(({ product, photo }) => {
-            const { articule: id, brand, model } = product;
+            const { articule: id, brand } = product;
+            let { model } = product;
             const { folder, file_name, file_format } = photo;
+            model = model.replaceAll("-", " - ");
+            model = model.replaceAll("/", " / ");
 
             return (
               <div key={id} className="item">

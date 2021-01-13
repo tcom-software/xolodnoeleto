@@ -6,10 +6,17 @@ import {
   removeCompareProduct,
 } from "redux/actions/compareActions";
 
+const mapStateToProps = ({
+  general: { isMobile },
+  compare: { compareProducts },
+}) => ({
+  isMobile,
+  compareProducts,
+});
 const mapDispatchToProps = (dispatch) => ({
   addBasket: (product) => dispatch(addBasket(product)),
   addCompareProduct: (data) => dispatch(addCompareProduct(data)),
   removeCompareProduct: (id) => dispatch(removeCompareProduct(id)),
 });
 
-export default connect(null, mapDispatchToProps)(AddProductCon);
+export default connect(mapStateToProps, mapDispatchToProps)(AddProductCon);

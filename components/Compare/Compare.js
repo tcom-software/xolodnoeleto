@@ -28,7 +28,7 @@ const Compare = ({ seenProducts, compareProducts }) => {
         mobileBackground={theme.body.background}
         mobilePadding={"0px"}
       >
-        <CompareContainer>
+        <CompareContainer ComparePL={products.length}>
           <div className="top-section">
             <AddProductCon
               array={array}

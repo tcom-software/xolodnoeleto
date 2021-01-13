@@ -18,7 +18,12 @@ const ProductsCon = ({
     <div className="products-con">
       {products.map(({ product, photo }, index) => {
         const { folder, file_name, file_format } = photo;
-        const { articule: id, brand, model, price } = product;
+        const { articule: id, brand, price } = product;
+
+        let { model } = product;
+        model = model.replaceAll("-", " - ");
+        model = model.replaceAll("/", " / ");
+
         return (
           <div key={id} className="product-container">
             <div className="product-item">

@@ -16,9 +16,12 @@ const FunctionalContainer = ({
   incrementProduct,
   decrementProduct,
   setNotificationMessage,
+  isMobile,
+  compareProducts,
 }) => {
   const { product, photos } = productInfo;
   const { brand, model, price, count, articule, manufacturer_logo } = product;
+  const comparePL = Object.keys(compareProducts).length;
 
   return (
     <ProductInformationContainer>
@@ -36,8 +39,20 @@ const FunctionalContainer = ({
             height={20}
             color={"#202020"}
             callback={() => {
-              addCompareProduct(articule);
-              setNotificationMessage("Товар добавлен в список для сравнение");
+              if (isMobile && comparePL === 2) {
+                setNotificationMessage(
+                  "Вы уже добавили два продукта удалите один",
+                  "warning"
+                );
+              } else if (!isMobile && comparePL === 3) {
+                setNotificationMessage(
+                  "Вы уже добавили три продукта удалите один",
+                  "warning"
+                );
+              } else {
+                setNotificationMessage("Товар готов для сравнения");
+                addCompareProduct(articule);
+              }
             }}
           />
           <SvgIcon
