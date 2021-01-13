@@ -1,9 +1,13 @@
 import { createGlobalStyle } from "styled-components";
 import { fontfaces } from "../styles/fonts";
 import theme from "styles/theme";
+import { hidden } from "ansi-colors";
 
 const GlobalStyles = createGlobalStyle`
   ${fontfaces()}
+  ${({ modalType }) => {
+    console.log(modalType);
+  }};
   
   * {
     margin: 0;
@@ -19,6 +23,9 @@ const GlobalStyles = createGlobalStyle`
     background: ${theme.body.background};
     color: #202020;
     overflow-x: hidden;
+  }
+  .overflow-hidden {
+    overflow: hidden;
   }
   picture {
     display: contents;

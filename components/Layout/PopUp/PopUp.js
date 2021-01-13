@@ -21,6 +21,11 @@ const PopUp = ({ modalType, setModalRef, closeModal, modalRef }) => {
 
   useEffect(() => {
     setModalRef(customRef);
+    if (modalType != "") {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
   }, [modalType]);
 
   switch (modalType) {
@@ -32,7 +37,9 @@ const PopUp = ({ modalType, setModalRef, closeModal, modalRef }) => {
       const Modal = Modals[modalType];
       return modalType != "" ? (
         <PopUpContainer>
-          <Modal modalType={modalType} modalRef={modalRef} />
+          <div className="layer">
+            <Modal modalType={modalType} modalRef={modalRef} />
+          </div>
         </PopUpContainer>
       ) : null;
   }

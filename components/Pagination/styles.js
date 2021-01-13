@@ -50,6 +50,8 @@ const PaginationContainer = styled.div`
       margin: 20px 0px;
 
       li {
+        height: 34px !important;
+        width: 34px !important;
         background: #ffffff;
 
         &.selected {
