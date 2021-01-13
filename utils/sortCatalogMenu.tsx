@@ -41,7 +41,7 @@ const sortCatalogMenu = (id, subC) => {
       return MSBP(subC, [104, 106]);
       break;
     default:
-      return MSBP([], []);
+      return MSBP(subC, []);
   }
 };
 

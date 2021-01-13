@@ -9,7 +9,6 @@ const Catalog = ({ catalog, modalType, modalRef, closeModal }) => {
       closeModal("");
     };
   }, []);
-
   return (
     <CatalogContainer
       modalType={modalType}

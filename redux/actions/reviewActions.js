@@ -27,7 +27,7 @@ export const getInitialReview = () => {
 export const getReviewByPage = (page) => {
   return (dispatch) => {
     axiosInstance
-      .get(`http://projects-backend.ru/api/getReviews?page=${page}`)
+      .get(`${serverUrl}${getReviews}?page=${page}`)
       .then(({ data }) => {
         if (data) {
           dispatch({
