@@ -24,7 +24,6 @@ const PopUpContainer = styled.div`
   }
 
   @media (max-width: ${theme.mobileMedia.size}) {
-    width: 90%;
   }
 `;
 
