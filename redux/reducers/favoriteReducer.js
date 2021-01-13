@@ -1,29 +1,29 @@
 import * as types from "../actions/favoriteActions";
 
 const initialState = {
-  items: {},
+  favoriteProducts: {},
 };
 
 const favoriteReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.ADD_TO_FAVORITE:
       const addAdsId = action.payload.id;
-      if (state.items[addAdsId]) {
+      if (state.favoriteProducts[addAdsId]) {
         return {
           ...state,
-          items: {
-            ...state.items,
+          favoriteProducts: {
+            ...state.favoriteProducts,
             [addAdsId]: {
-              ...state.items[addAdsId],
+              ...state.favoriteProducts[addAdsId],
               id: addAdsId,
-              count: state.items[addAdsId].count + 1,
+              count: state.favoriteProducts[addAdsId].count + 1,
             },
           },
         };
       } else {
         return {
           ...state,
-          items: {
+          favoriteProducts: {
             [addAdsId]: {
               ...action.payload,
               id: addAdsId,
@@ -36,37 +36,39 @@ const favoriteReducer = (state = initialState, action) => {
       const incAdsId = action.payload;
       return {
         ...state,
-        items: {
-          ...state.items,
+        favoriteProducts: {
+          ...state.favoriteProducts,
           [incAdsId]: {
-            ...state.items[incAdsId],
-            count: state.items[incAdsId].count + 1,
+            ...state.favoriteProducts[incAdsId],
+            count: state.favoriteProducts[incAdsId].count + 1,
           },
         },
-        total_amount: state.total_amount + state.items[incAdsId].price,
+        total_amount:
+          state.total_amount + state.favoriteProducts[incAdsId].price,
       };
     case types.DECREMENT_FAVORITE:
       const decAdsId = action.payload;
-      if (state.items[decAdsId].count === 1) {
+      if (state.favoriteProducts[decAdsId].count === 1) {
         return { ...state };
       }
       return {
         ...state,
-        items: {
-          ...state.items,
+        favoriteProducts: {
+          ...state.favoriteProducts,
           [decAdsId]: {
-            ...state.items[decAdsId],
-            count: state.items[decAdsId].count - 1,
+            ...state.favoriteProducts[decAdsId],
+            count: state.favoriteProducts[decAdsId].count - 1,
           },
         },
-        total_amount: state.total_amount - state.items[decAdsId].price,
+        total_amount:
+          state.total_amount - state.favoriteProducts[decAdsId].price,
       };
     case types.DELETE_ITEM_FAVORITE:
       const delFavId = action.payload;
       return {
         ...state,
-        items: {
-          ...Object.values(state.items)
+        favoriteProducts: {
+          ...Object.values(state.favoriteProducts)
             .filter(({ id }) => id != delFavId)
             .reduce((acc, next) => {
               return {
@@ -79,7 +81,8 @@ const favoriteReducer = (state = initialState, action) => {
         },
         total_amount:
           state.total_amount -
-          state.items[delFavId].price * state.items[delFavId].count,
+          state.favoriteProducts[delFavId].price *
+            state.favoriteProducts[delFavId].count,
       };
     default:
       return { ...state };

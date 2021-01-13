@@ -3,7 +3,6 @@ import store from "../redux/store";
 import theme from "../styles/theme";
 import { Provider } from "react-redux";
 import Layout from "../components/Layout";
-import withRedux from "next-redux-wrapper";
 import { ThemeProvider } from "styled-components";
 import GlobalStyles from "../styles/GlobalStyles";
 import { setIsMobile } from "../redux/actions/generalActions";

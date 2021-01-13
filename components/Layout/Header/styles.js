@@ -416,10 +416,30 @@ const SearchAndFavoriteCon = styled.div`
     align-items: center;
     flex-direction: column;
 
+    div {
+      position: relative;
+
+      .compare-count,
+      .favorite-count {
+        position: absolute;
+        font-size: 9.5px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        color: ${theme.body.primaryColor};
+        background: #fff;
+        border: 1px solid ${theme.body.primaryColor};
+        right: -9px;
+        top: -9px;
+        text-align: center;
+        line-height: 2.2;
+      }
+    }
+
     ${({ customMargin }) => {
       if (customMargin) {
         return css`
-          & > svg {
+          & > div > svg {
             margin: 6.6px 0;
           }
         `;

@@ -11,14 +11,6 @@ import { SeenProductWrapper } from "../FamousComponents";
 
 const Favorite = ({ isMobile, favoriteProducts, seenProducts }) => {
   const itemsLength = Object.keys(favoriteProducts).length;
-  if (itemsLength === 0) {
-    return (
-      <>
-        <TitleNavigation title={"ИЗБРАННЫЕ"} currentPage={"Избранные"} />
-        <DataEmpty title={"У вас нет избранных продуктов"} />
-      </>
-    );
-  }
 
   return (
     <>
@@ -26,25 +18,30 @@ const Favorite = ({ isMobile, favoriteProducts, seenProducts }) => {
       <GlobalSection
         isWeb={true}
         isMobile={true}
+        mobilePadding={"50px 0"}
         mobileBackground={theme.body.background}
         webBackground={theme.body.secondBackground}
       >
-        <FavoriteContainer>
-          {isMobile ? (
-            <MobileCase
-              basketItems={favoriteProducts}
-              functionalType="favorite"
-            />
-          ) : (
-            <WebCase
-              basketItems={favoriteProducts}
-              header={true}
-              borderShow={true}
-              basketButton={true}
-              functionalType="favorite"
-            />
-          )}
-        </FavoriteContainer>
+        {itemsLength === 0 ? (
+          <DataEmpty title={"У вас нет избранных продуктов"} />
+        ) : (
+          <FavoriteContainer>
+            {isMobile ? (
+              <MobileCase
+                basketItems={favoriteProducts}
+                functionalType="favorite"
+              />
+            ) : (
+              <WebCase
+                basketItems={favoriteProducts}
+                header={true}
+                borderShow={true}
+                basketButton={true}
+                functionalType="favorite"
+              />
+            )}
+          </FavoriteContainer>
+        )}
       </GlobalSection>
       <SeenProductWrapper seenProducts={seenProducts}>
         <GlobalSection

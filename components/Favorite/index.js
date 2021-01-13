@@ -2,7 +2,7 @@ import Favorite from "./Favorite";
 import { connect } from "react-redux";
 
 const mapStateToProps = ({
-  favorite: { items: favoriteProducts },
+  favorite: { favoriteProducts },
   general: { isMobile, seenProducts },
 }) => ({
   isMobile,
