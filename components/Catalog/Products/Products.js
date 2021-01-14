@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Loading } from "@famous";
 import { useRouter } from "next/router";
-import { createObjectFromUrl } from "@utils";
-import ProductGridView from "../../ProductGridView/index";
 import Pagination from "../../Pagination";
 import { DataEmpty } from "../../FamousComponents";
+import ProductGridView from "../../ProductGridView/index";
 
 const Products = ({
   productsLoading,
@@ -12,40 +11,10 @@ const Products = ({
   total,
   products,
   selectedData,
-  getCatalogProducts,
   updateSelectedOrderBy,
   updateSelectedDataPage,
-  updateSelectedDataFromUrl,
-  getCatalogProductLoadingTrigger,
 }) => {
   const router = useRouter();
-  const { catalogId } = router.query;
-
-  useEffect(() => {
-    let object;
-
-    const selectedDataLength = Object.keys(selectedData).length;
-
-    if (selectedDataLength === 0) {
-      object = createObjectFromUrl(router.query);
-    } else {
-      /**
-       *  there was only this piece code "object = selectedData"
-       *  but for orderBy I added this logic
-       * * */
-
-      for (let key in selectedData) {
-        if (selectedData[key] === "") delete selectedData[key];
-      }
-      object = selectedData;
-    }
-
-    getCatalogProductLoadingTrigger(true);
-    if (selectedDataLength === 0 && Object.keys(object).length > 0) {
-      updateSelectedDataFromUrl(object);
-    }
-    catalogId && getCatalogProducts(catalogId, { ...object });
-  }, [router.query]);
 
   if (productsLoading) {
     return <Loading />;
@@ -53,7 +22,6 @@ const Products = ({
   if (products.length === 0) {
     return <DataEmpty title={"Нет продуктов"} />;
   }
-
   return (
     <div className="catalog">
       {isMobile ? (

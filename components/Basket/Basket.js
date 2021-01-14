@@ -45,6 +45,7 @@ const Basket = ({
           break;
         }
       }
+
       if (checkSelectedData) {
         actionMakeOrder(selectedData);
       }

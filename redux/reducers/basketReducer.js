@@ -40,7 +40,9 @@ const initialState = {
       bottom: [],
     },
     stepSix: {
-      text: `Спасибо за покупку \n Ваш заказ №7O3W4 от 26.03.2020 17:55 успешно создан.\nНомер вашей оплаты:\n №7O3W4/1\n`,
+      // first: `Спасибо за покупку \n Ваш заказ №7O3W4 от `,
+      first: `Спасибо за покупку \n Ваш заказ `,
+      second: ` успешно создан.\n`,
     },
   },
   basketBuyInputs: [
@@ -80,7 +82,7 @@ const initialState = {
       1: {
         id: 1,
         title: "Доставка в пределах МКАД",
-        price: 0,
+        price: "0 руб.",
         svg: "delivery",
         width: "35px",
         height: "22px",
@@ -96,7 +98,7 @@ const initialState = {
       3: {
         id: 3,
         title: "Самовывоз",
-        price: 0,
+        price: "0 руб.",
         svg: "delivery",
         width: "35px",
         height: "22px",
@@ -106,23 +108,23 @@ const initialState = {
       1: {
         id: 1,
         title: "Наличный расчет",
-        price: 0,
+        price: "0 руб.",
         svg: "purse",
         width: "32px",
         height: "32px",
       },
-      // 2: {
-      //   id: 2,
-      //   title: "Онлайн оплата",
-      //   price: 500,
-      //   svg: "CardWithCoin",
-      //   width: "32px",
-      //   height: "32px",
-      // },
       2: {
         id: 2,
+        title: "Безналичный расчет на р/с",
+        price: "0 руб.",
+        svg: "CardWithCoin",
+        width: "32px",
+        height: "32px",
+      },
+      3: {
+        id: 3,
         title: "Оплата картой при получении",
-        price: 0,
+        price: "0 руб.",
         svg: "handWithCoin",
         width: "32px",
         height: "32px",

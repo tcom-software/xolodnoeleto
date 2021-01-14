@@ -5,11 +5,12 @@ import { makeInitialStepsResult } from "redux/actions/basketActions";
 const mapStateToProps = ({
   basket: {
     basketSteps: {
-      stepSix: { text },
+      stepSix: { first, second },
     },
   },
 }) => ({
-  text,
+  first,
+  second,
 });
 
 const mapDispatchToProps = (dispatch) => ({

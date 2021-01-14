@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Scroll } from "@utils";
 import theme from "styles/theme";
-import { makePrice } from "@utils";
 import { Button, CheckBox, Loading, SvgIcon } from "@famous";
 import { DeliveryContainer, DeliveryItem, PriceSpan } from "./styles";
-import { Scroll } from "@utils";
 
 const DeliveryOrPayment = ({
   loading,
@@ -11,14 +10,16 @@ const DeliveryOrPayment = ({
   stepState,
   changeOrderStep,
   updateStepsResult,
-  makeInitialStepsResult,
   manipulationSelectedData,
 }) => {
   const [typeId, setTypeId] = useState(1);
   const { To } = Scroll;
+  useEffect(() => {
+    setTypeId(1);
+  }, [stepState]);
 
   return (
-    <DeliveryContainer loading={loading}>
+    <DeliveryContainer loading={loading ? 1 : 0}>
       <div className="background-loading">
         <Loading />
       </div>
@@ -59,7 +60,7 @@ const DeliveryOrPayment = ({
                     )}
 
                     <SvgIcon type={svg} width={width} height={height} />
-                    <PriceSpan>{makePrice(price)}</PriceSpan>
+                    {stepState === 4 ? <PriceSpan>{price}</PriceSpan> : null}
                   </div>
                   <h3> {title} </h3>
                 </DeliveryItem>
@@ -87,7 +88,7 @@ const DeliveryOrPayment = ({
               <p>Служба доставки с настраиваемой ценой и сроком доставки</p>
               <p>Стоимость:</p>
               <p>
-                <PriceSpan>{makePrice(data[typeId].price)}</PriceSpan>
+                <PriceSpan>{data[typeId].price}</PriceSpan>
               </p>
             </>
           ) : null}
@@ -126,7 +127,6 @@ const DeliveryOrPayment = ({
               });
               updateStepsResult({ step: "stepFive", value: true });
               To("start");
-              makeInitialStepsResult(6);
             }
           }}
         >

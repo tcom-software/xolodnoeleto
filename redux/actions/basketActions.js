@@ -78,6 +78,7 @@ export const actionMakeOrder = (info) => {
               type: MAKE_ORDER,
             });
             dispatch(loading());
+            dispatch(makeInitialStepsResult(6));
           }
         }
       })

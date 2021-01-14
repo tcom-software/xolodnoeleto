@@ -4,7 +4,7 @@ import theme from "styles/theme";
 import { Button, SvgIcon } from "@famous";
 import { OrderDoneContainer } from "./styles";
 
-const OrderDone = ({ text, makeInitialStepsResult }) => {
+const OrderDone = ({ first, second, makeInitialStepsResult }) => {
   useEffect(() => {
     return () => {
       makeInitialStepsResult(1);
@@ -19,7 +19,9 @@ const OrderDone = ({ text, makeInitialStepsResult }) => {
         height={38}
         color={theme.body.primaryColor}
       />
-      <p>{text}</p>
+      <p>
+        {first} {second}
+      </p>
       <Button type="primary" width="250px" height="50px">
         <Link href="/">
           <a>Продолжить покупку</a>
