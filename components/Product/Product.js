@@ -17,7 +17,6 @@ const Product = ({
 }) => {
   const router = useRouter();
   const { id } = router.query;
-
   useEffect(() => {
     id && getProductInfo(id);
     return () => clearProductInfo();
@@ -26,6 +25,7 @@ const Product = ({
   if (Object.keys(productInfo).length === 0) {
     return <Loading />;
   }
+
   return (
     <>
       <GlobalSection

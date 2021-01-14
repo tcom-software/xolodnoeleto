@@ -48,7 +48,10 @@ const AddReview = ({ modalRef, closeModal, setNotificationMessage }) => {
         .then(({ data }) => {
           if (data === "success") {
             closeModal("");
-            setNotificationMessage("ваш отзыв в обработке");
+            setNotificationMessage({
+              message: "ваш отзыв в обработке",
+              type: "success",
+            });
           }
         })
         .catch(console.log);

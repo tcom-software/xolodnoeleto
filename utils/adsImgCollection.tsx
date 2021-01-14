@@ -39,7 +39,6 @@ const adsImgCollection = (photos) => {
       ]),
     };
   }
-  console.log(img, "------img");
   return img;
 };
 

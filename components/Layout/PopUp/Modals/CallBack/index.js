@@ -9,7 +9,7 @@ const mapStateToProps = ({ general: { worksTime } }) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   closeModal: () => dispatch(closeModal()),
-  setNotificationMessage: (message) =>
-    dispatch(setNotificationMessage(message)),
+  setNotificationMessage: (notification) =>
+    dispatch(setNotificationMessage(notification)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(CallBack);

@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { createObjectFromUrl } from "@utils";
 import ProductGridView from "../../ProductGridView/index";
 import Pagination from "../../Pagination";
+import { DataEmpty } from "../../FamousComponents";
 
 const Products = ({
   productsLoading,
@@ -45,6 +46,11 @@ const Products = ({
     }
     catalogId && getCatalogProducts(catalogId, { ...object });
   }, [router.query]);
+
+  if (products.length === 0) {
+    return <DataEmpty title={"Нет продуктов"} />;
+  }
+
   return (
     <>
       {productsLoading ? (
@@ -70,6 +76,7 @@ const Products = ({
               </select>
             </div>
           )}
+
           <Pagination
             total={total}
             page={router.query.page}
@@ -81,6 +88,7 @@ const Products = ({
               return <ProductGridView key={index} item={item} />;
             })}
           </div>
+
           <Pagination
             total={total}
             page={router.query.page}

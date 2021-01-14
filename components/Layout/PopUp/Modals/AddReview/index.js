@@ -6,7 +6,8 @@ import { setNotificationMessage } from "redux/actions/generalActions";
 const mapDispatchToProps = (dispatch) => ({
   openModal: () => dispatch(openModal()),
   closeModal: () => dispatch(closeModal()),
-  setNotificationMessage: (src) => dispatch(setNotificationMessage(src)),
+  setNotificationMessage: (notification) =>
+    dispatch(setNotificationMessage(notification)),
 });
 
 export default connect(false, mapDispatchToProps)(AddReview);

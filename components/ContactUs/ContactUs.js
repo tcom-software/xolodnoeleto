@@ -48,7 +48,10 @@ const ContactUs = ({ seenProducts, setNotificationMessage }) => {
           if (data === "success") {
             setErrorState([]);
             setInfo({ ...initialState });
-            setNotificationMessage("Мы свяжемся с вами");
+            setNotificationMessage({
+              message: "Мы свяжемся с вами",
+              type: "success",
+            });
           }
         })
         .catch(console.log);

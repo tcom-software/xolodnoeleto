@@ -7,8 +7,8 @@ const mapStateToProps = ({ general: { notification } }) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setNotificationMessage: (message) =>
-    dispatch(setNotificationMessage(message)),
+  setNotificationMessage: (notification) =>
+    dispatch(setNotificationMessage(notification)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Notification);

@@ -7,11 +7,11 @@ const NotificationContainer = styled.div`
     right: 15px;
     width: 360px;
     height: 50px;
-    color: ${({ type }) => (type === "default" ? "white" : "black")};
     padding: 15px;
-    background: ${({ type }) => (type === "default" ? "#0070f3;" : "#fbeb3c;")};
     border: 1px solid
-      ${({ type }) => (type === "default" ? "#0070f3;" : "#fbeb3c;")};
+      ${({ type }) => (type === "success" ? "#0070f3;" : "#fbeb3c;")};
+    color: ${({ type }) => (type === "success" ? "white" : "black")};
+    background: ${({ type }) => (type === "success" ? "#0070f3;" : "#fbeb3c;")};
   }
 
   @media (max-width: 768px) {

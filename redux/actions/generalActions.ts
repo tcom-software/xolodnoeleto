@@ -5,6 +5,7 @@ export const INITIAL_STATE = "INITIAL_STATE";
 export const SHOW_ORU_PHONES = "SHOW_ORU_PHONES";
 export const IS_OPEN_BIG_IMAGE = "IS_OPEN_BIG_IMAGE";
 export const NOTIFICATION_MESSAGE = "NOTIFICATION_MESSAGE";
+import { NotificationInterface } from "../../interfaces";
 
 export const changeBigImage = (src) => ({
   type: IS_OPEN_BIG_IMAGE,
@@ -16,9 +17,11 @@ export const setIsMobile = (isMobile) => ({
   payload: isMobile,
 });
 
-export const setNotificationMessage = (message, type = "default") => ({
+export const setNotificationMessage = (
+  notification: NotificationInterface
+) => ({
   type: NOTIFICATION_MESSAGE,
-  payload: { message, type },
+  payload: notification,
 });
 export const showOurPhonesAction = () => ({
   type: SHOW_ORU_PHONES,

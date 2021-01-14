@@ -6,6 +6,8 @@ import { useRouter } from "next/router";
 import ProductList from "../ProductsList";
 import { CatalogContainer } from "./styles";
 import { GlobalSection, SeenProductWrapper } from "@famous";
+import { DataEmpty } from "../FamousComponents";
+import TitleNavigation from "../TitleNavigation";
 
 const Catalog = ({ seenProducts, updateSelectedDataPage }) => {
   const router = useRouter();
@@ -19,6 +21,7 @@ const Catalog = ({ seenProducts, updateSelectedDataPage }) => {
 
   return (
     <>
+      <TitleNavigation title="Каталог" currentPage="Каталог" />
       <GlobalSection
         isWeb={true}
         isMobile={true}

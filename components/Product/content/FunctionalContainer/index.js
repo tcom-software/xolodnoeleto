@@ -25,8 +25,8 @@ const mapDispatchToProps = (dispatch) => ({
   addBasket: (product) => dispatch(addBasket(product)),
   incrementProduct: () => dispatch(incrementProductCount()),
   decrementProduct: () => dispatch(decrementProductCount()),
-  setNotificationMessage: (message, type) =>
-    dispatch(setNotificationMessage(message, type)),
+  setNotificationMessage: (notification) =>
+    dispatch(setNotificationMessage(notification)),
 });
 
 export default connect(

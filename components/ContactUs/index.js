@@ -11,6 +11,7 @@ const mapStateToProps = ({ products: { seenProducts } }) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   changeBigImage: (src) => dispatch(changeBigImage(src)),
-  setNotificationMessage: (src) => dispatch(setNotificationMessage(src)),
+  setNotificationMessage: (notification) =>
+    dispatch(setNotificationMessage(notification)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(ContactUs);

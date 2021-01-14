@@ -1,7 +1,11 @@
 import styled, { css } from "styled-components";
 import theme from "styles/theme";
 
-const Container = styled.section``;
+const Container = styled.section`
+  @media (max-width: ${theme.mobileMedia.size}) {
+    padding: 20px 8px;
+  }
+`;
 
 const ListContainer = styled.div`
   margin-top: 27px;

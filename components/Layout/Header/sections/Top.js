@@ -3,9 +3,9 @@ import Link from "next/link";
 import { Scroll } from "@utils";
 import theme from "styles/theme";
 import { connect } from "react-redux";
-import { GlobalSection, SvgIcon, SvgIconFillingAnim } from "@famous";
 import { LogoCon, Ul, TopPanel } from "../styles";
 import { openModal, closeModal } from "redux/actions/modalActions";
+import { GlobalSection, SvgIcon, SvgIconFillingAnim } from "@famous";
 
 const Top = ({
   navigation,

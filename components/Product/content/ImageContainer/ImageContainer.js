@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Image, Star } from "@famous";
+import { Image, Star, ProductImage } from "@famous";
 import { ProductImageContainer } from "./styles";
 import Link from "next/link";
 import getConfig from "next/config";
@@ -10,7 +10,7 @@ const {
 
 const ImageContainer = ({ productInfo, productKey, changeBigImage }) => {
   const {
-    product: { brand, model },
+    product: { brand, model, category_id, category_name },
     photos,
   } = productInfo;
 
@@ -30,7 +30,11 @@ const ImageContainer = ({ productInfo, productKey, changeBigImage }) => {
         <Link href="/">
           <a>Главная</a>
         </Link>{" "}
-        / ... help me ... / {model}
+        /{" "}
+        <Link href={`/catalog/${category_id}`}>
+          <a> {category_name}</a>
+        </Link>{" "}
+        / {brand} {model}
       </div>
       <div className="mobile-container">
         <div className="mobile-vendor-code">
@@ -44,15 +48,16 @@ const ImageContainer = ({ productInfo, productKey, changeBigImage }) => {
       </div>
       <div className="images-container">
         <div className="small-images">
-          {photos.length > 1 &&
+          {photos.length > 0 &&
             imagesArray.map((e, i) => {
               return (
-                <Image
+                <ProductImage
                   key={i}
-                  simpleWeb={e}
-                  webpWeb={""}
+                  src={e}
+                  alt={e}
+                  title={e}
                   callback={() => setMain(e)}
-                  customClass={main == e ? "selected" : ""}
+                  className={`${main == e ? "selected" : ""}`}
                 />
               );
             })}
@@ -63,7 +68,7 @@ const ImageContainer = ({ productInfo, productKey, changeBigImage }) => {
           // onClick={() => changeBigImage(main.replace("/size300", ""))}
         >
           {/*{superPrice ? <div className="super-price">СУПЕРЦЕНА</div> : null}*/}
-          <img
+          <ProductImage
             src={main}
             alt={`${brand} ${model}`}
             title={`${brand} ${model}`}

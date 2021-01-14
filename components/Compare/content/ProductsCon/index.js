@@ -14,8 +14,8 @@ const mapDispatchToProps = (dispatch) => ({
   addBasket: (product) => dispatch(addBasket(product)),
   addCompareProduct: (data) => dispatch(addCompareProduct(data)),
   removeCompareProduct: (id) => dispatch(removeCompareProduct(id)),
-  setNotificationMessage: (message) =>
-    dispatch(setNotificationMessage(message)),
+  setNotificationMessage: (notification) =>
+    dispatch(setNotificationMessage(notification)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsCon);

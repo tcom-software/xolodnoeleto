@@ -40,17 +40,20 @@ const FunctionalContainer = ({
             color={"#202020"}
             callback={() => {
               if (isMobile && comparePL === 2) {
-                setNotificationMessage(
-                  "Вы уже добавили два продукта удалите один",
-                  "warning"
-                );
+                setNotificationMessage({
+                  message: "Вы уже добавили два продукта удалите один",
+                  type: "warning",
+                });
               } else if (!isMobile && comparePL === 3) {
-                setNotificationMessage(
-                  "Вы уже добавили три продукта удалите один",
-                  "warning"
-                );
+                setNotificationMessage({
+                  message: "Вы уже добавили три продукта удалите один",
+                  type: "warning",
+                });
               } else {
-                setNotificationMessage("Товар готов для сравнения");
+                setNotificationMessage({
+                  message: "Товар готов для сравнения",
+                  type: "success",
+                });
                 addCompareProduct(articule);
               }
             }}
@@ -66,7 +69,10 @@ const FunctionalContainer = ({
                 id: product.articule,
                 ...adsImgCollection(photos),
               });
-              setNotificationMessage("Товар добавлен в избранное");
+              setNotificationMessage({
+                message: "Товар добавлен в избранное",
+                type: "success",
+              });
             }}
           />
         </div>
@@ -104,7 +110,10 @@ const FunctionalContainer = ({
                 id: product.articule,
                 ...adsImgCollection(photos),
               });
-              setNotificationMessage("Товар добавлен в корзину");
+              setNotificationMessage({
+                message: "Товар добавлен в корзину",
+                type: "success",
+              });
             }}
           >
             В корзину
@@ -114,10 +123,13 @@ const FunctionalContainer = ({
       <div className="level-four">
         <div className="terms-of-delivery">
           <SvgIcon type="delivery" width={30} height={30} color={"#5B5B5B"} />
-          <p>Условия доставки</p>
+          <p>Бесплатное доставка за пределами мкад</p>
         </div>
         <div className="mobile-brand-image">
-          <Image simpleWeb={brand} webpWeb={""} />
+          <Image
+            simpleWeb={`${serverUrl}${brandsUpload}${manufacturer_logo}`}
+            webpWeb={""}
+          />
         </div>
       </div>
       <div className="level-five-mobile">
@@ -138,7 +150,10 @@ const FunctionalContainer = ({
               id: product.articule,
               ...adsImgCollection(photos),
             });
-            setNotificationMessage("Товар добавлен в корзину");
+            setNotificationMessage({
+              message: "Товар добавлен в корзину",
+              type: "success",
+            });
           }}
         >
           В корзину

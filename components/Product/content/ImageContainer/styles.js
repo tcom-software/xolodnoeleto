@@ -11,16 +11,24 @@ const ProductImageContainer = styled.div`
   .images-container {
     display: grid;
     grid-gap: 20px;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 120px 4fr;
 
     .small-images {
+      display: grid;
+      grid-gap: 10px;
+      align-content: baseline;
+      grid-template-columns: repeat(auto-fit, 120px);
+
       img {
         transition: all 0.3s ease-in;
         width: 100%;
-        height: 100%;
-        max-width: 100px;
+        min-height: 100px;
+        max-height: 120px;
         border: 1px solid ${theme.body.someBorder};
         cursor: pointer;
+        object-fit: contain;
+        min-width: 100%;
+
         &:hover {
           transition: all 0.3s ease-in;
           transform: scale(1.02);
@@ -66,6 +74,7 @@ const ProductImageContainer = styled.div`
       }
     }
   }
+
   @media (max-width: ${theme.mobileMedia.size}) {
     .nav-title {
       display: none;
@@ -78,12 +87,20 @@ const ProductImageContainer = styled.div`
         order: 2;
         display: flex;
         justify-content: flex-start;
+        grid-template-columns: repeat(auto-fit, 75px);
+        img {
+          max-width: 100px;
+          height: 100px;
+        }
         & > div {
           margin-left: 10px;
           &:first-of-type {
             margin-left: 0px;
           }
         }
+      }
+      .main-img {
+        min-height: 300px;
       }
     }
 

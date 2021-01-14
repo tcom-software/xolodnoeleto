@@ -55,7 +55,10 @@ const ProductsCon = ({
                       ...product,
                       ...adsImgCollection([photo]),
                     });
-                    setNotificationMessage("Товар добавлен в корзину");
+                    setNotificationMessage({
+                      message: "Товар добавлен в корзину",
+                      type: "success",
+                    });
                   }}
                 >
                   В корзину

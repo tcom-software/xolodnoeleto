@@ -64,7 +64,7 @@ const ProductInformationContainer = styled.div`
 
       img {
         width: 100px;
-        padding: 0 10px;
+        padding: 5px 10px;
         border: 1px solid ${theme.body.someBorder};
       }
     }

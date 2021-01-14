@@ -8,11 +8,11 @@ const Notification = ({ notification, setNotificationMessage }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       if (message != null) {
-        setNotificationMessage("", type);
+        setNotificationMessage({ message: "", type: type });
       }
     }, 5000);
     return () => clearTimeout(timer);
-  }, [message]);
+  }, [message, type]);
 
   const props = useSpring({
     to: {
@@ -21,7 +21,6 @@ const Notification = ({ notification, setNotificationMessage }) => {
     },
     from: { transform: `translateX(110%)`, opacity: 0 },
   });
-
   return (
     <NotificationContainer type={type}>
       <animated.div style={props}>{message}</animated.div>

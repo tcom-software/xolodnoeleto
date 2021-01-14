@@ -49,7 +49,10 @@ const CallBack = ({
         .then(({ data }) => {
           if (data === "success") {
             closeModal("");
-            setNotificationMessage("Мы вам перезвоним");
+            setNotificationMessage({
+              message: "Мы вам перезвоним",
+              type: "success",
+            });
             setInfo({
               name: "",
               surname: "",

@@ -156,3 +156,9 @@ export interface ReviewInterface {
   starCount: number;
   description: string;
 }
+export interface NotificationInterface {
+  notification: {
+    message: string;
+    type: string;
+  };
+}
