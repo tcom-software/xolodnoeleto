@@ -1,6 +1,12 @@
 import React from "react";
 
-const ProductImage = ({ src, alt = "", title = "", className, callback }) => {
+const ProductImage = ({
+  src,
+  alt = "",
+  title = "",
+  className,
+  callback = null,
+}) => {
   return (
     <img
       src={src}
