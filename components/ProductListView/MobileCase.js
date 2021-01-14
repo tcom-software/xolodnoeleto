@@ -47,12 +47,12 @@ const MobileCase = ({
 }) => {
   return (
     <div>
-      {Object.values(basketItems).map((item) => {
+      {Object.values(basketItems).map((item, index) => {
         const { id, count, model, brand, price } = item;
         const imagePath = makeImagePath(item);
 
         return (
-          <Container key={id}>
+          <Container key={id + index}>
             <ImgCon>
               <Link href={`/product/${id}`}>
                 <a>

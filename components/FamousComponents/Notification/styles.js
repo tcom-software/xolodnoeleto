@@ -8,6 +8,7 @@ const NotificationContainer = styled.div`
     width: 360px;
     height: 50px;
     padding: 15px;
+    z-index: 999;
     border: 1px solid
       ${({ type }) => (type === "success" ? "#0070f3;" : "#fbeb3c;")};
     color: ${({ type }) => (type === "success" ? "white" : "black")};

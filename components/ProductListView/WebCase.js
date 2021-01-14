@@ -67,7 +67,7 @@ const WebCase = ({
 
             const imagePath = makeImagePath(item);
             return (
-              <tr key={id}>
+              <tr key={id + index}>
                 {functionalType == "favorite" ? <td>{index + 1}</td> : null}
                 <td>
                   <Link href={`/product/${id}`}>

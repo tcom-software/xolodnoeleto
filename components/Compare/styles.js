@@ -249,7 +249,7 @@ const CompareContainer = styled.div`
             .information {
               overflow: unset;
               position: relative;
-              z-index: 99999999;
+              z-index: 1;
               width: 101%;
               div {
                 h3 {

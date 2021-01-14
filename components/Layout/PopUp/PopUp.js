@@ -21,7 +21,7 @@ const PopUp = ({ modalType, setModalRef, closeModal, modalRef }) => {
 
   useEffect(() => {
     setModalRef(customRef);
-    if (modalType != "") {
+    if (modalType === "CallBack") {
       document.body.classList.add("overflow-hidden");
     } else {
       document.body.classList.remove("overflow-hidden");
