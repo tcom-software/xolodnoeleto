@@ -69,7 +69,7 @@ const Basket = ({
         webPadding="50px 0"
         mobilePadding="50px 0"
       >
-        {itemsLength.length === 0 ? (
+        {itemsLength === 0 ? (
           <DataEmpty title={"У вас нет продуктов в корзине"} />
         ) : (
           <>
