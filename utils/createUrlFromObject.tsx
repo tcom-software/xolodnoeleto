@@ -3,6 +3,16 @@ const createUrlFromObject = (selectedFiltersObject, catalogId) => {
   const tookFiltersObject = Object.keys(selectedFiltersObject);
 
   if (tookFiltersObject.length > 0 && catalogId !== undefined) {
+    for (let key in selectedFiltersObject.fromTo) {
+      const array = selectedFiltersObject.fromTo[key];
+      if (array instanceof Array && !array[0] && !array[1]) {
+        delete selectedFiltersObject.fromTo[key];
+        // if (Object.keys(selectedData[key]).length === 0) {
+        //   delete selectedData[key];
+        // }
+      }
+    }
+
     const merge = {
       ...selectedFiltersObject.checkboxes,
       ...selectedFiltersObject.fromTo,

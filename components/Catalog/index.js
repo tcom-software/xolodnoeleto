@@ -1,6 +1,7 @@
 import Catalog from "./Catalog";
 import { connect } from "react-redux";
 import {
+  clearFiltersSelectedData,
   getCatalogProductLoadingTrigger,
   getCatalogProducts,
   updateSelectedDataFromUrl,
