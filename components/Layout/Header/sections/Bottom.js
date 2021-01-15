@@ -72,7 +72,7 @@ const Bottom = ({
               </a>
             </Link>
           </li>
-          <li>
+          <li className="basket-button-menu">
             <Button
               type="with-icon"
               width="190px"

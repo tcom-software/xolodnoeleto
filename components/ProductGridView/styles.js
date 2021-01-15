@@ -56,7 +56,7 @@ const ProductContainer = styled.div`
       text-transform: uppercase;
     }
     & > button:hover {
-      background: #0070f3;
+      background: ${theme.body.primaryColor};
       color: #fff;
       border: none;
     }
