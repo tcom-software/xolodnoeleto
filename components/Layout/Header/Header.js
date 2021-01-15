@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <header>
       <ScrollPosition name="start" />
-      <Banner />
+      {/*<Banner />*/}
       <Top />
       <Middle />
       <ScrollPosition name="default" />
