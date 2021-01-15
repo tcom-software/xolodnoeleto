@@ -1,17 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Range } from "rc-slider";
 import { useRouter } from "next/router";
 import { BetweenSelectionCaseContainer } from "./styles";
 
 const Between = ({ title, array, selectedData, actionManipulationBetween }) => {
+  const { fromTo } = selectedData;
+  const [myObj, setMyObj] = useState([null, null]);
   const { id } = array[0];
   const router = useRouter();
-  const { fromTo } = selectedData;
+  const [from, to] = myObj;
 
-  const from =
-    fromTo && fromTo[id] ? (fromTo[id][0] !== null ? fromTo[id][0] : 0) : 0;
-  const to =
-    fromTo && fromTo[id] ? (fromTo[id][1] !== null ? fromTo[id][1] : 0) : 0;
+  const data = function (from = "", to = "") {
+    actionManipulationBetween({
+      id,
+      from,
+      to,
+      router,
+      selectedData,
+    });
+  };
+
+  useEffect(() => {
+    if ((!fromTo && from) || (!fromTo && to)) {
+      const timer = setTimeout(() => data(from, to), 1000);
+      return () => clearTimeout(timer);
+    } else {
+      if (fromTo && JSON.stringify(fromTo) !== JSON.stringify(myObj)) {
+        const timer = setTimeout(() => data(from, to), 1000);
+        return () => clearTimeout(timer);
+      }
+    }
+  }, [myObj]);
 
   return (
     <BetweenSelectionCaseContainer>
@@ -21,20 +40,12 @@ const Between = ({ title, array, selectedData, actionManipulationBetween }) => {
             <span>От: </span>
             <input
               type="number"
-              value={from}
-              readOnly={true}
+              value={from === null ? "" : from}
               onChange={({ target: { value } }) => {
                 let parsed;
                 if (value) parsed = parseInt(value);
-                else parsed = 0;
-
-                actionManipulationBetween({
-                  id,
-                  from: parsed,
-                  to,
-                  router,
-                  selectedData,
-                });
+                else parsed = "";
+                setMyObj([parsed, to]);
               }}
             />
           </div>
@@ -42,20 +53,12 @@ const Between = ({ title, array, selectedData, actionManipulationBetween }) => {
             <span>До: </span>
             <input
               type="number"
-              value={to}
-              readOnly={true}
+              value={to === null ? "" : to}
               onChange={({ target: { value } }) => {
                 let parsed;
                 if (value) parsed = parseInt(value);
-                else parsed = 0;
-
-                actionManipulationBetween({
-                  id,
-                  from,
-                  to: parsed,
-                  router,
-                  selectedData,
-                });
+                else parsed = "";
+                setMyObj([from, parsed]);
               }}
             />
           </div>
@@ -67,15 +70,7 @@ const Between = ({ title, array, selectedData, actionManipulationBetween }) => {
             allowCross={false}
             value={[from, to]}
             onChange={([from, to]) => {
-              setTimeout(function () {
-                actionManipulationBetween({
-                  id,
-                  from,
-                  to,
-                  router,
-                  selectedData,
-                });
-              });
+              setMyObj([from, to]);
             }}
           />
         </div>

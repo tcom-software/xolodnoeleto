@@ -9,8 +9,6 @@ import { createObjectFromUrl } from "@utils";
 import TitleNavigation from "../TitleNavigation";
 import { GlobalSection, SeenProductWrapper } from "@famous";
 
-// import { DataEmpty } from "../FamousComponents";
-
 const Catalog = ({
   products,
   selectedData,
@@ -74,8 +72,8 @@ const Catalog = ({
         <GlobalSection
           isWeb={true}
           isMobile={true}
-          webBackground={theme.body.background}
           webPadding={"35px 0px"}
+          webBackground={theme.body.background}
         >
           <ProductList
             title={"ВЫ НЕДАВНО СМОТРЕЛИ"}

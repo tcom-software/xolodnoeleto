@@ -21,7 +21,6 @@ const Filters = ({
   useEffect(() => {
     if (catalogId !== undefined) {
       const url = createUrlFromObject(selectedData, catalogId);
-
       if (url.indexOf("?") != -1) {
         router.push(url);
       }
@@ -35,6 +34,7 @@ const Filters = ({
   const handleSubmit = (event) => {
     event.preventDefault();
   };
+
   return (
     <FiltersContainer isOpen={isOpenFilters}>
       <form onSubmit={handleSubmit}>
