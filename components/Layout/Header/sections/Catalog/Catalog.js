@@ -3,7 +3,7 @@ import Link from "next/link";
 import { sortCatalogMenu } from "@utils";
 import { CatalogContainer } from "./styles";
 
-const Catalog = ({ catalog, modalType, modalRef, closeModal }) => {
+const Catalog = ({ catalog, modalType, modalRef, closeModal, isMobile }) => {
   useEffect(() => {
     return () => {
       closeModal("");

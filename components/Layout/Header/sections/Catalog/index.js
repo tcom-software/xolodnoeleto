@@ -5,11 +5,12 @@ import { closeModal } from "redux/actions/modalActions";
 const mapStateToProps = ({
   catalog: { catalogMenu: catalog },
   modal: { modalRef, modalType },
+  general: { isMobile },
 }) => ({
+  isMobile,
   catalog,
   modalRef,
   modalType,
-  closeModal,
 });
 
 const mapDispatchToProps = (dispatch) => ({

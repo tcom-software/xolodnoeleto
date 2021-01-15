@@ -61,7 +61,7 @@ const Catalog = ({
         isMobile={true}
         webBackground={theme.body.secondBackground}
         mobileBackground={theme.body.background}
-        mobilePadding={"10px 20px"}
+        mobilePadding={"10px 8px"}
       >
         <CatalogContainer>
           <Filters />
