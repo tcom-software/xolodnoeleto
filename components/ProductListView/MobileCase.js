@@ -45,9 +45,8 @@ const MobileCase = ({
   deleteBasketItem,
 
   manipulationSelectedData,
+  isMobile,
 }) => {
-  const { To } = Scroll;
-
   return (
     <div>
       {Object.values(basketItems).map((item, index) => {
@@ -111,7 +110,7 @@ const MobileCase = ({
             onClick={() => {
               updateStepsResult({ step: "stepOne", value: false });
               changeOrderStep(stepState - 1);
-              basketMoveTo(stepState - 1);
+              basketMoveTo(isMobile);
             }}
           >
             НАЗАД
@@ -127,13 +126,16 @@ const MobileCase = ({
                 (acc, { id, count }) => {
                   return {
                     ...acc,
-                    [id]: count,
+                    products: {
+                      ...acc["products"],
+                      [id]: count,
+                    },
                   };
                 },
                 {}
               );
               manipulationSelectedData(newArray);
-              basketMoveTo(stepState + 1);
+              basketMoveTo(isMobile);
             }}
           >
             ДАЛЕЕ
@@ -159,8 +161,9 @@ const mapDispatchToProps = (dispatch) => ({
   manipulationSelectedData: (data) => dispatch(manipulationSelectedData(data)),
 });
 
-const mapStateToProps = ({ basket: { stepState } }) => ({
+const mapStateToProps = ({ general: { isMobile }, basket: { stepState } }) => ({
   stepState,
+  isMobile,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MobileCase);

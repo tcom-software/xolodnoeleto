@@ -7,10 +7,12 @@ import basketMoveTo from "../../../../utils/basketMoveTo";
 
 const DeliveryOrPayment = ({
   loading,
+  isMobile,
   data,
   stepState,
   changeOrderStep,
   updateStepsResult,
+  makeInitialStepsResult,
   manipulationSelectedData,
 }) => {
   const [typeId, setTypeId] = useState(1);
@@ -107,7 +109,7 @@ const DeliveryOrPayment = ({
               updateStepsResult({ step: "stepFour", value: false });
             }
             changeOrderStep(stepState - 1);
-            basketMoveTo(stepState - 1);
+            basketMoveTo(isMobile);
           }}
         >
           НАЗАД
@@ -123,7 +125,7 @@ const DeliveryOrPayment = ({
               });
               updateStepsResult({ step: "stepFour", value: true });
               changeOrderStep(stepState + 1);
-              basketMoveTo(stepState + 1);
+              basketMoveTo(isMobile);
             } else if (stepState === 5) {
               manipulationSelectedData({
                 payment_type: data[typeId].title,

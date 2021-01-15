@@ -19,7 +19,6 @@ const Basket = ({
 }) => {
   const stepObject = getBasketStepInfo(stepState, basketSteps);
   const itemsLength = Object.keys(basketItems).length;
-  const { To } = Scroll;
 
   useEffect(() => {
     let orderState = false;
@@ -33,7 +32,6 @@ const Basket = ({
         break;
       }
     }
-
     if (orderState) {
       let checkSelectedData = false;
       for (let key in selectedData) {
@@ -49,11 +47,31 @@ const Basket = ({
       }
 
       if (checkSelectedData) {
-        To("start");
         actionMakeOrder(selectedData);
+      } else {
       }
     }
   }, [stepsResult, selectedData]);
+
+  const CasesByStep = () => {
+    if (stepState === 6) {
+      return <OrderDone />;
+    } else if (itemsLength === 0) {
+      return <DataEmpty title={"У вас нет продуктов в корзине"} />;
+    } else {
+      return (
+        <GridSection stepState={stepState} isMobile={isMobile}>
+          <BasketStepsCases />
+
+          <AboutOrder />
+
+          {stepState === 1 ? (
+            <StepInformation stepStructure={stepObject} />
+          ) : null}
+        </GridSection>
+      );
+    }
+  };
   return (
     <Container>
       {stepState !== 6 ? (
@@ -71,24 +89,7 @@ const Basket = ({
         webPadding="50px 0"
         mobilePadding={"10px 0"}
       >
-        {itemsLength === 0 ? (
-          <DataEmpty title={"У вас нет продуктов в корзине"} />
-        ) : (
-          <>
-            {stepState === 6 ? (
-              <OrderDone />
-            ) : (
-              <GridSection stepState={stepState} isMobile={isMobile}>
-                <BasketStepsCases />
-
-                <AboutOrder />
-                {stepState === 1 ? (
-                  <StepInformation stepStructure={stepObject} />
-                ) : null}
-              </GridSection>
-            )}
-          </>
-        )}
+        {CasesByStep()}
       </GlobalSection>
     </Container>
   );

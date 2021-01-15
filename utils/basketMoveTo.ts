@@ -1,7 +1,8 @@
 import { Scroll } from "@utils";
 
-const basketMoveTo = (nextStep) => {
+const basketMoveTo = (isMobile) => {
   const { To } = Scroll;
-  To(`basket${nextStep}`);
+  isMobile && To(`basketMove`);
 };
+
 export default basketMoveTo;

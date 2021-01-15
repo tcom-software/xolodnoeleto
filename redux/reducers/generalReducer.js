@@ -141,12 +141,14 @@ const initialState = {
     },
     commentByOrder: {
       errorMessage: "Пожалуйста, напишите комментарии",
-      validation: "^[a-zA-Zа-яА-я0-9 ]{2,30}$",
+      // validation: "^[a-zA-Zа-яА-я0-9 ]{2,30}$",
+      validation: "^[a-zA-Zа-яА-яа-яА-я0-9 .,=+!@#$%&*^()]{2,150}$",
       placeholder: "Напишите ваш комментарии",
     },
     comment: {
       errorMessage: "Пожалуйста, напишите комментарии",
-      validation: "^[a-zA-Zа-яА-я0-9 ]{2,30}$",
+      // validation: "^[a-zA-Zа-яА-я0-9 ]{2,30}$",
+      validation: "^[a-zA-Zа-яА-яа-яА-я0-9 .,=+!@#$%&*^()]{2,150}$",
       placeholder: "Напишите ваш комментарии",
     },
     uploadImages: {

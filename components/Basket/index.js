@@ -1,6 +1,7 @@
 import Basket from "./Basket";
 import { connect } from "react-redux";
 import { actionMakeOrder } from "../../redux/actions/basketActions";
+import { setNotificationMessage } from "../../redux/actions/generalActions";
 
 const mapStateToProps = ({
   basket: {
@@ -36,6 +37,8 @@ const mapStateToProps = ({
 
 const mapDispatchToState = (dispatch) => ({
   actionMakeOrder: (data) => dispatch(actionMakeOrder(data)),
+  setNotificationMessage: (notification) =>
+    dispatch(setNotificationMessage(notification)),
 });
 
 export default connect(mapStateToProps, mapDispatchToState)(Basket);

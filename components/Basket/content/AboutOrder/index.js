@@ -5,7 +5,11 @@ import {
   updateStepsResult,
 } from "redux/actions/basketActions";
 
-const mapStateToProps = ({ basket: { items, total_amount, stepState } }) => ({
+const mapStateToProps = ({
+  general: { isMobile },
+  basket: { items, total_amount, stepState },
+}) => ({
+  isMobile,
   stepState,
   total_amount,
   itemsCount: Object.keys(items).length,

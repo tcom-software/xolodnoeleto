@@ -10,6 +10,7 @@ const BasketBuyForm = ({
   basketBuyInputs,
   updateStepsResult,
   manipulationSelectedData,
+  isMobile,
 }) => {
   const [errorState, setErrorState] = useState([]);
   const [info, setInfo] = useState({
@@ -65,7 +66,7 @@ const BasketBuyForm = ({
             onClick={() => {
               updateStepsResult({ step: "stepTwo", value: false });
               changeOrderStep(stepState - 1);
-              basketMoveTo(stepState - 1);
+              basketMoveTo(isMobile);
             }}
           >
             НАЗАД
@@ -92,7 +93,7 @@ const BasketBuyForm = ({
                 comment: commentByOrder,
                 delivery_address: deliveryAddress,
               });
-              basketMoveTo(stepState + 1);
+              basketMoveTo(isMobile);
             }}
           >
             ДАЛЕЕ
