@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import theme from "styles/theme";
+import { Scroll } from "@utils";
 import TitleNavigation from "../TitleNavigation";
 import { Container, GridSection } from "./styles";
 import { DataEmpty, GlobalSection } from "@famous";
@@ -18,6 +19,7 @@ const Basket = ({
 }) => {
   const stepObject = getBasketStepInfo(stepState, basketSteps);
   const itemsLength = Object.keys(basketItems).length;
+  const { To } = Scroll;
 
   useEffect(() => {
     let orderState = false;
@@ -47,11 +49,11 @@ const Basket = ({
       }
 
       if (checkSelectedData) {
+        To("start");
         actionMakeOrder(selectedData);
       }
     }
   }, [stepsResult, selectedData]);
-
   return (
     <Container>
       {stepState !== 6 ? (
@@ -67,7 +69,7 @@ const Basket = ({
         webBackground={theme.body.secondBackground}
         mobileBackground={theme.body.secondBackground}
         webPadding="50px 0"
-        mobilePadding="50px 0"
+        mobilePadding={"10px 0"}
       >
         {itemsLength === 0 ? (
           <DataEmpty title={"У вас нет продуктов в корзине"} />

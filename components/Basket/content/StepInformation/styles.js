@@ -84,6 +84,17 @@ const ChildrenCon = styled.div`
     justify-content: space-between;
   }
 
+  @media (max-width: 768px) {
+    .product-buttons-mobile-case {
+      display: grid !important;
+      grid-gap: 10px;
+      grid-template-columns: 1fr 1fr;
+
+      & > button {
+        width: 100% !important;
+      }
+    }
+  }
   @media (max-width: 400px) {
     & > div:last-of-type {
       flex-direction: column;

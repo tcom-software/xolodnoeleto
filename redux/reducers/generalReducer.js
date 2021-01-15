@@ -142,12 +142,12 @@ const initialState = {
     commentByOrder: {
       errorMessage: "Пожалуйста, напишите комментарии",
       validation: "^[a-zA-Zа-яА-я0-9 ]{2,30}$",
-      placeholder: "без...",
+      placeholder: "Напишите ваш комментарии",
     },
     comment: {
       errorMessage: "Пожалуйста, напишите комментарии",
       validation: "^[a-zA-Zа-яА-я0-9 ]{2,30}$",
-      placeholder: "без...",
+      placeholder: "Напишите ваш комментарии",
     },
     uploadImages: {
       errorMessage: "Пожалуйста, выберите фото",

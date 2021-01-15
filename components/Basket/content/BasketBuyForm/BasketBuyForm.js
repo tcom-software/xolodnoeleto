@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { Scroll } from "@utils";
 import { ByFormContainer } from "./styles";
 import { Button, FillFormItem } from "@famous";
+import basketMoveTo from "../../../../utils/basketMoveTo";
 
 const BasketBuyForm = ({
   changeOrderStep,
@@ -18,6 +20,7 @@ const BasketBuyForm = ({
     deliveryAddress: "",
     commentByOrder: "",
   });
+  const { To } = Scroll;
 
   const handleChange = (name) => (value) => setInfo({ ...info, [name]: value });
   const handleSubmit = (e) => {
@@ -54,21 +57,22 @@ const BasketBuyForm = ({
             </div>
           ))}
         </div>
-        <div>
+        <div className="product-buttons-mobile-case">
           <Button
             type="secondary"
-            width="170px"
+            width="175px"
             height="47px"
             onClick={() => {
               updateStepsResult({ step: "stepTwo", value: false });
               changeOrderStep(stepState - 1);
+              basketMoveTo(stepState - 1);
             }}
           >
             НАЗАД
           </Button>
           <Button
             type="primary"
-            width="170px"
+            width="175px"
             height="47px"
             onClick={() => {
               const {
@@ -88,6 +92,7 @@ const BasketBuyForm = ({
                 comment: commentByOrder,
                 delivery_address: deliveryAddress,
               });
+              basketMoveTo(stepState + 1);
             }}
           >
             ДАЛЕЕ

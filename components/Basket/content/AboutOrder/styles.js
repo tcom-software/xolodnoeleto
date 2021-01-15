@@ -5,7 +5,7 @@ const AboutOrderContainer = styled.div`
   background: #fff;
   position: relative;
   width: 360px;
-  margin-top: 37px;
+  margin-top: 0px;
   border: 1px solid ${theme.body.someBorder};
 
   ${({ stepState }) => {
