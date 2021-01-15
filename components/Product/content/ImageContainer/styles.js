@@ -87,9 +87,10 @@ const ProductImageContainer = styled.div`
         order: 2;
         display: grid;
         justify-content: flex-start;
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        grid-template-columns: repeat(auto-fit, minMax(100px, 1fr));
 
         img {
+          max-width: 100px;
           height: 100px;
         }
         & > div {
