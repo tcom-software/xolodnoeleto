@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { SvgIcon } from "@famous";
 import { useRouter } from "next/router";
 import { FiltersContainer } from "./styles";

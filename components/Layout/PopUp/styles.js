@@ -2,7 +2,7 @@ import styled from "styled-components";
 import theme from "styles/theme";
 
 const PopUpContainer = styled.div`
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
   top: 0px;
@@ -24,6 +24,13 @@ const PopUpContainer = styled.div`
   }
 
   @media (max-width: ${theme.mobileMedia.size}) {
+    overflow-y: scroll;
+    .layer {
+      width: 95vw;
+      & > div {
+        height: 98vh;
+      }
+    }
   }
 `;
 
