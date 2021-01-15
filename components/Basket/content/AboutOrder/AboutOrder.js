@@ -1,6 +1,6 @@
 import React from "react";
-import { makePrice } from "@utils";
 import { Button } from "@famous";
+import { makePrice, basketMoveTo } from "@utils";
 import { AboutOrderContainer, Title, MiniCon, Border } from "./styles";
 
 const AboutOrder = ({
@@ -9,6 +9,7 @@ const AboutOrder = ({
   stepState,
   changeOrderStep,
   updateStepsResult,
+  isMobile,
 }) => {
   return (
     <AboutOrderContainer stepState={stepState}>
@@ -48,6 +49,7 @@ const AboutOrder = ({
             onClick={() => {
               updateStepsResult({ step: "stepOne", value: true });
               changeOrderStep(stepState + 1);
+              basketMoveTo(isMobile);
             }}
           >
             ОФОРМИТЬ ЗАКАЗ

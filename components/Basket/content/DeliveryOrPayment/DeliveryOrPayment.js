@@ -3,13 +3,16 @@ import { Scroll } from "@utils";
 import theme from "styles/theme";
 import { Button, CheckBox, Loading, SvgIcon } from "@famous";
 import { DeliveryContainer, DeliveryItem, PriceSpan } from "./styles";
+import basketMoveTo from "../../../../utils/basketMoveTo";
 
 const DeliveryOrPayment = ({
   loading,
+  isMobile,
   data,
   stepState,
   changeOrderStep,
   updateStepsResult,
+  makeInitialStepsResult,
   manipulationSelectedData,
 }) => {
   const [typeId, setTypeId] = useState(1);
@@ -94,7 +97,7 @@ const DeliveryOrPayment = ({
           ) : null}
         </div>
       </div>
-      <div>
+      <div className="product-buttons-mobile-case">
         <Button
           type="secondary"
           width="170px"
@@ -106,6 +109,7 @@ const DeliveryOrPayment = ({
               updateStepsResult({ step: "stepFour", value: false });
             }
             changeOrderStep(stepState - 1);
+            basketMoveTo(isMobile);
           }}
         >
           НАЗАД
@@ -121,12 +125,12 @@ const DeliveryOrPayment = ({
               });
               updateStepsResult({ step: "stepFour", value: true });
               changeOrderStep(stepState + 1);
+              basketMoveTo(isMobile);
             } else if (stepState === 5) {
               manipulationSelectedData({
                 payment_type: data[typeId].title,
               });
               updateStepsResult({ step: "stepFive", value: true });
-              To("start");
             }
           }}
         >

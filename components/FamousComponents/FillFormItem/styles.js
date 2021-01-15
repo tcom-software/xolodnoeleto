@@ -92,11 +92,15 @@ const Message = styled.div`
       return css`
         transition: 0.5s all ease-in;
         white-space: nowrap;
-        width: 300px;
+        width: min-content;
         color: ${theme.error.color};
       `;
     }
   }}
+
+  @media (max-width: 768px) {
+    font-size: 10px;
+  }
 `;
 
 const Textarea = styled.textarea`

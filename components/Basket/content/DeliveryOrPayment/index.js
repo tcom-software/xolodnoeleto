@@ -6,9 +6,13 @@ import {
   manipulationSelectedData,
 } from "redux/actions/basketActions";
 
-const mapStateToProps = ({ basket: { stepState, loading } }) => ({
+const mapStateToProps = ({
+  general: { isMobile },
+  basket: { stepState, loading },
+}) => ({
   loading,
   stepState,
+  isMobile,
 });
 
 const mapDispatchToProps = (dispatch) => ({

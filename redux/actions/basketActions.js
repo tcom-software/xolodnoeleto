@@ -12,7 +12,7 @@ export const BASKET_INITIAL_STATE = "BASKET_INITIAL_STATE";
 export const INITIAL_STEPS_RESULT = "INITIAL_STEPS_RESULT";
 export const SELECTED_DATA_MANIPULATION = "SELECTED_DATA_MANIPULATION";
 
-import { axiosInstance } from "@utils";
+import { axiosInstance, Scroll } from "@utils";
 
 const {
   publicRuntimeConfig: { makeOrder },
@@ -68,12 +68,14 @@ export const manipulationSelectedData = (data) => ({
 
 export const actionMakeOrder = (info) => {
   return (dispatch) => {
+    const { To } = Scroll;
     dispatch(loading());
     axiosInstance
       .post(`${makeOrder}`, JSON.stringify({ ...info }))
       .then(({ data }) => {
         if (data) {
           if (data === "success") {
+            To("start");
             dispatch({
               type: MAKE_ORDER,
             });

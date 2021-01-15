@@ -22,12 +22,12 @@ const ProductImageContainer = styled.div`
       img {
         transition: all 0.3s ease-in;
         width: 100%;
+        min-width: 100%;
         min-height: 100px;
         max-height: 120px;
         border: 1px solid ${theme.body.someBorder};
         cursor: pointer;
         object-fit: contain;
-        min-width: 100%;
 
         &:hover {
           transition: all 0.3s ease-in;
@@ -85,9 +85,10 @@ const ProductImageContainer = styled.div`
 
       .small-images {
         order: 2;
-        display: flex;
+        display: grid;
         justify-content: flex-start;
-        grid-template-columns: repeat(auto-fit, 75px);
+        grid-template-columns: repeat(auto-fit, minMax(100px, 1fr));
+
         img {
           max-width: 100px;
           height: 100px;

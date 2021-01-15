@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { connect } from "react-redux";
 import { Button, SvgIcon, ProductImage } from "@famous";
-import { IncDec, makeImagePath, makePrice } from "@utils";
+import { IncDec, makeImagePath, makePrice, Scroll } from "@utils";
 import { CalculateCon, Img, ImgCon, MiniCon, Title, Container } from "./styles";
 
 /**
@@ -24,6 +24,7 @@ import {
   deleteFavoriteItem,
   incrementFavoriteCount,
 } from "redux/actions/favoriteActions";
+import basketMoveTo from "../../utils/basketMoveTo";
 
 const MobileCase = ({
   basketItems,
@@ -44,6 +45,7 @@ const MobileCase = ({
   deleteBasketItem,
 
   manipulationSelectedData,
+  isMobile,
 }) => {
   return (
     <div>
@@ -100,21 +102,22 @@ const MobileCase = ({
         );
       })}
       {stepState == 2 ? (
-        <div>
+        <div className={"product-buttons-mobile-case"}>
           <Button
             type="secondary"
-            width="170px"
+            width="175px"
             height="47px"
             onClick={() => {
               updateStepsResult({ step: "stepOne", value: false });
               changeOrderStep(stepState - 1);
+              basketMoveTo(isMobile);
             }}
           >
             НАЗАД
           </Button>
           <Button
             type="primary"
-            width="170px"
+            width="175px"
             height="47px"
             onClick={() => {
               updateStepsResult({ step: "stepTwo", value: true });
@@ -123,12 +126,16 @@ const MobileCase = ({
                 (acc, { id, count }) => {
                   return {
                     ...acc,
-                    [id]: count,
+                    products: {
+                      ...acc["products"],
+                      [id]: count,
+                    },
                   };
                 },
                 {}
               );
               manipulationSelectedData(newArray);
+              basketMoveTo(isMobile);
             }}
           >
             ДАЛЕЕ
@@ -154,8 +161,9 @@ const mapDispatchToProps = (dispatch) => ({
   manipulationSelectedData: (data) => dispatch(manipulationSelectedData(data)),
 });
 
-const mapStateToProps = ({ basket: { stepState } }) => ({
+const mapStateToProps = ({ general: { isMobile }, basket: { stepState } }) => ({
   stepState,
+  isMobile,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MobileCase);

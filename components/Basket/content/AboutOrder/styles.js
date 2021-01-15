@@ -16,6 +16,9 @@ const AboutOrderContainer = styled.div`
     }
   }}}
 
+  @media (max-width: 768px) {
+    margin-top: 0px;
+  }
   @media (max-width: 1200px) {
     border: none;
     width: 100%;
