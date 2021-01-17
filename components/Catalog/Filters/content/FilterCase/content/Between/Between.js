@@ -21,24 +21,31 @@ const Between = ({ title, array, selectedData, actionManipulationBetween }) => {
   };
 
   useEffect(() => {
+    console.log(11111);
     if ((from && !fromTo) || (to && !fromTo)) {
       setMyObj([null, null]);
     }
   }, [fromTo]);
 
+  // ################################################
   useEffect(() => {
-    console.log(myObj);
+    console.log(2222222);
+    if (fromTo && fromTo[id]) {
+      setMyObj([fromTo[id][0], fromTo[id][1]]);
+    }
+  }, [selectedData]);
+  // ################################################
+
+  useEffect(() => {
+    console.log(3333);
     if ((!fromTo && from) || (!fromTo && to)) {
       const timer = setTimeout(() => data(from, to), 1000);
       return () => clearTimeout(timer);
     } else {
       if (
         (fromTo === undefined && from === null && to === null) ||
-        (fromTo &&
-          fromTo[title] === undefined &&
-          from === null &&
-          to === null) ||
-        (fromTo && JSON.stringify(fromTo[title]) === JSON.stringify(myObj))
+        (fromTo && fromTo[id] === undefined && from === null && to === null) ||
+        (fromTo && JSON.stringify(fromTo[id]) === JSON.stringify(myObj))
       ) {
       } else {
         const timer = setTimeout(() => data(from, to), 1000);
