@@ -21,23 +21,18 @@ const Between = ({ title, array, selectedData, actionManipulationBetween }) => {
   };
 
   useEffect(() => {
-    console.log(11111);
     if ((from && !fromTo) || (to && !fromTo)) {
       setMyObj([null, null]);
     }
   }, [fromTo]);
 
-  // ################################################
   useEffect(() => {
-    console.log(2222222);
     if (fromTo && fromTo[id]) {
       setMyObj([fromTo[id][0], fromTo[id][1]]);
     }
   }, [selectedData]);
-  // ################################################
 
   useEffect(() => {
-    console.log(3333);
     if ((!fromTo && from) || (!fromTo && to)) {
       const timer = setTimeout(() => data(from, to), 1000);
       return () => clearTimeout(timer);
@@ -53,6 +48,18 @@ const Between = ({ title, array, selectedData, actionManipulationBetween }) => {
       }
     }
   }, [myObj]);
+
+  const RangeDOM = (first, second) => (
+    <Range
+      min={0}
+      max={2000000}
+      allowCross={false}
+      value={[first, second]}
+      onChange={([from, to]) => {
+        setMyObj([from, to]);
+      }}
+    />
+  );
 
   return (
     <BetweenSelectionCaseContainer>
@@ -86,15 +93,7 @@ const Between = ({ title, array, selectedData, actionManipulationBetween }) => {
           </div>
         </div>
         <div className="show-hide-content__between-new-style">
-          <Range
-            min={0}
-            max={2000000}
-            allowCross={false}
-            value={[from, to]}
-            onChange={([from, to]) => {
-              setMyObj([from, to]);
-            }}
-          />
+          {from && to && RangeDOM(from, to)}
         </div>
       </div>
     </BetweenSelectionCaseContainer>
