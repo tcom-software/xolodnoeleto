@@ -49,17 +49,19 @@ const Between = ({ title, array, selectedData, actionManipulationBetween }) => {
     }
   }, [myObj]);
 
-  const RangeDOM = (first, second) => (
-    <Range
-      min={0}
-      max={2000000}
-      allowCross={false}
-      value={[first, second]}
-      onChange={([from, to]) => {
-        setMyObj([from, to]);
-      }}
-    />
-  );
+  const RangeDOM = (first, second) => {
+    return (
+      <Range
+        min={0}
+        max={2000000}
+        allowCross={false}
+        value={[first, second]}
+        onChange={([from, to]) => {
+          setMyObj([from, to]);
+        }}
+      />
+    );
+  };
 
   return (
     <BetweenSelectionCaseContainer>
@@ -93,7 +95,7 @@ const Between = ({ title, array, selectedData, actionManipulationBetween }) => {
           </div>
         </div>
         <div className="show-hide-content__between-new-style">
-          {from && to && RangeDOM(from, to)}
+          {RangeDOM(from, to)}
         </div>
       </div>
     </BetweenSelectionCaseContainer>
