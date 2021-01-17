@@ -49,18 +49,29 @@ const Between = ({ title, array, selectedData, actionManipulationBetween }) => {
     }
   }, [myObj]);
 
-  const RangeDOM = (first, second) => {
-    return (
-      <Range
-        min={0}
-        max={2000000}
-        allowCross={false}
-        value={[first, second]}
-        onChange={([from, to]) => {
-          setMyObj([from, to]);
-        }}
-      />
-    );
+  const RangeDOM = () => {
+    if (fromTo && fromTo[id] && !from && !to) {
+      /**
+       *
+       *   I added this case here because was a bug,
+       *   if selected some filters with the type Between then open or close other filters,
+       *   appears bug. the First selected value of all filters with the type between a show looks like 0
+       *
+       * * */
+      return null;
+    } else {
+      return (
+        <Range
+          min={0}
+          max={2000000}
+          allowCross={false}
+          value={[from, to]}
+          onChange={([from, to]) => {
+            setMyObj([from, to]);
+          }}
+        />
+      );
+    }
   };
 
   return (
@@ -94,9 +105,7 @@ const Between = ({ title, array, selectedData, actionManipulationBetween }) => {
             />
           </div>
         </div>
-        <div className="show-hide-content__between-new-style">
-          {RangeDOM(from, to)}
-        </div>
+        <div className="show-hide-content__between-new-style">{RangeDOM()}</div>
       </div>
     </BetweenSelectionCaseContainer>
   );
