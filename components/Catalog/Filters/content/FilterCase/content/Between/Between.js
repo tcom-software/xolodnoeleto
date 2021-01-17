@@ -27,11 +27,13 @@ const Between = ({ title, array, selectedData, actionManipulationBetween }) => {
   }, [fromTo]);
 
   useEffect(() => {
+    console.log(myObj);
     if ((!fromTo && from) || (!fromTo && to)) {
       const timer = setTimeout(() => data(from, to), 1000);
       return () => clearTimeout(timer);
     } else {
       if (
+        (fromTo === undefined && from === null && to === null) ||
         (fromTo &&
           fromTo[title] === undefined &&
           from === null &&

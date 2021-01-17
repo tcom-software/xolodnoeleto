@@ -37,7 +37,6 @@ const createObjectFromUrl = (urlObj) => {
       delete newObject[k];
     }
   }
-
   return newObject;
 };
 

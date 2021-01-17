@@ -1,36 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { SvgIcon } from "@famous";
-import { useRouter } from "next/router";
 import { FiltersContainer } from "./styles";
 import FilterCase from "./content/FilterCase";
 import ButtonLayout from "./content/ButtonLayout";
-import { createUrlFromObject } from "@utils";
 import MobileFiltersToggleButton from "./content/MobileFiltersToggleButton";
 
-const Filters = ({
-  isMobile,
-  filters,
-  selectedData,
-  getCatalogFilters,
-  isOpenFilters,
-  filtersToggle,
-}) => {
-  const router = useRouter();
-  const { catalogId } = router.query;
-
-  useEffect(() => {
-    if (catalogId !== undefined) {
-      const url = createUrlFromObject(selectedData, catalogId);
-      if (url.indexOf("?") != -1) {
-        router.push(url);
-      }
-    }
-  }, [selectedData, catalogId]);
-
-  useEffect(() => {
-    catalogId && getCatalogFilters(catalogId);
-  }, [catalogId]);
-
+const Filters = ({ isMobile, filters, isOpenFilters, filtersToggle }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
   };

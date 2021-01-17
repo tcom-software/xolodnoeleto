@@ -7,6 +7,9 @@ const createUrlFromObject = (selectedFiltersObject, catalogId) => {
       const array = selectedFiltersObject.fromTo[key];
       if (array instanceof Array && !array[0] && !array[1]) {
         delete selectedFiltersObject.fromTo[key];
+        if (Object.keys(selectedFiltersObject.fromTo).length === 0) {
+          delete selectedFiltersObject.fromTo;
+        }
       }
     }
     const merge = {
@@ -31,6 +34,7 @@ const createUrlFromObject = (selectedFiltersObject, catalogId) => {
 
     url = `?${url.slice(0, -1)}${manualParams}`;
     url = url.replace("?&", "?");
+    url === `?` ? (url = "") : null;
 
     return `${catalogId}${url}`;
   } else {

@@ -5,13 +5,13 @@ import Products from "./Products";
 import { useRouter } from "next/router";
 import ProductList from "../ProductsList";
 import { CatalogContainer } from "./styles";
-import { createObjectFromUrl } from "@utils";
 import TitleNavigation from "../TitleNavigation";
 import { GlobalSection, SeenProductWrapper } from "@famous";
+import { createUrlFromObject, createObjectFromUrl } from "@utils";
 
 const Catalog = ({
-  products,
   selectedData,
+  getCatalogFilters,
   seenProducts,
   updateSelectedDataPage,
   getCatalogProducts,
@@ -22,11 +22,22 @@ const Catalog = ({
   const { catalogId } = router.query;
 
   useEffect(() => {
+    if (catalogId !== undefined) {
+      const url = createUrlFromObject(selectedData, catalogId);
+      if (url.indexOf("?") != -1 && url.indexOf("=") != -1) {
+        router.push(url);
+      }
+    }
+  }, [selectedData]);
+
+  useEffect(() => {
     router.query.page && updateSelectedDataPage(router.query.page);
+    catalogId && getCatalogFilters(catalogId);
+
     return () => {
       router.query.catalogId && updateSelectedDataPage(1);
     };
-  }, [router.query.catalogId]);
+  }, [catalogId]);
 
   useEffect(() => {
     let object;
@@ -50,6 +61,7 @@ const Catalog = ({
     if (selectedDataLength === 0 && Object.keys(object).length > 0) {
       updateSelectedDataFromUrl(object);
     }
+
     catalogId && getCatalogProducts(catalogId, { ...object });
   }, [router.query]);
 
