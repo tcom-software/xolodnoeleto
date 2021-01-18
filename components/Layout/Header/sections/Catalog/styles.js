@@ -16,13 +16,17 @@ const CatalogContainer = styled.ul`
     transition: all 0.2s ease-in;
     position: relative;
     height: max-content;
-    &:hover {
-      transition: all 0.2s ease-in;
-      background: #03a9f4;
-      & > p {
-        color: white;
+
+    @media (min-width: ${theme.mobileMedia.size}) {
+      &:hover {
+        transition: all 0.2s ease-in;
+        background: #03a9f4;
+        & > p {
+          color: white;
+        }
       }
     }
+
     p {
       padding: 15px;
       display: block;
@@ -83,32 +87,33 @@ const CatalogContainer = styled.ul`
     left: 70px;
   }
 
-  ${({ modalType }) => {
-    return (
-      modalType === "catalog" &&
-      css`
-        display: flex;
-        flex-direction: column;
-        .level-one-li:hover > .level-two-ul {
-          display: block;
-          left: 100%;
-          min-width: 100%;
-          min-height: 100%;
-          height: max-content;
+  @media (min-width: ${theme.mobileMedia.size}) {
+    ${({ modalType }) => {
+      return (
+        modalType === "catalog" &&
+        css`
+          display: flex;
+          flex-direction: column;
+          .level-one-li:hover > .level-two-ul {
+            display: block;
+            left: 100%;
+            min-width: 100%;
+            min-height: 100%;
+            height: max-content;
 
-          .level-two-li:hover {
-            .level-three-ul {
-              display: block;
-              width: max-content;
-              left: 100%;
-              height: 100%;
+            .level-two-li:hover {
+              .level-three-ul {
+                display: block;
+                width: max-content;
+                left: 100%;
+                height: 100%;
+              }
             }
           }
-        }
-      `
-    );
-  }}
-
+        `
+      );
+    }}
+  }
   @media (max-width: ${theme.mobileMedia.size}) {
     transition: border-top 0.3s 0.3s ease-in, max-height 0.3s ease-in;
     position: absolute;
@@ -122,21 +127,44 @@ const CatalogContainer = styled.ul`
     display: flex;
     flex-wrap: wrap;
     border-top: 0px solid ${theme.body.primaryColor};
-    border-top: 0 solid ${theme.body.primaryColor};
 
     .level-one-li {
-      &:hover > p {
-        border-bottom: 1px solid white;
+      &.active {
+        background: #03a9f4;
+        & > p {
+          color: white;
+          border-bottom: 4px solid #fad601;
+        }
+        .level-two-ul {
+          display: block;
+          left: 100%;
+          min-width: 100%;
+          min-height: 100%;
+          height: max-content;
+
+          .level-two-li {
+            &.active {
+              background: #03a9f4;
+              & > p {
+                color: white;
+                border-bottom: 4px solid #fad601;
+              }
+              .level-three-ul {
+                display: block;
+                left: 100%;
+                min-width: 100%;
+                min-height: 100%;
+                height: max-content;
+              }
+            }
+          }
+        }
       }
       .level-two-ul {
         position: unset;
         border: none;
         width: 100%;
-        border-bottom: 1px solid ${theme.body.someBorder};
         .level-two-li {
-          &:hover > p {
-            border-bottom: 1px solid white;
-          }
           width: 100% !important;
           p {
             padding: 15px 30px;
@@ -147,7 +175,6 @@ const CatalogContainer = styled.ul`
           .level-three-ul {
             position: unset;
             border: none;
-            border-bottom: 1px solid ${theme.body.someBorder};
             width: 100% !important;
 
             .level-three-li {

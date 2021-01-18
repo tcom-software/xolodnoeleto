@@ -9,10 +9,11 @@ const NotificationContainer = styled.div`
     height: 50px;
     padding: 15px;
     z-index: 999;
-    border: 1px solid
-      ${({ type }) => (type === "success" ? "#0070f3;" : "#fbeb3c;")};
-    color: ${({ type }) => (type === "success" ? "white" : "black")};
-    background: ${({ type }) => (type === "success" ? "#0070f3;" : "#fbeb3c;")};
+    // border: 1px solid
+    //   ${({ type }) => (type === "success" ? "#0070f3;" : "#fad601")};
+    border: none;
+    color: ${({ type }) => (type === "success" ? "#fad601" : "#0070f3;")};
+    background: ${({ type }) => (type === "success" ? "#0070f3;" : "#fad601")};
   }
 
   @media (max-width: 768px) {
@@ -21,7 +22,6 @@ const NotificationContainer = styled.div`
       left: 0;
       right: 0;
       margin: 0 auto;
-      border: 1px solid #fff;
     }
   }
 `;
