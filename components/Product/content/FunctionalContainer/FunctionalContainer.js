@@ -123,7 +123,7 @@ const FunctionalContainer = ({
       <div className="level-four">
         <div className="terms-of-delivery">
           <SvgIcon type="delivery" width={30} height={30} color={"#5B5B5B"} />
-          <p>Бесплатное доставка за пределами мкад</p>
+          <p>Бесплатная доставка в пределах МКАД</p>
         </div>
         <div className="mobile-brand-image">
           <Image
