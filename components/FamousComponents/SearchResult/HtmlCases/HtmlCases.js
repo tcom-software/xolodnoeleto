@@ -21,7 +21,7 @@ const HtmlCases = ({ search, type, addCompareProduct }) => {
       );
     }
     return (
-      <Link href={`/products/${id}`} key={id}>
+      <Link href={`/product/${id}`} key={id}>
         <a>
           <div className={"item-container"}>
             <div className={"title"}>
