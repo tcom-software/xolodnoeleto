@@ -3,7 +3,7 @@ import { array } from "./data";
 import getConfig from "next/config";
 import axiosInstance from "utils/axiosInstance";
 import { ModalContainer, Title, Body } from "./styles";
-import { FillFormItem, Button, SvgIcon } from "@famous";
+import { FillFormItem, Button, SvgIcon, OurPhones } from "@famous";
 import { formValidation } from "@utils";
 
 const {
@@ -14,6 +14,8 @@ const CallBack = ({
   closeModal,
   worksTime,
   modalRef,
+  isMobile,
+  phones,
   setNotificationMessage,
 }) => {
   const [errorState, setErrorState] = useState([]);
@@ -79,6 +81,7 @@ const CallBack = ({
           />
         </Title>
         <Body>
+          {isMobile ? <OurPhones phones={phones} /> : null}
           {array.map(({ name, type, required }, i) => (
             <FillFormItem
               key={i}

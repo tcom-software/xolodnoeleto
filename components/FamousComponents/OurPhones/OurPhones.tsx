@@ -1,14 +1,23 @@
 import React from "react";
 import { Hgroup } from "./styles";
 
-// catalog
-
 const OurPhones = ({ phones, showOurPhones, showOurPhonesAction }) => {
   return (
-    <Hgroup show={showOurPhones} onClick={() => showOurPhonesAction()}>
+    <Hgroup
+      show={showOurPhones}
+      onClick={() => {
+        if (!showOurPhones) {
+          showOurPhonesAction();
+          const { ym }: any = window;
+          console.log(ym, "------ourPhones");
+          ym(44761834, "reachGoal", "PokazatNomer");
+        }
+      }}
+    >
       {phones.map(({ first, second }, i) => (
         <h2 key={i}>
-          {first} <span>{!showOurPhones ? "xx" : second}</span>
+          {first}
+          <span>{!showOurPhones ? "xx" : second}</span>
         </h2>
       ))}
     </Hgroup>

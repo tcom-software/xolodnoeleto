@@ -24,10 +24,6 @@ const initialState = {
       first: "+7 (499) 286-89-",
       second: "05",
     },
-    // {
-    //   first: "+7 (495) 134-22-",
-    //   second: "02",
-    // },
   ],
   worksTime: [9, 22],
   isMobile: false,
