@@ -9,7 +9,6 @@ const OurPhones = ({ phones, showOurPhones, showOurPhonesAction }) => {
         if (!showOurPhones) {
           showOurPhonesAction();
           const { ym }: any = window;
-          console.log(ym, "------ourPhones");
           ym(44761834, "reachGoal", "PokazatNomer");
         }
       }}

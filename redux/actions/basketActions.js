@@ -82,7 +82,6 @@ export const actionMakeOrder = (info) => {
             dispatch(loading());
             dispatch(makeInitialStepsResult(6));
             const { ym } = window;
-            console.log(ym, "--basket");
             ym(44761834, "reachGoal", "OformitZakaz");
           }
         }
