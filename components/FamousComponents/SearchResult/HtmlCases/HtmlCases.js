@@ -2,9 +2,15 @@ import React from "react";
 import Link from "next/link";
 import { makePrice } from "@utils";
 
-const HtmlCases = ({ search, type, addCompareProduct }) => {
+const HtmlCases = ({
+  search,
+  type,
+  addCompareProduct,
+  searchInputValue = null,
+}) => {
   return search.map((e) => {
     const { id, brand, model, price } = e;
+    const vendorCode = id === parseInt(searchInputValue) ? true : false;
     if (type === "compare") {
       return (
         <div
@@ -23,12 +29,13 @@ const HtmlCases = ({ search, type, addCompareProduct }) => {
     return (
       <Link href={`/product/${id}`} key={id}>
         <a>
-          <div className={"item-container"}>
+          <div className={`item-container ${vendorCode ? "active" : ""}`}>
             <div className={"title"}>
               <p>{brand}</p>
               <p>{model}</p>
             </div>
             <p>{makePrice(price)}</p>
+            {/*{vendorCode ? <span>Артикул</span> : null}*/}
           </div>
         </a>
       </Link>

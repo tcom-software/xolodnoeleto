@@ -36,6 +36,24 @@ const SearchContainer = styled.div`
       border-bottom: 1px solid #d8d8d8;
       padding-bottom: 10px;
     }
+
+    .active {
+      position: relative;
+      padding: 20px 0;
+      span {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto auto;
+        text-align: center;
+        width: 100%;
+        padding: 5px 10px;
+        background: #0070f3;
+        color: white;
+        }
+      }
+    }
   }
 
   @media (max-width: 768px) {

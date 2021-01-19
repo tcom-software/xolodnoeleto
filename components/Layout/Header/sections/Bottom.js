@@ -60,7 +60,7 @@ const Bottom = ({
             </Link>
           </li>*/}
           <li className="header-search-result-container">
-            {<SearchResult where={"header-bottom"} />}
+            <SearchResult where={"header-bottom"} />
           </li>
           <li className="mobile-basket">
             <Link href={"/basket"}>

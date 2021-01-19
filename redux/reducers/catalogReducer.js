@@ -69,12 +69,27 @@ const catalogReducer = (state = initialState, action) => {
         productsLoading: false,
       };
     case types.GET_CATALOG_FILTERS:
+      const filters = {
+        ...state.filters,
+        ...action.payload,
+      };
+
+      const sortedItems = {};
+      const pattern = ["Страна производителя", "Страна бренда"];
+
+      for (let i = 0; i < pattern.length; i++) {
+        sortedItems[pattern[i]] = [...filters[pattern[i]]];
+        delete filters[pattern[i]];
+      }
+
+      const newFilters = {
+        ...sortedItems,
+        ...filters,
+      };
+
       return {
         ...state,
-        filters: {
-          ...state.filters,
-          ...action.payload,
-        },
+        filters: newFilters,
       };
     case types.CATALOG_LOADING_TRIGGER:
       return {

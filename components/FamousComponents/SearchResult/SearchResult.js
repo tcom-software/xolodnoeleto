@@ -34,7 +34,13 @@ const SearchResult = ({
         </>
       );
     } else if (!loading && !new_loading && search.length > 0) {
-      return <HtmlCases search={search} type={where} />;
+      return (
+        <HtmlCases
+          search={search}
+          type={where}
+          searchInputValue={searchInputValue}
+        />
+      );
     } else {
       return null;
     }
@@ -60,6 +66,7 @@ const SearchResult = ({
       actionSearch("");
     };
   }, [searchInputValue]);
+
   return (
     <SearchContainer
       ref={whereWasSearch === where ? refForSearch : null}
