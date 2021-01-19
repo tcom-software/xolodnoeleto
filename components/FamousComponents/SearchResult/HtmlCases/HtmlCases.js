@@ -30,12 +30,12 @@ const HtmlCases = ({
       <Link href={`/product/${id}`} key={id}>
         <a>
           <div className={`item-container ${vendorCode ? "active" : ""}`}>
+            {vendorCode ? <span>Артикул | {searchInputValue}</span> : null}
             <div className={"title"}>
               <p>{brand}</p>
               <p>{model}</p>
             </div>
             <p>{makePrice(price)}</p>
-            {/*{vendorCode ? <span>Артикул</span> : null}*/}
           </div>
         </a>
       </Link>

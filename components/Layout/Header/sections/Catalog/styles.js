@@ -133,7 +133,7 @@ const CatalogContainer = styled.ul`
         background: #03a9f4;
         & > p {
           color: white;
-          border-bottom: 4px solid #fad601;
+          border-bottom: 4px solid ${theme.body.sunColor};
         }
         .level-two-ul {
           display: block;
@@ -147,7 +147,7 @@ const CatalogContainer = styled.ul`
               background: #03a9f4;
               & > p {
                 color: white;
-                border-bottom: 4px solid #fad601;
+                border-bottom: 4px solid ${theme.body.sunColor};
               }
               .level-three-ul {
                 display: block;

@@ -49,6 +49,7 @@ const ProductGridView = ({
             })}
           </Stars>
           <Price>{makePrice(price)}</Price>
+          <span>Бесплатная установка</span>
           <Button
             type="secondary"
             width="170px"

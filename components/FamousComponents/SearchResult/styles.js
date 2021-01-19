@@ -22,7 +22,7 @@ const SearchContainer = styled.div`
 
     .item-container {
       cursor: pointer;
-      padding: 10px 0;
+      padding: 10px;
       border-bottom: 1px solid ${theme.body.someBorder};
 
       .title {
@@ -39,18 +39,18 @@ const SearchContainer = styled.div`
 
     .active {
       position: relative;
-      padding: 20px 0;
+      
+      background: ${theme.body.secondBackground};
+
       span {
         position: absolute;
-        bottom: 0;
+        top: 0;
         left: 0;
         right: 0;
+        width: 100%;
+        font-size: 12px;
         margin: auto auto;
         text-align: center;
-        width: 100%;
-        padding: 5px 10px;
-        background: #0070f3;
-        color: white;
         }
       }
     }

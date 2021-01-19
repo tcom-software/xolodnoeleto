@@ -4,6 +4,7 @@ export default {
     colorSecondary: "#03a9f4",
     background: "#FFF",
     secondBackground: "#E5E5E5",
+    sunColor: "#fad601",
     fontSize: "14px",
     width: "1250px",
     margin: "0 auto",

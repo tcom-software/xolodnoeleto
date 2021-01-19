@@ -39,7 +39,10 @@ const ProductContainer = styled.div`
       font-weight: 800;
       background: #ea4a4a;
     }
-
+    span {
+      font-size: 12px;
+      margin: 5px 0px;
+    }
     & > button {
       border: 1px solid ${theme.product.borderColor};
 

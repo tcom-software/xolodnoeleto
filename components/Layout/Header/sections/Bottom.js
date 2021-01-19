@@ -85,7 +85,7 @@ const Bottom = ({
                 height={20}
                 color={theme.body.primaryColor}
               />
-              Корзина пуста (
+              {basketItemsCount === 0 ? "Корзина пуста" : "Корзина"} (
               <animated.span>
                 {spring.val.interpolate((val) => Math.floor(val))}
               </animated.span>
