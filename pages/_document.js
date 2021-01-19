@@ -51,7 +51,7 @@ export default class MyDocument extends Document {
             content="Стандартная установка кондиционеров"
           />
           <meta
-            http-equiv="Content-Security-Policy"
+            https-equiv="Content-Security-Policy"
             content="upgrade-insecure-requests"
           />
           <meta
