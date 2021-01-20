@@ -75,7 +75,14 @@ const catalogReducer = (state = initialState, action) => {
       };
 
       const sortedItems = {};
-      const pattern = ["Бренды", "Страна производителя", "Страна бренда"];
+
+      const pattern = [
+        "Бренды",
+        "Цена",
+        "Обслуживаемая площадь",
+        "Инверторный",
+        "Компрессор",
+      ];
 
       for (let i = 0; i < pattern.length; i++) {
         sortedItems[pattern[i]] = [...filters[pattern[i]]];

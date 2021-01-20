@@ -47,7 +47,7 @@ const FilterCase = ({
   } else {
     if (isOpenFilters) {
       className = "show";
-    } else if (maxShowFive < 5 && !isOpenFilters) {
+    } else if (maxShowFive < 6 && !isOpenFilters) {
       className = "show";
     } else {
       className = "hide";
