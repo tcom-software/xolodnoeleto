@@ -1,7 +1,7 @@
 import React from "react";
+import theme from "styles/theme";
 import { CheckBox, SvgIcon } from "@famous";
 import { MultipleSelectionCaseContainer } from "./styles";
-import theme from "styles/theme";
 
 const MultipleSelectionCase = ({
   title,
@@ -11,7 +11,7 @@ const MultipleSelectionCase = ({
   actionSecondFiltersLevelArray,
   actionManipulationMultiple,
 }) => {
-  const { checkboxes } = selectedData;
+  const { checkboxes, manufacturerCountries } = selectedData;
   const filterValues = secondLevelFiltersArray.indexOf(title);
 
   return (
@@ -21,7 +21,9 @@ const MultipleSelectionCase = ({
         const parent_id = e.characteristic_id;
 
         let selected;
-        if (checkboxes && checkboxes[parent_id]) {
+        if (parent_id === "manufacturerCountries" && manufacturerCountries) {
+          selected = manufacturerCountries.includes(id) ? true : false;
+        } else if (checkboxes && checkboxes[parent_id]) {
           selected = checkboxes[parent_id].includes(id) ? true : false;
         }
 
@@ -31,12 +33,12 @@ const MultipleSelectionCase = ({
             className={`each-value ${
               i < 7 ? "show" : filterValues === -1 ? "hide" : "show"
             }`}
-            onClick={() =>
+            onClick={() => {
               actionManipulationMultiple({
                 id,
                 parent_id,
-              })
-            }
+              });
+            }}
           >
             <CheckBox
               width="15px"

@@ -12,11 +12,23 @@ const createUrlFromObject = (selectedFiltersObject, catalogId) => {
         }
       }
     }
+
+    const {
+      manufacturerCountries,
+      checkboxes,
+      fromTo,
+      radio,
+    } = selectedFiltersObject;
+
     const merge = {
-      ...selectedFiltersObject.checkboxes,
-      ...selectedFiltersObject.fromTo,
-      ...selectedFiltersObject.radio,
+      ...checkboxes,
+      ...fromTo,
+      ...radio,
     };
+
+    if (manufacturerCountries && manufacturerCountries.length > 0) {
+      merge["manufacturerCountries"] = manufacturerCountries;
+    }
 
     for (let key in merge) {
       url += `${key}=${merge[key].join("+")}&`;

@@ -20,7 +20,6 @@ const Catalog = ({
 }) => {
   const router = useRouter();
   const { catalogId } = router.query;
-
   useEffect(() => {
     if (catalogId !== undefined) {
       const url = createUrlFromObject(selectedData, catalogId);
@@ -98,12 +97,12 @@ const Catalog = ({
   );
 };
 
-function areEqual(prevProps, nextProps) {
-  /**
+/*function areEqual(prevProps, nextProps) {
+  /!**
    *  возвращает true, если nextProps рендерит
    *  тот же результат что и prevProps,
    *  иначе возвращает false
-   * * * * */
+   * * * * *!/
   if (
     JSON.stringify(prevProps.selectedData) ===
       JSON.stringify(nextProps.selectedData) &&
@@ -113,6 +112,7 @@ function areEqual(prevProps, nextProps) {
   } else {
     return false;
   }
-}
+}*/
+// export default React.memo(Catalog, areEqual);
 
-export default React.memo(Catalog, areEqual);
+export default Catalog;
