@@ -23,6 +23,10 @@ const Title = styled.div`
 `;
 const Body = styled.div`
   margin: 25px 40px;
+  & > hgroup {
+    text-align: center;
+    margin: 10px 0;
+  }
 `;
 
 export { ModalContainer, Title, Body };

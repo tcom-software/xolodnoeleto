@@ -7,17 +7,28 @@ const createUrlFromObject = (selectedFiltersObject, catalogId) => {
       const array = selectedFiltersObject.fromTo[key];
       if (array instanceof Array && !array[0] && !array[1]) {
         delete selectedFiltersObject.fromTo[key];
-        // if (Object.keys(selectedData[key]).length === 0) {
-        //   delete selectedData[key];
-        // }
+        if (Object.keys(selectedFiltersObject.fromTo).length === 0) {
+          delete selectedFiltersObject.fromTo;
+        }
       }
     }
 
+    const {
+      manufacturerCountries,
+      checkboxes,
+      fromTo,
+      radio,
+    } = selectedFiltersObject;
+
     const merge = {
-      ...selectedFiltersObject.checkboxes,
-      ...selectedFiltersObject.fromTo,
-      ...selectedFiltersObject.radio,
+      ...checkboxes,
+      ...fromTo,
+      ...radio,
     };
+
+    if (manufacturerCountries && manufacturerCountries.length > 0) {
+      merge["manufacturerCountries"] = manufacturerCountries;
+    }
 
     for (let key in merge) {
       url += `${key}=${merge[key].join("+")}&`;
@@ -35,6 +46,7 @@ const createUrlFromObject = (selectedFiltersObject, catalogId) => {
 
     url = `?${url.slice(0, -1)}${manualParams}`;
     url = url.replace("?&", "?");
+    url === `?` ? (url = "") : null;
 
     return `${catalogId}${url}`;
   } else {

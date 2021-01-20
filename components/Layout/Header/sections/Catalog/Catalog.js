@@ -1,14 +1,25 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { sortCatalogMenu } from "@utils";
 import { CatalogContainer } from "./styles";
 
-const Catalog = ({ catalog, modalType, modalRef, closeModal }) => {
+const Catalog = ({ catalog, modalType, modalRef, closeModal, isMobile }) => {
+  const [mobileState, setMobileState] = useState({
+    one: "",
+    two: "",
+    three: "",
+  });
+
+  useEffect(() => {
+    setMobileState({ one: "", two: "", three: "" });
+  }, [modalType]);
+
   useEffect(() => {
     return () => {
       closeModal("");
     };
   }, []);
+
   return (
     <CatalogContainer
       modalType={modalType}
@@ -23,7 +34,30 @@ const Catalog = ({ catalog, modalType, modalRef, closeModal }) => {
           reversedSub = e.subCategories;
         }
         return (
-          <li key={i} className={"level-one-li"}>
+          <li
+            key={i}
+            className={`level-one-li ${
+              e.name === mobileState.one ? "active" : ""
+            }`}
+            onClick={() => {
+              if (isMobile && e.name !== mobileState.one) {
+                setMobileState({
+                  ...mobileState,
+                  one: e.name,
+                });
+              } else if (
+                isMobile &&
+                e.name === mobileState.one &&
+                mobileState.two != ""
+              ) {
+                setMobileState({
+                  ...mobileState,
+                  one: mobileState.one,
+                  two: "",
+                });
+              }
+            }}
+          >
             <p>{e.name}</p>
             <ul className="level-two-ul">
               {reversedSub.map((elem, index) => {
@@ -41,7 +75,20 @@ const Catalog = ({ catalog, modalType, modalRef, closeModal }) => {
                   const sortedSubSub = sortCatalogMenu(id, subCategories);
 
                   return (
-                    <li key={index} className={"level-two-li"}>
+                    <li
+                      key={index}
+                      className={`level-two-li ${
+                        name === mobileState.two ? "active" : ""
+                      }`}
+                      onClick={() => {
+                        if (isMobile && mobileState.two !== name) {
+                          setMobileState({
+                            ...mobileState,
+                            two: name,
+                          });
+                        }
+                      }}
+                    >
                       <p>{name}</p>
                       <ul className="level-three-ul">
                         {sortedSubSub.map((element, indexTwo) => {

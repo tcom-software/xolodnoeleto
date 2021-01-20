@@ -81,6 +81,8 @@ export const actionMakeOrder = (info) => {
             });
             dispatch(loading());
             dispatch(makeInitialStepsResult(6));
+            const { ym } = window;
+            ym(44761834, "reachGoal", "OformitZakaz");
           }
         }
       })

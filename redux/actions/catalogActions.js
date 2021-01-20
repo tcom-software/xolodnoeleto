@@ -49,7 +49,12 @@ export const getCatalogFilters = (catalogId) => {
       .get(`${getFilters}/${catalogId}`)
       .then(({ data }) => {
         if (data) {
-          const { characteristicAttributes, textFilters } = data;
+          const {
+            characteristicAttributes,
+            manufacturerCountries,
+            textFilters,
+          } = data;
+
           const sortedFilters = [
             ...textFilters,
             ...characteristicAttributes,
@@ -69,6 +74,20 @@ export const getCatalogFilters = (catalogId) => {
                 : [{ ...next }],
             };
           }, {});
+
+          let brands = [];
+          for (let value of manufacturerCountries) {
+            const byName = brands.filter((e) => e.logo == value.logo);
+            if (byName.length === 0) {
+              brands.push({
+                ...value,
+                name: "file.select",
+                name_ru: value.logo.slice(0, -4),
+                characteristic_id: "manufacturerCountries",
+              });
+            }
+          }
+          sortedFilters["Бренды"] = brands;
 
           dispatch({
             type: GET_CATALOG_FILTERS,

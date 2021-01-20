@@ -190,6 +190,15 @@ const BottomPanel = styled.section`
       }
     }
   }
+  .basket-button-menu:hover {
+    button {
+      color: white;
+      background: ${theme.body.primaryColor};
+      svg {
+        fill: white;
+      }
+    }
+  }
 `;
 
 const Ul = styled.ul`

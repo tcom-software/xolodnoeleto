@@ -18,14 +18,11 @@ const initialState = {
       { title: "Избранные", url: "/favorites" },
     ],
   },
+
   phones: [
     {
-      first: "+7 (495) 272-03-",
-      second: "39",
-    },
-    {
-      first: "+7 (495) 134-22-",
-      second: "02",
+      first: "+7 (499) 286-89-",
+      second: "05",
     },
   ],
   worksTime: [9, 22],

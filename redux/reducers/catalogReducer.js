@@ -69,12 +69,34 @@ const catalogReducer = (state = initialState, action) => {
         productsLoading: false,
       };
     case types.GET_CATALOG_FILTERS:
+      const filters = {
+        ...state.filters,
+        ...action.payload,
+      };
+
+      const sortedItems = {};
+
+      const pattern = [
+        "Бренды",
+        "Цена",
+        "Обслуживаемая площадь",
+        "Инверторный",
+        "Компрессор",
+      ];
+
+      for (let i = 0; i < pattern.length; i++) {
+        sortedItems[pattern[i]] = [...filters[pattern[i]]];
+        delete filters[pattern[i]];
+      }
+
+      const newFilters = {
+        ...sortedItems,
+        ...filters,
+      };
+
       return {
         ...state,
-        filters: {
-          ...state.filters,
-          ...action.payload,
-        },
+        filters: newFilters,
       };
     case types.CATALOG_LOADING_TRIGGER:
       return {
@@ -88,13 +110,14 @@ const catalogReducer = (state = initialState, action) => {
       };
     case types.FIRST_FILTERS_LEVEL_ARRAY:
       const arrayTrigger = state.firstLevelFiltersArray;
-
       const indexTrigger = arrayTrigger.indexOf(action.payload);
+
       if (indexTrigger === -1) {
         arrayTrigger.push(action.payload);
       } else {
         arrayTrigger.splice(indexTrigger, 1);
       }
+
       return {
         ...state,
         firstLevelFiltersArray: [...arrayTrigger],
@@ -114,10 +137,44 @@ const catalogReducer = (state = initialState, action) => {
       };
     case types.MANIPULATION_MULTIPLE_DATA:
       const { id, parent_id } = action.payload;
-      const { checkboxes } = state.selectedData;
+      const { checkboxes, manufacturerCountries } = state.selectedData;
 
-      if (!checkboxes) {
-        // there isn't checkboxes key in object
+      if (parent_id === "manufacturerCountries") {
+        /** Exception for checkbox type*/
+        if (!manufacturerCountries) {
+          return {
+            ...state,
+            selectedData: {
+              ...state.selectedData,
+              manufacturerCountries: [id],
+            },
+          };
+        } else {
+          const included = manufacturerCountries.includes(id);
+          if (included) {
+            const index = manufacturerCountries.indexOf(id);
+            manufacturerCountries.splice(index, 1);
+            return {
+              ...state,
+              selectedData: {
+                ...state.selectedData,
+                manufacturerCountries: [...manufacturerCountries],
+                page: 1,
+              },
+            };
+          } else {
+            return {
+              ...state,
+              selectedData: {
+                ...state.selectedData,
+                manufacturerCountries: [...manufacturerCountries, id],
+                page: 1,
+              },
+            };
+          }
+        }
+      } else if (!checkboxes) {
+        /** there isn't checkboxes key in object*/
         return {
           ...state,
           selectedData: {
@@ -130,12 +187,12 @@ const catalogReducer = (state = initialState, action) => {
           },
         };
       } else {
-        // there is checkboxes key in object
+        /** there is checkboxes key in object*/
         if (checkboxes[parent_id]) {
-          // there is parent id of selected value
+          /** there is parent id of selected value*/
 
           if (checkboxes[parent_id].includes(id)) {
-            // there is id of selected value
+            /** there is id of selected value*/
             const object = {
               ...checkboxes,
               [parent_id]: [...checkboxes[parent_id].filter((e) => e != id)],
@@ -156,22 +213,25 @@ const catalogReducer = (state = initialState, action) => {
               },
             };
           } else {
-            // there isn't id of selected value
+            /** there isn't id of selected value*/
 
-            checkboxes[parent_id].push(id);
             return {
               ...state,
               selectedData: {
                 ...state.selectedData,
                 checkboxes: {
-                  ...checkboxes,
+                  ...state.selectedData.checkboxes,
+                  [parent_id]: [
+                    ...state.selectedData.checkboxes[parent_id],
+                    id,
+                  ],
                 },
                 page: 1,
               },
             };
           }
         } else {
-          // there isn't parent id of selected value
+          /** there isn't parent id of selected value*/
           return {
             ...state,
             selectedData: {

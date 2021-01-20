@@ -60,7 +60,7 @@ const Bottom = ({
             </Link>
           </li>*/}
           <li className="header-search-result-container">
-            {<SearchResult where={"header-bottom"} />}
+            <SearchResult where={"header-bottom"} />
           </li>
           <li className="mobile-basket">
             <Link href={"/basket"}>
@@ -72,7 +72,7 @@ const Bottom = ({
               </a>
             </Link>
           </li>
-          <li>
+          <li className="basket-button-menu">
             <Button
               type="with-icon"
               width="190px"
@@ -85,7 +85,7 @@ const Bottom = ({
                 height={20}
                 color={theme.body.primaryColor}
               />
-              Корзина пуста (
+              {basketItemsCount === 0 ? "Корзина пуста" : "Корзина"} (
               <animated.span>
                 {spring.val.interpolate((val) => Math.floor(val))}
               </animated.span>

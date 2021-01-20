@@ -2,6 +2,7 @@ import Catalog from "./Catalog";
 import { connect } from "react-redux";
 import {
   clearFiltersSelectedData,
+  getCatalogFilters,
   getCatalogProductLoadingTrigger,
   getCatalogProducts,
   updateSelectedDataFromUrl,
@@ -9,12 +10,13 @@ import {
 } from "redux/actions/catalogActions";
 
 const mapStateToProps = ({
-  catalog: { products, total, selectedData },
+  catalog: { products, products_info, total, selectedData },
   products: { seenProducts },
 }) => ({
   selectedData,
   total,
   products,
+  products_info,
   seenProducts,
 });
 const mapDispatchToProps = (dispatch) => ({
@@ -25,6 +27,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(getCatalogProductLoadingTrigger(boolean)),
   updateSelectedDataFromUrl: (data) =>
     dispatch(updateSelectedDataFromUrl(data)),
+  getCatalogFilters: (catalogId) => dispatch(getCatalogFilters(catalogId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Catalog);

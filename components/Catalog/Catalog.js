@@ -5,13 +5,13 @@ import Products from "./Products";
 import { useRouter } from "next/router";
 import ProductList from "../ProductsList";
 import { CatalogContainer } from "./styles";
-import { createObjectFromUrl } from "@utils";
 import TitleNavigation from "../TitleNavigation";
 import { GlobalSection, SeenProductWrapper } from "@famous";
+import { createUrlFromObject, createObjectFromUrl } from "@utils";
 
 const Catalog = ({
-  products,
   selectedData,
+  getCatalogFilters,
   seenProducts,
   updateSelectedDataPage,
   getCatalogProducts,
@@ -20,13 +20,23 @@ const Catalog = ({
 }) => {
   const router = useRouter();
   const { catalogId } = router.query;
+  useEffect(() => {
+    if (catalogId !== undefined) {
+      const url = createUrlFromObject(selectedData, catalogId);
+      if (url.indexOf("?") != -1 && url.indexOf("=") != -1) {
+        router.push(url);
+      }
+    }
+  }, [selectedData]);
 
   useEffect(() => {
     router.query.page && updateSelectedDataPage(router.query.page);
+    catalogId && getCatalogFilters(catalogId);
+
     return () => {
       router.query.catalogId && updateSelectedDataPage(1);
     };
-  }, [router.query.catalogId]);
+  }, [catalogId]);
 
   useEffect(() => {
     let object;
@@ -50,6 +60,7 @@ const Catalog = ({
     if (selectedDataLength === 0 && Object.keys(object).length > 0) {
       updateSelectedDataFromUrl(object);
     }
+
     catalogId && getCatalogProducts(catalogId, { ...object });
   }, [router.query]);
 
@@ -61,7 +72,7 @@ const Catalog = ({
         isMobile={true}
         webBackground={theme.body.secondBackground}
         mobileBackground={theme.body.background}
-        mobilePadding={"10px 20px"}
+        mobilePadding={"10px 8px"}
       >
         <CatalogContainer>
           <Filters />
@@ -86,12 +97,12 @@ const Catalog = ({
   );
 };
 
-function areEqual(prevProps, nextProps) {
-  /**
+/*function areEqual(prevProps, nextProps) {
+  /!**
    *  возвращает true, если nextProps рендерит
    *  тот же результат что и prevProps,
    *  иначе возвращает false
-   * * * * */
+   * * * * *!/
   if (
     JSON.stringify(prevProps.selectedData) ===
       JSON.stringify(nextProps.selectedData) &&
@@ -101,6 +112,7 @@ function areEqual(prevProps, nextProps) {
   } else {
     return false;
   }
-}
+}*/
+// export default React.memo(Catalog, areEqual);
 
-export default React.memo(Catalog, areEqual);
+export default Catalog;
