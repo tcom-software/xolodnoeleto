@@ -9,13 +9,7 @@ import { useSpring, animated } from "react-spring";
 import { closeModal, openModal } from "redux/actions/modalActions";
 import { Button, GlobalSection, SvgIcon, SearchResult } from "@famous";
 
-const Bottom = ({
-  isMobile,
-  modalType,
-  openModal,
-  closeModal,
-  basketItemsCount,
-}) => {
+const Bottom = ({ modalType, openModal, closeModal, basketItemsCount }) => {
   const spring = useSpring({
     from: { val: 0 },
     to: { val: basketItemsCount },
@@ -110,9 +104,7 @@ const Bottom = ({
 const mapStateToProps = ({
   modal: { modalType, modalRef },
   basket: { items },
-  general: { isMobile },
 }) => ({
-  isMobile,
   modalRef,
   modalType,
   basketItemsCount: Object.values(items)

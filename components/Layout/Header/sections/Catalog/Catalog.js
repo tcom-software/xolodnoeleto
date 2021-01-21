@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { sortCatalogMenu } from "@utils";
 import { CatalogContainer } from "./styles";
 
 const Catalog = ({ catalog, modalType, modalRef, closeModal, isMobile }) => {
@@ -26,28 +25,22 @@ const Catalog = ({ catalog, modalType, modalRef, closeModal, isMobile }) => {
       suppressHydrationWarning={true}
       ref={modalType === "catalog" ? modalRef : null}
     >
-      {catalog.map((e, i) => {
-        let reversedSub;
-        if (e.id === 1) {
-          reversedSub = [...e.subCategories].reverse();
-        } else {
-          reversedSub = e.subCategories;
-        }
+      {[...catalog].reverse().map(({ id, name, subCategories }, i) => {
         return (
           <li
-            key={i}
+            key={id}
             className={`level-one-li ${
-              e.name === mobileState.one ? "active" : ""
+              name === mobileState.one ? "active" : ""
             }`}
             onClick={() => {
-              if (isMobile && e.name !== mobileState.one) {
+              if (isMobile && name !== mobileState.one) {
                 setMobileState({
                   ...mobileState,
-                  one: e.name,
+                  one: name,
                 });
               } else if (
                 isMobile &&
-                e.name === mobileState.one &&
+                name === mobileState.one &&
                 mobileState.two != ""
               ) {
                 setMobileState({
@@ -58,25 +51,14 @@ const Catalog = ({ catalog, modalType, modalRef, closeModal, isMobile }) => {
               }
             }}
           >
-            <p>{e.name}</p>
+            <p>{name}</p>
             <ul className="level-two-ul">
-              {reversedSub.map((elem, index) => {
-                if (
-                  elem.id === 118 ||
-                  elem.id === 82 ||
-                  elem.id === 86 ||
-                  elem.id === 44 ||
-                  elem.id === 53 ||
-                  elem.id === 64
-                ) {
-                  return null;
-                } else {
-                  const { id, name, subCategories } = elem;
-                  const sortedSubSub = sortCatalogMenu(id, subCategories);
-
+              {[...subCategories]
+                .reverse()
+                .map(({ id, name, subCategories }) => {
                   return (
                     <li
-                      key={index}
+                      key={id}
                       className={`level-two-li ${
                         name === mobileState.two ? "active" : ""
                       }`}
@@ -91,15 +73,15 @@ const Catalog = ({ catalog, modalType, modalRef, closeModal, isMobile }) => {
                     >
                       <p>{name}</p>
                       <ul className="level-three-ul">
-                        {sortedSubSub.map((element, indexTwo) => {
+                        {[...subCategories].reverse().map(({ id, name }) => {
                           return (
                             <li
-                              key={indexTwo}
+                              key={id}
                               className={"level-three-li"}
                               onClick={closeModal}
                             >
-                              <Link href={`/catalog/${element.id}`}>
-                                <a className={"link-a-tag"}>{element.name}</a>
+                              <Link href={`/catalog/${id}`}>
+                                <a className={"link-a-tag"}>{name}</a>
                               </Link>
                             </li>
                           );
@@ -107,8 +89,7 @@ const Catalog = ({ catalog, modalType, modalRef, closeModal, isMobile }) => {
                       </ul>
                     </li>
                   );
-                }
-              })}
+                })}
             </ul>
           </li>
         );
