@@ -77,15 +77,12 @@ export const getCatalogFilters = (catalogId) => {
 
           let brands = [];
           for (let value of manufacturerCountries) {
-            const byName = brands.filter((e) => e.logo == value.logo);
-            if (byName.length === 0) {
-              brands.push({
-                ...value,
-                name: "file.select",
-                name_ru: value.logo.slice(0, -4),
-                characteristic_id: "manufacturerCountries",
-              });
-            }
+            brands.push({
+              ...value,
+              name: "file.select",
+              name_ru: value.logo.slice(0, -4),
+              characteristic_id: "manufacturerCountries",
+            });
           }
           sortedFilters["Бренды"] = brands;
 
