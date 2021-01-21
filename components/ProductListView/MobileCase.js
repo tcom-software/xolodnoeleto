@@ -50,7 +50,7 @@ const MobileCase = ({
   return (
     <div>
       {Object.values(basketItems).map((item, index) => {
-        const { id, count, model, brand, price } = item;
+        const { id, count, model, brand, price, series_name } = item;
         const imagePath = makeImagePath(item);
 
         return (
@@ -60,8 +60,8 @@ const MobileCase = ({
                 <a>
                   <ProductImage
                     src={imagePath}
-                    alt={`${brand} ${model}`}
-                    title={`${brand} ${model}`}
+                    alt={`${brand} ${series_name} ${model}`}
+                    title={`${brand} ${series_name} ${model}`}
                     className="product-image-table-and-mobile-case"
                   />
                 </a>
@@ -72,6 +72,7 @@ const MobileCase = ({
                 <Link href={`/product/${id}`}>
                   <a>
                     <p>{brand}</p>
+                    <p>{series_name}</p>
                     <p>{model}</p>
                   </a>
                 </Link>

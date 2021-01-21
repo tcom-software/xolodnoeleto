@@ -25,7 +25,7 @@ const ProductGridView = ({
    * There are two case data from the backend about products
    *
    * */
-  const { id, model, brand, price } = product;
+  const { id, model, brand, price, series_name } = product;
   const imagePath = makeImagePath(product);
 
   return (
@@ -39,8 +39,9 @@ const ProductGridView = ({
             className="grid-view-product-image"
           />
           <Title>
-            <p>{model}</p>
             <p>{brand}</p>
+            <p>{series_name}</p>
+            <p>{model}</p>
           </Title>
           <VendorCod>Артикул | {id}</VendorCod>
           <Stars>
