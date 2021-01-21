@@ -18,7 +18,7 @@ const ProductsCon = ({
     <div className="products-con">
       {products.map(({ product, photo }, index) => {
         const { folder, file_name, file_format } = photo;
-        const { articule: id, brand, price } = product;
+        const { articule: id, brand, price, series_name } = product;
 
         let { model } = product;
         model = model.replaceAll("-", " - ");
@@ -36,9 +36,11 @@ const ProductsCon = ({
                   src={`${serverUrl}${productsUpload}/size300/${file_name}.${file_format}`}
                 />
               )}
-              <p>
-                {brand} {model}
-              </p>
+              <div className="p-group">
+                <p>{brand}</p>
+                <p>{series_name}</p>
+                <p>{model}</p>
+              </div>
               <SvgIcon
                 type="close"
                 width={20}

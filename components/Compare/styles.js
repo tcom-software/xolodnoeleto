@@ -85,25 +85,13 @@ const CompareContainer = styled.div`
           flex-direction: column;
           justify-content: space-between;
 
-          p {
-            margin-top: 10px;
+          .p-group > p {
+            margin-top: 0px;
           }
           img {
             width: 140px;
             height: 140px;
             object-fit: cover;
-          }
-          div {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            p {
-              font-size: 20px;
-            }
-            button {
-              text-transform: uppercase;
-            }
           }
           svg {
             position: absolute;
@@ -121,6 +109,7 @@ const CompareContainer = styled.div`
             p {
               width: 100%;
               margin: 10px 0;
+              font-size: 20px;
             }
           }
         }
@@ -213,6 +202,7 @@ const CompareContainer = styled.div`
           .product-container {
           .product-item {
             border-right: 0;
+            min-height: 400px;
             .price-and-add-basket {
               width: 100%;
               button {

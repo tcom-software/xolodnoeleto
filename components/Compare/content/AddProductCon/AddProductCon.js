@@ -44,7 +44,7 @@ const AddProductCon = ({
         })}
         <div className="added-products-con">
           {products.map(({ product, photo }) => {
-            const { articule: id, brand } = product;
+            const { articule: id, brand, series_name } = product;
             let { model } = product;
             const { folder, file_name, file_format } = photo;
             model = model.replaceAll("-", " - ");
@@ -64,6 +64,7 @@ const AddProductCon = ({
 
                 <p>
                   <span>{brand}</span>
+                  <span>{series_name}</span>
                   <span>{model}</span>
                 </p>
                 <SvgIcon
