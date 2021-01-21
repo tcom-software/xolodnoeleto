@@ -28,6 +28,7 @@ const mapDispatchToProps = (dispatch) => ({
   updateSelectedDataFromUrl: (data) =>
     dispatch(updateSelectedDataFromUrl(data)),
   getCatalogFilters: (catalogId) => dispatch(getCatalogFilters(catalogId)),
+  clearFiltersSelectedData: () => dispatch(clearFiltersSelectedData()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Catalog);

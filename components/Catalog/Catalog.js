@@ -17,6 +17,7 @@ const Catalog = ({
   getCatalogProducts,
   getCatalogProductLoadingTrigger,
   updateSelectedDataFromUrl,
+  clearFiltersSelectedData,
 }) => {
   const router = useRouter();
   const { catalogId } = router.query;
@@ -32,6 +33,20 @@ const Catalog = ({
   useEffect(() => {
     router.query.page && updateSelectedDataPage(router.query.page);
     catalogId && getCatalogFilters(catalogId);
+
+    const checkIfUrlIsEmpty = { ...router.query };
+    delete checkIfUrlIsEmpty["catalogId"];
+
+    const checkIfSelectedDataHasCashIfUrlWasCleared = { ...selectedData };
+    delete checkIfSelectedDataHasCashIfUrlWasCleared["page"];
+
+    if (
+      !checkIfUrlIsEmpty === false &&
+      JSON.stringify(checkIfSelectedDataHasCashIfUrlWasCleared) !==
+        JSON.stringify({})
+    ) {
+      clearFiltersSelectedData();
+    }
 
     return () => {
       router.query.catalogId && updateSelectedDataPage(1);
@@ -96,23 +111,5 @@ const Catalog = ({
     </>
   );
 };
-
-/*function areEqual(prevProps, nextProps) {
-  /!**
-   *  возвращает true, если nextProps рендерит
-   *  тот же результат что и prevProps,
-   *  иначе возвращает false
-   * * * * *!/
-  if (
-    JSON.stringify(prevProps.selectedData) ===
-      JSON.stringify(nextProps.selectedData) &&
-    JSON.stringify(prevProps.products) === JSON.stringify(nextProps.products)
-  ) {
-    return true;
-  } else {
-    return false;
-  }
-}*/
-// export default React.memo(Catalog, areEqual);
 
 export default Catalog;
