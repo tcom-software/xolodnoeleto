@@ -18,6 +18,7 @@ const Pagination = ({ page: fromUrl, isMobile, total, callback }) => {
       <Paginationa
         total={total}
         pageSize={12}
+        showLessItems={isMobile ? true : false}
         defaultCurrent={currentPage === undefined ? 1 : parseInt(currentPage)}
         current={currentPage === undefined ? 1 : parseInt(currentPage)}
         prevIcon={<span>{isMobile ? `<<` : `предыдущий`}</span>}

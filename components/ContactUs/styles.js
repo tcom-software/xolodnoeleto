@@ -26,7 +26,7 @@ const ContactUsContainer = styled.div`
     position: absolute;
     align-self: center;
     left: 0;
-    z-index: 9;
+    z-index: 1;
     height: 90%;
     grid-column: 1 / 2;
 
