@@ -62,7 +62,7 @@ export default class MyDocument extends Document {
             nema="keywords"
             content="Кондиционирование, Вентиляция, Холодильное оборудование, Обогреватели и камины, Отопление и водоснабжение, Расходные материалы"
           />
-          <script src="/public/yandex.js"></script>
+          <script src="/yandex.js"></script>
         </Head>
         <body>
           <Main />
