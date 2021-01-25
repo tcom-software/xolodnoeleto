@@ -45,7 +45,6 @@ const Layout = ({
     <>
       <Header />
       <main>{children}</main>
-      <Footer />
       <PopUp />
     </>
   );
