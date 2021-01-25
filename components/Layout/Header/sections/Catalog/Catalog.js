@@ -25,7 +25,7 @@ const Catalog = ({ catalog, modalType, modalRef, closeModal, isMobile }) => {
       suppressHydrationWarning={true}
       ref={modalType === "catalog" ? modalRef : null}
     >
-      {[...catalog].reverse().map(({ id, name, subCategories }, i) => {
+      {catalog.map(({ id, name, subCategories }, i) => {
         return (
           <li
             key={id}
@@ -53,43 +53,41 @@ const Catalog = ({ catalog, modalType, modalRef, closeModal, isMobile }) => {
           >
             <p>{name}</p>
             <ul className="level-two-ul">
-              {[...subCategories]
-                .reverse()
-                .map(({ id, name, subCategories }) => {
-                  return (
-                    <li
-                      key={id}
-                      className={`level-two-li ${
-                        name === mobileState.two ? "active" : ""
-                      }`}
-                      onClick={() => {
-                        if (isMobile && mobileState.two !== name) {
-                          setMobileState({
-                            ...mobileState,
-                            two: name,
-                          });
-                        }
-                      }}
-                    >
-                      <p>{name}</p>
-                      <ul className="level-three-ul">
-                        {[...subCategories].reverse().map(({ id, name }) => {
-                          return (
-                            <li
-                              key={id}
-                              className={"level-three-li"}
-                              onClick={closeModal}
-                            >
-                              <Link href={`/catalog/${id}`}>
-                                <a className={"link-a-tag"}>{name}</a>
-                              </Link>
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    </li>
-                  );
-                })}
+              {subCategories.map(({ id, name, subCategories }) => {
+                return (
+                  <li
+                    key={id}
+                    className={`level-two-li ${
+                      name === mobileState.two ? "active" : ""
+                    }`}
+                    onClick={() => {
+                      if (isMobile && mobileState.two !== name) {
+                        setMobileState({
+                          ...mobileState,
+                          two: name,
+                        });
+                      }
+                    }}
+                  >
+                    <p>{name}</p>
+                    <ul className="level-three-ul">
+                      {subCategories.map(({ id, name }) => {
+                        return (
+                          <li
+                            key={id}
+                            className={"level-three-li"}
+                            onClick={closeModal}
+                          >
+                            <Link href={`/catalog/${id}`}>
+                              <a className={"link-a-tag"}>{name}</a>
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </li>
+                );
+              })}
             </ul>
           </li>
         );
