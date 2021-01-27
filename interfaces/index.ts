@@ -54,6 +54,7 @@ export interface ImageInterface {
   height?: string;
   callback?: any;
   customClass?: string;
+  alt?: string;
 }
 export interface ButtonInterface {
   type: string;

@@ -14,8 +14,8 @@ const Brands = ({ brands }) => {
       <BrandsContainer>
         <h3>Бренды</h3>
         <div className="brands-list">
-          {brands.map(({ src }, i) => {
-            return <Item key={i} src={src} />;
+          {brands.map(({ id, brand, brand_logo }) => {
+            return <Item key={id} id={id} name={brand} src={brand_logo} />;
           })}
         </div>
       </BrandsContainer>

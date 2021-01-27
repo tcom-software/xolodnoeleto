@@ -6,6 +6,7 @@ import { basketInitialState } from "./actions/basketActions";
 import { loadCatalogList } from "./actions/catalogActions";
 import { getInitialReview } from "./actions/reviewActions";
 import { newProducts } from "./actions/productListAction";
+import { getBrandsForInitialPage } from "./actions/brandsActions";
 
 /** window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ **/
 
@@ -35,6 +36,7 @@ const store = createStore(
 );
 
 store.dispatch(newProducts());
+store.dispatch(getBrandsForInitialPage());
 store.dispatch(loadCatalogList());
 store.dispatch(getInitialReview());
 store.dispatch(basketInitialState());

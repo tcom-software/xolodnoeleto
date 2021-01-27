@@ -24,6 +24,7 @@ module.exports = {
     addReview: "/api/review",
     getNewProducts: "/api/newProducts",
     getReviews: "/api/getReviews",
+    getBrands: "/api/getBrands",
 
     productsUpload: "/uploads/products/products0",
     seriesUpload: "/uploads/product_series/product_series0",

@@ -11,6 +11,7 @@ const Image = (props: ImageInterface) => {
     height,
     callback,
     customClass = "",
+    alt = "",
   } = props;
   return (
     <LazyLoad>
@@ -22,6 +23,7 @@ const Image = (props: ImageInterface) => {
           height={height}
           onClick={callback}
           className={customClass}
+          alt={alt}
         />
       </picture>
     </LazyLoad>
