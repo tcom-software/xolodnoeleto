@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { Button, SvgIcon, ProductImage } from "@famous";
 import { IncDec, makeImagePath, makePrice, Scroll } from "@utils";
 import { CalculateCon, Img, ImgCon, MiniCon, Title, Container } from "./styles";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 /**
  *  This Component give styled from parent component
@@ -25,6 +26,7 @@ import {
   incrementFavoriteCount,
 } from "redux/actions/favoriteActions";
 import basketMoveTo from "../../utils/basketMoveTo";
+import { setNotificationMessage } from "../../redux/actions/generalActions";
 
 const MobileCase = ({
   basketItems,
@@ -46,6 +48,7 @@ const MobileCase = ({
 
   manipulationSelectedData,
   isMobile,
+  setNotificationMessage,
 }) => {
   return (
     <div>
@@ -69,13 +72,24 @@ const MobileCase = ({
             </ImgCon>
             <MiniCon>
               <Title>
-                <Link href={`/product/${id}`}>
-                  <a>
+                <CopyToClipboard
+                  text={`${brand} ${series_name || ""} ${model}`}
+                >
+                  <div
+                    title="Скопировать модель"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setNotificationMessage({
+                        message: `Вы скопировал Модель`,
+                        type: "success",
+                      });
+                    }}
+                  >
                     <p>{brand}</p>
                     <p>{series_name}</p>
                     <p>{model}</p>
-                  </a>
-                </Link>
+                  </div>
+                </CopyToClipboard>
               </Title>
               <div className="addBasket" onClick={() => addBasket(item)}>
                 В корзину
@@ -160,6 +174,8 @@ const mapDispatchToProps = (dispatch) => ({
   decrementFavorite: (id) => dispatch(decrementFavoriteCount(id)),
   deleteFavoriteItem: (id) => dispatch(deleteFavoriteItem(id)),
   manipulationSelectedData: (data) => dispatch(manipulationSelectedData(data)),
+  setNotificationMessage: (message) =>
+    dispatch(setNotificationMessage(message)),
 });
 
 const mapStateToProps = ({ general: { isMobile }, basket: { stepState } }) => ({

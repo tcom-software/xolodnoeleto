@@ -46,19 +46,19 @@ const ProductGridView = ({
             className="grid-view-product-image"
           />
           <Title
-            title="Копировать модель"
-            onClick={(e) => makeComped(e, "модель")}
+            title="Скопировать модель"
+            onClick={(e) => makeComped(e, "Модель")}
           >
-            <CopyToClipboard text={`${brand} ${series_name} ${model}`}>
-              <>
+            <CopyToClipboard text={`${brand} ${series_name || ""} ${model}`}>
+              <div>
                 <p>{brand}</p>
                 <p>{series_name}</p>
                 <p>{model}</p>
-              </>
+              </div>
             </CopyToClipboard>
           </Title>
           <VendorCod
-            title="Копировать Артикул"
+            title="Скопировать Артикул"
             onClick={(e) => makeComped(e, "Артикул")}
           >
             <CopyToClipboard text={id}>
