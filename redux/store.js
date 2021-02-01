@@ -9,28 +9,28 @@ import { newProducts } from "./actions/productListAction";
 
 /** window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ **/
 
-// export const loadState = () => {
-//   try {
-//     const serializedState = sessionStorage.getItem("xl");
-//     if (serializedState === null) {
-//       return undefined;
-//     }
-//     return JSON.parse(serializedState);
-//   } catch (err) {
-//     return undefined;
-//   }
-// };
-//
-// export const saveState = (state) => {
-//   try {
-//     const serializedState = JSON.stringify(state);
-//     sessionStorage.setItem("xl", serializedState);
-//   } catch (err) {}
-// };
+export const loadState = () => {
+  try {
+    const serializedState = sessionStorage.getItem("xl");
+    if (serializedState === null) {
+      return undefined;
+    }
+    return JSON.parse(serializedState);
+  } catch (err) {
+    return undefined;
+  }
+};
+
+export const saveState = (state) => {
+  try {
+    const serializedState = JSON.stringify(state);
+    sessionStorage.setItem("xl", serializedState);
+  } catch (err) {}
+};
 
 const store = createStore(
   rootReducer,
-  // loadState(),
+  loadState(),
   composeWithDevTools(applyMiddleware(thunkMiddleware))
 );
 
@@ -39,6 +39,6 @@ store.dispatch(loadCatalogList());
 store.dispatch(getInitialReview());
 store.dispatch(basketInitialState());
 
-// store.subscribe(() => saveState(store.getState()));
+store.subscribe(() => saveState(store.getState()));
 
 export default store;

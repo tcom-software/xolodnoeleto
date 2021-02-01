@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Filters from "./Filters";
 import theme from "styles/theme";
 import Products from "./Products";
@@ -8,6 +8,14 @@ import { CatalogContainer } from "./styles";
 import TitleNavigation from "../TitleNavigation";
 import { GlobalSection, SeenProductWrapper } from "@famous";
 import { createUrlFromObject, createObjectFromUrl } from "@utils";
+
+function usePrevious(value) {
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = value;
+  });
+  return ref.current;
+}
 
 const Catalog = ({
   selectedData,
@@ -21,6 +29,9 @@ const Catalog = ({
 }) => {
   const router = useRouter();
   const { catalogId } = router.query;
+
+  const prevCount = usePrevious(router.query);
+
   useEffect(() => {
     if (catalogId !== undefined) {
       const url = createUrlFromObject(selectedData, catalogId);
@@ -40,13 +51,14 @@ const Catalog = ({
     const checkIfSelectedDataHasCashIfUrlWasCleared = { ...selectedData };
     delete checkIfSelectedDataHasCashIfUrlWasCleared["page"];
 
-    // if (
-    //   !checkIfUrlIsEmpty === false &&
-    //   JSON.stringify(checkIfSelectedDataHasCashIfUrlWasCleared) !==
-    //     JSON.stringify({})
-    // ) {
-    //   clearFiltersSelectedData();
-    // }
+    if (
+      !!checkIfUrlIsEmpty &&
+      JSON.stringify(checkIfSelectedDataHasCashIfUrlWasCleared) !==
+        JSON.stringify({}) &&
+      JSON.stringify(checkIfUrlIsEmpty) === JSON.stringify(prevCount)
+    ) {
+      clearFiltersSelectedData();
+    }
 
     return () => {
       router.query.catalogId && updateSelectedDataPage(1);
