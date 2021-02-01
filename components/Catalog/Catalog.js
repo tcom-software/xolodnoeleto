@@ -40,13 +40,13 @@ const Catalog = ({
     const checkIfSelectedDataHasCashIfUrlWasCleared = { ...selectedData };
     delete checkIfSelectedDataHasCashIfUrlWasCleared["page"];
 
-    if (
-      !checkIfUrlIsEmpty === false &&
-      JSON.stringify(checkIfSelectedDataHasCashIfUrlWasCleared) !==
-        JSON.stringify({})
-    ) {
-      clearFiltersSelectedData();
-    }
+    // if (
+    //   !checkIfUrlIsEmpty === false &&
+    //   JSON.stringify(checkIfSelectedDataHasCashIfUrlWasCleared) !==
+    //     JSON.stringify({})
+    // ) {
+    //   clearFiltersSelectedData();
+    // }
 
     return () => {
       router.query.catalogId && updateSelectedDataPage(1);

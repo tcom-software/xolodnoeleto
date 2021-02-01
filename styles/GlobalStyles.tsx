@@ -5,7 +5,7 @@ import { hidden } from "ansi-colors";
 
 const GlobalStyles = createGlobalStyle`
   ${fontfaces()}
-  
+   
   * {
     margin: 0;
     padding: 0;
@@ -50,6 +50,9 @@ const GlobalStyles = createGlobalStyle`
     object-fit: contain;
     width: 70px;
     height: 70px;
+  }
+  p {
+    text-align: justify !important;
   }
 `;
 
