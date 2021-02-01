@@ -2,11 +2,13 @@ import React from "react";
 import Link from "next/link";
 import { makePrice } from "@utils";
 
-const HtmlCases = ({
+const Cases = ({
   search,
   type,
   addCompareProduct,
   searchInputValue = null,
+  actionSearch,
+  searchInputValueAction,
 }) => {
   return search.map((e) => {
     const { id, brand, model, price } = e;
@@ -15,9 +17,14 @@ const HtmlCases = ({
       return (
         <div
           key={id}
-          className={"item-container"}
-          onClick={() => addCompareProduct(id)}
+          className={`item-container ${vendorCode ? "active" : ""}`}
+          onClick={() => {
+            addCompareProduct(id);
+            actionSearch("");
+            searchInputValueAction("");
+          }}
         >
+          {vendorCode ? <span>Артикул | {searchInputValue}</span> : null}
           <div className={"title"}>
             <p>{brand}</p>
             <p>{model}</p>
@@ -27,9 +34,15 @@ const HtmlCases = ({
       );
     }
     return (
-      <Link href={`/product/${id}`} key={id}>
+      <Link key={id} href={`/product/${id}`}>
         <a>
-          <div className={`item-container ${vendorCode ? "active" : ""}`}>
+          <div
+            className={`item-container ${vendorCode ? "active" : ""}`}
+            onClick={() => {
+              actionSearch("");
+              searchInputValueAction("");
+            }}
+          >
             {vendorCode ? <span>Артикул | {searchInputValue}</span> : null}
             <div className={"title"}>
               <p>{brand}</p>
@@ -43,4 +56,4 @@ const HtmlCases = ({
   });
 };
 
-export default HtmlCases;
+export default Cases;

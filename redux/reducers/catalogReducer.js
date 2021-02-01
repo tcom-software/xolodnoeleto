@@ -154,14 +154,28 @@ const catalogReducer = (state = initialState, action) => {
           if (included) {
             const index = manufacturerCountries.indexOf(id);
             manufacturerCountries.splice(index, 1);
-            return {
-              ...state,
-              selectedData: {
-                ...state.selectedData,
-                manufacturerCountries: [...manufacturerCountries],
-                page: 1,
-              },
-            };
+            if (manufacturerCountries.length === 0) {
+              const newCollection = state.selectedData;
+              delete newCollection["manufacturerCountries"];
+
+              return {
+                ...state,
+                selectedData: {
+                  ...newCollection,
+                  page: 1,
+                },
+              };
+            } else {
+              return {
+                ...state,
+                selectedData: {
+                  ...state.selectedData,
+                  manufacturerCountries: [...manufacturerCountries],
+
+                  page: 1,
+                },
+              };
+            }
           } else {
             return {
               ...state,

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import HtmlCases from "./HtmlCases";
+import Cases from "./Cases";
 import { Input, Loading } from "@famous";
 import { SearchContainer } from "./styles";
 import { SearchCon } from "../../Layout/Header/styles";
@@ -29,16 +29,23 @@ const SearchResult = ({
     } else if (new_loading) {
       return (
         <>
-          <HtmlCases search={search} type={where} />
+          <Cases
+            search={search}
+            type={where}
+            actionSearch={actionSearch}
+            searchInputValueAction={searchInputValueAction}
+          />
           <Loading />
         </>
       );
     } else if (!loading && !new_loading && search.length > 0) {
       return (
-        <HtmlCases
+        <Cases
           search={search}
           type={where}
+          actionSearch={actionSearch}
           searchInputValue={searchInputValue}
+          searchInputValueAction={searchInputValueAction}
         />
       );
     } else {

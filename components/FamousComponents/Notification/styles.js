@@ -4,6 +4,7 @@ const NotificationContainer = styled.div`
   div {
     position: fixed;
     bottom: 15px;
+    font-size: 16px;
     right: 15px;
     width: 360px;
     height: 50px;
@@ -22,6 +23,7 @@ const NotificationContainer = styled.div`
       left: 0;
       right: 0;
       margin: 0 auto;
+      font-size: 14px;
     }
   }
 `;

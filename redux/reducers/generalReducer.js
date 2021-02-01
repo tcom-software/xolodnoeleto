@@ -8,8 +8,8 @@ const initialState = {
       { title: "Установка Кондиционеров", url: "/ac-installation" },
       { title: "Фото Наших Монтажей", url: "/installation-photos" },
       { title: "Наши Клиенты", url: "/our-clients" },
-      { title: "Наши Сертификаты", url: "/certificates" },
       { title: "Контакты", url: "/contact-us" },
+      { title: "Наши Сертификаты", url: "/certificates" },
     ],
     elseRefs: [
       // { title: "% Акции", url: "" },
@@ -92,9 +92,9 @@ const initialState = {
       ],
       sideItems: [
         { title: "Наши Клиенты", url: "/our-clients" },
-        { title: "Наши Сертификаты", url: "/certificates" },
         { title: "О нас", url: "/about-us" },
         { title: "Контакты", url: "/contact-us" },
+        { title: "Наши Сертификаты", url: "/certificates" },
       ],
     },
     {

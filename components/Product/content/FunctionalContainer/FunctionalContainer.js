@@ -20,7 +20,7 @@ const FunctionalContainer = ({
   compareProducts,
 }) => {
   const { product, photos } = productInfo;
-  const { brand, model, price, count, articule, manufacturer_logo } = product;
+  const { brand, model, series_name, price, count, articule, manufacturer_logo } = product;
   const comparePL = Object.keys(compareProducts).length;
 
   return (
@@ -86,6 +86,7 @@ const FunctionalContainer = ({
         <div className="title-and-price-container">
           <div className="title">
             <p>{brand}</p>
+            <p>{series_name}</p>
             <p>{model}</p>
           </div>
           <p className="price">{makePrice(price)}</p>

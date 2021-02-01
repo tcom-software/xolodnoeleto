@@ -40,7 +40,6 @@ const ProductContainer = styled.div`
       background: #ea4a4a;
     }
     span {
-      font-size: 12px;
       margin: 5px 0px;
     }
     & > button {

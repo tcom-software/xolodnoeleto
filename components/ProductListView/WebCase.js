@@ -3,6 +3,7 @@ import Link from "next/link";
 import { connect } from "react-redux";
 import { Button, SvgIcon, ProductImage } from "@famous";
 import { IncDec, makeImagePath, makePrice } from "@utils";
+
 /**
  *  This Component give styled from parent component
  * */
@@ -22,6 +23,8 @@ import {
   deleteFavoriteItem,
   incrementFavoriteCount,
 } from "redux/actions/favoriteActions";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import { setNotificationMessage } from "../../redux/actions/generalActions";
 
 const WebCase = ({
   header,
@@ -44,6 +47,7 @@ const WebCase = ({
   decrementFavorite,
   deleteFavoriteItem,
   manipulationSelectedData,
+  setNotificationMessage,
 }) => {
   return (
     <div>
@@ -63,7 +67,7 @@ const WebCase = ({
           ) : null}
 
           {Object.values(basketItems).map((item, index) => {
-            const { id, count, model, brand, price } = item;
+            const { id, count, model, brand, price, series_name } = item;
 
             const imagePath = makeImagePath(item);
             return (
@@ -74,8 +78,8 @@ const WebCase = ({
                     <a>
                       <ProductImage
                         src={imagePath}
-                        alt={`${brand} ${model}`}
-                        title={`${brand} ${model}`}
+                        alt={`${brand} ${series_name} ${model}`}
+                        title={`${brand} ${series_name} ${model}`}
                         className="product-image-table-and-mobile-case"
                       />
                     </a>
@@ -86,8 +90,24 @@ const WebCase = ({
                   <div>
                     <Link href={`/product/${id}`}>
                       <a>
-                        <p>{brand}</p>
-                        <p>{model}</p>
+                        <CopyToClipboard
+                          text={`${brand} ${series_name || ""} ${model}`}
+                        >
+                          <div
+                            title="Скопировать модель"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              setNotificationMessage({
+                                message: `Вы скопировал Артикул`,
+                                type: "success",
+                              });
+                            }}
+                          >
+                            <p>{brand}</p>
+                            <p>{series_name}</p>
+                            <p>{model}</p>
+                          </div>
+                        </CopyToClipboard>
                       </a>
                     </Link>
                   </div>
@@ -188,6 +208,8 @@ const mapDispatchToProps = (dispatch) => ({
   decrementFavorite: (id) => dispatch(decrementFavoriteCount(id)),
   deleteFavoriteItem: (id) => dispatch(deleteFavoriteItem(id)),
   manipulationSelectedData: (data) => dispatch(manipulationSelectedData(data)),
+  setNotificationMessage: (message) =>
+    dispatch(setNotificationMessage(message)),
 });
 
 const mapStateToProps = ({ basket: { stepState } }) => ({

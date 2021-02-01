@@ -21,6 +21,7 @@ const Notification = ({ notification, setNotificationMessage }) => {
     },
     from: { transform: `translateX(110%)`, opacity: 0 },
   });
+
   return (
     <NotificationContainer type={type}>
       <animated.div style={props}>{message}</animated.div>

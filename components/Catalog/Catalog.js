@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Filters from "./Filters";
 import theme from "styles/theme";
 import Products from "./Products";
@@ -9,6 +9,14 @@ import TitleNavigation from "../TitleNavigation";
 import { GlobalSection, SeenProductWrapper } from "@famous";
 import { createUrlFromObject, createObjectFromUrl } from "@utils";
 
+function usePrevious(value) {
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = value;
+  });
+  return ref.current;
+}
+
 const Catalog = ({
   selectedData,
   getCatalogFilters,
@@ -17,9 +25,13 @@ const Catalog = ({
   getCatalogProducts,
   getCatalogProductLoadingTrigger,
   updateSelectedDataFromUrl,
+  clearFiltersSelectedData,
 }) => {
   const router = useRouter();
   const { catalogId } = router.query;
+
+  const prevCount = usePrevious(router.query);
+
   useEffect(() => {
     if (catalogId !== undefined) {
       const url = createUrlFromObject(selectedData, catalogId);
@@ -32,6 +44,21 @@ const Catalog = ({
   useEffect(() => {
     router.query.page && updateSelectedDataPage(router.query.page);
     catalogId && getCatalogFilters(catalogId);
+
+    const checkIfUrlIsEmpty = { ...router.query };
+    delete checkIfUrlIsEmpty["catalogId"];
+
+    const checkIfSelectedDataHasCashIfUrlWasCleared = { ...selectedData };
+    delete checkIfSelectedDataHasCashIfUrlWasCleared["page"];
+
+    if (
+      !!checkIfUrlIsEmpty &&
+      JSON.stringify(checkIfSelectedDataHasCashIfUrlWasCleared) !==
+        JSON.stringify({}) &&
+      JSON.stringify(checkIfUrlIsEmpty) === JSON.stringify(prevCount)
+    ) {
+      clearFiltersSelectedData();
+    }
 
     return () => {
       router.query.catalogId && updateSelectedDataPage(1);
@@ -96,23 +123,5 @@ const Catalog = ({
     </>
   );
 };
-
-/*function areEqual(prevProps, nextProps) {
-  /!**
-   *  возвращает true, если nextProps рендерит
-   *  тот же результат что и prevProps,
-   *  иначе возвращает false
-   * * * * *!/
-  if (
-    JSON.stringify(prevProps.selectedData) ===
-      JSON.stringify(nextProps.selectedData) &&
-    JSON.stringify(prevProps.products) === JSON.stringify(nextProps.products)
-  ) {
-    return true;
-  } else {
-    return false;
-  }
-}*/
-// export default React.memo(Catalog, areEqual);
 
 export default Catalog;

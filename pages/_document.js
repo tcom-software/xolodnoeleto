@@ -50,10 +50,10 @@ export default class MyDocument extends Document {
             property="og:title"
             content="Стандартная установка кондиционеров"
           />
-          <meta
+          {/* <meta
             http-equiv="Content-Security-Policy"
             content="upgrade-insecure-requests"
-          />
+          /> */}
           <meta
             name="description"
             content="Стандартная установка кондиционеров"
