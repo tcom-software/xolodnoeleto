@@ -1,10 +1,11 @@
 import theme from "styles/theme";
-import Item from "./Item";
+import Item from "./components/Item";
 import Link from "next/link";
 import { GlobalSection } from "@famous";
 import { BrandsContainer } from "./styles";
 
-const Brands = ({ brandsLandingPage: { brands } }) => {
+const Brands = ({ brandsLandingPage }) => {
+  const { brands } = brandsLandingPage;
   return (
     <GlobalSection
       isMobile={true}

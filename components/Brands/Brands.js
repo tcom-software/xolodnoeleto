@@ -1,22 +1,27 @@
 import React, { useEffect, useState } from "react";
 import theme from "styles/theme";
-import Letters from "./content/Letters";
+import Pagination from "../Pagination";
+import { useRouter } from "next/router";
+import Letters from "./components/Letters";
 import ProductList from "../ProductsList";
 import { BrandsContainer } from "./styles";
 import TitleNavigation from "../TitleNavigation";
-import { GlobalSection, Image, SeenProductWrapper } from "@famous";
-import getConfig from "next/config";
+import BrandsList from "./components/BrandsList";
+import SelectedLetters from "./components/SelectedLetters";
+import { GlobalSection, SeenProductWrapper } from "@famous";
 
-const Brands = ({
-  brandsBrandPage: { brands, total },
-  seenProducts,
-  getBrandsWithPage,
-}) => {
+const Brands = ({ brandsBrandPage, seenProducts, getBrandsWithPage }) => {
   const [selected, setSelected] = useState([]);
-  const {
-    publicRuntimeConfig: { serverUrl, brandsUpload },
-  } = getConfig();
-  useEffect(() => getBrandsWithPage(1), []);
+  const router = useRouter();
+
+  useEffect(() => {
+    const timeId = setTimeout(function () {
+      console.log(2222);
+      getBrandsWithPage(router.query.page || 1, selected);
+    }, 3000);
+
+    return () => clearTimeout(timeId);
+  }, [selected]);
 
   return (
     <>
@@ -26,7 +31,7 @@ const Brands = ({
         isMobile={true}
         webBackground={theme.body.secondBackground}
         mobileBackground={theme.body.background}
-        webPadding={"20px 0 30px 0"}
+        webPadding={"20px 0 10px 0"}
       >
         <Letters selected={selected} setSelected={setSelected} />
       </GlobalSection>
@@ -37,40 +42,15 @@ const Brands = ({
         webPadding={"0 0 30px 0"}
       >
         <BrandsContainer>
-          <div className="selected-letters">
-            {selected.map((e, i) => {
-              return (
-                <div
-                  key={i}
-                  className="selected-letter"
-                  onClick={() => {
-                    setSelected([...selected.filter((elem) => elem !== e)]);
-                  }}
-                >
-                  {e}
-                </div>
-              );
-            })}
-          </div>
-          <div className="items">
-            {brands &&
-              brands.map((e, i) => {
-                return (
-                  <div key={i} className="item">
-                    <Image
-                      simpleWeb={`${serverUrl}/${brandsUpload}/${e.brand_logo}`}
-                      webpWeb={""}
-                    />
-                    <div className="info">
-                      <h3>{e.brand}</h3>
-                      <p>{e.product_count} товаров</p>
-                    </div>
-                  </div>
-                );
-              })}
-          </div>
+          <SelectedLetters selected={selected} setSelected={setSelected} />
+          <BrandsList brandsBrandPage={brandsBrandPage} />
         </BrandsContainer>
       </GlobalSection>
+      <Pagination
+        total={brandsBrandPage.total}
+        page={router.query.page}
+        callback={getBrandsWithPage}
+      />
       <SeenProductWrapper seenProducts={seenProducts}>
         <GlobalSection
           isWeb={true}

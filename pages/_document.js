@@ -52,7 +52,7 @@ export default class MyDocument extends Document {
           />
           {/* <meta
             http-equiv="Content-Security-Policy"
-            content="upgrade-insecure-requests"
+            components="upgrade-insecure-requests"
           /> */}
           <meta
             name="description"

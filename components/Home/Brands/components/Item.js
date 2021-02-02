@@ -1,14 +1,14 @@
-import { Image } from "@famous";
-import { BrandItem } from "./styles";
-import { connect } from "react-redux";
-import getConfig from "next/config";
 import React from "react";
+import { Image } from "@famous";
+import getConfig from "next/config";
+import { connect } from "react-redux";
+import { BrandItem } from "../styles";
 
 const {
   publicRuntimeConfig: { serverUrl, brandsUpload },
 } = getConfig();
 
-const Item = ({ id, name, src, isMobile }) => {
+const Item = ({ name, src, isMobile }) => {
   const onMouseLeave = (e) => {
     if (!isMobile) {
       e.currentTarget.style = `transform: rotateX(0deg) rotateY(0deg);`;

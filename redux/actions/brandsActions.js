@@ -22,10 +22,20 @@ const getBrands = () => {
   };
 };
 
-const getBrandsWithPage = (page) => {
+const getBrandsWithPage = (page, letters) => {
   return (dispatch) => {
+    let string = "";
+
+    if (page) {
+      string += `?page=${page}`;
+    }
+
+    if (letters) {
+      string += `&searchBrand=${letters.join().toLowerCase()}`;
+    }
+
     axiosInstance
-      .get(getBrandsUrl + "?page=" + page)
+      .get(getBrandsUrl + string)
       .then(({ data }) => {
         dispatch({
           type: BRANDS_WITH_PAGE,

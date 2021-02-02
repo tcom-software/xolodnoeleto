@@ -12,7 +12,7 @@ const Information = ({ phones }) => {
           color={"transparent"}
         />
         <div>
-          <p> {`ООО "ХОЛОДНОЕЛЕТО" \nг. Москва`} </p>
+          <p> {`ХОЛОДНОЕЛЕТО" \nг. Москва`} </p>
         </div>
       </div>
       <div>

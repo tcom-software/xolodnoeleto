@@ -3,9 +3,9 @@ import theme from "styles/theme";
 
 const LettersContainer = styled.div`
   display: grid;
-  grid-gap: 20px;
+  grid-gap: 10px;
   grid-template-columns: repeat(auto-fill, minmax(34px, 34px));
-  margin-bottom: 25px;
+  margin-bottom: 10px;
 
   & > div {
     display: flex;

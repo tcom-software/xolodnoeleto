@@ -11,7 +11,8 @@ const mapStateToProps = ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getBrandsWithPage: (page) => dispatch(getBrandsWithPage(page)),
+  getBrandsWithPage: (page, letters) =>
+    dispatch(getBrandsWithPage(page, letters)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Brands);
