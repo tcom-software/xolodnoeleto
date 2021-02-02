@@ -13,7 +13,7 @@ const initialState = {
     ],
     elseRefs: [
       // { title: "% Акции", url: "" },
-      // { title: "Бренды", url: "/brands" },
+      { title: "Бренды", url: "/brands" },
       { title: "Сравнить", url: "/compare" },
       { title: "Избранные", url: "/favorites" },
     ],
@@ -84,7 +84,7 @@ const initialState = {
     {
       title: "Компания",
       items: [
-        // { title: "Бренды", url: "/brands" },
+        { title: "Бренды", url: "/brands" },
         { title: "Категории", url: "" },
         { title: "Оплата и Доставка", url: "/payment-and-delivery" },
         { title: "Установка Кондиционеров", url: "/ac-installation" },

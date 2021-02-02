@@ -21,10 +21,10 @@ module.exports = {
     makeOrder: "/api/checkout",
     callbackRequest: "api/oneClickOrder",
     contactUs: "/api/contactUs",
+    getBrands: "/api/getBrands",
     addReview: "/api/review",
     getNewProducts: "/api/newProducts",
     getReviews: "/api/getReviews",
-    getBrands: "/api/getBrands",
 
     productsUpload: "/uploads/products/products0",
     seriesUpload: "/uploads/product_series/product_series0",

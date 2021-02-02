@@ -1,15 +1,22 @@
 import * as types from "../actions/brandsActions";
 
 const initialState = {
-  items: [],
+  brandsLandingPage: null,
+  brandsBrandPage: null,
 };
 
 const brandsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.INITIAL_STATE:
+    case types.LANDING_PAGE:
       return {
         ...state,
-        items: action.payload,
+        brandsLandingPage: action.payload,
+      };
+      return;
+    case types.BRANDS_WITH_PAGE:
+      return {
+        ...state,
+        brandsBrandPage: action.payload,
       };
     default:
       return { ...state };

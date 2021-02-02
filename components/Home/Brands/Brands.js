@@ -1,9 +1,10 @@
 import theme from "styles/theme";
 import Item from "./Item";
+import Link from "next/link";
 import { GlobalSection } from "@famous";
 import { BrandsContainer } from "./styles";
 
-const Brands = ({ brands }) => {
+const Brands = ({ brandsLandingPage: { brands } }) => {
   return (
     <GlobalSection
       isMobile={true}
@@ -12,11 +13,16 @@ const Brands = ({ brands }) => {
       webPadding={"0 0 70px 0"}
     >
       <BrandsContainer>
-        <h3>Бренды</h3>
+        <Link href="/brands">
+          <a>
+            <h3>Бренды</h3>
+          </a>
+        </Link>
         <div className="brands-list">
-          {brands.map(({ id, brand, brand_logo }) => {
-            return <Item key={id} id={id} name={brand} src={brand_logo} />;
-          })}
+          {brands &&
+            brands.map(({ id, brand, brand_logo }) => {
+              return <Item key={id} id={id} name={brand} src={brand_logo} />;
+            })}
         </div>
       </BrandsContainer>
     </GlobalSection>

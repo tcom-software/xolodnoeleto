@@ -1,13 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import theme from "styles/theme";
-import { GlobalSection, Image, SeenProductWrapper } from "@famous";
-import TitleNavigation from "../TitleNavigation";
-import { BrandsContainer } from "./styles";
 import Letters from "./content/Letters";
 import ProductList from "../ProductsList";
+import { BrandsContainer } from "./styles";
+import TitleNavigation from "../TitleNavigation";
+import { GlobalSection, Image, SeenProductWrapper } from "@famous";
+import getConfig from "next/config";
 
-const Brands = ({ brandItems, seenProducts }) => {
+const Brands = ({
+  brandsBrandPage: { brands, total },
+  seenProducts,
+  getBrandsWithPage,
+}) => {
   const [selected, setSelected] = useState([]);
+  const {
+    publicRuntimeConfig: { serverUrl, brandsUpload },
+  } = getConfig();
+  useEffect(() => getBrandsWithPage(1), []);
+
   return (
     <>
       <TitleNavigation title="бренды" currentPage="Бренды" />
@@ -43,17 +53,21 @@ const Brands = ({ brandItems, seenProducts }) => {
             })}
           </div>
           <div className="items">
-            {brandItems.map((e, i) => {
-              return (
-                <div key={i} className="item">
-                  <Image simpleWeb={e.src} webpWeb={""} />
-                  <div className="info">
-                    <h3>{e.name}</h3>
-                    <p>53 товаров</p>
+            {brands &&
+              brands.map((e, i) => {
+                return (
+                  <div key={i} className="item">
+                    <Image
+                      simpleWeb={`${serverUrl}/${brandsUpload}/${e.brand_logo}`}
+                      webpWeb={""}
+                    />
+                    <div className="info">
+                      <h3>{e.brand}</h3>
+                      <p>{e.product_count} товаров</p>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
           </div>
         </BrandsContainer>
       </GlobalSection>

@@ -1,20 +1,20 @@
-export const INITIAL_STATE = "INITIAL_STATE";
+export const LANDING_PAGE = "INITIAL_PAGE";
+export const BRANDS_WITH_PAGE = "BRANDS_WITH_PAGE";
 
 import getConfig from "next/config";
 import { axiosInstance } from "../../utils";
 
 const {
-  publicRuntimeConfig: { getBrands },
+  publicRuntimeConfig: { getBrands: getBrandsUrl },
 } = getConfig();
 
-const getBrandsForInitialPage = () => {
+const getBrands = () => {
   return (dispatch) => {
     axiosInstance
-      .get(getBrands)
+      .get(getBrandsUrl)
       .then(({ data }) => {
-        data.length = 20;
         dispatch({
-          type: INITIAL_STATE,
+          type: LANDING_PAGE,
           payload: data,
         });
       })
@@ -22,4 +22,18 @@ const getBrandsForInitialPage = () => {
   };
 };
 
-export { getBrandsForInitialPage };
+const getBrandsWithPage = (page) => {
+  return (dispatch) => {
+    axiosInstance
+      .get(getBrandsUrl + "?page=" + page)
+      .then(({ data }) => {
+        dispatch({
+          type: BRANDS_WITH_PAGE,
+          payload: data,
+        });
+      })
+      .catch(console.log);
+  };
+};
+
+export { getBrands, getBrandsWithPage };

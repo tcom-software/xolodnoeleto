@@ -44,5 +44,12 @@ const BrandItem = styled.div`
     left: 0;
     right: 0;
   }
+  .lazyload-wrapper {
+    width: max-content;
+
+    img {
+      min-width: 90px;
+    }
+  }
 `;
 export { BrandsContainer, BrandItem };

@@ -2,7 +2,6 @@ import { Image } from "@famous";
 import { BrandItem } from "./styles";
 import { connect } from "react-redux";
 import getConfig from "next/config";
-import Link from "next/link";
 import React from "react";
 
 const {
@@ -31,16 +30,14 @@ const Item = ({ id, name, src, isMobile }) => {
   };
 
   return (
-    <Link href={`/catalog?manufacturerCountries=${id}`}>
-      <BrandItem onMouseLeave={onMouseLeave} onMouseMove={handleMouseMove}>
-        <div className="layer"></div>
-        <Image
-          simpleWeb={serverUrl + brandsUpload + src}
-          webpWeb={""}
-          alt={name}
-        />
-      </BrandItem>
-    </Link>
+    <BrandItem onMouseLeave={onMouseLeave} onMouseMove={handleMouseMove}>
+      <div className="layer"></div>
+      <Image
+        simpleWeb={serverUrl + brandsUpload + src}
+        webpWeb={""}
+        alt={name}
+      />
+    </BrandItem>
   );
 };
 
