@@ -13,7 +13,7 @@ const BrandsContainer = styled.div`
     .item {
       transition: all 0.4s ease-in;
       transform: scale(1);
-
+      width: 170px;
       height: 170px;
       cursor: pointer;
       background: #fff;
@@ -30,14 +30,15 @@ const BrandsContainer = styled.div`
         width: max-content;
         text-align: center;
         img {
-          width: 85%;
+          width: 100px;
         }
       }
     }
-    .item:hover {
-      transition: all 0.4s ease-in;
-      transform: scale(1.07);
-    }
+
+    //.item:hover {
+    //  transition: all 0.4s ease-in;
+    //  transform: scale(1.07);
+    //}
   }
   .selected-letters {
     display: grid;

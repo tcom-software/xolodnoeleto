@@ -5,7 +5,6 @@ import { GlobalSection } from "@famous";
 import { BrandsContainer } from "./styles";
 
 const Brands = ({ brandsLandingPage }) => {
-  const { brands } = brandsLandingPage;
   return (
     <GlobalSection
       isMobile={true}
@@ -20,8 +19,8 @@ const Brands = ({ brandsLandingPage }) => {
           </a>
         </Link>
         <div className="brands-list">
-          {brands &&
-            brands.map(({ id, brand, brand_logo }) => {
+          {brandsLandingPage?.brands &&
+            brandsLandingPage.brands.map(({ id, brand, brand_logo }) => {
               return <Item key={id} id={id} name={brand} src={brand_logo} />;
             })}
         </div>
