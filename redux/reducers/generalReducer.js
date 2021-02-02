@@ -99,7 +99,7 @@ const initialState = {
     },
     {
       title: "Контакты",
-      items: ["ООО ХОЛОДНОЕЛЕТО", "г. Москва", "zakaz@xolodnoeleto.ru"],
+      items: ["ХОЛОДНОЕЛЕТО", "г. Москва", "zakaz@xolodnoeleto.ru"],
     },
   ],
   copyright: {
