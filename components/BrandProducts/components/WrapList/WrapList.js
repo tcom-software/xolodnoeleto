@@ -1,9 +1,14 @@
 import React from "react";
+import { useRouter } from "next/router";
 import Pagination from "../../../Pagination";
 
-import { useRouter } from "next/router";
-
-const WrapList = ({ children, brandProducts, getBrandProducts }) => {
+const WrapList = ({
+  children,
+  brandProducts,
+  getBrandProducts,
+  selectedData,
+  updateSelectedOrderBy,
+}) => {
   const router = useRouter();
   const { brandId, page } = router.query;
 
@@ -13,10 +18,10 @@ const WrapList = ({ children, brandProducts, getBrandProducts }) => {
         <p>{brandProducts?.products_info?.total} Товаров</p>
         <select
           className="sort-by"
-          // onChange={(event) => {
-          //   updateSelectedOrderBy(event.target.value);
-          // }}
-          // value={selectedData.orderBy}
+          onChange={(event) => {
+            updateSelectedOrderBy(event.target.value);
+          }}
+          value={selectedData.orderBy}
         >
           Цена: высокая-низкая
           <option value="">Сортировать: по популярности</option>

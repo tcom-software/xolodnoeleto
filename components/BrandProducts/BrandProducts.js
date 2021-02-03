@@ -1,20 +1,65 @@
 import React, { useEffect } from "react";
 import theme from "styles/theme";
-import Pagination from "../Pagination";
 import { GlobalSection } from "@famous";
 import Filters from "../Catalog/Filters";
 
 import { useRouter } from "next/router";
 import ProductList from "../ProductsList";
-import { BrandsProductsContainer } from "./styles";
-import TitleNavigation from "../TitleNavigation";
 import WrapList from "./components/WrapList";
+import TitleNavigation from "../TitleNavigation";
+import { BrandsProductsContainer } from "./styles";
+import { createObjectFromUrl, createUrlFromObject } from "../../utils";
+import { updateSelectedDataFromUrl } from "../../redux/actions/catalogActions";
 
-const BrandProducts = ({ brandProducts, getBrandProducts }) => {
+const BrandProducts = ({
+  brandProducts,
+  getBrandProducts,
+  selectedData,
+  clearFiltersSelectedData,
+}) => {
   const router = useRouter();
   const { brandId, page } = router.query;
 
-  useEffect(() => brandId && getBrandProducts(page, brandId), [brandId]);
+  useEffect(() => {
+    brandId && getBrandProducts(page, brandId);
+    return () => clearFiltersSelectedData();
+  }, [brandId]);
+
+  useEffect(() => {
+    if (brandId !== undefined) {
+      const url = createUrlFromObject(selectedData, brandId);
+      if (url.indexOf("?") != -1 && url.indexOf("=") != -1) {
+        router.push(url);
+      }
+    }
+  }, [selectedData]);
+
+  useEffect(() => {
+    let object;
+
+    const selectedDataLength = Object.keys(selectedData).length;
+    if (selectedDataLength === 0) {
+      object = createObjectFromUrl(router.query);
+    } else {
+      /**
+       *  there was only this piece code "object = selectedData"
+       *  but for orderBy I added this logic
+       * * */
+
+      for (let key in selectedData) {
+        if (selectedData[key] === "") delete selectedData[key];
+      }
+      object = selectedData;
+    }
+
+    if (selectedDataLength === 0 && Object.keys(object).length > 0) {
+      updateSelectedDataFromUrl(object);
+    }
+    if (brandId) {
+      brandId && getBrandProducts(page, brandId, { ...object });
+      // catalogId && getCatalogProducts(catalogId, { ...object });
+    }
+  }, [router.query]);
 
   if (brandProducts === null) {
     return null;

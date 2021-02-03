@@ -23,12 +23,13 @@ const getBrands = () => {
   };
 };
 
-const getBrandProducts = (page = 1, brandId) => {
+const getBrandProducts = (page = 1, brandId, object = {}) => {
+  console.log(object);
   return (dispatch) => {
     axiosInstance
       .post(
         `${catalogProducts}`,
-        JSON.stringify({ manufacturerCountries: [brandId], page })
+        JSON.stringify({ manufacturerCountries: [brandId], page, ...object })
       )
       .then(({ data }) => {
         dispatch({

@@ -32,6 +32,7 @@ const createObjectFromUrl = (urlObj) => {
             .map((e) => +e)
             .filter((e) => e !== NaN),
         ];
+      case key === "brandId":
       case key === "catalogId":
         break;
       case +key != NaN:
