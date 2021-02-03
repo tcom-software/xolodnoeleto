@@ -22,7 +22,9 @@ const BrandProducts = ({
 
   useEffect(() => {
     brandId && getBrandProducts(page, brandId);
-    return () => clearFiltersSelectedData();
+    return () => {
+      clearFiltersSelectedData();
+    };
   }, [brandId]);
 
   useEffect(() => {
@@ -57,7 +59,6 @@ const BrandProducts = ({
     }
     if (brandId) {
       brandId && getBrandProducts(page, brandId, { ...object });
-      // catalogId && getCatalogProducts(catalogId, { ...object });
     }
   }, [router.query]);
 

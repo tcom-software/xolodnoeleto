@@ -1,4 +1,5 @@
 import * as types from "../actions/catalogActions";
+import { CLEAR_FILTERS } from "../actions/catalogActions";
 
 const initialState = {
   productsLoading: true,
@@ -316,6 +317,16 @@ const catalogReducer = (state = initialState, action) => {
       return {
         ...state,
         mobileFiltersStatus: !state.mobileFiltersStatus,
+      };
+    case types.CLEAR_FILTERS:
+      const clearedFilters = {
+        Сортировка: state.filters["Сортировка"],
+        Цена: state.filters["Цена"],
+      };
+      console.log(clearedFilters, "------clearedFilters");
+      return {
+        ...state,
+        filters: { ...clearedFilters },
       };
     default:
       return {

@@ -9,8 +9,8 @@ const Brands = ({ brandsLandingPage }) => {
     <GlobalSection
       isMobile={true}
       isWeb={true}
-      webBackground={theme.body.background}
       webPadding={"0 0 70px 0"}
+      webBackground={theme.body.background}
     >
       <BrandsContainer>
         <Link href="/brands">

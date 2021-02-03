@@ -7,6 +7,7 @@ import {
   getCatalogProducts,
   updateSelectedDataFromUrl,
   updateSelectedDataPage,
+  clearFilters,
 } from "redux/actions/catalogActions";
 
 const mapStateToProps = ({
@@ -29,6 +30,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(updateSelectedDataFromUrl(data)),
   getCatalogFilters: (catalogId) => dispatch(getCatalogFilters(catalogId)),
   clearFiltersSelectedData: () => dispatch(clearFiltersSelectedData()),
+  clearFilters: () => dispatch(clearFilters()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Catalog);

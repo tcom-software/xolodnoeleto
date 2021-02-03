@@ -43,6 +43,11 @@ const BrandItem = styled.div`
     bottom: 0;
     left: 0;
     right: 0;
+    a {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
   }
   .lazyload-wrapper {
     width: max-content;

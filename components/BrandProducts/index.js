@@ -1,7 +1,10 @@
 import BrandProducts from "./BrandProducts";
 import { connect } from "react-redux";
 import { getBrandProducts } from "../../redux/actions/brandsActions";
-import { clearFiltersSelectedData } from "../../redux/actions/catalogActions";
+import {
+  clearFilters,
+  clearFiltersSelectedData,
+} from "../../redux/actions/catalogActions";
 
 const mapStateToProps = ({
   brands: { brandProducts },
@@ -16,6 +19,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(getBrandProducts(page, brandId, object)),
   clearFiltersSelectedData: (page, brandId, object) =>
     dispatch(clearFiltersSelectedData(page, brandId, object)),
+  clearFilters: () => dispatch(clearFilters()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BrandProducts);

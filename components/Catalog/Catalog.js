@@ -26,11 +26,19 @@ const Catalog = ({
   getCatalogProductLoadingTrigger,
   updateSelectedDataFromUrl,
   clearFiltersSelectedData,
+  clearFilters,
 }) => {
   const router = useRouter();
   const { catalogId } = router.query;
 
   const prevCount = usePrevious(router.query);
+
+  useEffect(() => {
+    return () => {
+      clearFiltersSelectedData();
+      clearFilters();
+    };
+  }, []);
 
   useEffect(() => {
     if (catalogId !== undefined) {

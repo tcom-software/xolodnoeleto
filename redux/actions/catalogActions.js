@@ -1,4 +1,5 @@
 export const CATALOG_LIST = "CATALOG_LIST";
+export const CLEAR_FILTERS = "CLEAR_FILTERS";
 export const OPEN_FILTERS_TOGGLE = "OPEN_FILTERS_TOGGLE";
 export const GET_CATALOG_FILTERS = "GET_CATALOG_FILTERS";
 export const GET_CATALOG_PRODUCTS = "GET_CATALOG_PRODUCTS";
@@ -154,6 +155,10 @@ export const actionManipulationRadio = (data) => {
 export const updateSelectedDataFromUrl = (data) => ({
   type: UPDATE_SELECTED_DATA_FROM_URL,
   payload: data,
+});
+
+export const clearFilters = () => ({
+  type: CLEAR_FILTERS,
 });
 
 export const updateSelectedDataPage = (page) => ({

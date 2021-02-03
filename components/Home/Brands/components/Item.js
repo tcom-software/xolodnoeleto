@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { Image } from "@famous";
 import getConfig from "next/config";
 import { connect } from "react-redux";
@@ -8,7 +9,7 @@ const {
   publicRuntimeConfig: { serverUrl, brandsUpload },
 } = getConfig();
 
-const Item = ({ name, src, isMobile }) => {
+const Item = ({ id, name, src, isMobile }) => {
   const onMouseLeave = (e) => {
     if (!isMobile) {
       e.currentTarget.style = `transform: rotateX(0deg) rotateY(0deg);`;
@@ -31,7 +32,11 @@ const Item = ({ name, src, isMobile }) => {
 
   return (
     <BrandItem onMouseLeave={onMouseLeave} onMouseMove={handleMouseMove}>
-      <div className="layer"></div>
+      <div className="layer">
+        <Link href={`/brand-products/${id}`} key={id}>
+          <a></a>
+        </Link>
+      </div>
       <Image
         simpleWeb={serverUrl + brandsUpload + src}
         webpWeb={""}
