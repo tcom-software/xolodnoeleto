@@ -27,7 +27,7 @@ module.exports = {
     getReviews: "/api/getReviews",
 
     productsUpload: "/uploads/products/products0",
+    brandsUpload: "/uploads/manufacturer_logo/size800",
     seriesUpload: "/uploads/product_series/product_series0",
-    brandsUpload: "/uploads/brands/",
   },
 };

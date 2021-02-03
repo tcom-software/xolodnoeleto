@@ -38,7 +38,7 @@ const Item = ({ id, name, src, isMobile }) => {
         </Link>
       </div>
       <Image
-        simpleWeb={serverUrl + brandsUpload + src}
+        simpleWeb={serverUrl + brandsUpload + "/" + src}
         webpWeb={""}
         alt={name}
       />
