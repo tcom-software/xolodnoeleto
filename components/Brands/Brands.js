@@ -16,10 +16,6 @@ const Brands = ({ brandsBrandPage, seenProducts, getBrandsWithPage }) => {
 
   useEffect(() => {
     getBrandsWithPage(router.query.page || 1, selected);
-    // const timeId = setTimeout(function () {
-    //   getBrandsWithPage(router.query.page || 1, selected);
-    // }, 1300);
-    // return () => clearTimeout(timeId);
   }, [selected]);
 
   return (
@@ -45,11 +41,18 @@ const Brands = ({ brandsBrandPage, seenProducts, getBrandsWithPage }) => {
           <BrandsList brandsBrandPage={brandsBrandPage} />
         </BrandsContainer>
       </GlobalSection>
-      <Pagination
-        total={brandsBrandPage?.total}
-        page={router.query.page}
-        callback={getBrandsWithPage}
-      />
+      <GlobalSection
+        isWeb={true}
+        isMobile={true}
+        webBackground={theme.body.secondBackground}
+        webPadding={"0"}
+      >
+        <Pagination
+          total={brandsBrandPage?.total}
+          page={router.query.page}
+          callback={getBrandsWithPage}
+        />
+      </GlobalSection>
       <SeenProductWrapper seenProducts={seenProducts}>
         <GlobalSection
           isWeb={true}

@@ -3,6 +3,7 @@ import * as types from "../actions/brandsActions";
 const initialState = {
   brandsLandingPage: null,
   brandsBrandPage: null,
+  brandProducts: null,
 };
 
 const brandsReducer = (state = initialState, action) => {
@@ -17,6 +18,11 @@ const brandsReducer = (state = initialState, action) => {
       return {
         ...state,
         brandsBrandPage: action.payload,
+      };
+    case types.BRAND_PRODUCTS:
+      return {
+        ...state,
+        brandProducts: action.payload,
       };
     default:
       return { ...state };
