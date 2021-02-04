@@ -15,7 +15,10 @@ const Brands = ({ brandsLandingPage }) => {
       <BrandsContainer>
         <Link href="/brands">
           <a>
-            <h3>Бренды</h3>
+            <h3>
+              <img src="/images/icons/link.png" alt="link" className="title-link" />
+              Бренды
+            </h3>
           </a>
         </Link>
         <div className="brands-list">

@@ -2,10 +2,27 @@ import styled from "styled-components";
 import theme from "styles/theme";
 
 const BrandsContainer = styled.div`
-  h3 {
-    font-size: 24px;
-    font-weight: 800;
-  }
+    &:hover .title-link {
+        transition: all 1s ease;
+        opacity: 1;
+    }
+     h3 {
+        position: relative;
+        font-size: 24px;
+        font-weight: 800;
+        display: inline;
+      }
+    .title-link {
+        transition: all 1s ease;
+        position: absolute;
+        right: 110%;
+        top: 8px;
+        bottom: 0px;
+        width: 20px;
+        height: 20px;
+        opacity: 0;
+    }
+    
   .brands-list {
     perspective: 1000px;
     transform-style: preserve-3d;
@@ -57,4 +74,5 @@ const BrandItem = styled.div`
     }
   }
 `;
+
 export { BrandsContainer, BrandItem };

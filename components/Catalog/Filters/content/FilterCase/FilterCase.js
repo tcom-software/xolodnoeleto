@@ -39,7 +39,7 @@ const FilterCase = ({
   if (isMobile) {
     if (mobileFiltersStatus) {
       className = "show";
-    } else if (maxShowFive < 5 && isOpenFilters) {
+    } else if (maxShowFive < 8 && isOpenFilters) {
       className = "show";
     } else {
       className = "hide";
@@ -47,7 +47,7 @@ const FilterCase = ({
   } else {
     if (isOpenFilters) {
       className = "show";
-    } else if (maxShowFive < 6 && !isOpenFilters) {
+    } else if (maxShowFive < 8 && !isOpenFilters) {
       className = "show";
     } else {
       className = "hide";

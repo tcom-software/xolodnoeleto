@@ -7,6 +7,7 @@ import { loadCatalogList } from "./actions/catalogActions";
 import { getInitialReview } from "./actions/reviewActions";
 import { newProducts } from "./actions/productListAction";
 import { getBrands } from "./actions/brandsActions";
+import {getCertificates} from "./actions/generalActions";
 
 /** window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ **/
 
@@ -35,6 +36,7 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(thunkMiddleware))
 );
 
+store.dispatch(getCertificates());
 store.dispatch(getBrands());
 store.dispatch(newProducts());
 store.dispatch(loadCatalogList());

@@ -78,12 +78,16 @@ const catalogReducer = (state = initialState, action) => {
       const sortedItems = {};
 
       const pattern = [
-        "Бренды",
         "Цена",
+        "Количество подключаемых блоков",
+        "Бренды",
         "Обслуживаемая площадь",
         "Инверторный",
-        "Компрессор",
+        "Охлаждение / обогрев" ,
+        "Режим приточной вентиляции",
+        "Класс энергопотребления",
       ];
+
       for (let i = 0; i < pattern.length; i++) {
         if (filters[pattern[i]] === undefined) {
           /** Filters don't match pattern */

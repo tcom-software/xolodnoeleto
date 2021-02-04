@@ -29,7 +29,7 @@ const InstallationPhotos = ({
           {InstallationPhotos.map((e, i) => {
             return (
               <div className="item" key={i}>
-                <Image simpleWeb={e.jpg} webpWeb={e.webP} />
+                <Image simpleWeb={e.jpg} webpWeb={e.webP ? e.webP : e.jpg} />
               </div>
             );
           })}

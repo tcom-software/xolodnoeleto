@@ -25,9 +25,11 @@ module.exports = {
     addReview: "/api/review",
     getNewProducts: "/api/newProducts",
     getReviews: "/api/getReviews",
+    getCertificates: "api/getCertificates",
 
     productsUpload: "/uploads/products/products0",
     brandsUpload: "/uploads/manufacturer_logo/size800",
     seriesUpload: "/uploads/product_series/product_series0",
+    certificateUpload: "uploads/manufacturer_certificate",
   },
 };

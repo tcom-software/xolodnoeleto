@@ -3,9 +3,19 @@ import theme from "styles/theme";
 import { GlobalSection, Image } from "@famous";
 import TitleNavigation from "../TitleNavigation";
 import { CertificatesContainer } from "./styles";
+import {Loading} from "../FamousComponents";
+import getConfig from "next/config";
+
 
 const Certificates = ({ certificates, changeBigImage }) => {
-  return (
+    if(certificates === null) {
+        return <Loading />
+    }
+    const {
+        publicRuntimeConfig: { serverUrl, certificateUpload },
+    } = getConfig();
+
+    return (
     <>
       <TitleNavigation
         title="Наши Сертификаты"
@@ -18,15 +28,16 @@ const Certificates = ({ certificates, changeBigImage }) => {
         webPadding={"30px 0"}
       >
         <CertificatesContainer>
-          {Array.from(Array(certificates).keys()).map((e, i) => {
+          {certificates.map(({file_name, id, name}) => {
             return (
-              <div className={`item item${i + 1}`} key={i}>
+              <div className="item" key={id}>
                 <Image
-                  simpleWeb={`/images/certificates/simple/cert_${i + 1}.jpg`}
-                  webpWeb={`/images/certificates/optimized/cert_${i + 1}.webp`}
+                  simpleWeb={`${serverUrl}/${certificateUpload}/size300/${file_name}`}
+                  alt={name}
+                  webpWeb={``}
                   callback={() =>
                     changeBigImage(
-                      `/images/certificates/simple/cert_${i + 1}.jpg`
+                      `${serverUrl}/${certificateUpload}/original/${file_name}`
                     )
                   }
                 />

@@ -407,6 +407,19 @@ const initialState = {
     { jpg: "images/done_job/6.JPEG", webP: "images/done_job/6.webp" },
     { jpg: "images/done_job/7.JPEG", webP: "images/done_job/7.webp" },
     { jpg: "images/done_job/8.jpg", webP: "images/done_job/8.webp" },
+    { jpg: "images/done_job/9.JPEG", webP: null },
+    { jpg: "images/done_job/10.JPEG", webP: null },
+    { jpg: "images/done_job/11.JPEG", webP: null },
+    { jpg: "images/done_job/12.JPEG", webP: null },
+    { jpg: "images/done_job/13.JPEG", webP: null },
+    { jpg: "images/done_job/14.JPEG", webP: null },
+    { jpg: "images/done_job/15.JPEG", webP: null },
+    { jpg: "images/done_job/16.JPEG", webP: null },
+    { jpg: "images/done_job/17.JPEG", webP: null },
+    { jpg: "images/done_job/18.JPEG", webP: null },
+    { jpg: "images/done_job/19.JPEG", webP: null },
+    { jpg: "images/done_job/20.JPEG", webP: null },
+    { jpg: "images/done_job/21.jpeg", webP: null },
   ],
   ourClients: [
     {
@@ -485,7 +498,7 @@ const initialState = {
     { srcOne: "15.png" },
     { srcOne: "16.gif" },
   ],
-  certificates: 14,
+  certificates: null,
   paymentAndDelivery: {
     first: {
       src: "/images/payment-and-delivery/2.jpg",
@@ -547,6 +560,11 @@ const generalReducer = (state = initialState, action) => {
       return {
         ...state,
         showOurPhones: !state.showOurPhones,
+      };
+    case types.GET_CERTIFICATES:
+      return {
+        ...state,
+        certificates: action.payload,
       };
     default:
       return { ...state };
