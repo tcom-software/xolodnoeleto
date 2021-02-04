@@ -20,7 +20,15 @@ const FunctionalContainer = ({
   compareProducts,
 }) => {
   const { product, photos } = productInfo;
-  const { brand, model, series_name, price, count, articule, manufacturer_logo } = product;
+  const {
+    brand,
+    model,
+    series_name,
+    price,
+    count,
+    articule,
+    manufacturer_logo,
+  } = product;
   const comparePL = Object.keys(compareProducts).length;
 
   return (
@@ -98,7 +106,7 @@ const FunctionalContainer = ({
         </div>
         <div className="add-basket-and-brand-container">
           <Image
-            simpleWeb={`${serverUrl}${brandsUpload}${manufacturer_logo}`}
+            simpleWeb={`${serverUrl}${brandsUpload}/${manufacturer_logo}`}
             webpWeb={""}
           />
           <Button
