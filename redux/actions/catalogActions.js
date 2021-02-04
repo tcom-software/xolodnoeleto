@@ -55,7 +55,6 @@ export const getCatalogFilters = (catalogId) => {
             manufacturerCountries,
             textFilters,
           } = data;
-
           const sortedFilters = [
             ...textFilters,
             ...characteristicAttributes,
@@ -86,7 +85,6 @@ export const getCatalogFilters = (catalogId) => {
             });
           }
           sortedFilters["Бренды"] = brands;
-
           dispatch({
             type: GET_CATALOG_FILTERS,
             payload: sortedFilters,

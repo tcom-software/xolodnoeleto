@@ -30,15 +30,7 @@ const Catalog = ({
 }) => {
   const router = useRouter();
   const { catalogId } = router.query;
-
   const prevCount = usePrevious(router.query);
-
-  useEffect(() => {
-    return () => {
-      clearFiltersSelectedData();
-      clearFilters();
-    };
-  }, []);
 
   useEffect(() => {
     if (catalogId !== undefined) {
@@ -52,6 +44,9 @@ const Catalog = ({
   useEffect(() => {
     router.query.page && updateSelectedDataPage(router.query.page);
     catalogId && getCatalogFilters(catalogId);
+
+    clearFiltersSelectedData();
+    clearFilters();
 
     const checkIfUrlIsEmpty = { ...router.query };
     delete checkIfUrlIsEmpty["catalogId"];
@@ -70,6 +65,8 @@ const Catalog = ({
 
     return () => {
       router.query.catalogId && updateSelectedDataPage(1);
+      clearFilters();
+      clearFiltersSelectedData();
     };
   }, [catalogId]);
 

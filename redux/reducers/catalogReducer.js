@@ -84,8 +84,11 @@ const catalogReducer = (state = initialState, action) => {
         "Инверторный",
         "Компрессор",
       ];
-
       for (let i = 0; i < pattern.length; i++) {
+        if (filters[pattern[i]] === undefined) {
+          /** Filters don't match pattern */
+          continue;
+        }
         sortedItems[pattern[i]] = [...filters[pattern[i]]];
         delete filters[pattern[i]];
       }
@@ -323,7 +326,6 @@ const catalogReducer = (state = initialState, action) => {
         Сортировка: state.filters["Сортировка"],
         Цена: state.filters["Цена"],
       };
-      console.log(clearedFilters, "------clearedFilters");
       return {
         ...state,
         filters: { ...clearedFilters },

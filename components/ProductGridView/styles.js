@@ -74,6 +74,11 @@ const ProductContainer = styled.div`
 const Image = styled.img``;
 const Title = styled.div`
   text-align: center;
+  .model-series-center {
+    p {
+      text-align: center !important;
+    }
+  }
 `;
 const VendorCod = styled.div`
   font-weight: ${theme.body.fontBolder};

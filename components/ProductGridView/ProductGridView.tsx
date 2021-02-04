@@ -50,7 +50,7 @@ const ProductGridView = ({
             onClick={(e) => makeComped(e, "Модель")}
           >
             <CopyToClipboard text={`${brand} ${series_name || ""} ${model}`}>
-              <div>
+              <div className="model-series-center">
                 <p>{brand}</p>
                 <p>{series_name}</p>
                 <p>{model}</p>
