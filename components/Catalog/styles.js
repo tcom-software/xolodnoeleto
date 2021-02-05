@@ -4,7 +4,7 @@ import theme from "styles/theme";
 const CatalogContainer = styled.div`
   display: grid;
   grid-gap: 32px;
-  grid-template-columns: 220px 1fr;
+  grid-template-columns: 240px 1fr;
 
   .catalog {
     .title-section {

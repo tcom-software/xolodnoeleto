@@ -28,18 +28,31 @@ const FilterCase = ({
         return <RadioSelectionCase array={array} title={title} />;
         break;
       case "file.fromTo":
-        return <Between array={array} title={title} />;
+        if (title === "Габариты") {
+          return array.map((e, i) => {
+            return (
+              <div key={i}>
+                <p className="dimensions-sizes">{e.title}</p>
+                <Between array={[e]} title={e.title} />
+              </div>
+            );
+          });
+        } else {
+          return <Between array={array} title={title} />;
+        }
         break;
       default:
         return null;
     }
   };
 
+  function margeSubFilters() {}
+
   let className = "";
   if (isMobile) {
     if (mobileFiltersStatus) {
       className = "show";
-    } else if (maxShowFive < 8 && isOpenFilters) {
+    } else if (maxShowFive < 9 && isOpenFilters) {
       className = "show";
     } else {
       className = "hide";
@@ -47,7 +60,7 @@ const FilterCase = ({
   } else {
     if (isOpenFilters) {
       className = "show";
-    } else if (maxShowFive < 8 && !isOpenFilters) {
+    } else if (maxShowFive < 9 && !isOpenFilters) {
       className = "show";
     } else {
       className = "hide";

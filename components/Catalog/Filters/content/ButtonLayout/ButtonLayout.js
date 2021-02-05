@@ -19,7 +19,7 @@ const ButtonLayout = ({
         <Button
           type={"secondary"}
           color="#565656"
-          width={"199px"}
+          width={"100%"}
           height={"47px"}
           onClick={() => {
             router.push(catalogId);
@@ -38,7 +38,7 @@ const ButtonLayout = ({
         <>
           <Button
             type={"with-icon"}
-            width={"199px"}
+            width={"100%"}
             height={"47px"}
             onClick={() => filtersToggle()}
           >
@@ -47,7 +47,7 @@ const ButtonLayout = ({
           <Button
             type={"secondary"}
             color="#565656"
-            width={"199px"}
+            width={"100%"}
             height={"47px"}
             onClick={() => {
               router.push(catalogId);

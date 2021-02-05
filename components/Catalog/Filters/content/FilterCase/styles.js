@@ -33,6 +33,14 @@ const FilterCaseContainer = styled.div`
       &.hide {
         display: none;
       }
+      .dimensions-sizes {
+        color: black;
+        font-size: 10.9px;
+        margin-top: 16px;
+      }
+      .dimensions-sizes:not(:nth-of-type(1)) {
+        margin-top: 16px;
+      }
     }
     &.show {
       display: block;

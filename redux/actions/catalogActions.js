@@ -55,6 +55,7 @@ export const getCatalogFilters = (catalogId) => {
             manufacturerCountries,
             textFilters,
           } = data;
+
           const sortedFilters = [
             ...textFilters,
             ...characteristicAttributes,
@@ -62,10 +63,29 @@ export const getCatalogFilters = (catalogId) => {
             if (next["name"] === undefined) {
               next["name"] = "file.fromTo";
             }
-
             const { title } = next;
+
             if (title === null) {
               return { ...acc };
+            }
+
+            const dimensions = [
+              "Вес внешнего блока",
+              "Вес внутреннего блока",
+              "Внутреннего блока кондиционера (В)",
+              "Внутреннего блока кондиционера (Г)",
+              "Наружного блока кондиционера (В)",
+              "Наружного блока кондиционера (Г)",
+              "Наружного блока кондиционера (Ш)",
+            ];
+
+            if (dimensions.indexOf(title) != -1) {
+              return {
+                ...acc,
+                Габариты: acc["Габариты"]
+                  ? acc["Габариты"].concat([{ ...next }])
+                  : [{ ...next }],
+              };
             }
             return {
               ...acc,
@@ -84,6 +104,7 @@ export const getCatalogFilters = (catalogId) => {
               characteristic_id: "manufacturerCountries",
             });
           }
+
           sortedFilters["Бренды"] = brands;
           dispatch({
             type: GET_CATALOG_FILTERS,
