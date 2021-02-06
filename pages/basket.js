@@ -2,7 +2,7 @@ import Head from "next/head";
 import React from "react";
 import Basket from "../components/Basket";
 
-const index = () => {
+const Index = () => {
   return (
     <div>
       <Head>

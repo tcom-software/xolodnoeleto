@@ -31,6 +31,9 @@ const FunctionalContainer = ({
   } = product;
   const comparePL = Object.keys(compareProducts).length;
 
+  const madePrice = React.useMemo(() => makePrice(price), [price]);
+  const madePhotos = React.useMemo(() => adsImgCollection(photos), [photos]);
+
   return (
     <ProductInformationContainer>
       <div className="level-one">
@@ -75,7 +78,7 @@ const FunctionalContainer = ({
               addToFavorite({
                 ...product,
                 id: product.articule,
-                ...adsImgCollection(photos),
+                ...madePhotos,
               });
               setNotificationMessage({
                 message: "Товар добавлен в избранное",
@@ -97,7 +100,7 @@ const FunctionalContainer = ({
             <p>{series_name}</p>
             <p>{model}</p>
           </div>
-          <p className="price">{makePrice(price)}</p>
+          <p className="price">{madePrice}</p>
         </div>
       </div>
       <div className="level-three">
@@ -117,7 +120,7 @@ const FunctionalContainer = ({
               addBasket({
                 ...product,
                 id: product.articule,
-                ...adsImgCollection(photos),
+                ...madePhotos,
               });
               setNotificationMessage({
                 message: "Товар добавлен в корзину",
@@ -147,7 +150,7 @@ const FunctionalContainer = ({
             <p>{brand}</p>
             <p>{model}</p>
           </div>
-          <p className="price">{makePrice(price)}</p>
+          <p className="price">{madePrice}</p>
         </div>
         <Button
           type="primary"
@@ -157,7 +160,7 @@ const FunctionalContainer = ({
             addBasket({
               ...product,
               id: product.articule,
-              ...adsImgCollection(photos),
+              ...madePhotos,
             });
             setNotificationMessage({
               message: "Товар добавлен в корзину",
