@@ -1,30 +1,12 @@
-import React from "react";
+import React, { useMemo } from "react";
 import Link from "next/link";
-import { connect } from "react-redux";
 import { Button, SvgIcon, ProductImage } from "@famous";
 import { IncDec, makeImagePath, makePrice } from "@utils";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 /**
  *  This Component give styled from parent component
  * */
-
-import {
-  addBasket,
-  changeOrderStep,
-  decrementBasketCount,
-  deleteBasketItem,
-  incrementBasketCount,
-  manipulationSelectedData,
-  updateStepsResult,
-} from "redux/actions/basketActions";
-
-import {
-  decrementFavoriteCount,
-  deleteFavoriteItem,
-  incrementFavoriteCount,
-} from "redux/actions/favoriteActions";
-import { CopyToClipboard } from "react-copy-to-clipboard";
-import { setNotificationMessage } from "../../redux/actions/generalActions";
 
 const WebCase = ({
   header,
@@ -34,15 +16,11 @@ const WebCase = ({
   basketButton,
   changeOrderStep,
   updateStepsResult,
-
   functionalType,
-
   addBasket,
-
   incrementBasket,
   decrementBasket,
   deleteBasketItem,
-
   incrementFavorite,
   decrementFavorite,
   deleteFavoriteItem,
@@ -195,25 +173,4 @@ const WebCase = ({
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  changeOrderStep: (step) => dispatch(changeOrderStep(step)),
-  updateStepsResult: (data) => dispatch(updateStepsResult(data)),
-
-  addBasket: (product) => dispatch(addBasket(product)),
-
-  incrementBasket: (id) => dispatch(incrementBasketCount(id)),
-  decrementBasket: (id) => dispatch(decrementBasketCount(id)),
-  deleteBasketItem: (id) => dispatch(deleteBasketItem(id)),
-  incrementFavorite: (id) => dispatch(incrementFavoriteCount(id)),
-  decrementFavorite: (id) => dispatch(decrementFavoriteCount(id)),
-  deleteFavoriteItem: (id) => dispatch(deleteFavoriteItem(id)),
-  manipulationSelectedData: (data) => dispatch(manipulationSelectedData(data)),
-  setNotificationMessage: (message) =>
-    dispatch(setNotificationMessage(message)),
-});
-
-const mapStateToProps = ({ basket: { stepState } }) => ({
-  stepState,
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(WebCase);
+export default WebCase;

@@ -1,8 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import WebCase from "../ProductListView/WebCase";
-import MobileCase from "../ProductListView/MobileCase";
 import getBasketStepInfo from "./getBasketStepInfo";
+import { MobileCase, WebCase } from "../ProductListView";
 import { BasketBuyForm, DeliveryOrPayment, StepInformation } from "./content";
 
 const BasketStepsCases = ({

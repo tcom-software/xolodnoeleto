@@ -1,13 +1,7 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import theme from "styles/theme";
 
 const ProductContainer = styled.div``;
-
-const Image = styled.img``;
-const VendorCod = styled.div``;
-const Stars = styled.div``;
-const Price = styled.div``;
-const Tr = styled.tr``;
 
 const Container = styled.div`
   display: flex;
@@ -65,13 +59,8 @@ const BorderTd = styled.td`
 `;
 
 export {
-  Image,
   Title,
-  Stars,
-  Price,
-  VendorCod,
   ProductContainer,
-  Tr,
   BorderTd,
   Container,
   Img,
