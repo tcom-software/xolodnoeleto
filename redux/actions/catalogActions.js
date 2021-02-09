@@ -56,37 +56,19 @@ export const getCatalogFilters = (catalogId) => {
             textFilters,
           } = data;
 
+          // Габыриты
           const sortedFilters = [
-            ...textFilters,
+            ...Object.values(textFilters),
             ...characteristicAttributes,
           ].reduce((acc, next, i) => {
             if (next["name"] === undefined) {
               next["name"] = "file.fromTo";
             }
             const { title } = next;
-
             if (title === null) {
               return { ...acc };
             }
 
-            const dimensions = [
-              "Вес внешнего блока",
-              "Вес внутреннего блока",
-              "Внутреннего блока кондиционера (В)",
-              "Внутреннего блока кондиционера (Г)",
-              "Наружного блока кондиционера (В)",
-              "Наружного блока кондиционера (Г)",
-              "Наружного блока кондиционера (Ш)",
-            ];
-
-            if (dimensions.indexOf(title) != -1) {
-              return {
-                ...acc,
-                Габариты: acc["Габариты"]
-                  ? acc["Габариты"].concat([{ ...next }])
-                  : [{ ...next }],
-              };
-            }
             return {
               ...acc,
               [title]: acc[title]
@@ -106,6 +88,7 @@ export const getCatalogFilters = (catalogId) => {
           }
 
           sortedFilters["Бренды"] = brands;
+
           dispatch({
             type: GET_CATALOG_FILTERS,
             payload: sortedFilters,

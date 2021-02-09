@@ -29,9 +29,9 @@ const FilterCase = ({
         break;
       case "file.fromTo":
         if (title === "Габариты") {
-          return array.map((e, i) => {
+          return array[0].filters.map((e, i) => {
             return (
-              <div key={i}>
+              <div key={e.id}>
                 <p className="dimensions-sizes">{e.title}</p>
                 <Between array={[e]} title={e.title} />
               </div>
@@ -45,8 +45,6 @@ const FilterCase = ({
         return null;
     }
   };
-
-  function margeSubFilters() {}
 
   let className = "";
   if (isMobile) {
