@@ -85,7 +85,7 @@ export const getCatalogFilters = (catalogId, selectedData = null) => {
             brands.push({
               ...value,
               name: "file.select",
-              name_ru: value.logo.slice(0, -4),
+              name_ru: value.brand,
               characteristic_id: "manufacturerCountries",
             });
           }
