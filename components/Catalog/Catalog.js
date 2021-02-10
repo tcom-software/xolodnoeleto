@@ -44,11 +44,14 @@ const Catalog = ({
   useEffect(() => {
     const cloneSelectedData = JSON.parse(JSON.stringify(selectedData));
     delete cloneSelectedData?.page;
-    delete cloneSelectedData?.manufacturerCountries;
     catalogId &&
       cloneSelectedData &&
       getCatalogFilters(catalogId, cloneSelectedData);
-  }, [selectedData?.checkboxes, selectedData?.fromTo]);
+  }, [
+    selectedData?.checkboxes,
+    selectedData?.fromTo,
+    selectedData?.manufacturerCountries,
+  ]);
 
   useEffect(() => {
     router.query.page && updateSelectedDataPage(router.query.page);
