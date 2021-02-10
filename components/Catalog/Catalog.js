@@ -8,6 +8,7 @@ import { CatalogContainer } from "./styles";
 import TitleNavigation from "../TitleNavigation";
 import { GlobalSection, SeenProductWrapper } from "@famous";
 import { createUrlFromObject, createObjectFromUrl } from "@utils";
+import ProductGridView from "../ProductGridView";
 
 function usePrevious(value) {
   const ref = useRef();
@@ -18,6 +19,7 @@ function usePrevious(value) {
 }
 
 const Catalog = ({
+  products,
   selectedData,
   getCatalogFilters,
   seenProducts,
@@ -120,7 +122,13 @@ const Catalog = ({
       >
         <CatalogContainer>
           <Filters />
-          <Products />
+          <Products>
+            <div className="products">
+              {Object.values(products).map((item, index) => {
+                return <ProductGridView key={index} item={item} />;
+              })}
+            </div>
+          </Products>
         </CatalogContainer>
       </GlobalSection>
       <SeenProductWrapper seenProducts={seenProducts}>

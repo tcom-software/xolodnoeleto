@@ -13,12 +13,10 @@ const Products = ({
   selectedData,
   updateSelectedOrderBy,
   updateSelectedDataPage,
+  children,
 }) => {
   const router = useRouter();
 
-  if (productsLoading) {
-    return <Loading />;
-  }
   if (products.length === 0) {
     return <DataEmpty title={"Нет продуктов"} />;
   }
@@ -49,13 +47,7 @@ const Products = ({
         page={router.query.page}
         callback={updateSelectedDataPage}
       />
-
-      <div className="products">
-        {Object.values(products).map((item, index) => {
-          return <ProductGridView key={index} item={item} />;
-        })}
-      </div>
-
+      {productsLoading ? <Loading /> : children}
       <Pagination
         total={total}
         page={router.query.page}
