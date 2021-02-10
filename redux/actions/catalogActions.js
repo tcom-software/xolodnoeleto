@@ -44,10 +44,13 @@ export const getCatalogProducts = (catalogId, object = {}) => {
   };
 };
 
-export const getCatalogFilters = (catalogId) => {
+export const getCatalogFilters = (catalogId, selectedData = null) => {
   return (dispatch) => {
     axiosInstance
-      .get(`${getFilters}/${catalogId}`)
+      .post(
+        `${getFilters}/${catalogId}`,
+        JSON.stringify(selectedData ? selectedData : {})
+      )
       .then(({ data }) => {
         if (data) {
           const {

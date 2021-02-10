@@ -28,7 +28,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(getCatalogProductLoadingTrigger(boolean)),
   updateSelectedDataFromUrl: (data) =>
     dispatch(updateSelectedDataFromUrl(data)),
-  getCatalogFilters: (catalogId) => dispatch(getCatalogFilters(catalogId)),
+  getCatalogFilters: (catalogId, selectedData) =>
+    dispatch(getCatalogFilters(catalogId, selectedData)),
   clearFiltersSelectedData: () => dispatch(clearFiltersSelectedData()),
   clearFilters: () => dispatch(clearFilters()),
 });
