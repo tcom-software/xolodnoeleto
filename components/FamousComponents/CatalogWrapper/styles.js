@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import theme from "styles/theme";
 
-const CatalogContainer = styled.div`
+const CatalogWrapperContainer = styled.div`
   display: grid;
   grid-gap: 32px;
   grid-template-columns: 240px 1fr;
@@ -52,4 +52,4 @@ const CatalogContainer = styled.div`
   }
 `;
 
-export { CatalogContainer };
+export { CatalogWrapperContainer };

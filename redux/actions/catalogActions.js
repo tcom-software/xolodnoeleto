@@ -15,7 +15,7 @@ export const CLEAR_SELECTED_FILTERS_DATA = "CLEAR_SELECTED_FILTERS_DATA";
 export const CHANGE_MOBILE_FILTERS_STATUS = "CHANGE_MOBILE_FILTERS_STATUS";
 export const UPDATE_SELECTED_DATA_FROM_URL = "UPDATE_SELECTED_DATA_FROM_URL";
 
-import axiosInstance from "utils/axiosInstance";
+import { axiosInstance, makeFilters } from "@utils";
 import getConfig from "next/config";
 
 const {
@@ -34,67 +34,16 @@ export const getCatalogProducts = (catalogId, object = {}) => {
       .post(`${catalogProducts}/${catalogId}`, JSON.stringify({ ...object }))
       .then(({ data }) => {
         if (data) {
+          const { filters, products, products_info } = data;
+
           dispatch({
             type: GET_CATALOG_PRODUCTS,
-            payload: data,
+            payload: { products, products_info },
           });
-        }
-      })
-      .catch((err) => console.log(err));
-  };
-};
-
-export const getCatalogFilters = (catalogId, selectedData = null) => {
-  return (dispatch) => {
-    axiosInstance
-      .post(
-        `${getFilters}/${catalogId}`,
-        JSON.stringify(selectedData ? selectedData : {})
-      )
-      .then(({ data }) => {
-        if (data) {
-          const {
-            characteristicAttributes,
-            manufacturerCountries,
-            textFilters,
-          } = data;
-
-          // Габыриты
-          const sortedFilters = [
-            ...Object.values(textFilters),
-            ...characteristicAttributes,
-          ].reduce((acc, next, i) => {
-            if (next["name"] === undefined) {
-              next["name"] = "file.fromTo";
-            }
-            const { title } = next;
-            if (title === null) {
-              return { ...acc };
-            }
-
-            return {
-              ...acc,
-              [title]: acc[title]
-                ? acc[title].concat([{ ...next }])
-                : [{ ...next }],
-            };
-          }, {});
-
-          let brands = [];
-          for (let value of manufacturerCountries) {
-            brands.push({
-              ...value,
-              name: "file.select",
-              name_ru: value.brand,
-              characteristic_id: "manufacturerCountries",
-            });
-          }
-
-          sortedFilters["Бренды"] = brands;
 
           dispatch({
             type: GET_CATALOG_FILTERS,
-            payload: sortedFilters,
+            payload: makeFilters(filters),
           });
         }
       })

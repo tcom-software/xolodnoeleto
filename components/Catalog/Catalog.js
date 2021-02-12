@@ -1,16 +1,10 @@
 import React, { useEffect, useRef } from "react";
-import Filters from "./Filters";
-import theme from "styles/theme";
-import Products from "./Products";
 import { useRouter } from "next/router";
-import ProductList from "../ProductsList";
-import { CatalogContainer } from "./styles";
-import TitleNavigation from "../TitleNavigation";
-import { GlobalSection, SeenProductWrapper } from "@famous";
-import { createUrlFromObject, createObjectFromUrl } from "@utils";
 import ProductGridView from "../ProductGridView";
+import CatalogWrapper from "../FamousComponents/CatalogWrapper";
+import { createUrlFromObject, createObjectFromUrl, doJSON } from "@utils";
 
-function usePrevious(value) {
+function usePreviousQuery(value) {
   const ref = useRef();
   useEffect(() => {
     ref.current = value;
@@ -21,74 +15,74 @@ function usePrevious(value) {
 const Catalog = ({
   products,
   selectedData,
-  getCatalogFilters,
-  seenProducts,
-  updateSelectedDataPage,
-  getCatalogProducts,
-  getCatalogProductLoadingTrigger,
-  updateSelectedDataFromUrl,
-  clearFiltersSelectedData,
   clearFilters,
+  getCatalogProducts,
+  updateSelectedDataPage,
+  clearFiltersSelectedData,
+  updateSelectedDataFromUrl,
+  getCatalogProductLoadingTrigger,
 }) => {
   const router = useRouter();
-  const { catalogId } = router.query;
-  const prevCount = usePrevious(router.query);
+  const { catalogId, brandId, page } = router.query;
+  const prevQuery = usePreviousQuery(router.query);
 
   useEffect(() => {
-    if (catalogId !== undefined) {
-      const url = createUrlFromObject(selectedData, catalogId);
+    if (catalogId || brandId) {
+      const url = createUrlFromObject(selectedData, catalogId || brandId);
       if (url.indexOf("?") != -1 && url.indexOf("=") != -1) {
         router.push(url);
       }
     }
   }, [selectedData]);
 
-  useEffect(() => {
-    const cloneSelectedData = JSON.parse(JSON.stringify(selectedData));
-    delete cloneSelectedData?.page;
-    catalogId &&
-      cloneSelectedData &&
-      getCatalogFilters(catalogId, cloneSelectedData);
-  }, [
-    selectedData?.checkboxes,
-    selectedData?.fromTo,
-    selectedData?.manufacturerCountries,
-  ]);
+  // useEffect(() => {
+  //   const cloneSelectedData = JSON.parse(JSON.stringify(selectedData));
+  //   delete cloneSelectedData?.page;
+  //   catalogId &&
+  //     cloneSelectedData &&
+  //     getCatalogFilters(catalogId, cloneSelectedData);
+  // }, [
+  //   selectedData?.checkboxes,
+  //   selectedData?.fromTo,
+  //   selectedData?.manufacturerCountries,
+  // ]);
+
+  // useEffect(() => {
+  //   page && updateSelectedDataPage(page);
+  //
+  //   clearFiltersSelectedData();
+  //   clearFilters();
+  //
+  //   const checkIfUrlIsEmpty = { ...router.query };
+  //   delete checkIfUrlIsEmpty["catalogId"];
+  //
+  //   const checkIfSelectedDataHasCashIfUrlWasCleared = { ...selectedData };
+  //   delete checkIfSelectedDataHasCashIfUrlWasCleared["page"];
+  //
+  //   if (
+  //     !!checkIfUrlIsEmpty &&
+  //     JSON.stringify(checkIfSelectedDataHasCashIfUrlWasCleared) !==
+  //       JSON.stringify({}) &&
+  //     JSON.stringify(checkIfUrlIsEmpty) === JSON.stringify(prevSelectedData)
+  //   ) {
+  //     clearFiltersSelectedData();
+  //   }
+  //
+  //   return () => {
+  //     router.query.catalogId && updateSelectedDataPage(1);
+  //     clearFilters();
+  //     clearFiltersSelectedData();
+  //   };
+  // }, [catalogId]);
 
   useEffect(() => {
-    router.query.page && updateSelectedDataPage(router.query.page);
-    catalogId && getCatalogFilters(catalogId);
-
-    clearFiltersSelectedData();
-    clearFilters();
-
-    const checkIfUrlIsEmpty = { ...router.query };
-    delete checkIfUrlIsEmpty["catalogId"];
-
-    const checkIfSelectedDataHasCashIfUrlWasCleared = { ...selectedData };
-    delete checkIfSelectedDataHasCashIfUrlWasCleared["page"];
-
-    if (
-      !!checkIfUrlIsEmpty &&
-      JSON.stringify(checkIfSelectedDataHasCashIfUrlWasCleared) !==
-        JSON.stringify({}) &&
-      JSON.stringify(checkIfUrlIsEmpty) === JSON.stringify(prevCount)
-    ) {
-      clearFiltersSelectedData();
-    }
-
-    return () => {
-      router.query.catalogId && updateSelectedDataPage(1);
-      clearFilters();
-      clearFiltersSelectedData();
-    };
-  }, [catalogId]);
-
-  useEffect(() => {
-    let object;
+    let object = {};
 
     const selectedDataLength = Object.keys(selectedData).length;
-    if (selectedDataLength === 0) {
+    if (
+      selectedDataLength === 0 ||
+      (selectedDataLength === 1 && selectedData.page)
+    ) {
       object = createObjectFromUrl(router.query);
     } else {
       /**
@@ -103,49 +97,24 @@ const Catalog = ({
     }
 
     getCatalogProductLoadingTrigger(true);
-    if (selectedDataLength === 0 && Object.keys(object).length > 0) {
-      updateSelectedDataFromUrl(object);
-    }
+    updateSelectedDataFromUrl(object);
 
-    catalogId && getCatalogProducts(catalogId, { ...object });
+    if (doJSON(prevQuery) != doJSON(router.query)) {
+      if (prevQuery?.page === router.query?.page) updateSelectedDataPage(1);
+
+      catalogId && getCatalogProducts(catalogId, { ...object });
+      brandId && getCatalogProducts(page, brandId, { ...object });
+    }
   }, [router.query]);
 
   return (
-    <>
-      <TitleNavigation title="Каталог" currentPage="Каталог" />
-      <GlobalSection
-        isWeb={true}
-        isMobile={true}
-        webBackground={theme.body.secondBackground}
-        mobileBackground={theme.body.background}
-        mobilePadding={"10px 8px"}
-      >
-        <CatalogContainer>
-          <Filters />
-          <Products>
-            <div className="products">
-              {Object.values(products).map((item, index) => {
-                return <ProductGridView key={index} item={item} />;
-              })}
-            </div>
-          </Products>
-        </CatalogContainer>
-      </GlobalSection>
-      <SeenProductWrapper seenProducts={seenProducts}>
-        <GlobalSection
-          isWeb={true}
-          isMobile={true}
-          webPadding={"35px 0px"}
-          webBackground={theme.body.background}
-        >
-          <ProductList
-            title={"ВЫ НЕДАВНО СМОТРЕЛИ"}
-            mobileType={"scroll"}
-            products={seenProducts}
-          />
-        </GlobalSection>
-      </SeenProductWrapper>
-    </>
+    <CatalogWrapper>
+      <div className="products">
+        {Object.values(products).map((item, index) => {
+          return <ProductGridView key={index} item={item} />;
+        })}
+      </div>
+    </CatalogWrapper>
   );
 };
 

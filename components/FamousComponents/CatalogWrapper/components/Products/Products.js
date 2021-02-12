@@ -1,15 +1,12 @@
 import React from "react";
 import { Loading } from "@famous";
 import { useRouter } from "next/router";
-import Pagination from "../../Pagination";
-import { DataEmpty } from "../../FamousComponents";
-import ProductGridView from "../../ProductGridView/index";
+import Pagination from "../../../../Pagination";
 
 const Products = ({
   productsLoading,
   isMobile,
   total,
-  products,
   selectedData,
   updateSelectedOrderBy,
   updateSelectedDataPage,
@@ -17,9 +14,6 @@ const Products = ({
 }) => {
   const router = useRouter();
 
-  if (products.length === 0) {
-    return <DataEmpty title={"Нет продуктов"} />;
-  }
   return (
     <div className="catalog">
       {isMobile ? (

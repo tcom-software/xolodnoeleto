@@ -1,6 +1,7 @@
 export const LANDING_PAGE = "INITIAL_PAGE";
-export const BRANDS_WITH_PAGE = "BRANDS_WITH_PAGE";
 export const BRAND_PRODUCTS = "BRAND_PRODUCTS";
+export const BRANDS_WITH_PAGE = "BRANDS_WITH_PAGE";
+export const GET_CATALOG_PRODUCTS = "GET_CATALOG_PRODUCTS";
 
 import getConfig from "next/config";
 import { axiosInstance } from "../../utils";
@@ -24,7 +25,6 @@ const getBrands = () => {
 };
 
 const getBrandProducts = (page = 1, brandId, object = {}) => {
-  console.log(object);
   return (dispatch) => {
     axiosInstance
       .post(
@@ -33,7 +33,7 @@ const getBrandProducts = (page = 1, brandId, object = {}) => {
       )
       .then(({ data }) => {
         dispatch({
-          type: BRAND_PRODUCTS,
+          type: GET_CATALOG_PRODUCTS,
           payload: data,
         });
       })

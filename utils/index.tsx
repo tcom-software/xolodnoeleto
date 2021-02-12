@@ -1,6 +1,8 @@
 export { default as Scroll } from "./Scroll";
 export { default as IncDec } from "./IncDec";
+export { default as doJSON } from "./jsonTools";
 export { default as makePrice } from "./makePrice";
+export { default as makeFilters } from "./makeFilters";
 export { default as basketMoveTo } from "./basketMoveTo";
 export { default as axiosInstance } from "./axiosInstance";
 export { default as makeImagePath } from "./makeImagePath";

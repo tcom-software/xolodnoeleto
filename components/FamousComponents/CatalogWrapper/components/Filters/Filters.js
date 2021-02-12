@@ -6,9 +6,7 @@ import ButtonLayout from "./content/ButtonLayout";
 import MobileFiltersToggleButton from "./content/MobileFiltersToggleButton";
 
 const Filters = ({ isMobile, filters, isOpenFilters, filtersToggle }) => {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  };
+  const handleSubmit = (event) => event.preventDefault();
 
   return (
     <FiltersContainer isOpen={isOpenFilters}>

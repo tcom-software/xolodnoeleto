@@ -1,6 +1,6 @@
-import Head from "next/head";
 import React from "react";
-import BrandProducts from "../../components/BrandProducts";
+import Head from "next/head";
+import Catalog from "../../components/Catalog";
 
 const Index = () => {
   return (
@@ -8,7 +8,7 @@ const Index = () => {
       <Head>
         <title>Бренды products</title>
       </Head>
-      <BrandProducts />
+      <Catalog />
     </>
   );
 };
