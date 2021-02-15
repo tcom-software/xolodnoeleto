@@ -226,7 +226,6 @@ const catalogReducer = (state = initialState, action) => {
             }
 
             if(Object.keys(object).length === 0) {
-              console.log(111111)
               const newObj = JSON.parse(JSON.stringify(state.selectedData))
               delete newObj["checkboxes"]
 
