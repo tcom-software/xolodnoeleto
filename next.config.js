@@ -14,6 +14,8 @@ module.exports = {
     serverUrl: "https://back.xolodnoeleto.ru",
     // serverUrl: "http://back.projects-backend.ru",
 
+
+
     catalogProducts: "/api/getProducts",
     catalogCategories: "/api/getCategories",
     getProduct: "/api/getProduct",
