@@ -40,7 +40,7 @@ export default class MyDocument extends Document {
         <Head>
           <meta charSet="utf-8" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-          <meta property="og:url" content="https://www.laitklimat.ru/" />
+          <meta property="og:url" content="https://www.xolodnoeleto.ru/" />
           <link
             rel="stylesheet"
             type="text/css"

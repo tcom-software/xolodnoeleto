@@ -32,7 +32,7 @@ export const saveState = (state) => {
 
 const store = createStore(
   rootReducer,
-  // loadState(),
+  loadState(),
   composeWithDevTools(applyMiddleware(thunkMiddleware))
 );
 
@@ -43,6 +43,6 @@ store.dispatch(loadCatalogList());
 store.dispatch(getInitialReview());
 store.dispatch(basketInitialState());
 
-// store.subscribe(() => saveState(store.getState()));
+store.subscribe(() => saveState(store.getState()));
 
 export default store;

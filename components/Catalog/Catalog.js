@@ -16,6 +16,7 @@ const Catalog = ({
   products,
   selectedData,
   clearFilters,
+  getBrandProducts,
   getCatalogProducts,
   updateSelectedDataPage,
   clearFiltersSelectedData,
@@ -96,14 +97,19 @@ const Catalog = ({
       object = selectedData;
     }
 
-    getCatalogProductLoadingTrigger(true);
-    updateSelectedDataFromUrl(object);
-
     if (doJSON(prevQuery) != doJSON(router.query)) {
       if (prevQuery?.page === router.query?.page) updateSelectedDataPage(1);
 
+      getCatalogProductLoadingTrigger(true);
+      updateSelectedDataFromUrl(object);
+
       catalogId && getCatalogProducts(catalogId, { ...object });
-      brandId && getCatalogProducts(page, brandId, { ...object });
+      brandId &&
+        getBrandProducts(
+          prevQuery?.page === router.query?.page ? 1 : page,
+          brandId,
+          { ...object }
+        );
     }
   }, [router.query]);
 
