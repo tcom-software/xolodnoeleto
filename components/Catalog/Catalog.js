@@ -36,45 +36,17 @@ const Catalog = ({
     }
   }, [selectedData]);
 
-  // useEffect(() => {
-  //   const cloneSelectedData = JSON.parse(JSON.stringify(selectedData));
-  //   delete cloneSelectedData?.page;
-  //   catalogId &&
-  //     cloneSelectedData &&
-  //     getCatalogFilters(catalogId, cloneSelectedData);
-  // }, [
-  //   selectedData?.checkboxes,
-  //   selectedData?.fromTo,
-  //   selectedData?.manufacturerCountries,
-  // ]);
+  useEffect(() => {
+    page && updateSelectedDataPage(page);
+    clearFiltersSelectedData();
+    clearFilters();
 
-  // useEffect(() => {
-  //   page && updateSelectedDataPage(page);
-  //
-  //   clearFiltersSelectedData();
-  //   clearFilters();
-  //
-  //   const checkIfUrlIsEmpty = { ...router.query };
-  //   delete checkIfUrlIsEmpty["catalogId"];
-  //
-  //   const checkIfSelectedDataHasCashIfUrlWasCleared = { ...selectedData };
-  //   delete checkIfSelectedDataHasCashIfUrlWasCleared["page"];
-  //
-  //   if (
-  //     !!checkIfUrlIsEmpty &&
-  //     JSON.stringify(checkIfSelectedDataHasCashIfUrlWasCleared) !==
-  //       JSON.stringify({}) &&
-  //     JSON.stringify(checkIfUrlIsEmpty) === JSON.stringify(prevSelectedData)
-  //   ) {
-  //     clearFiltersSelectedData();
-  //   }
-  //
-  //   return () => {
-  //     router.query.catalogId && updateSelectedDataPage(1);
-  //     clearFilters();
-  //     clearFiltersSelectedData();
-  //   };
-  // }, [catalogId]);
+    return () => {
+      catalogId || brandId && updateSelectedDataPage(1);
+      clearFilters();
+      clearFiltersSelectedData();
+    };
+  }, [catalogId , brandId]);
 
   useEffect(() => {
     let object = {};
@@ -101,7 +73,9 @@ const Catalog = ({
       if (prevQuery?.page === router.query?.page) updateSelectedDataPage(1);
 
       getCatalogProductLoadingTrigger(true);
-      updateSelectedDataFromUrl(object);
+      if (selectedDataLength === 0 && Object.keys(object).length > 0) {
+        updateSelectedDataFromUrl(object);
+      }
 
       catalogId && getCatalogProducts(catalogId, { ...object });
       brandId &&
