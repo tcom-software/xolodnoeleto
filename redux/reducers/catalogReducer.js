@@ -1,5 +1,4 @@
 import * as types from "../actions/catalogActions";
-import { CLEAR_FILTERS } from "../actions/catalogActions";
 
 const initialState = {
   productsLoading: true,
@@ -213,7 +212,6 @@ const catalogReducer = (state = initialState, action) => {
         /** there is checkboxes key in object*/
         if (checkboxes[parent_id]) {
           /** there is parent id of selected value*/
-
           if (checkboxes[parent_id].includes(id)) {
             /** there is id of selected value*/
             const object = {
@@ -227,6 +225,16 @@ const catalogReducer = (state = initialState, action) => {
               }
             }
 
+            if(Object.keys(object).length === 0) {
+              console.log(111111)
+              const newObj = JSON.parse(JSON.stringify(state.selectedData))
+              delete newObj["checkboxes"]
+
+              return {
+                ...state,
+                selectedData: {...newObj}
+              };
+            }
             return {
               ...state,
               selectedData: {
@@ -237,7 +245,6 @@ const catalogReducer = (state = initialState, action) => {
             };
           } else {
             /** there isn't id of selected value*/
-
             return {
               ...state,
               selectedData: {
