@@ -108,7 +108,7 @@ const initialState = {
   inputsValidationData: {
     fullName: {
       errorMessage: "Пожалуйста заполните полное имя",
-      validation: "^[a-zA-Zа-яА-яа-яА-я ]{2,15}$",
+      validation: "^[a-zA-Zа-яА-яа-яА-я ]{2,40}$",
       placeholder: "Иванович Иван Иванов",
     },
     name: {
@@ -118,7 +118,7 @@ const initialState = {
     },
     surname: {
       errorMessage: "Пожалуйста заполните фамилию",
-      validation: "^[a-zA-Zа-яА-я]{2,20}$",
+      validation: "^[a-zA-Zа-яА-я]{2,120}$",
       placeholder: "Фамилия",
     },
     phone: {
