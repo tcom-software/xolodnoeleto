@@ -14,8 +14,7 @@ const Compare = ({ seenProducts, compareProducts }) => {
   const array = [...Array(3 - products.length == 0 ? 0 : 1)];
 
   const compareInformation = CreateCompareInformation(compareProducts);
-
-  return (
+    return (
     <>
       <TitleNavigation
         title="Сравнение товаров"
