@@ -28,9 +28,10 @@ const mapStateToProps = ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  actionSearch: (searchWord, page) => dispatch(actionSearch(searchWord, page)),
+  actionSearch: (searchWord, page, catalogId) => dispatch(actionSearch(searchWord, page, catalogId)),
   whereWasSearchAction: (where) => dispatch(whereWasSearchAction(where)),
   searchInputValueAction: (value) => dispatch(searchInputValueAction(value)),
   setNewRefForSearch: (ref) => dispatch(setNewRefForSearch(ref)),
 });
+
 export default connect(mapStateToProps, mapDispatchToProps)(SearchResult);

@@ -3,6 +3,8 @@ import Cases from "./Cases";
 import { Input, Loading } from "@famous";
 import { SearchContainer } from "./styles";
 import { SearchCon } from "../../Layout/Header/styles";
+import { useRouter } from "next/router";
+
 
 const SearchResult = ({
   total,
@@ -21,6 +23,8 @@ const SearchResult = ({
   refForSearch,
   setNewRefForSearch,
 }) => {
+  const { query: { catalogId } } = useRouter();
+
   const heightRef = useRef(null);
   const [page, setPage] = useState(1);
   const CustomCases = () => {
@@ -65,12 +69,11 @@ const SearchResult = ({
 
   useEffect(() => {
     const time = setTimeout(() => {
-      searchInputValue && actionSearch(searchInputValue);
+      searchInputValue && actionSearch(searchInputValue, 1, catalogId);
     }, 500);
 
     return () => {
       clearTimeout(time);
-      actionSearch("");
     };
   }, [searchInputValue]);
 

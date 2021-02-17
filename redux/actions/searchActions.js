@@ -24,7 +24,7 @@ export const searchNewLoading = (boolean) => ({
   payload: boolean,
 });
 
-export const actionSearch = (searchWord, page = 1) => {
+export const actionSearch = (searchWord, page = 1, catalogId = null) => {
   return (dispatch) => {
     if (searchWord === "") {
       dispatch({
@@ -34,32 +34,36 @@ export const actionSearch = (searchWord, page = 1) => {
           total: 1,
         },
       });
-      return false;
-    }
-    {
-      page === 1
-        ? dispatch(searchLoading(true))
-        : dispatch(searchNewLoading(true));
-    }
+    } else {
+      if(page === 1) {
+        dispatch(searchLoading(true))
+      } else {
+        dispatch(searchNewLoading(true))
+      }
+      let catalogIdStr = ""
+      if(catalogId != null) {
+        catalogIdStr = '/' + catalogId;
+      }
 
-    axiosInstance
-      .post(`${searchProduct}?page=${page}`, { search: searchWord, page })
-      .then(({ data }) => {
-        if (data) {
-          {
-            page === 1
-              ? dispatch({
+      axiosInstance
+          .post(`${searchProduct}${catalogIdStr}?page=${page}`, { search: searchWord, page })
+          .then(({ data }) => {
+            if (data) {
+              if(page === 1) {
+                dispatch({
                   type: SEARCH,
                   payload: data,
                 })
-              : dispatch({
+              } else {
+                dispatch({
                   type: NEW_SEARCH,
                   payload: data,
-                });
-          }
-        }
-      })
-      .catch((err) => console.log(err));
+                })
+              }
+            }
+          })
+          .catch((err) => console.log(err));
+    }
   };
 };
 
