@@ -128,12 +128,12 @@ const initialState = {
     },
     address: {
       errorMessage: "Полный Адрес, Город, Улица",
-      validation: "^[a-zA-Zа-яА-я0-9 ]{2,30}$",
+      validation: "^[a-zA-Zа-яА-я0-9 .,=+!@#$%&*^()]{2,30}$",
       placeholder: "Адрес...",
     },
     deliveryAddress: {
       errorMessage: "Пожалуйста, напишите полный адрес",
-      validation: "^[a-zA-Zа-яА-я0-9 ]{2,30}$",
+      validation: "^[a-zA-Zа-яА-я0-9 .,=+!@#$%&*^()]{2,30}$",
       placeholder: "Адрес...",
     },
     commentByOrder: {
@@ -167,13 +167,12 @@ const initialState = {
     },
     message: {
       errorMessage: "Пожалуйста заполните Сообщение",
-      validation: "^[a-zA-Zа-яА-я0-9 ]*$",
+      validation: "^[a-zA-Zа-яА-я0-9 .,=+!@#$%&*^()]*$",
       placeholder: "Сообщение",
     },
     email: {
       errorMessage: "Неверный почтовый ящик\n",
       validation: "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$",
-
       placeholder: "IvanIvanov@mail.ru",
     },
     rating: {
