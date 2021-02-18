@@ -47,6 +47,7 @@ const initialState = {
   secondLevelFiltersArray: [],
   selectedData: {},
   mobileFiltersStatus: false,
+  lastLevelCatalogItems: [],
 };
 
 const catalogReducer = (state = initialState, action) => {
@@ -55,6 +56,7 @@ const catalogReducer = (state = initialState, action) => {
       return {
         ...state,
         catalogMenu: action.payload,
+        lastLevelCatalogItems: [],
       };
     case types.GET_CATALOG_PRODUCTS:
       const {
@@ -225,13 +227,13 @@ const catalogReducer = (state = initialState, action) => {
               }
             }
 
-            if(Object.keys(object).length === 0) {
-              const newObj = JSON.parse(JSON.stringify(state.selectedData))
-              delete newObj["checkboxes"]
+            if (Object.keys(object).length === 0) {
+              const newObj = JSON.parse(JSON.stringify(state.selectedData));
+              delete newObj["checkboxes"];
 
               return {
                 ...state,
-                selectedData: {...newObj}
+                selectedData: { ...newObj },
               };
             }
             return {

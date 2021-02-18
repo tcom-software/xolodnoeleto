@@ -59,7 +59,7 @@ export const loadCatalogList = () => {
         if (data.length > 0) {
           dispatch({
             type: CATALOG_LIST,
-            payload: data,
+            payload: data.categories,
           });
         }
       })
