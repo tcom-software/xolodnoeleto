@@ -77,35 +77,54 @@ const CreateCompareInformation = (compareProducts) => {
     }
   }
 
+  let dimensions = {};
+  if (
+    array &&
+    array["Габариты"] &&
+    Object.keys(array["Габариты"]).indexOf(
+      "Внутреннего блока кондиционера (Ш)"
+    ) != -1
+  ) {
+    dimensions["Вес внутреннего блока"] =
+      array["Габариты"]["Вес внутреннего блока"];
+    dimensions["Вес внешнего блока"] = array["Габариты"]["Вес внешнего блока"];
+    delete array["Габариты"]["Вес внутреннего блока"];
+    delete array["Габариты"]["Вес внешнего блока"];
 
-  let dimensions = {}
-  if(Object.keys(array["Габариты"]).indexOf("Внутреннего блока кондиционера (Ш)") != -1) {
-    dimensions["Вес внутреннего блока"] = array["Габариты"]["Вес внутреннего блока"]
-    dimensions["Вес внешнего блока"] = array["Габариты"]["Вес внешнего блока"]
-    delete array["Габариты"]["Вес внутреннего блока"]
-    delete array["Габариты"]["Вес внешнего блока"]
+    const one = [],
+      two = [],
+      three = [],
+      fore = [],
+      five = [],
+      six = [];
+    const items = Object.values(array["Габариты"]);
 
-    const one = [], two = [], three = [], fore = [], five = [], six = [];
-    const items = Object.values(array["Габариты"])
-
-    for(let i = 0;i < items.length;i++) {
-      if(i <= 2) {
+    for (let i = 0; i < items.length; i++) {
+      if (i <= 2) {
         one.push(items[i][0]);
         two.push(items[i][1]);
-        three.push(items[i][2])
+        three.push(items[i][2]);
       } else {
         fore.push(items[i][0]);
         five.push(items[i][1]);
-        six.push(items[i][2])
+        six.push(items[i][2]);
       }
     }
 
     dimensions = {
       ...dimensions,
-      "Внутреннего блока кондиционера (В) x (Ш) x (Г)": [one.join(" x "), two.join(" x "), three.join(" x ")],
-      "Наружного блока кондиционера (В) x (Ш) x (Г)": [fore.join(" x "), five.join(" x "), six.join(" x ")]
-    }
-    array["Габариты"] = dimensions
+      "Внутреннего блока кондиционера (В) x (Ш) x (Г)": [
+        one.join(" x "),
+        two.join(" x "),
+        three.join(" x "),
+      ],
+      "Наружного блока кондиционера (В) x (Ш) x (Г)": [
+        fore.join(" x "),
+        five.join(" x "),
+        six.join(" x "),
+      ],
+    };
+    array["Габариты"] = dimensions;
   }
 
   return array;

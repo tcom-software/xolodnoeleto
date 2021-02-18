@@ -281,6 +281,17 @@ const PhonesCon = styled.div`
 `;
 
 const SearchCon = styled.div`
+  position: relative;
+  .menuPoints {
+    position: absolute;
+    left: 2px;
+    top: 0;
+  }
+
+  & > div > label > div > input {
+    margin-left: 10px;
+  }
+
   ${({ mobileDisableView }) => {
     return (
       mobileDisableView &&

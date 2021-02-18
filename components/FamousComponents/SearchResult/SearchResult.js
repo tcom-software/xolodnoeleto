@@ -4,7 +4,7 @@ import { Input, Loading } from "@famous";
 import { SearchContainer } from "./styles";
 import { SearchCon } from "../../Layout/Header/styles";
 import { useRouter } from "next/router";
-
+import { SvgIcon } from "../index";
 
 const SearchResult = ({
   total,
@@ -23,7 +23,9 @@ const SearchResult = ({
   refForSearch,
   setNewRefForSearch,
 }) => {
-  const { query: { catalogId } } = useRouter();
+  const {
+    query: { catalogId },
+  } = useRouter();
 
   const heightRef = useRef(null);
   const [page, setPage] = useState(1);
@@ -69,7 +71,7 @@ const SearchResult = ({
 
   useEffect(() => {
     const time = setTimeout(() => {
-      searchInputValue && actionSearch(searchInputValue, 1, catalogId);
+      searchInputValue && actionSearch(searchInputValue, 1);
     }, 500);
 
     return () => {
@@ -86,6 +88,12 @@ const SearchResult = ({
       }}
     >
       <SearchCon>
+        {/*<SvgIcon*/}
+        {/*  type={"menuVerticalPoints"}*/}
+        {/*  width="20px"*/}
+        {/*  height="100%"*/}
+        {/*  className="menuPoints"*/}
+        {/*/>*/}
         <Input
           svgSize={16}
           width="100%"

@@ -28,7 +28,7 @@ const mapStateToProps = ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  actionSearch: (searchWord, page, catalogId) => dispatch(actionSearch(searchWord, page, catalogId)),
+  actionSearch: (searchWord, page) => dispatch(actionSearch(searchWord, page)),
   whereWasSearchAction: (where) => dispatch(whereWasSearchAction(where)),
   searchInputValueAction: (value) => dispatch(searchInputValueAction(value)),
   setNewRefForSearch: (ref) => dispatch(setNewRefForSearch(ref)),

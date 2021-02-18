@@ -24,7 +24,7 @@ export const searchNewLoading = (boolean) => ({
   payload: boolean,
 });
 
-export const actionSearch = (searchWord, page = 1, catalogId = null) => {
+export const actionSearch = (searchWord, page = 1) => {
   return (dispatch) => {
     if (searchWord === "") {
       dispatch({
@@ -40,13 +40,9 @@ export const actionSearch = (searchWord, page = 1, catalogId = null) => {
       } else {
         dispatch(searchNewLoading(true))
       }
-      let catalogIdStr = ""
-      if(catalogId != null) {
-        catalogIdStr = '/' + catalogId;
-      }
 
       axiosInstance
-          .post(`${searchProduct}${catalogIdStr}?page=${page}`, { search: searchWord, page })
+          .post(`${searchProduct}?page=${page}`, { search: searchWord, page })
           .then(({ data }) => {
             if (data) {
               if(page === 1) {
