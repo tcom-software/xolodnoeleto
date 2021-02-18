@@ -88,12 +88,12 @@ const SearchResult = ({
       }}
     >
       <SearchCon>
-        <SvgIcon
+        {/*<SvgIcon
           type={"menuVerticalPoints"}
           width="20px"
           height="100%"
           className="menuPoints"
-        />
+        />*/}
         <Input
           svgSize={16}
           width="100%"

@@ -1,5 +1,6 @@
 export const CATALOG_LIST = "CATALOG_LIST";
 export const CLEAR_FILTERS = "CLEAR_FILTERS";
+export const LAST_LEVEL_CATALOGS = "LAST_LEVEL_CATALOGS";
 export const OPEN_FILTERS_TOGGLE = "OPEN_FILTERS_TOGGLE";
 export const GET_CATALOG_FILTERS = "GET_CATALOG_FILTERS";
 export const GET_CATALOG_PRODUCTS = "GET_CATALOG_PRODUCTS";
@@ -56,7 +57,7 @@ export const loadCatalogList = () => {
     axiosInstance
       .get(catalogCategories)
       .then(({ data }) => {
-        if (data.length > 0) {
+        if (data) {
           dispatch({
             type: CATALOG_LIST,
             payload: data,

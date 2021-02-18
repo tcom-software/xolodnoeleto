@@ -1,4 +1,5 @@
 import * as types from "../actions/catalogActions";
+import { LAST_LEVEL_CATALOGS } from "../actions/catalogActions";
 
 const initialState = {
   productsLoading: true,
@@ -55,8 +56,8 @@ const catalogReducer = (state = initialState, action) => {
     case types.CATALOG_LIST:
       return {
         ...state,
-        catalogMenu: action.payload,
-        lastLevelCatalogItems: [],
+        catalogMenu: action.payload.categories,
+        lastLevelCatalogItems: action.payload.secondLevelCategories,
       };
     case types.GET_CATALOG_PRODUCTS:
       const {
