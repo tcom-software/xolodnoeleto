@@ -1,10 +1,57 @@
 import React from "react";
+import theme from "styles/theme";
+import { Button, SvgIcon } from "@famous";
 import { SearchOptionsContainer } from "./styles";
 
-const SearchOptions = ({ modalRef, lastLevelCatalogItems }) => {
-  console.log(lastLevelCatalogItems, "------lastLevelCatalogs");
+const SearchOptions = ({
+  modalRef,
+  lastLevelCatalogItems,
+  closeModal,
+  selectedSearchCatalog,
+  setSelectedSearchCatalog,
+}) => {
   return (
-    <SearchOptionsContainer ref={modalRef}>hahahahhaha</SearchOptionsContainer>
+    <SearchOptionsContainer ref={modalRef}>
+      <div className="close-modal-search-option">
+        <Button
+          type="primary"
+          width="100px"
+          height="100%"
+          onClick={() => setSelectedSearchCatalog(null)}
+        >
+          Clear
+        </Button>
+        <SvgIcon
+          type="close"
+          width="15px"
+          height="15px"
+          callback={closeModal}
+        />
+      </div>
+      {lastLevelCatalogItems.map((e) => {
+        return (
+          <Button
+            key={e.id.join(",")}
+            type="primary"
+            width="175px"
+            height="30px"
+            onClick={() => setSelectedSearchCatalog(e.id.join(","))}
+          >
+            {selectedSearchCatalog == e.id.join(",") ? (
+              <SvgIcon
+                type="star"
+                width="15px"
+                height="15px"
+                fill={theme.body.sunColor}
+                className="selected-catalog-with-star"
+              />
+            ) : null}
+
+            {e.name}
+          </Button>
+        );
+      })}
+    </SearchOptionsContainer>
   );
 };
 

@@ -53,7 +53,7 @@ const Layout = ({
 const mapStateToProps = ({ search: { refForSearch } }) => ({ refForSearch });
 
 const mapDispatchToProps = (dispatch) => ({
-  actionSearch: (searchWord, page) => dispatch(actionSearch(searchWord, page)),
+  actionSearch: (object) => dispatch(actionSearch(object)),
   searchInputValueAction: (value) => dispatch(searchInputValueAction(value)),
   setNewRefForSearch: (ref) => dispatch(setNewRefForSearch(ref)),
 });

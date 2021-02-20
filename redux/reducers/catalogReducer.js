@@ -1,8 +1,8 @@
 import * as types from "../actions/catalogActions";
-import { LAST_LEVEL_CATALOGS } from "../actions/catalogActions";
 
 const initialState = {
-  productsLoading: true,
+  total: 0,
+  products: [],
   filters: {
     Сортировка: [
       {
@@ -40,15 +40,14 @@ const initialState = {
       },
     ],
   },
-  total: 0,
-  products: [],
   catalogMenu: [],
+  selectedData: {},
   isOpenFilters: false,
+  productsLoading: false,
+  lastLevelCatalogItems: [],
+  mobileFiltersStatus: false,
   firstLevelFiltersArray: [],
   secondLevelFiltersArray: [],
-  selectedData: {},
-  mobileFiltersStatus: false,
-  lastLevelCatalogItems: [],
 };
 
 const catalogReducer = (state = initialState, action) => {
@@ -67,8 +66,8 @@ const catalogReducer = (state = initialState, action) => {
 
       return {
         ...state,
-        products: [...products],
         total,
+        products: [...products],
         productsLoading: false,
       };
     case types.GET_CATALOG_FILTERS:
@@ -76,7 +75,6 @@ const catalogReducer = (state = initialState, action) => {
         ...state.filters,
         ...action.payload,
       };
-
       const sortedItems = {};
 
       const pattern = [
@@ -135,8 +133,8 @@ const catalogReducer = (state = initialState, action) => {
       };
     case types.FIRST_SECOND_LEVEL_ARRAY:
       const array = state.secondLevelFiltersArray;
-
       const index = array.indexOf(action.payload);
+
       if (index === -1) {
         array.push(action.payload);
       } else {

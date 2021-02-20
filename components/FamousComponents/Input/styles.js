@@ -3,7 +3,7 @@ import theme from "../../../styles/theme";
 
 const Label = styled.label``;
 
-const Input = styled.input`
+const InputStyled = styled.input`
   border: none;
   width: 100%;
 
@@ -36,4 +36,4 @@ const InputBorder = styled.div`
   }}
 `;
 
-export { Label, Input, Container, InputBorder };
+export { Label, InputStyled, Container, InputBorder };

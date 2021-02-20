@@ -46,6 +46,7 @@ export interface InputInterface {
   callback?: any;
   handleChange?: any;
   onFocus?: any;
+  selectedSearchCatalog?: any;
 }
 export interface ImageInterface {
   simpleWeb: string;

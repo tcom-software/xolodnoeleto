@@ -16,20 +16,29 @@ const Catalog = ({
   products,
   selectedData,
   clearFilters,
+  actionSearch,
   getBrandProducts,
   getCatalogProducts,
   updateSelectedDataPage,
   clearFiltersSelectedData,
   updateSelectedDataFromUrl,
   getCatalogProductLoadingTrigger,
+
+  searchProducts,
+  searchProductsInfo,
+  selectedSearchCatalog,
+  getCatalogProductsWithoutAxios,
 }) => {
   const router = useRouter();
-  const { catalogId, brandId, page } = router.query;
+  const { catalogId, brandId, searchId, page } = router.query;
   const prevQuery = usePreviousQuery(router.query);
 
   useEffect(() => {
-    if (catalogId || brandId) {
-      const url = createUrlFromObject(selectedData, catalogId || brandId);
+    if (catalogId || brandId || searchId) {
+      const url = createUrlFromObject(
+        selectedData,
+        catalogId || brandId || searchId
+      );
       if (url.indexOf("?") != -1 && url.indexOf("=") != -1) {
         router.push(url);
       }
@@ -42,11 +51,11 @@ const Catalog = ({
     clearFilters();
 
     return () => {
-      catalogId || brandId && updateSelectedDataPage(1);
+      catalogId || (brandId && updateSelectedDataPage(1));
       clearFilters();
       clearFiltersSelectedData();
     };
-  }, [catalogId , brandId]);
+  }, [catalogId, brandId, searchId]);
 
   useEffect(() => {
     let object = {};
@@ -84,6 +93,13 @@ const Catalog = ({
           brandId,
           { ...object }
         );
+
+      /*searchId &&
+        actionSearch({
+          // searchWord: searchInputValue,
+          // page: page + 1,
+          // selectedSearchCatalog,
+        });*/
     }
   }, [router.query]);
 

@@ -44,14 +44,8 @@ const getBrandProducts = (page = 1, brandId, object = {}) => {
 const getBrandsWithPage = (page, letters) => {
   return (dispatch) => {
     let string = "";
-
-    if (page) {
-      string += `?page=${page}`;
-    }
-
-    if (letters) {
-      string += `&searchBrand=${letters.join().toLowerCase()}`;
-    }
+    if (page) string += `?page=${page}`;
+    if (letters) string += `&searchBrand=${letters.join().toLowerCase()}`;
 
     axiosInstance
       .get(getBrandsUrl + string)

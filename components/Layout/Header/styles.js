@@ -282,14 +282,32 @@ const PhonesCon = styled.div`
 
 const SearchCon = styled.div`
   position: relative;
-  .menuPoints {
+
+  .menuButtonPoints {
+    transition: 0.3s all ease-in;
     position: absolute;
-    left: 2px;
-    top: 0;
+    height: 80%;
+    left: 3px;
+    top: 3px;
+
+    &:hover {
+      transition: 0.3s all ease-in;
+      background: ${theme.body.primaryColor};
+
+      .menu-vertical-points {
+        fill: rgb(255, 214, 0);
+      }
+    }
+
+    .we-have-selected-catalog {
+      position: absolute;
+      top: -6px;
+      left: 13px;
+    }
   }
 
   & > div > label > div > input {
-    margin-left: 10px;
+    margin-left: 20px;
   }
 
   ${({ mobileDisableView }) => {
@@ -310,9 +328,7 @@ const SearchCon = styled.div`
         }
       `
     );
-  }}
-
-  @media(max-width: ${theme.mobileMedia.size}) {
+  }} @media(max-width: ${theme.mobileMedia.size}) {
     position: relative;
 
     span {
@@ -320,6 +336,7 @@ const SearchCon = styled.div`
       height: 1px;
       width: 1px;
     }
+
     span:nth-of-type(1) {
       transition: 0.2s all ease-in;
       transition-delay: 0.4s;
@@ -327,6 +344,7 @@ const SearchCon = styled.div`
       right: 0;
       top: 50%;
     }
+
     span:nth-of-type(2) {
       transition: 0.2s all ease-in;
       transition-delay: 0.4s;
@@ -334,6 +352,7 @@ const SearchCon = styled.div`
       right: 0;
       bottom: 50%;
     }
+
     span:nth-of-type(3) {
       transition: 0.2s all ease-in;
       transition-delay: 0.2s;
@@ -341,6 +360,7 @@ const SearchCon = styled.div`
       right: 0;
       top: 0;
     }
+
     span:nth-of-type(4) {
       transition: 0.2s all ease-in;
       transition-delay: 0.2s;
@@ -348,12 +368,14 @@ const SearchCon = styled.div`
       right: 0;
       bottom: 0;
     }
+
     span:nth-of-type(5) {
       transition: 0.2s all ease-in;
       background: transparent;
       left: 0;
       bottom: 0;
     }
+
     span:nth-of-type(6) {
       transition: 0.2s all ease-in;
       background: transparent;
@@ -375,24 +397,28 @@ const SearchCon = styled.div`
               width: 100%;
             }
           }
+
           span:nth-of-type(1) {
             transition: 0.2s all ease-in;
             background: #d8d8d8;
             height: 100%;
             top: 0;
           }
+
           span:nth-of-type(1) {
             transition: 0.2s all ease-in;
             background: #d8d8d8;
             height: 100%;
             top: 0;
           }
+
           span:nth-of-type(2) {
             transition: 0.2s all ease-in;
             background: #d8d8d8;
             height: 100%;
             bottom: 0;
           }
+
           span:nth-of-type(3) {
             transition: 0.2s all ease-in;
             transition-delay: 0.2s;
@@ -400,6 +426,7 @@ const SearchCon = styled.div`
             width: 100%;
             top: 0;
           }
+
           span:nth-of-type(4) {
             transition: 0.2s all ease-in;
             transition-delay: 0.2s;
@@ -407,6 +434,7 @@ const SearchCon = styled.div`
             width: 100%;
             bottom: 0;
           }
+
           span:nth-of-type(5) {
             transition: 0.2s all ease-in;
             transition-delay: 0.4s;
@@ -415,6 +443,7 @@ const SearchCon = styled.div`
             left: 0;
             bottom: 0;
           }
+
           span:nth-of-type(6) {
             transition: 0.2s all ease-in;
             transition-delay: 0.4s;

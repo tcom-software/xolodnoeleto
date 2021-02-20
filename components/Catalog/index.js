@@ -7,16 +7,26 @@ import {
   updateSelectedDataFromUrl,
   updateSelectedDataPage,
   clearFilters,
+  getCatalogProductsWithoutAxios,
 } from "redux/actions/catalogActions";
 import { getBrandProducts } from "../../redux/actions/brandsActions";
+import { actionSearch } from "../../redux/actions/searchActions";
 
 const mapStateToProps = ({
   catalog: { products, products_info, total, selectedData },
+  search: {
+    products: searchProducts,
+    products_info: searchProductsInfo,
+    selectedSearchCatalog,
+  },
 }) => ({
   selectedData,
   total,
   products,
   products_info,
+  searchProducts,
+  searchProductsInfo,
+  selectedSearchCatalog,
 });
 const mapDispatchToProps = (dispatch) => ({
   getBrandProducts: (page, brandId, object) =>
@@ -29,6 +39,9 @@ const mapDispatchToProps = (dispatch) => ({
   updateSelectedDataFromUrl: (data) =>
     dispatch(updateSelectedDataFromUrl(data)),
   clearFiltersSelectedData: () => dispatch(clearFiltersSelectedData()),
+  getCatalogProductsWithoutAxios: (data) =>
+    dispatch(getCatalogProductsWithoutAxios(data)),
+  actionSearch: (object) => dispatch(actionSearch(object)),
   clearFilters: () => dispatch(clearFilters()),
 });
 

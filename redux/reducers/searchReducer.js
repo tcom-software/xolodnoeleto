@@ -1,14 +1,16 @@
 import * as types from "../actions/searchActions";
 
 const initialState = {
-  loading: false,
-  search: [],
-  new_loading: false,
-  new_search: [],
   total: null,
+  products: [],
+  new_search: [],
+  loading: false,
+  new_loading: false,
+  refForSearch: null,
   whereWasSearch: null,
   searchInputValue: "",
-  refForSearch: null,
+  selectedSearchCatalog: null,
+  products_info: { total: 0 },
 };
 
 const generalReducer = (state = initialState, action) => {
@@ -28,20 +30,18 @@ const generalReducer = (state = initialState, action) => {
       };
       break;
     case types.SEARCH:
-      const { searchResponse, total } = action.payload;
       return {
         ...state,
-        total: total ? total : null,
         loading: false,
-        search: searchResponse ? searchResponse : [],
+        ...action.payload,
       };
       break;
     case types.NEW_SEARCH:
       return {
         ...state,
         new_loading: false,
-        total: action.payload.total,
-        search: [...state.search, ...action.payload.searchResponse],
+        ...action.payload,
+        products: [...state.search, ...action.payload.products],
       };
       break;
     case types.WHERE_WAS_SEARCH:
@@ -49,16 +49,26 @@ const generalReducer = (state = initialState, action) => {
         ...state,
         whereWasSearch: action.payload,
       };
+      break;
     case types.SET_SEARCH_INPUT_VALUE:
       return {
         ...state,
         searchInputValue: action.payload,
       };
+      break;
     case types.SET_NEW_REF_FOR_SEARCH:
       return {
         ...state,
         refForSearch: { ...action.payload },
       };
+      break;
+
+    case types.SELECTED_SEARCH_CATALOG:
+      return {
+        ...state,
+        selectedSearchCatalog: action.payload,
+      };
+      break;
     default:
       return { ...state };
   }

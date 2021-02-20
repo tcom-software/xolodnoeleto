@@ -1,14 +1,13 @@
 export const CATALOG_LIST = "CATALOG_LIST";
 export const CLEAR_FILTERS = "CLEAR_FILTERS";
-export const LAST_LEVEL_CATALOGS = "LAST_LEVEL_CATALOGS";
 export const OPEN_FILTERS_TOGGLE = "OPEN_FILTERS_TOGGLE";
 export const GET_CATALOG_FILTERS = "GET_CATALOG_FILTERS";
 export const GET_CATALOG_PRODUCTS = "GET_CATALOG_PRODUCTS";
+export const CATALOG_LOADING_TRIGGER = "CATALOG_LOADING_TRIGGER";
 export const MANIPULATION_RADIO_DATA = "MANIPULATION_RADIO_DATA";
 export const UPDATE_SELECTED_ORDER_BY = "UPDATE_SELECTED_ORDER_BY";
 export const FIRST_SECOND_LEVEL_ARRAY = "FIRST_SECOND_LEVEL_ARRAY";
 export const UPDATE_SELECTED_DATA_PAGE = "UPDATE_SELECTED_DATA_PAGE";
-export const CATALOG_LOADING_TRIGGER = "CATALOG_LOADING_TRIGGER";
 export const FIRST_FILTERS_LEVEL_ARRAY = "FIRST_FILTERS_LEVEL_ARRAY";
 export const MANIPULATION_BETWEEN_DATA = "MANIPULATION_BETWEEN_DATA";
 export const MANIPULATION_MULTIPLE_DATA = "MANIPULATION_MULTIPLE_DATA";
@@ -20,12 +19,20 @@ import { axiosInstance, makeFilters } from "@utils";
 import getConfig from "next/config";
 
 const {
-  publicRuntimeConfig: { catalogProducts, catalogCategories, getFilters },
+  publicRuntimeConfig: { catalogProducts, catalogCategories },
 } = getConfig();
 
 export const getCatalogProductLoadingTrigger = (boolean) => ({
   type: CATALOG_LOADING_TRIGGER,
   payload: boolean,
+});
+
+export const getCatalogProductsWithoutAxios = ({
+  products,
+  products_info,
+}) => ({
+  type: GET_CATALOG_PRODUCTS,
+  payload: { products, products_info },
 });
 
 export const getCatalogProducts = (catalogId, object = {}) => {
@@ -41,7 +48,6 @@ export const getCatalogProducts = (catalogId, object = {}) => {
             type: GET_CATALOG_PRODUCTS,
             payload: { products, products_info },
           });
-
           dispatch({
             type: GET_CATALOG_FILTERS,
             payload: makeFilters(filters),

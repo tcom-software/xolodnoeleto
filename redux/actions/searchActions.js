@@ -1,11 +1,11 @@
-export const LOADING = "LOADING";
-export const NEW_LOADING = "NEW_LOADING";
 export const SEARCH = "SEARCH";
+export const LOADING = "LOADING";
 export const NEW_SEARCH = "NEW_SEARCH";
+export const NEW_LOADING = "NEW_LOADING";
 export const WHERE_WAS_SEARCH = "WHERE_WAS_SEARCH";
-export const SET_REF_FOR_SEARCH = "SET_REF_FOR_SEARCH";
 export const SET_SEARCH_INPUT_VALUE = "SET_SEARCH_INPUT_VALUE";
 export const SET_NEW_REF_FOR_SEARCH = "SET_NEW_REF_FOR_SEARCH";
+export const SELECTED_SEARCH_CATALOG = "SELECTED_SEARCH_CATALOG";
 
 import getConfig from "next/config";
 import axiosInstance from "../../utils/axiosInstance";
@@ -24,41 +24,47 @@ export const searchNewLoading = (boolean) => ({
   payload: boolean,
 });
 
-export const actionSearch = (searchWord, page = 1) => {
+export const actionSearch = ({
+  searchWord,
+  page = 1,
+  selectedSearchCatalog,
+}) => {
   return (dispatch) => {
-    if (searchWord === "") {
-      dispatch({
-        type: SEARCH,
-        payload: {
-          searchResponse: [],
-          total: 1,
-        },
-      });
-    } else {
-      if(page === 1) {
-        dispatch(searchLoading(true))
+    if (typeof searchWord === "string" && searchWord != "") {
+      if (page === 1) {
+        dispatch(searchLoading(true));
       } else {
-        dispatch(searchNewLoading(true))
+        dispatch(searchNewLoading(true));
       }
 
+      const obj = { search: searchWord, page };
+      if (selectedSearchCatalog)
+        obj.catalogId = selectedSearchCatalog.split(`,`).map((x) => +x);
+
       axiosInstance
-          .post(`${searchProduct}?page=${page}`, { search: searchWord, page })
-          .then(({ data }) => {
-            if (data) {
-              if(page === 1) {
-                dispatch({
+        .post(`${searchProduct}?page=${page}`, obj)
+        .then(({ data }) => {
+          if (data) {
+            page === 1
+              ? dispatch({
                   type: SEARCH,
                   payload: data,
                 })
-              } else {
-                dispatch({
+              : dispatch({
                   type: NEW_SEARCH,
                   payload: data,
-                })
-              }
-            }
-          })
-          .catch((err) => console.log(err));
+                });
+          }
+        })
+        .catch((err) => console.log(err));
+    } else {
+      dispatch({
+        type: SEARCH,
+        payload: {
+          products: [],
+          products_info: { total: 0 },
+        },
+      });
     }
   };
 };
@@ -76,4 +82,9 @@ export const searchInputValueAction = (value) => ({
 export const setNewRefForSearch = (ref) => ({
   type: SET_NEW_REF_FOR_SEARCH,
   payload: ref,
+});
+
+export const setSelectedSearchCatalog = (catalog) => ({
+  type: SELECTED_SEARCH_CATALOG,
+  payload: catalog,
 });

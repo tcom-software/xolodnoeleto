@@ -8,7 +8,7 @@ const PopUpContainer = styled.div`
   top: 0px;
   bottom: 0;
   backdrop-filter: blur(10px);
-  z-index: 1;
+  z-index: 999;
 
   .layer {
     position: relative;

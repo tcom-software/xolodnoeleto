@@ -1,77 +1,56 @@
 import React, { useEffect, useRef, useState } from "react";
-import Cases from "./Cases";
-import { Input, Loading } from "@famous";
-import { SearchContainer } from "./styles";
-import { SearchCon } from "../../Layout/Header/styles";
+import { Input } from "@famous";
+import theme from "styles/theme";
 import { useRouter } from "next/router";
-import { SvgIcon } from "../index";
+import { SearchContainer } from "./styles";
+import { Button, SvgIcon } from "../index";
+import CustomCases from "./components/CustomCases";
+import { SearchCon } from "../../Layout/Header/styles";
 
 const SearchResult = ({
-  total,
-  loading,
-  search,
-  new_loading,
-  actionSearch,
-
   where,
-  whereWasSearch,
-  whereWasSearchAction,
-
-  searchInputValue,
-  searchInputValueAction,
-
+  loading,
+  products,
+  openModal,
+  new_loading,
   refForSearch,
+  actionSearch,
+  products_info,
+  whereWasSearch,
+  searchInputValue,
   setNewRefForSearch,
+  whereWasSearchAction,
+  selectedSearchCatalog,
+  searchInputValueAction,
+  getCatalogProductsWithoutAxios,
+  getCatalogProductLoadingTrigger,
 }) => {
-  const {
-    query: { catalogId },
-  } = useRouter();
-
+  const router = useRouter();
+  const { total } = products_info;
   const heightRef = useRef(null);
   const [page, setPage] = useState(1);
-  const CustomCases = () => {
-    if (loading) {
-      return <Loading />;
-    } else if (new_loading) {
-      return (
-        <>
-          <Cases
-            search={search}
-            type={where}
-            actionSearch={actionSearch}
-            searchInputValueAction={searchInputValueAction}
-          />
-          <Loading />
-        </>
-      );
-    } else if (!loading && !new_loading && search.length > 0) {
-      return (
-        <Cases
-          search={search}
-          type={where}
-          actionSearch={actionSearch}
-          searchInputValue={searchInputValue}
-          searchInputValueAction={searchInputValueAction}
-        />
-      );
-    } else {
-      return null;
-    }
-  };
   const handleScroll = () => {
     const { clientHeight, scrollHeight, scrollTop } = heightRef.current;
     const result = scrollHeight - scrollTop === clientHeight;
     if (result) {
       if (total > page * 15) {
-        actionSearch(searchInputValue, page + 1);
+        actionSearch({
+          searchWord: searchInputValue,
+          page: page + 1,
+          selectedSearchCatalog,
+        });
         setPage(page + 1);
       }
     }
   };
-
   useEffect(() => {
     const time = setTimeout(() => {
-      searchInputValue && actionSearch(searchInputValue, 1);
+      searchInputValue &&
+        actionSearch({
+          searchWord: searchInputValue,
+          page: 1,
+          selectedSearchCatalog,
+        });
     }, 500);
 
     return () => {
@@ -79,32 +58,57 @@ const SearchResult = ({
     };
   }, [searchInputValue]);
 
+  let callback = () => {};
+  if (selectedSearchCatalog) {
+    callback = () => {
+      router.push("/search/" + selectedSearchCatalog.replace(/,/gi, "-"));
+      getCatalogProductsWithoutAxios({ products, products_info });
+    };
+  }
+
   return (
     <SearchContainer
       ref={whereWasSearch === where ? refForSearch : null}
-      searchLength={search.length > 0 || loading || new_loading}
+      searchLength={products.length > 0 || loading || new_loading}
       onClick={(event) => {
         setNewRefForSearch({ current: event.currentTarget });
       }}
     >
       <SearchCon>
-        {/*<SvgIcon
-          type={"menuVerticalPoints"}
+        <Button
           width="20px"
           height="100%"
-          className="menuPoints"
-        />*/}
+          type="second"
+          className="menuButtonPoints"
+          onClick={() => openModal("SearchOptions")}
+        >
+          {typeof selectedSearchCatalog === "string" ? (
+            <SvgIcon
+              type="star"
+              width="10px"
+              height="10px"
+              color={theme.body.sunColor}
+              className="we-have-selected-catalog"
+            />
+          ) : null}
+          <SvgIcon
+            type={"menuVerticalPoints"}
+            width="20px"
+            height="100%"
+            color="#777"
+            className="menu-vertical-points"
+          />
+        </Button>
         <Input
           svgSize={16}
           width="100%"
           height="35px"
           search={true}
+          callback={callback}
           placeholder={"search"}
-          searchValue={whereWasSearch === where ? searchInputValue : ""}
-          handleChange={(e) => {
-            searchInputValueAction(e.target.value);
-          }}
           onFocus={() => whereWasSearchAction(where)}
+          handleChange={(e) => searchInputValueAction(e.target.value)}
+          searchValue={whereWasSearch === where ? searchInputValue : ""}
         />
       </SearchCon>
       {whereWasSearch === where ? (
@@ -112,7 +116,15 @@ const SearchResult = ({
           {total ? (
             <h2 className="title">Количество продуктов ({total})</h2>
           ) : null}
-          <CustomCases />
+          <CustomCases
+            where={where}
+            loading={loading}
+            products={products}
+            new_loading={new_loading}
+            actionSearch={actionSearch}
+            searchInputValue={searchInputValue}
+            searchInputValueAction={searchInputValueAction}
+          />
         </div>
       ) : null}
     </SearchContainer>

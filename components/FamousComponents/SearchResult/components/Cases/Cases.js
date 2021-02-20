@@ -3,14 +3,14 @@ import Link from "next/link";
 import { makePrice } from "@utils";
 
 const Cases = ({
-  search,
   type,
+  products,
   addCompareProduct,
   searchInputValue = null,
   actionSearch,
   searchInputValueAction,
 }) => {
-  return search.map((e) => {
+  return products.map((e) => {
     const { id, brand, model, price } = e;
     const vendorCode = id === parseInt(searchInputValue) ? true : false;
     if (type === "compare") {
