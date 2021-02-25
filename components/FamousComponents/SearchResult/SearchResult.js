@@ -59,7 +59,7 @@ const SearchResult = ({
   }, [searchInputValue]);
 
   let callback = () => {};
-  if (selectedSearchCatalog) {
+  if (selectedSearchCatalog && searchInputValue) {
     callback = () => {
       router.push("/search/" + selectedSearchCatalog.replace(/,/gi, "-"));
       getCatalogProductsWithoutAxios({ products, products_info });

@@ -8,6 +8,7 @@ const initialState = {
   new_loading: false,
   refForSearch: null,
   whereWasSearch: null,
+  lastSearchedWord: "",
   searchInputValue: "",
   selectedSearchCatalog: null,
   products_info: { total: 0 },
@@ -21,21 +22,20 @@ const generalReducer = (state = initialState, action) => {
         total: null,
         loading: true,
       };
-      break;
     case types.NEW_LOADING:
       return {
         ...state,
         total: null,
         new_loading: true,
       };
-      break;
     case types.SEARCH:
       return {
         ...state,
         loading: false,
         ...action.payload,
+        total: action.payload?.products_info?.total,
+        products: [...action.payload.products],
       };
-      break;
     case types.NEW_SEARCH:
       return {
         ...state,
@@ -43,32 +43,31 @@ const generalReducer = (state = initialState, action) => {
         ...action.payload,
         products: [...state.search, ...action.payload.products],
       };
-      break;
     case types.WHERE_WAS_SEARCH:
       return {
         ...state,
         whereWasSearch: action.payload,
       };
-      break;
     case types.SET_SEARCH_INPUT_VALUE:
       return {
         ...state,
         searchInputValue: action.payload,
       };
-      break;
     case types.SET_NEW_REF_FOR_SEARCH:
       return {
         ...state,
         refForSearch: { ...action.payload },
       };
-      break;
-
     case types.SELECTED_SEARCH_CATALOG:
       return {
         ...state,
         selectedSearchCatalog: action.payload,
       };
-      break;
+    case types.LAST_SEARCHED_WORD:
+      return {
+        ...state,
+        lastSearchedWord: action.payload,
+      };
     default:
       return { ...state };
   }

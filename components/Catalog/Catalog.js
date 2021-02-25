@@ -25,6 +25,8 @@ const Catalog = ({
   getCatalogProductLoadingTrigger,
 
   searchProducts,
+  lastSearchedWord,
+  searchInputValue,
   searchProductsInfo,
   selectedSearchCatalog,
   getCatalogProductsWithoutAxios,
@@ -51,7 +53,9 @@ const Catalog = ({
     clearFilters();
 
     return () => {
-      catalogId || (brandId && updateSelectedDataPage(1));
+      catalogId ||
+        (brandId && updateSelectedDataPage(1)) ||
+        (searchId && updateSelectedDataPage(1));
       clearFilters();
       clearFiltersSelectedData();
     };
@@ -93,13 +97,13 @@ const Catalog = ({
           brandId,
           { ...object }
         );
-
-      /*searchId &&
+      searchId &&
         actionSearch({
-          // searchWord: searchInputValue,
-          // page: page + 1,
-          // selectedSearchCatalog,
-        });*/
+          searchWord: lastSearchedWord,
+          page: page ? +page : 1,
+          selectedSearchCatalog,
+          filters: { ...object },
+        });
     }
   }, [router.query]);
 

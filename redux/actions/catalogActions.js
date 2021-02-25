@@ -43,7 +43,6 @@ export const getCatalogProducts = (catalogId, object = {}) => {
       .then(({ data }) => {
         if (data) {
           const { filters, products, products_info } = data;
-
           dispatch({
             type: GET_CATALOG_PRODUCTS,
             payload: { products, products_info },

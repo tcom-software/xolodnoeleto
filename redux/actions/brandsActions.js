@@ -2,23 +2,37 @@ export const LANDING_PAGE = "INITIAL_PAGE";
 export const BRAND_PRODUCTS = "BRAND_PRODUCTS";
 export const BRANDS_WITH_PAGE = "BRANDS_WITH_PAGE";
 export const GET_CATALOG_PRODUCTS = "GET_CATALOG_PRODUCTS";
+import { GET_CATALOG_FILTERS } from "./catalogActions";
 
 import getConfig from "next/config";
-import { axiosInstance } from "../../utils";
+import { axiosInstance, makeFilters } from "../../utils";
 
 const {
   publicRuntimeConfig: { getBrands: getBrandsUrl, catalogProducts },
 } = getConfig();
 
-const getBrands = () => {
+const getBrands = (all = false) => {
   return (dispatch) => {
     axiosInstance
-      .get(getBrandsUrl)
+      .post(getBrandsUrl, JSON.stringify(all ? { all: true } : {}))
       .then(({ data }) => {
-        dispatch({
-          type: LANDING_PAGE,
-          payload: data,
-        });
+        if (all) {
+          const { brands } = data;
+          const filters = {
+            characteristicAttributes: [],
+            textFilters: [],
+            manufacturerCountries: brands,
+          };
+          dispatch({
+            type: GET_CATALOG_FILTERS,
+            payload: makeFilters(filters),
+          });
+        } else {
+          dispatch({
+            type: LANDING_PAGE,
+            payload: data,
+          });
+        }
       })
       .catch(console.log);
   };

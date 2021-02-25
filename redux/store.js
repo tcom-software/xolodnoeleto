@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import thunkMiddleware from "redux-thunk";
 import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
@@ -25,8 +26,11 @@ export const loadState = () => {
 
 export const saveState = (state) => {
   try {
-    const serializedState = JSON.stringify(state);
-    sessionStorage.setItem("xl", serializedState);
+    // console.log(state, "---state");
+    const newState = JSON.stringify(state);
+    const serializedState = useMemo(() => {
+      sessionStorage.setItem("xl", serializedState);
+    }, [newState]);
   } catch (err) {}
 };
 

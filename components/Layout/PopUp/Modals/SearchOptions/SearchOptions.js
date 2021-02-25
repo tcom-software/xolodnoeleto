@@ -28,16 +28,16 @@ const SearchOptions = ({
           callback={closeModal}
         />
       </div>
-      {lastLevelCatalogItems.map((e) => {
+      {lastLevelCatalogItems.map(({ ids, name }) => {
         return (
           <Button
-            key={e.id.join(",")}
+            key={ids.join(",")}
             type="primary"
             width="175px"
             height="30px"
-            onClick={() => setSelectedSearchCatalog(e.id.join(","))}
+            onClick={() => setSelectedSearchCatalog(ids.join(","))}
           >
-            {selectedSearchCatalog == e.id.join(",") ? (
+            {selectedSearchCatalog == ids.join(",") ? (
               <SvgIcon
                 type="star"
                 width="15px"
@@ -47,7 +47,7 @@ const SearchOptions = ({
               />
             ) : null}
 
-            {e.name}
+            {name}
           </Button>
         );
       })}

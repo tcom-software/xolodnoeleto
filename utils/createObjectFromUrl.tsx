@@ -34,6 +34,7 @@ const createObjectFromUrl = (urlObj) => {
         ];
       case key === "brandId":
       case key === "catalogId":
+      case key === "searchId":
         break;
       case +key != NaN:
         newObject["checkboxes"] = {

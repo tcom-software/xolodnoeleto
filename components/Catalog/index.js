@@ -15,6 +15,8 @@ import { actionSearch } from "../../redux/actions/searchActions";
 const mapStateToProps = ({
   catalog: { products, products_info, total, selectedData },
   search: {
+    searchInputValue,
+    lastSearchedWord,
     products: searchProducts,
     products_info: searchProductsInfo,
     selectedSearchCatalog,
@@ -25,6 +27,8 @@ const mapStateToProps = ({
   products,
   products_info,
   searchProducts,
+  searchInputValue,
+  lastSearchedWord,
   searchProductsInfo,
   selectedSearchCatalog,
 });
