@@ -24,13 +24,15 @@ export const loadState = () => {
   }
 };
 
+const makeJSON = (state) => JSON.stringify(state);
+
 export const saveState = (state) => {
   try {
-    // console.log(state, "---state");
-    const newState = JSON.stringify(state);
-    const serializedState = useMemo(() => {
-      sessionStorage.setItem("xl", serializedState);
-    }, [newState]);
+    console.log(111111);
+    sessionStorage.setItem(
+      "xl",
+      useMemo(() => makeJSON(state), [state])
+    );
   } catch (err) {}
 };
 
