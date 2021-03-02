@@ -28,7 +28,6 @@ const makeJSON = (state) => JSON.stringify(state);
 
 export const saveState = (state) => {
   try {
-    console.log(111111);
     sessionStorage.setItem(
       "xl",
       useMemo(() => makeJSON(state), [state])

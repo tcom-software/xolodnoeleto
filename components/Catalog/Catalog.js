@@ -25,10 +25,12 @@ const Catalog = ({
   getCatalogProductLoadingTrigger,
 
   searchProducts,
+  makeEmptySearch,
   lastSearchedWord,
   searchInputValue,
   searchProductsInfo,
   selectedSearchCatalog,
+  setSelectedSearchCatalog,
   getCatalogProductsWithoutAxios,
 }) => {
   const router = useRouter();
@@ -97,13 +99,19 @@ const Catalog = ({
           brandId,
           { ...object }
         );
-      searchId &&
+
+      if (searchId) {
         actionSearch({
           searchWord: lastSearchedWord,
           page: page ? +page : 1,
           selectedSearchCatalog,
           filters: { ...object },
+          updateCatalogCollection: true,
         });
+
+        // setSelectedSearchCatalog(null);
+        makeEmptySearch();
+      }
     }
   }, [router.query]);
 

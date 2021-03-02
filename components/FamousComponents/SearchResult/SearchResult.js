@@ -111,7 +111,7 @@ const SearchResult = ({
           searchValue={whereWasSearch === where ? searchInputValue : ""}
         />
       </SearchCon>
-      {whereWasSearch === where ? (
+      {whereWasSearch === where && searchInputValue != "" ? (
         <div className="result-panel" ref={heightRef} onScroll={handleScroll}>
           {total ? (
             <h2 className="title">Количество продуктов ({total})</h2>

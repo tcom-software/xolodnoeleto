@@ -1,7 +1,10 @@
 import * as types from "../actions/searchActions";
+import {
+  SET_RESERVED_CATALOG_LIST_DATA,
+  setReservedCatalogListData,
+} from "../actions/searchActions";
 
 const initialState = {
-  total: null,
   products: [],
   new_search: [],
   loading: false,
@@ -10,6 +13,7 @@ const initialState = {
   whereWasSearch: null,
   lastSearchedWord: "",
   searchInputValue: "",
+  reservedCatalogListInfo: null,
   selectedSearchCatalog: null,
   products_info: { total: 0 },
 };
@@ -33,15 +37,13 @@ const generalReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         ...action.payload,
-        total: action.payload?.products_info?.total,
-        products: [...action.payload.products],
       };
     case types.NEW_SEARCH:
       return {
         ...state,
         new_loading: false,
         ...action.payload,
-        products: [...state.search, ...action.payload.products],
+        products: [...state.products, ...action.payload.products],
       };
     case types.WHERE_WAS_SEARCH:
       return {
@@ -67,6 +69,11 @@ const generalReducer = (state = initialState, action) => {
       return {
         ...state,
         lastSearchedWord: action.payload,
+      };
+    case types.SET_RESERVED_CATALOG_LIST_DATA:
+      return {
+        ...state,
+        reservedCatalogListInfo: action.payload,
       };
     default:
       return { ...state };
