@@ -7,7 +7,7 @@ const SearchOptionsContainer = styled.div`
   height: 90vh;
   overflow: scroll !important;
   & > button {
-    transition: 0.3s all ease-in;
+    transition: 0.2s all ease-in;
     position: relative;
     padding: 5px 20px;
     width: 100%;
@@ -21,7 +21,10 @@ const SearchOptionsContainer = styled.div`
   }
 
   button:hover {
-    transform: scale(1.09);
+    transition: 0.2s all ease-in;
+    background: white;
+    color: ${theme.body.primaryColor};
+    outline: 1px solid ${theme.body.primaryColor};
   }
 
   .close-modal-search-option {
