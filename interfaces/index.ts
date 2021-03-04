@@ -35,18 +35,20 @@ export interface SvgIconAnimInterface {
   duration: number;
 }
 export interface InputInterface {
-  labelTitle?: string;
-  search?: boolean;
-  searchValue?: string;
-  svgColor?: string;
   width: string;
   height: string;
-  placeholder: string;
-  svgSize: number;
-  callback?: any;
-  handleChange?: any;
   onFocus?: any;
+  callback?: any;
+  svgSize: number;
+  openModal?: any;
+  search?: boolean;
+  svgColor?: string;
+  handleChange?: any;
+  placeholder: string;
+  labelTitle?: string;
+  searchValue?: string;
   selectedSearchCatalog?: any;
+  selectedSearchCatalogTitle?: any;
 }
 export interface ImageInterface {
   simpleWeb: string;

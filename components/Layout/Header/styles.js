@@ -53,7 +53,7 @@ const MainPanel = styled.section`
   background: ${theme.body.background};
   display: grid;
   align-items: center;
-  grid-template-columns: 2fr 2fr 3fr 120px 120px;
+  grid-template-columns: 2fr 2fr 5fr 120px 120px;
 
   @media (max-width: 991px) {
     grid-template-columns: 2fr 2fr 2fr 120px 120px;
@@ -127,7 +127,7 @@ const BottomPanel = styled.section`
 
     @media (max-width: ${theme.mobileMedia.size}) {
       display: grid;
-      grid-template-columns: 3fr 2fr 1fr;
+      grid-template-columns: 1fr 3fr 1fr;
 
       ${({ modalType }) => {
         return (
@@ -282,29 +282,6 @@ const PhonesCon = styled.div`
 
 const SearchCon = styled.div`
   position: relative;
-
-  .menuButtonPoints {
-    transition: 0.3s all ease-in;
-    position: absolute;
-    height: 80%;
-    left: 3px;
-    top: 3px;
-
-    &:hover {
-      transition: 0.3s all ease-in;
-      background: ${theme.body.primaryColor};
-
-      .menu-vertical-points {
-        fill: rgb(255, 214, 0);
-      }
-    }
-
-    .we-have-selected-catalog {
-      position: absolute;
-      top: -6px;
-      left: 13px;
-    }
-  }
 
   & > div > label > div > input {
     margin-left: 20px;

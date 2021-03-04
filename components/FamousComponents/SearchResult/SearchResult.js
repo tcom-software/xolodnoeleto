@@ -22,6 +22,7 @@ const SearchResult = ({
   whereWasSearchAction,
   selectedSearchCatalog,
   searchInputValueAction,
+  selectedSearchCatalogTitle,
   getCatalogProductsWithoutAxios,
   getCatalogProductLoadingTrigger,
 }) => {
@@ -75,38 +76,16 @@ const SearchResult = ({
       }}
     >
       <SearchCon>
-        <Button
-          width="20px"
-          height="100%"
-          type="second"
-          className="menuButtonPoints"
-          onClick={() => openModal("SearchOptions")}
-        >
-          {typeof selectedSearchCatalog === "string" ? (
-            <SvgIcon
-              type="star"
-              width="10px"
-              height="10px"
-              color={theme.body.sunColor}
-              className="we-have-selected-catalog"
-            />
-          ) : null}
-          <SvgIcon
-            type={"menuVerticalPoints"}
-            width="20px"
-            height="100%"
-            color="#777"
-            className="menu-vertical-points"
-          />
-        </Button>
         <Input
           svgSize={16}
           width="100%"
           height="35px"
           search={true}
           callback={callback}
+          openModal={openModal}
           placeholder={"search"}
           onFocus={() => whereWasSearchAction(where)}
+          selectedSearchCatalogTitle={selectedSearchCatalogTitle}
           handleChange={(e) => searchInputValueAction(e.target.value)}
           searchValue={whereWasSearch === where ? searchInputValue : ""}
         />

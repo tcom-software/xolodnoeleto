@@ -97,9 +97,9 @@ export const setNewRefForSearch = (ref) => ({
   payload: ref,
 });
 
-export const setSelectedSearchCatalog = (catalog) => ({
+export const setSelectedSearchCatalog = (object) => ({
   type: SELECTED_SEARCH_CATALOG,
-  payload: catalog,
+  payload: object,
 });
 
 export const setLastSearchedWord = (word) => ({

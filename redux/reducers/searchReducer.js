@@ -15,6 +15,7 @@ const initialState = {
   searchInputValue: "",
   reservedCatalogListInfo: null,
   selectedSearchCatalog: null,
+  selectedSearchCatalogTitle: null,
   products_info: { total: 0 },
 };
 
@@ -63,7 +64,8 @@ const generalReducer = (state = initialState, action) => {
     case types.SELECTED_SEARCH_CATALOG:
       return {
         ...state,
-        selectedSearchCatalog: action.payload,
+        selectedSearchCatalog: action.payload?.ids || null,
+        selectedSearchCatalogTitle: action.payload?.title || null,
       };
     case types.LAST_SEARCHED_WORD:
       return {

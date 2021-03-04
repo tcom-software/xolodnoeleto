@@ -9,7 +9,13 @@ import { useSpring, animated } from "react-spring";
 import { closeModal, openModal } from "redux/actions/modalActions";
 import { Button, GlobalSection, SvgIcon, SearchResult } from "@famous";
 
-const Bottom = ({ modalType, openModal, closeModal, basketItemsCount }) => {
+const Bottom = ({
+  modalType,
+  openModal,
+  closeModal,
+  basketItemsCount,
+  isMobile,
+}) => {
   const spring = useSpring({
     from: { val: 0 },
     to: { val: basketItemsCount },
@@ -34,7 +40,7 @@ const Bottom = ({ modalType, openModal, closeModal, basketItemsCount }) => {
               height={25}
               color={modalType === "catalog" ? theme.body.primaryColor : "#000"}
             />
-            Каталог товаров
+            {!isMobile ? "Каталог товаров" : ""}
             <Catalog />
             <SvgIcon
               type="box"
@@ -46,13 +52,12 @@ const Bottom = ({ modalType, openModal, closeModal, basketItemsCount }) => {
             />
           </li>
           <li></li>
-          <li></li>
-          {/*<li>% Акции</li>
           <li>
             <Link href="/brands">
               <a>Бренды</a>
             </Link>
-          </li>*/}
+          </li>
+          {/*<li>% Акции</li>*/}
           <li className="header-search-result-container">
             <SearchResult where={"header-bottom"} />
           </li>
@@ -102,9 +107,11 @@ const Bottom = ({ modalType, openModal, closeModal, basketItemsCount }) => {
 };
 
 const mapStateToProps = ({
+  general: { isMobile },
   modal: { modalType, modalRef },
   basket: { items },
 }) => ({
+  isMobile,
   modalRef,
   modalType,
   basketItemsCount: Object.values(items)

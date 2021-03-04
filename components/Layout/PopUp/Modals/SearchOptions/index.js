@@ -16,8 +16,7 @@ const mapDispatchToProps = (dispatch) => ({
   closeModal: () => dispatch(closeModal()),
   setNotificationMessage: (notification) =>
     dispatch(setNotificationMessage(notification)),
-  setSelectedSearchCatalog: (catalog) =>
-    dispatch(setSelectedSearchCatalog(catalog)),
+  setSelectedSearchCatalog: (data) => dispatch(setSelectedSearchCatalog(data)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddReview);

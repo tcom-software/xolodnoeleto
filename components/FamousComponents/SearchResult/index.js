@@ -23,6 +23,7 @@ const mapStateToProps = ({
     whereWasSearch,
     searchInputValue,
     selectedSearchCatalog,
+    selectedSearchCatalogTitle,
   },
 }) => {
   return {
@@ -34,6 +35,7 @@ const mapStateToProps = ({
     whereWasSearch,
     searchInputValue,
     selectedSearchCatalog,
+    selectedSearchCatalogTitle,
   };
 };
 
