@@ -19,7 +19,7 @@ const SearchOptions = ({
           height="100%"
           onClick={() => setSelectedSearchCatalog(null)}
         >
-          Clear
+          Очистить
         </Button>
         <SvgIcon
           type="close"
@@ -36,22 +36,20 @@ const SearchOptions = ({
             width="175px"
             height="30px"
             onClick={() => {
-              setSelectedSearchCatalog({
-                ids: ids.join(","),
-                title: name,
-              });
+              if (selectedSearchCatalog === ids.join(",")) {
+                setSelectedSearchCatalog({
+                  ids: null,
+                  title: null,
+                });
+              } else {
+                setSelectedSearchCatalog({
+                  ids: ids.join(","),
+                  title: name,
+                });
+              }
             }}
+            className={selectedSearchCatalog == ids.join(",") ? "selected" : ""}
           >
-            {selectedSearchCatalog == ids.join(",") ? (
-              <SvgIcon
-                type="star"
-                width="15px"
-                height="15px"
-                fill={theme.body.sunColor}
-                className="selected-catalog-with-star"
-              />
-            ) : null}
-
             {name}
           </Button>
         );

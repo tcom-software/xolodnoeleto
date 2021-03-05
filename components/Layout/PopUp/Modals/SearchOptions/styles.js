@@ -18,6 +18,9 @@ const SearchOptionsContainer = styled.div`
       top: 6px;
       fill: ${theme.body.sunColor};
     }
+    &.selected {
+      background: #d7d7d7 !important;
+    }
   }
 
   button:hover {
