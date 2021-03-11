@@ -48,7 +48,7 @@ export const actionSearch = ({
 
       const obj = { search: searchWord, page };
       if (selectedSearchCatalog)
-        obj.catalogId = selectedSearchCatalog.split(`,`).map((x) => +x);
+        obj.categoryId = selectedSearchCatalog.split(`,`).map((x) => +x);
 
       axiosInstance
         .post(`${searchProduct}?page=${page}`, { ...obj, ...filters })
