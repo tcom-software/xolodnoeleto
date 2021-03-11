@@ -30,6 +30,7 @@ const SearchResult = ({
   const { total } = products_info;
   const heightRef = useRef(null);
   const [page, setPage] = useState(1);
+
   const handleScroll = () => {
     const { clientHeight, scrollHeight, scrollTop } = heightRef.current;
     const result = scrollHeight - scrollTop === clientHeight;
@@ -44,6 +45,7 @@ const SearchResult = ({
       }
     }
   };
+
   useEffect(() => {
     const time = setTimeout(() => {
       searchInputValue &&
@@ -76,16 +78,22 @@ const SearchResult = ({
       }}
     >
       <SearchCon>
+        <Button
+          type="second"
+          className="menuButtonPoints"
+          onClick={() => openModal("SearchOptions")}
+        >
+          <p>{selectedSearchCatalogTitle || "Все"}</p>
+        </Button>
         <Input
           svgSize={16}
           width="100%"
           height="35px"
           search={true}
           callback={callback}
-          openModal={openModal}
           placeholder={"search"}
+          styles={{ border: "none" }}
           onFocus={() => whereWasSearchAction(where)}
-          selectedSearchCatalogTitle={selectedSearchCatalogTitle}
           handleChange={(e) => searchInputValueAction(e.target.value)}
           searchValue={whereWasSearch === where ? searchInputValue : ""}
         />

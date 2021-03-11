@@ -10,21 +10,6 @@ const InputBorder = styled.div`
   justify-content: center;
   border: 1px solid ${theme.input.borderColor};
 
-  .menuButtonPoints {
-    transition: 0.3s all ease-in;
-    height: 35px;
-    width: max-content;
-    padding: 0 10px;
-    font-size: 12px;
-    p {
-      white-space: nowrap;
-      width: max-content;
-      max-width: 80px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-  }
-
   section {
     display: flex;
     align-items: center;
@@ -37,6 +22,10 @@ const InputBorder = styled.div`
       `;
     }}
   }
+
+  ${({ styles }) => {
+    return { ...styles };
+  }}
 `;
 
 const InputStyled = styled.input`

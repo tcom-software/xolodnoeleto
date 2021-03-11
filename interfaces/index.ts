@@ -37,10 +37,11 @@ export interface SvgIconAnimInterface {
 export interface InputInterface {
   width: string;
   height: string;
+  styles?: any;
   onFocus?: any;
   callback?: any;
   svgSize: number;
-  openModal?: any;
+
   search?: boolean;
   svgColor?: string;
   handleChange?: any;
@@ -48,7 +49,6 @@ export interface InputInterface {
   labelTitle?: string;
   searchValue?: string;
   selectedSearchCatalog?: any;
-  selectedSearchCatalogTitle?: any;
 }
 export interface ImageInterface {
   simpleWeb: string;

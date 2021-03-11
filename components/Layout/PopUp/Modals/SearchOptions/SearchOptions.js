@@ -46,6 +46,7 @@ const SearchOptions = ({
                   ids: ids.join(","),
                   title: name,
                 });
+                closeModal("");
               }
             }}
             className={selectedSearchCatalog == ids.join(",") ? "selected" : ""}

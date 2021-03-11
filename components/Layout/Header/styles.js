@@ -282,9 +282,27 @@ const PhonesCon = styled.div`
 
 const SearchCon = styled.div`
   position: relative;
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  border: 1px solid ${theme.body.someBorder};
 
   & > div > label > div > input {
     margin-left: 20px;
+  }
+
+  .menuButtonPoints {
+    transition: 0.3s all ease-in;
+    height: 35px;
+    width: 80px;
+    padding: 0 10px;
+    font-size: 12px;
+    p {
+      white-space: nowrap;
+      width: max-content;
+      max-width: 80px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
 
   ${({ mobileDisableView }) => {

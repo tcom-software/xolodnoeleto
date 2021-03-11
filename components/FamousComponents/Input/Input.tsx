@@ -12,28 +12,17 @@ const Input = ({
   onFocus,
   svgColor,
   callback,
-  openModal,
   labelTitle,
   searchValue,
   placeholder,
   handleChange,
-  selectedSearchCatalogTitle,
+  styles,
 }: InputInterface) => {
-  console.log(selectedSearchCatalogTitle, "-------selectedSearchCatalogTitle");
   const Layout = (boolean) => (
     <Container>
       <Label>
         {boolean ? labelTitle : null}
-        <InputBorder width={width} height={height}>
-          {search && (
-            <Button
-              type="second"
-              className="menuButtonPoints"
-              onClick={() => openModal("SearchOptions")}
-            >
-              <p>{selectedSearchCatalogTitle || "Все"}</p>
-            </Button>
-          )}
+        <InputBorder width={width} height={height} styles={styles}>
           <section>
             <InputStyled
               placeholder={placeholder}
