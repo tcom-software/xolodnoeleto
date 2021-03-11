@@ -110,7 +110,7 @@ const Catalog = ({
         });
 
         // setSelectedSearchCatalog(null);
-        makeEmptySearch();
+        // makeEmptySearch();
       }
     }
   }, [router.query]);
