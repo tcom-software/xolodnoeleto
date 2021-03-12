@@ -34,7 +34,7 @@ const ShowMoreWrapper = ({
   return (
     <ShowMoreContainer buttontextalign={buttonTextAlign}>
       <ShowMoreText style={styles} color={color} padding={padding}>
-        <p ref={pHeight}>{text}</p>
+        <p ref={pHeight} dangerouslySetInnerHTML={{ __html: text }}></p>
       </ShowMoreText>
       <div onClick={() => setOpen(!open)} className="show-more-button-align">
         {buttonStyle ? (

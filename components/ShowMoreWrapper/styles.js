@@ -27,7 +27,7 @@ const ShowMoreContainer = styled(animated.div)`
 const ShowMoreText = styled(animated.div)`
   display: flex;
   overflow: hidden;
-  align-items: center;
+  //align-items: center;
   flex-direction: column;
   border: ${({ border }) => border};
 
