@@ -8,12 +8,12 @@ import { GlobalSection, Image, SvgIcon } from "@famous";
 
 const Banner = () => {
   const images = data.map((e, i) => (
-    <Image
-      key={i}
-      simpleWeb={`/images/slider_images/${i + 1}.jpg`}
-      webpWeb={`/images/slider_images/${i + 1}.webp`}
-    />
-  ));
+      <Image
+        key={i}
+        simpleWeb={`/images/slider_images/${e.jpg}`}
+        webpWeb={`/images/slider_images/${e.webP}`}
+      />
+  ))
 
   const NextSlick = ({ onClick }) => (
     <span onClick={onClick}>
