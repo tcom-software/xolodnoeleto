@@ -10,8 +10,9 @@ const Banner = () => {
   const images = data.map((e, i) => (
       <Image
         key={i}
-        simpleWeb={`/images/slider_images/${e.jpg}`}
-        webpWeb={`/images/slider_images/${e.webP}`}
+        simpleWeb={`/images/carousel/${e.jpg}`}
+        // simpleWeb={`/images/slider_images/${e.jpg}`}
+        // webpWeb={`/images/slider_images/${e.webP}`}
       />
   ))
 
