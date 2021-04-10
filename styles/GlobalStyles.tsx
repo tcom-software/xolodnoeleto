@@ -5,7 +5,6 @@ import { hidden } from "ansi-colors";
 const GlobalStyles = createGlobalStyle`
   @font-face {
     font-family: 'david';
-    font-display: swap;
     src: local('david'), url('../public/fonts/open-sans-v18-latin-regular.woff2') format('woff2'),
     url('../public/fonts/open-sans-v18-latin-regular.woff') format('woff');
     font-weight: 100;
