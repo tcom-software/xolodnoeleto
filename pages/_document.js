@@ -44,7 +44,7 @@ export default class MyDocument extends Document {
           <link
             rel="stylesheet"
             type="text/css"
-            href="//fonts.googleapis.com/css?family=Open+Sans"
+            href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
           />
           <meta
             property="og:title"
@@ -62,7 +62,6 @@ export default class MyDocument extends Document {
             nema="keywords"
             content="Кондиционирование, Вентиляция, Холодильное оборудование, Обогреватели и камины, Отопление и водоснабжение, Расходные материалы"
           />
-          <script src="/yandex.js"></script>
         </Head>
         <body>
           <Main />
@@ -81,6 +80,7 @@ export default class MyDocument extends Document {
             </div>
           </noscript>
         </body>
+        <script src="/yandex.js"></script>
       </Html>
     );
   }
