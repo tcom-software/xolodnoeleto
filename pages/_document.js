@@ -41,11 +41,11 @@ export default class MyDocument extends Document {
           <meta charSet="utf-8" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <meta property="og:url" content="https://www.xolodnoeleto.ru/" />
-          {/*<link*/}
-          {/*  rel="stylesheet"*/}
-          {/*  type="text/css"*/}
-          {/*  href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"*/}
-          {/*/>*/}
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
+          />
           <meta
             property="og:title"
             content="Стандартная установка кондиционеров"
