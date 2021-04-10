@@ -17,7 +17,7 @@ const GlobalStyles = createGlobalStyle`
     background: ${theme.body.background};
     color: #202020;
     overflow-x: hidden;
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: 'david', sans-serif;
 
   }
   .overflow-hidden {
