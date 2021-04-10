@@ -11,7 +11,9 @@ import { animated } from "react-spring";
 import { Transition } from "react-spring/renderprops.cjs";
 import { useRouter } from "next/router";
 
+import "../styles/fonts.scss";
 import "../styles/globals.css";
+
 import "slick-carousel/slick/slick.scss";
 import "slick-carousel/slick/slick-theme.scss";
 import "rc-slider/assets/index.css";
