@@ -25,17 +25,20 @@ const makeFilters = (filters) => {
       };
     }, {});
 
+    
     let brands = [];
-    for (let value of manufacturerCountries) {
-      brands.push({
-        ...value,
-        name: "file.select",
-        name_ru: value.brand,
-        characteristic_id: "manufacturerCountries",
-      });
+    if(manufacturerCountries.length) {
+      for (let value of manufacturerCountries) {
+        brands.push({
+          ...value,
+          name: "file.select",
+          name_ru: value.brand,
+          characteristic_id: "manufacturerCountries",
+        });
+      }
+      sortedFilters["Бренды"] = brands;
     }
 
-    sortedFilters["Бренды"] = brands;
     return sortedFilters;
   }
 };

@@ -43,14 +43,17 @@ export const getCatalogProducts = (catalogId, object = {}) => {
       .then(({ data }) => {
         if (data) {
           const { filters, products, products_info } = data;
+
           dispatch({
             type: GET_CATALOG_PRODUCTS,
             payload: { products, products_info },
           });
+
           dispatch({
             type: GET_CATALOG_FILTERS,
             payload: makeFilters(filters),
           });
+          
         }
       })
       .catch((err) => console.log(err));
